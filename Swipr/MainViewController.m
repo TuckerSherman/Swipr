@@ -34,15 +34,16 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         NSLog(@"%@", objects);
         if (!error) {
-            NSArray *doges = [[NSArray alloc] initWithArray:objects];
+
+            NSArray *items = [[NSArray alloc] initWithArray:objects];
             
-            NSMutableArray *dogetext = [[NSMutableArray alloc] init];
+            NSMutableArray *itemText = [[NSMutableArray alloc] init];
             
-            for (PFObject *object in doges) {
-                [dogetext addObject:[object objectForKey:@"text"]];
+            for (PFObject *object in items) {
+                [itemText addObject:[object objectForKey:@"text"]];
             }
             
-            [self loadCardsFromParse:dogetext];
+            [self loadCardsFromParse:itemText];
             
         } else {
             NSLog(@"Error grabbing from Parse!");
@@ -52,8 +53,7 @@
 }
 
 -(void)loadCardsFromParse:(NSMutableArray *)objects {
-    NSLog(@"%@", objects);
-    self.draggableBackground.exampleCardLabels = @[objects[0], objects[1]];
+    self.draggableBackground.exampleCardLabels = [objects mutableCopy];
     // loadCards needs to be called when array is loaded;
     [self.draggableBackground loadCards];
 
