@@ -38,8 +38,8 @@
         
         // View Setup for draggable cards
         // Image view
-        itemImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 250)];
-        itemImage.image = [UIImage imageNamed:@"doge"];
+        itemImage = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, self.frame.size.width - 20, 310)];
+        itemImage.image = [UIImage imageNamed:@"doge.jpeg"];
         
         
         // Text label
