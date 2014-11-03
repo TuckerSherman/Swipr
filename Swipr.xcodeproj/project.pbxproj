@@ -18,8 +18,8 @@
 		845166ED1A07FED6004663DE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845166EB1A07FED6004663DE /* LaunchScreen.xib */; };
 		845166F91A07FED6004663DE /* SwiprTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 845166F81A07FED6004663DE /* SwiprTests.m */; };
 		845167051A080157004663DE /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 845167041A080157004663DE /* Profile.storyboard */; };
-		845167071A080F28004663DE /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 845167061A080F28004663DE /* Profile.storyboard */; };
 		8451670A1A080FC4004663DE /* UserItemsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845167091A080FC4004663DE /* UserItemsTableViewController.m */; };
+		8451670C1A0810E0004663DE /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8451670B1A0810E0004663DE /* Profile.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,9 +53,9 @@
 		845166F71A07FED6004663DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		845166F81A07FED6004663DE /* SwiprTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SwiprTests.m; sourceTree = "<group>"; };
 		845167041A080157004663DE /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Profile.storyboard; path = ../Profile.storyboard; sourceTree = "<group>"; };
-		845167061A080F28004663DE /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = SOURCE_ROOT; };
 		845167081A080FC4004663DE /* UserItemsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserItemsTableViewController.h; sourceTree = "<group>"; };
 		845167091A080FC4004663DE /* UserItemsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserItemsTableViewController.m; sourceTree = "<group>"; };
+		8451670B1A0810E0004663DE /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +82,7 @@
 				52BE14D91A0800280090A2B0 /* MainViewController.h */,
 				52BE14DA1A0800280090A2B0 /* MainViewController.m */,
 				845167081A080FC4004663DE /* UserItemsTableViewController.h */,
+				8451670B1A0810E0004663DE /* Profile.storyboard */,
 				845167091A080FC4004663DE /* UserItemsTableViewController.m */,
 			);
 			name = Controllers;
@@ -125,7 +126,6 @@
 				52BE14DD1A0800650090A2B0 /* Controllers */,
 				845166E01A07FED6004663DE /* AppDelegate.h */,
 				845166E11A07FED6004663DE /* AppDelegate.m */,
-				845167061A080F28004663DE /* Profile.storyboard */,
 				845166E61A07FED6004663DE /* Main.storyboard */,
 				845166E91A07FED6004663DE /* Images.xcassets */,
 				845166EB1A07FED6004663DE /* LaunchScreen.xib */,
@@ -242,7 +242,7 @@
 			files = (
 				845166E81A07FED6004663DE /* Main.storyboard in Resources */,
 				845166ED1A07FED6004663DE /* LaunchScreen.xib in Resources */,
-				845167071A080F28004663DE /* Profile.storyboard in Resources */,
+				8451670C1A0810E0004663DE /* Profile.storyboard in Resources */,
 				845167051A080157004663DE /* Profile.storyboard in Resources */,
 				845166EA1A07FED6004663DE /* Images.xcassets in Resources */,
 			);
