@@ -37,7 +37,7 @@
                                     </textField>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zV6-Lg-sYC">
                                         <rect key="frame" x="10" y="10" width="235" height="180"/>
-                                        <color key="backgroundColor" patternImage="30C27E75-932D-41EB-8B45-17B065FE0CF3" colorSpace="pattern"/>
+                                        <color key="backgroundColor" patternImage="8C5C439F-CD55-447C-A4C6-1A6531C6ACB8" colorSpace="pattern"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="235" id="Y6L-9L-N3u"/>
                                         </constraints>
@@ -211,7 +211,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="30C27E75-932D-41EB-8B45-17B065FE0CF3" width="320" height="460">
+        <image name="8C5C439F-CD55-447C-A4C6-1A6531C6ACB8" width="320" height="460">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGTk9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QEQcI
 ExQZHh8nKzIzNDw/QkhLVSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NW
