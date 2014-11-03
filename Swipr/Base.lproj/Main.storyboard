@@ -42,7 +42,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wGu-W4-sQD">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wGu-W4-sQD">
                                 <rect key="frame" x="0.0" y="20" width="320" height="200"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User Bio" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GXn-T4-4Zl">
@@ -100,7 +100,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P3s-ok-eTA">
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P3s-ok-eTA">
                                 <rect key="frame" x="0.0" y="220" width="320" height="348"/>
                                 <connections>
                                     <segue destination="V7U-BZ-gXz" kind="embed" id="uzG-R1-4ov"/>
