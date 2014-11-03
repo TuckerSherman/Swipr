@@ -19,13 +19,47 @@
     [super viewDidLoad];
     
     // Setup draggable background
-    DraggableViewBackground *draggableBackground = [[DraggableViewBackground alloc]initWithFrame:self.view.frame];
-    [self.view addSubview:draggableBackground];
+    self.draggableBackground = [[DraggableViewBackground alloc]initWithFrame:self.view.frame];
+    [self.view addSubview:self.draggableBackground];
     
-    draggableBackground.exampleCardLabels = @[@"first doge", @"second doge", @"third doge", @"forth doge", @"last doge"];
-    // loadCards needs to be called when array is loaded;
-    [draggableBackground loadCards];
+
+    [self retreiveFromParse];
+    
+
 }
+
+-(void)retreiveFromParse {
+    PFQuery *query = [PFQuery queryWithClassName:@"TestObjects"];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"%@", objects);
+        if (!error) {
+            NSArray *doges = [[NSArray alloc] initWithArray:objects];
+            
+            NSMutableArray *dogetext = [[NSMutableArray alloc] init];
+            
+            for (PFObject *object in doges) {
+                [dogetext addObject:[object objectForKey:@"text"]];
+            }
+            
+            [self loadCardsFromParse:dogetext];
+            
+        } else {
+            NSLog(@"Error grabbing from Parse!");
+        }
+    }];
+    
+}
+
+-(void)loadCardsFromParse:(NSMutableArray *)objects {
+    NSLog(@"%@", objects);
+    self.draggableBackground.exampleCardLabels = @[objects[0], objects[1]];
+    // loadCards needs to be called when array is loaded;
+    [self.draggableBackground loadCards];
+
+}
+
+
 
 
 
