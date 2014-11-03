@@ -56,10 +56,23 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
     checkButton = [[UIButton alloc]initWithFrame:CGRectMake(200, 485, 59, 59)];
     [checkButton setImage:[UIImage imageNamed:@"checkButton"] forState:UIControlStateNormal];
     [checkButton addTarget:self action:@selector(swipeRight) forControlEvents:UIControlEventTouchUpInside];
+    
+
     [self addSubview:menuButton];
     [self addSubview:messageButton];
     [self addSubview:xButton];
     [self addSubview:checkButton];
+//    
+//    [self addConstraint:[NSLayoutConstraint constraintWithItem:checkButton
+//                                                     attribute:NSLayoutAttributeBottom
+//                                                     relatedBy:NSLayoutRelationEqual
+//                                                        toItem:self
+//                                                     attribute:NSLayoutAttributeBottom
+//                                                    multiplier:1.0
+//                                                      constant:20]];
+    
+   
+    
     
 
 }
