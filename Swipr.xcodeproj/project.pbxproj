@@ -14,6 +14,7 @@
 		845166EA1A07FED6004663DE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 845166E91A07FED6004663DE /* Images.xcassets */; };
 		845166ED1A07FED6004663DE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845166EB1A07FED6004663DE /* LaunchScreen.xib */; };
 		845166F91A07FED6004663DE /* SwiprTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 845166F81A07FED6004663DE /* SwiprTests.m */; };
+		845167051A080157004663DE /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 845167041A080157004663DE /* Profile.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		845166F21A07FED6004663DE /* SwiprTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiprTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		845166F71A07FED6004663DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		845166F81A07FED6004663DE /* SwiprTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SwiprTests.m; sourceTree = "<group>"; };
+		845167041A080157004663DE /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Profile.storyboard; path = ../Profile.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				845166E31A07FED6004663DE /* ViewController.h */,
 				845166E41A07FED6004663DE /* ViewController.m */,
 				845166E61A07FED6004663DE /* Main.storyboard */,
+				845167041A080157004663DE /* Profile.storyboard */,
 				845166E91A07FED6004663DE /* Images.xcassets */,
 				845166EB1A07FED6004663DE /* LaunchScreen.xib */,
 				845166DC1A07FED6004663DE /* Supporting Files */,
@@ -201,6 +204,7 @@
 			files = (
 				845166E81A07FED6004663DE /* Main.storyboard in Resources */,
 				845166ED1A07FED6004663DE /* LaunchScreen.xib in Resources */,
+				845167051A080157004663DE /* Profile.storyboard in Resources */,
 				845166EA1A07FED6004663DE /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
