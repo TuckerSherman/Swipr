@@ -68,12 +68,16 @@
                                             <outlet property="delegate" destination="JK5-Cl-0ME" id="wuh-zc-Yd6"/>
                                         </connections>
                                     </textField>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="LHl-5L-JsH">
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="LHl-5L-JsH">
                                         <rect key="frame" x="10" y="10" width="180" height="180"/>
-                                        <color key="backgroundColor" patternImage="827054D4-24D6-415B-87C1-78BA9C87CCED" colorSpace="pattern"/>
+                                        <color key="backgroundColor" patternImage="27A816B9-C621-4DCC-AE5C-18733904B433" colorSpace="pattern"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="180" id="1KE-Q8-E0C"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="GCQ-ym-hEO" appends="YES" id="Oi1-8T-vAL"/>
+                                        </connections>
                                     </imageView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User Phone Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CsL-Pg-Ylw">
                                         <rect key="frame" x="200" y="120" width="110" height="25"/>
@@ -118,6 +122,7 @@
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="B4T-bs-zoU" firstAttribute="top" secondItem="P3s-ok-eTA" secondAttribute="bottom" id="Ayi-VP-o6k"/>
                             <constraint firstAttribute="trailing" secondItem="wGu-W4-sQD" secondAttribute="trailing" id="IoD-1x-hFb"/>
@@ -137,6 +142,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D2n-fx-vQy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="GCQ-ym-hEO">
+                    <connections>
+                        <action selector="userImageTap:" destination="JK5-Cl-0ME" id="UeN-HK-RZX"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1221" y="319"/>
         </scene>
@@ -283,7 +293,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="827054D4-24D6-415B-87C1-78BA9C87CCED" width="320" height="460">
+        <image name="27A816B9-C621-4DCC-AE5C-18733904B433" width="320" height="460">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGTk9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QEQcI
 ExQZHh8nKzIzNDw/QkhLVSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NW
