@@ -42,8 +42,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wGu-W4-sQD">
-                                <rect key="frame" x="0.0" y="20" width="320" height="200"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wGu-W4-sQD">
+                                <rect key="frame" x="0.0" y="64" width="320" height="200"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User Bio" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GXn-T4-4Zl">
                                         <rect key="frame" x="200" y="20" width="110" height="90"/>
@@ -63,7 +63,7 @@
                                     </textField>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="LHl-5L-JsH">
                                         <rect key="frame" x="10" y="10" width="180" height="180"/>
-                                        <color key="backgroundColor" patternImage="73E7ABEB-D7CF-41A0-AE43-03D4CED0277E" colorSpace="pattern"/>
+                                        <color key="backgroundColor" patternImage="9D321E8F-B19E-497A-A4E3-C0C600EFEBFF" colorSpace="pattern"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="180" id="1KE-Q8-E0C"/>
                                         </constraints>
@@ -100,8 +100,8 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P3s-ok-eTA">
-                                <rect key="frame" x="0.0" y="220" width="320" height="348"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P3s-ok-eTA">
+                                <rect key="frame" x="0.0" y="264" width="320" height="260"/>
                                 <connections>
                                     <segue destination="V7U-BZ-gXz" kind="embed" id="uzG-R1-4ov"/>
                                 </connections>
@@ -135,7 +135,7 @@
             <objects>
                 <tableViewController id="V7U-BZ-gXz" customClass="UserItemsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="dEg-Jd-HLL">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="348"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="260"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -252,7 +252,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="73E7ABEB-D7CF-41A0-AE43-03D4CED0277E" width="320" height="460">
+        <image name="9D321E8F-B19E-497A-A4E3-C0C600EFEBFF" width="320" height="460">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGTk9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QEQcI
 ExQZHh8nKzIzNDw/QkhLVSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NW
