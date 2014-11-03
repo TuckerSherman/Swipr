@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "DraggableViewBackground.h"
 #import "DraggableView.h"
+#import <Parse/Parse.h>
 
 @interface MainViewController : UIViewController
 
+@property (strong, nonatomic) DraggableViewBackground *draggableBackground;
 
 @end
