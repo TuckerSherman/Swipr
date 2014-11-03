@@ -35,7 +35,6 @@
                                                destructiveButtonTitle: nil
                                                     otherButtonTitles: @"Take a new photo", @"Choose from existing", nil];
     [actionSheet showInView:self.view];
-   
 
 }
 
