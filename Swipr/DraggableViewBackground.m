@@ -44,12 +44,8 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
 //%%% sets up the extra buttons on the screen
 -(void)setupView
 {
-#warning customize all of this.  These are just place holders to make it look pretty
-    self.backgroundColor = [UIColor whiteColor]; //the gray background colors
-//    menuButton = [[UIButton alloc]initWithFrame:CGRectMake(17, 34, 22, 15)];
-//    [menuButton setImage:[UIImage imageNamed:@"menuButton"] forState:UIControlStateNormal];
-//    messageButton = [[UIButton alloc]initWithFrame:CGRectMake(284, 34, 18, 18)];
-//    [messageButton setImage:[UIImage imageNamed:@"messageButton"] forState:UIControlStateNormal];
+    self.backgroundColor = [UIColor whiteColor]; 
+
     xButton = [[UIButton alloc]initWithFrame:CGRectMake(90, 545, 59, 59)];
     [xButton setImage:[UIImage imageNamed:@"xButton"] forState:UIControlStateNormal];
     [xButton addTarget:self action:@selector(swipeLeft) forControlEvents:UIControlEventTouchUpInside];
@@ -62,22 +58,10 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
     [self addSubview:messageButton];
     [self addSubview:xButton];
     [self addSubview:checkButton];
-//    
-//    [self addConstraint:[NSLayoutConstraint constraintWithItem:checkButton
-//                                                     attribute:NSLayoutAttributeBottom
-//                                                     relatedBy:NSLayoutRelationEqual
-//                                                        toItem:self
-//                                                     attribute:NSLayoutAttributeBottom
-//                                                    multiplier:1.0
-//                                                      constant:20]];
-    
-   
-    
-    
+
 
 }
 
-#warning include own card customization here!
 //%%% creates a card and returns it.  This should be customized to fit your needs.
 // use "index" to indicate where the information should be pulled.  If this doesn't apply to you, feel free
 // to get rid of it (eg: if you are building cards from data from the internet)

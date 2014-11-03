@@ -22,10 +22,8 @@
     self.draggableBackground = [[DraggableViewBackground alloc]initWithFrame:self.view.frame];
     [self.view addSubview:self.draggableBackground];
     
-
     [self retreiveFromParse];
     
-
 }
 
 -(void)retreiveFromParse {
@@ -34,15 +32,16 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         NSLog(@"%@", objects);
         if (!error) {
-
+            // Copy objects array fetched from Parse to "items"
             NSArray *items = [[NSArray alloc] initWithArray:objects];
             
             NSMutableArray *itemText = [[NSMutableArray alloc] init];
             
             for (PFObject *object in items) {
                 [itemText addObject:[object objectForKey:@"text"]];
+                // Add all items for key "text" from items array to itemText
             }
-            
+            // Add everything from itemText arry to the cards
             [self loadCardsFromParse:itemText];
             
         } else {
