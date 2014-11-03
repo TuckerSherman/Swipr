@@ -71,10 +71,6 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
 //                                                    multiplier:1.0
 //                                                      constant:20]];
     
-   
-    
-    
-
 }
 
 #warning include own card customization here!
