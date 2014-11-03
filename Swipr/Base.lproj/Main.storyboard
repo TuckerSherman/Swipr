@@ -30,10 +30,10 @@
             </objects>
             <point key="canvasLocation" x="760" y="319"/>
         </scene>
-        <!--View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="1zW-V3-x07">
             <objects>
-                <viewController id="JK5-Cl-0ME" sceneMemberID="viewController">
+                <viewController id="JK5-Cl-0ME" customClass="ProfileViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SMT-4a-yFk"/>
                         <viewControllerLayoutGuide type="bottom" id="B4T-bs-zoU"/>
@@ -61,9 +61,9 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LHl-5L-JsH">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="LHl-5L-JsH">
                                         <rect key="frame" x="10" y="10" width="180" height="180"/>
-                                        <color key="backgroundColor" patternImage="95359D75-EAF7-4D50-BA12-4668C0B9A9CF" colorSpace="pattern"/>
+                                        <color key="backgroundColor" patternImage="D7558B9E-8A18-4DC4-89A3-1C77AEAEA52D" colorSpace="pattern"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="180" id="1KE-Q8-E0C"/>
                                         </constraints>
@@ -147,7 +147,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="xC8-yD-2A2" kind="push" id="Yf9-IY-pGl"/>
+                                    <segue destination="xC8-yD-2A2" kind="modal" id="Yf9-IY-pGl"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -161,16 +161,16 @@
             </objects>
             <point key="canvasLocation" x="1221" y="880"/>
         </scene>
-        <!--View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="WxN-H7-B6u">
             <objects>
-                <viewController id="xC8-yD-2A2" sceneMemberID="viewController">
+                <viewController id="xC8-yD-2A2" customClass="ProfileViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xZp-rQ-K30"/>
                         <viewControllerLayoutGuide type="bottom" id="2WH-Ku-bHI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="5cG-ab-DNN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="348"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Ou-aT-TbL">
@@ -241,7 +241,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="95359D75-EAF7-4D50-BA12-4668C0B9A9CF" width="320" height="460">
+        <image name="D7558B9E-8A18-4DC4-89A3-1C77AEAEA52D" width="320" height="460">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGTk9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QEQcI
 ExQZHh8nKzIzNDw/QkhLVSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NW
@@ -10132,6 +10132,7 @@ C2EACQtoAAkLcAAJC30ACQuCAAkLhAAJC4YACQuLAAkLkwAJC5YACQubAAkLowAJC6YACQu4AAkLuwAJ
 C8AAAAAAAAAEAQAAAAAAAABSAAAAAAAAAAAAAAAAAAkLwg
 </mutableData>
         </image>
+        <image name="profilePlaceholder" width="200" height="198"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
