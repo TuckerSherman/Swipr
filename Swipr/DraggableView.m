@@ -28,6 +28,7 @@
 @synthesize panGestureRecognizer;
 @synthesize information;
 @synthesize overlayView;
+@synthesize itemImage;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -35,14 +36,22 @@
     if (self) {
         [self setupView];
         
-#warning placeholder stuff, replace with card-specific information {
-        information = [[UILabel alloc]initWithFrame:CGRectMake(0, 50, self.frame.size.width, 100)];
+        // View Setup for draggable cards
+        // Image view
+        itemImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 250)];
+        itemImage.image = [UIImage imageNamed:@"doge"];
+        
+        
+        // Text label
+        information = [[UILabel alloc]initWithFrame:CGRectMake(0, 300, self.frame.size.width, 100)];
         information.text = @"no info given";
         [information setTextAlignment:NSTextAlignmentCenter];
-        information.textColor = [UIColor blackColor];
+        information.textColor = [UIColor grayColor];
+        
+        
         
         self.backgroundColor = [UIColor whiteColor];
-#warning placeholder stuff, replace with card-specific information }
+
         
         
         
@@ -50,6 +59,7 @@
         
         [self addGestureRecognizer:panGestureRecognizer];
         [self addSubview:information];
+        [self addSubview:itemImage];
         
         overlayView = [[OverlayView alloc]initWithFrame:CGRectMake(self.frame.size.width/2-100, 0, 100, 100)];
         overlayView.alpha = 0;
