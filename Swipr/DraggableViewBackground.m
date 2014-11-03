@@ -32,7 +32,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
     if (self) {
         [super layoutSubviews];
         [self setupView];
-        exampleCardLabels = [[NSArray alloc]initWithObjects:@"first",@"second",@"third",@"fourth",@"last", nil]; //%%% placeholder for card-specific information
+        exampleCardLabels = [[NSArray alloc]init]; //%%% placeholder for card-specific information
         loadedCards = [[NSMutableArray alloc] init];
         allCards = [[NSMutableArray alloc] init];
         cardsLoadedIndex = 0;
@@ -45,7 +45,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
 -(void)setupView
 {
 #warning customize all of this.  These are just place holders to make it look pretty
-    self.backgroundColor = [UIColor colorWithRed:.92 green:.93 blue:.95 alpha:1]; //the gray background colors
+    self.backgroundColor = [UIColor whiteColor]; //the gray background colors
 //    menuButton = [[UIButton alloc]initWithFrame:CGRectMake(17, 34, 22, 15)];
 //    [menuButton setImage:[UIImage imageNamed:@"menuButton"] forState:UIControlStateNormal];
 //    messageButton = [[UIButton alloc]initWithFrame:CGRectMake(284, 34, 18, 18)];

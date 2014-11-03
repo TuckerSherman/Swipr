@@ -18,8 +18,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // Setup draggable background
     DraggableViewBackground *draggableBackground = [[DraggableViewBackground alloc]initWithFrame:self.view.frame];
     [self.view addSubview:draggableBackground];
+    
+    draggableBackground.exampleCardLabels = @[@"first doge", @"second doge", @"third doge", @"forth doge", @"last doge"];
+    // loadCards needs to be called when array is loaded;
+    [draggableBackground loadCards];
 }
 
 
