@@ -74,6 +74,8 @@
 		52BE14DD1A0800650090A2B0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				52BE14D91A0800280090A2B0 /* MainViewController.h */,
+				52BE14DA1A0800280090A2B0 /* MainViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -117,8 +119,6 @@
 				845166E01A07FED6004663DE /* AppDelegate.h */,
 				845166E11A07FED6004663DE /* AppDelegate.m */,
 				845166E61A07FED6004663DE /* Main.storyboard */,
-				52BE14D91A0800280090A2B0 /* MainViewController.h */,
-				52BE14DA1A0800280090A2B0 /* MainViewController.m */,
 				845166E91A07FED6004663DE /* Images.xcassets */,
 				845166EB1A07FED6004663DE /* LaunchScreen.xib */,
 				845166DC1A07FED6004663DE /* Supporting Files */,
