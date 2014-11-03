@@ -32,7 +32,6 @@
     PFQuery *query = [PFQuery queryWithClassName:@"TestObjects"];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSLog(@"%@", objects);
         if (!error) {
             NSArray *doges = [[NSArray alloc] initWithArray:objects];
             
@@ -52,8 +51,9 @@
 }
 
 -(void)loadCardsFromParse:(NSMutableArray *)objects {
-    NSLog(@"%@", objects);
-    self.draggableBackground.exampleCardLabels = @[objects[0], objects[1]];
+
+
+    self.draggableBackground.exampleCardLabels = [objects mutableCopy];
     // loadCards needs to be called when array is loaded;
     [self.draggableBackground loadCards];
 
