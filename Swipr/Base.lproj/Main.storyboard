@@ -63,7 +63,7 @@
                                     </textField>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="LHl-5L-JsH">
                                         <rect key="frame" x="10" y="10" width="180" height="180"/>
-                                        <color key="backgroundColor" patternImage="42DB0B11-5FB7-414F-8646-F183A5C63EB0" colorSpace="pattern"/>
+                                        <color key="backgroundColor" patternImage="73E7ABEB-D7CF-41A0-AE43-03D4CED0277E" colorSpace="pattern"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="180" id="1KE-Q8-E0C"/>
                                         </constraints>
@@ -119,6 +119,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rMP-t1-0g3"/>
+                    <connections>
+                        <outlet property="userBioTextFeild" destination="GXn-T4-4Zl" id="dgN-W5-YGO"/>
+                        <outlet property="userEmailTextFeild" destination="ZIN-ih-kMD" id="kT9-yV-3vs"/>
+                        <outlet property="userPhoneTextFeild" destination="CsL-Pg-Ylw" id="5RO-kz-Q1h"/>
+                        <outlet property="userProfileImageView" destination="LHl-5L-JsH" id="1s4-tT-EtR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D2n-fx-vQy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -161,10 +167,10 @@
             </objects>
             <point key="canvasLocation" x="1221" y="880"/>
         </scene>
-        <!--Profile View Controller-->
+        <!--Item Detail View Controller-->
         <scene sceneID="WxN-H7-B6u">
             <objects>
-                <viewController id="xC8-yD-2A2" customClass="ProfileViewController" sceneMemberID="viewController">
+                <viewController id="xC8-yD-2A2" customClass="ItemDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xZp-rQ-K30"/>
                         <viewControllerLayoutGuide type="bottom" id="2WH-Ku-bHI"/>
@@ -180,7 +186,7 @@
                                     <constraint firstAttribute="width" constant="300" id="eZa-KV-BRn"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item description" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6g4-Qw-kfz">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Item description" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6g4-Qw-kfz">
                                 <rect key="frame" x="10" y="320" width="300" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="6Uw-cP-aNz"/>
@@ -188,7 +194,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sVb-lh-PVa">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="User Contact Info" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sVb-lh-PVa">
                                 <rect key="frame" x="10" y="450" width="300" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -213,6 +219,11 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="cIL-Fo-Jzv"/>
+                    <connections>
+                        <outlet property="itemDescriptionTextFeild" destination="6g4-Qw-kfz" id="sWu-fg-O6w"/>
+                        <outlet property="itemImageView" destination="4Ou-aT-TbL" id="lcJ-Em-8Tk"/>
+                        <outlet property="userContactTextFeild" destination="sVb-lh-PVa" id="y1P-1x-ro7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X2I-aI-pmo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -241,7 +252,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="42DB0B11-5FB7-414F-8646-F183A5C63EB0" width="320" height="460">
+        <image name="73E7ABEB-D7CF-41A0-AE43-03D4CED0277E" width="320" height="460">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGTk9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QEQcI
 ExQZHh8nKzIzNDw/QkhLVSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NW

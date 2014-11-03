@@ -10,4 +10,8 @@
 
 @interface ItemDetailViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UIImageView *itemImageView;
+@property (strong, nonatomic) IBOutlet UITextField *itemDescriptionTextFeild;
+@property (strong, nonatomic) IBOutlet UITextField *userContactTextFeild;
+
 @end

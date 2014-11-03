@@ -10,4 +10,9 @@
 
 @interface ProfileViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UIImageView *userProfileImageView;
+@property (strong, nonatomic) IBOutlet UITextField *userBioTextFeild;
+@property (strong, nonatomic) IBOutlet UITextField *userPhoneTextFeild;
+@property (strong, nonatomic) IBOutlet UITextField *userEmailTextFeild;
+
 @end
