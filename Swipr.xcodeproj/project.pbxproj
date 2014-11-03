@@ -18,6 +18,8 @@
 		845166ED1A07FED6004663DE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845166EB1A07FED6004663DE /* LaunchScreen.xib */; };
 		845166F91A07FED6004663DE /* SwiprTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 845166F81A07FED6004663DE /* SwiprTests.m */; };
 		8451670A1A080FC4004663DE /* UserItemsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845167091A080FC4004663DE /* UserItemsTableViewController.m */; };
+		8461CE261A0816FA00BB3525 /* ItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8461CE251A0816FA00BB3525 /* ItemDetailViewController.m */; };
+		8461CE291A08172C00BB3525 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8461CE281A08172C00BB3525 /* ProfileViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,10 @@
 		845166F81A07FED6004663DE /* SwiprTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SwiprTests.m; sourceTree = "<group>"; };
 		845167081A080FC4004663DE /* UserItemsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserItemsTableViewController.h; sourceTree = "<group>"; };
 		845167091A080FC4004663DE /* UserItemsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserItemsTableViewController.m; sourceTree = "<group>"; };
+		8461CE241A0816FA00BB3525 /* ItemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemDetailViewController.h; sourceTree = "<group>"; };
+		8461CE251A0816FA00BB3525 /* ItemDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemDetailViewController.m; sourceTree = "<group>"; };
+		8461CE271A08172C00BB3525 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		8461CE281A08172C00BB3525 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +84,11 @@
 				52BE14D91A0800280090A2B0 /* MainViewController.h */,
 				52BE14DA1A0800280090A2B0 /* MainViewController.m */,
 				845167081A080FC4004663DE /* UserItemsTableViewController.h */,
+				8461CE271A08172C00BB3525 /* ProfileViewController.h */,
+				8461CE281A08172C00BB3525 /* ProfileViewController.m */,
 				845167091A080FC4004663DE /* UserItemsTableViewController.m */,
+				8461CE241A0816FA00BB3525 /* ItemDetailViewController.h */,
+				8461CE251A0816FA00BB3525 /* ItemDetailViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -256,11 +266,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				845166E21A07FED6004663DE /* AppDelegate.m in Sources */,
+				8461CE291A08172C00BB3525 /* ProfileViewController.m in Sources */,
 				52BE14E81A08015D0090A2B0 /* OverlayView.m in Sources */,
 				52BE14DB1A0800280090A2B0 /* MainViewController.m in Sources */,
 				8451670A1A080FC4004663DE /* UserItemsTableViewController.m in Sources */,
 				52BE14E41A0800EC0090A2B0 /* DraggableView.m in Sources */,
 				845166DF1A07FED6004663DE /* main.m in Sources */,
+				8461CE261A0816FA00BB3525 /* ItemDetailViewController.m in Sources */,
 				52BE14E51A0800EC0090A2B0 /* DraggableViewBackground.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
