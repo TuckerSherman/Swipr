@@ -37,7 +37,7 @@
                                     </textField>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zV6-Lg-sYC">
                                         <rect key="frame" x="10" y="10" width="235" height="180"/>
-                                        <color key="backgroundColor" patternImage="E7F14A33-C0A4-45D7-BDFC-A412721BBAB7" colorSpace="pattern"/>
+                                        <color key="backgroundColor" patternImage="11257082-BDAC-457B-B410-6633EE77F55A" colorSpace="pattern"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="235" id="Y6L-9L-N3u"/>
                                         </constraints>
@@ -98,10 +98,10 @@
             </objects>
             <point key="canvasLocation" x="1431" y="341"/>
         </scene>
-        <!--Table View Controller-->
+        <!--User Items Table View Controller-->
         <scene sceneID="LXa-Oh-8sm">
             <objects>
-                <tableViewController id="Y2T-8B-3O0" sceneMemberID="viewController">
+                <tableViewController id="Y2T-8B-3O0" customClass="UserItemsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="3rN-sD-Od5">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="336"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -211,7 +211,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="E7F14A33-C0A4-45D7-BDFC-A412721BBAB7" width="320" height="460">
+        <image name="11257082-BDAC-457B-B410-6633EE77F55A" width="320" height="460">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGTk9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QEQcI
 ExQZHh8nKzIzNDw/QkhLVSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NW
