@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ItemTableViewCell.h"
 
 @interface UserItemsTableViewController : UITableViewController
 

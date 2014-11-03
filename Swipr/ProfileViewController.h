@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ProfileViewController : UIViewController
+@interface ProfileViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate>
 
 @property (strong, nonatomic) IBOutlet UIImageView *userProfileImageView;
 @property (strong, nonatomic) IBOutlet UITextField *userBioTextFeild;
