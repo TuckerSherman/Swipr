@@ -70,7 +70,7 @@
                                     </textField>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="LHl-5L-JsH">
                                         <rect key="frame" x="10" y="10" width="180" height="180"/>
-                                        <color key="backgroundColor" patternImage="824A804F-BBAD-4370-9598-84F2E8DFF0E0" colorSpace="pattern"/>
+                                        <color key="backgroundColor" patternImage="BC9165D6-32E3-4AA8-8476-9E43830A7DAC" colorSpace="pattern"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="180" id="1KE-Q8-E0C"/>
@@ -117,7 +117,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P3s-ok-eTA">
                                 <rect key="frame" x="0.0" y="264" width="320" height="260"/>
                                 <connections>
-                                    <segue destination="V7U-BZ-gXz" kind="embed" id="uzG-R1-4ov"/>
+                                    <segue destination="V7U-BZ-gXz" kind="embed" id="MAs-BZ-oLI"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -148,7 +148,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1221" y="319"/>
+            <point key="canvasLocation" x="1329" y="263"/>
         </scene>
         <!--User Items Table View Controller-->
         <scene sceneID="Rza-G0-G5L">
@@ -159,7 +159,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="50" id="3Jc-1a-Jvq" customClass="ItemTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="itemCell" rowHeight="50" id="3Jc-1a-Jvq" customClass="ItemTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Jc-1a-Jvq" id="non-xI-l5H">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -197,10 +197,11 @@
                             <outlet property="delegate" destination="V7U-BZ-gXz" id="kSZ-gf-g8z"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="jJc-PP-s8o"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yLI-dK-tVV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1221" y="880"/>
+            <point key="canvasLocation" x="1329" y="906"/>
         </scene>
         <!--Item Detail View Controller-->
         <scene sceneID="WxN-H7-B6u">
@@ -232,14 +233,23 @@
                                     <outlet property="delegate" destination="xC8-yD-2A2" id="UuC-V3-63o"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="User Contact Info" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sVb-lh-PVa">
-                                <rect key="frame" x="10" y="450" width="300" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="User Contact Info" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sVb-lh-PVa">
+                                <rect key="frame" x="10" y="450" width="300" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="xC8-yD-2A2" id="4d8-SY-5Mg"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k7z-05-itO">
+                                <rect key="frame" x="16" y="528" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="userTapsBack:" destination="xC8-yD-2A2" eventType="touchUpInside" id="Qzw-gC-XW7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -250,6 +260,8 @@
                             <constraint firstAttribute="centerX" secondItem="4Ou-aT-TbL" secondAttribute="centerX" id="TlH-Vf-PKS"/>
                             <constraint firstAttribute="centerX" secondItem="4Ou-aT-TbL" secondAttribute="centerX" constant="152" id="U8L-MP-Il9"/>
                             <constraint firstItem="4Ou-aT-TbL" firstAttribute="width" secondItem="6g4-Qw-kfz" secondAttribute="width" id="V0r-nB-5NV"/>
+                            <constraint firstItem="2WH-Ku-bHI" firstAttribute="top" secondItem="k7z-05-itO" secondAttribute="bottom" constant="10" id="ZFg-47-d1H"/>
+                            <constraint firstItem="k7z-05-itO" firstAttribute="leading" secondItem="5cG-ab-DNN" secondAttribute="leadingMargin" id="j3y-89-v8a"/>
                             <constraint firstItem="4Ou-aT-TbL" firstAttribute="top" secondItem="5cG-ab-DNN" secondAttribute="top" constant="10" id="jnE-af-UZ3"/>
                             <constraint firstItem="sVb-lh-PVa" firstAttribute="width" secondItem="6g4-Qw-kfz" secondAttribute="width" id="yjY-EG-gkU"/>
                         </constraints>
@@ -268,7 +280,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X2I-aI-pmo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1639" y="319"/>
+            <point key="canvasLocation" x="1845" y="656"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DGw-26-obX">
@@ -293,7 +305,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="824A804F-BBAD-4370-9598-84F2E8DFF0E0" width="320" height="460">
+        <image name="BC9165D6-32E3-4AA8-8476-9E43830A7DAC" width="320" height="460">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGTk9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QEQcI
 ExQZHh8nKzIzNDw/QkhLVSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NW
