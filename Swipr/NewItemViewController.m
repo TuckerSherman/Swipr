@@ -40,11 +40,13 @@
         if (!error) {
             NSLog(@"Save successful!");
             [self dismissViewControllerAnimated:YES completion:nil];
+            
         }
         else {
             NSLog(@"Error saving to Parse");
         }
     }];
+    newItem = nil;
     
 }
 
@@ -52,7 +54,7 @@
     
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.delegate = self;
-    
+    picker.allowsEditing = YES;
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         
         picker.sourceType = UIImagePickerControllerSourceTypeCamera;
@@ -80,12 +82,13 @@
     }
     
     // Resize image
-    UIGraphicsBeginImageContext(CGSizeMake(640, 960));
-    [image drawInRect: CGRectMake(0, 0, 640, 960)];
+    UIGraphicsBeginImageContext(CGSizeMake(300, 300));
+    [image drawInRect: CGRectMake(0, 0, 300, 300)];
     UIImage *smallImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-    self.itemImageButton.imageView.image = smallImage;
+    [self.itemImageButton setBackgroundImage:smallImage forState:UIControlStateNormal];
+    self.itemImageButton.imageView.image = nil;
     self.item.imageData = UIImagePNGRepresentation(smallImage);
     
     [self dismissViewControllerAnimated:YES completion:nil];
