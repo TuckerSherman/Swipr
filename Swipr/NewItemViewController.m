@@ -53,6 +53,7 @@
 
 - (IBAction)itemImageButtonPressed:(UIButton *)sender {
     
+    
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.delegate = self;
     picker.allowsEditing = YES;
@@ -95,7 +96,7 @@
     CGImageRef cgimg = [context createCGImage:outputImage fromRect:[outputImage extent]];
     UIImage *newImage = [[UIImage alloc] initWithCGImage:cgimg];
     [self.itemImageButton setBackgroundImage:newImage forState:UIControlStateNormal];
-    self.itemImageButton.imageView.image = nil;
+    self.placeholderImageView.image = nil;
     self.item.imageData = UIImagePNGRepresentation(newImage);
     
     [self dismissViewControllerAnimated:YES completion:nil];
