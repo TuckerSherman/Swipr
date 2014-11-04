@@ -26,6 +26,9 @@
     
 }
 
+
+#pragma mark - Working with Parse methods
+
 -(void)retreiveFromParse {
     PFQuery *query = [PFQuery queryWithClassName:@"TestObjects"];
     
@@ -57,15 +60,26 @@
 
 }
 
+#pragma mark - Log Out Button Methods
 
-/*
-#pragma mark - Navigation
+- (IBAction)logOutButtonPressed:(UIBarButtonItem *)sender {
+    
+    UIAlertView *logoutAlert = [[UIAlertView alloc] initWithTitle:@"Log out"
+                                                    message:@"Are you sure you want to log out?"
+                                                    delegate:self
+                                                    cancelButtonTitle:@"Cancel"
+                                                    otherButtonTitles:@"Log out", nil];
+    
+    [logoutAlert show];
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
-*/
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == [alertView cancelButtonIndex]){
+
+    }else{
+        [PFUser logOut];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+}
 @end

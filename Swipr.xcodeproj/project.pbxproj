@@ -166,8 +166,6 @@
 				5200262B1A086D7B003DC9C9 /* LoginViewController.m */,
 				52BE14D91A0800280090A2B0 /* MainViewController.h */,
 				52BE14DA1A0800280090A2B0 /* MainViewController.m */,
-				8484DF871A08598F006C5FC7 /* UserItems.h */,
-				8484DF881A08598F006C5FC7 /* UserItems.m */,
 				8461CE271A08172C00BB3525 /* ProfileViewController.h */,
 				8461CE281A08172C00BB3525 /* ProfileViewController.m */,
 				845167081A080FC4004663DE /* UserItemsTableViewController.h */,
@@ -217,8 +215,6 @@
 		845166DB1A07FED6004663DE /* Swipr */ = {
 			isa = PBXGroup;
 			children = (
-				845166E01A07FED6004663DE /* AppDelegate.h */,
-				845166E11A07FED6004663DE /* AppDelegate.m */,
 				52BE14DF1A08007D0090A2B0 /* Views */,
 				52BE14DD1A0800650090A2B0 /* Controllers */,
 				8484DF8D1A086302006C5FC7 /* Model */,
@@ -233,6 +229,8 @@
 		845166DC1A07FED6004663DE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				845166E01A07FED6004663DE /* AppDelegate.h */,
+				845166E11A07FED6004663DE /* AppDelegate.m */,
 				520026281A085CF5003DC9C9 /* logoutButton.png */,
 				8484DF831A084E33006C5FC7 /* dogs_hero.png */,
 				8484DF851A084E3A006C5FC7 /* massive-pipe-tokes-thcf.jpg */,
