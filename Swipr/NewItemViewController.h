@@ -10,7 +10,7 @@
 #import "Item.h"
 #import <Parse/Parse.h>
 
-@interface NewItemViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface NewItemViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate>
 
 
 @property (strong, nonatomic) Item *item;

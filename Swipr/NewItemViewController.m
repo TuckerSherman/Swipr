@@ -19,6 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.itemDescriptionTextField.delegate = self;
     self.item = [[Item alloc] init];
     currentUser = [PFUser currentUser];
     
@@ -78,8 +79,14 @@
         image = info[UIImagePickerControllerOriginalImage];
     }
     
-    self.itemImageButton.imageView.image = image;
-    self.item.imageData = UIImagePNGRepresentation(image);
+    // Resize image
+    UIGraphicsBeginImageContext(CGSizeMake(640, 960));
+    [image drawInRect: CGRectMake(0, 0, 640, 960)];
+    UIImage *smallImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    self.itemImageButton.imageView.image = smallImage;
+    self.item.imageData = UIImagePNGRepresentation(smallImage);
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -88,6 +95,13 @@
     
     
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - UITextFieldDelegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    [textField resignFirstResponder];
+    return YES;
 }
 
 @end

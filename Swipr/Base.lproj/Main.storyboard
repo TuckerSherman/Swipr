@@ -71,9 +71,7 @@
                                     </textField>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="LHl-5L-JsH" customClass="PFImageView">
                                         <rect key="frame" x="10" y="10" width="180" height="180"/>
-
-                                        <color key="backgroundColor" patternImage="EEF40274-CE64-445A-A3E8-CFFC83C8687F" colorSpace="pattern"/>
-
+                                        <color key="backgroundColor" patternImage="B7EE29A6-6C76-4D6B-9305-01248451C988" colorSpace="pattern"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="180" id="1KE-Q8-E0C"/>
@@ -190,12 +188,12 @@
                                     <constraint firstAttribute="height" constant="120" id="BfI-GU-niP"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="xC8-yD-2A2" id="ha7-N8-EwX"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d8z-p5-kbV">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d8z-p5-kbV">
                                 <rect key="frame" x="37" y="612" width="48" height="30"/>
                                 <state key="normal" title="Cancel">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -204,16 +202,7 @@
                                     <action selector="cancelButtonPressed:" destination="Ikm-X6-9vM" eventType="touchUpInside" id="gou-y3-lPD"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RCJ-Es-DAV">
-                                <rect key="frame" x="268" y="612" width="69" height="30"/>
-                                <state key="normal" title="Save Item">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="saveItemButtonPressed:" destination="Ikm-X6-9vM" eventType="touchUpInside" id="1JQ-Ii-jlA"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jle-i8-fr9">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jle-i8-fr9">
                                 <rect key="frame" x="37" y="28" width="300" height="300"/>
                                 <state key="normal" image="itemImagePlaceholder">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -222,8 +211,25 @@
                                     <action selector="itemImageButtonPressed:" destination="Ikm-X6-9vM" eventType="touchUpInside" id="bVF-Da-y4t"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RCJ-Es-DAV">
+                                <rect key="frame" x="268" y="612" width="69" height="30"/>
+                                <state key="normal" title="Save Item">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveItemButtonPressed:" destination="Ikm-X6-9vM" eventType="touchUpInside" id="1JQ-Ii-jlA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="RCJ-Es-DAV" secondAttribute="trailing" constant="22" id="87P-hp-Ndq"/>
+                            <constraint firstItem="rFb-m6-FM6" firstAttribute="top" secondItem="RCJ-Es-DAV" secondAttribute="bottom" constant="25" id="Fur-av-Ljs"/>
+                            <constraint firstAttribute="centerX" secondItem="oGG-Ie-wql" secondAttribute="centerX" id="JED-i0-a0y"/>
+                            <constraint firstItem="rFb-m6-FM6" firstAttribute="top" secondItem="d8z-p5-kbV" secondAttribute="bottom" constant="25" id="Ur8-sE-Dso"/>
+                            <constraint firstItem="d8z-p5-kbV" firstAttribute="leading" secondItem="Auy-y9-7Hv" secondAttribute="leadingMargin" constant="21" id="aw7-bg-eoZ"/>
+                            <constraint firstAttribute="centerX" secondItem="jle-i8-fr9" secondAttribute="centerX" id="pYd-oP-64C"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="itemDescriptionTextField" destination="oGG-Ie-wql" id="IJD-dz-ejJ"/>
@@ -515,8 +521,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="EEF40274-CE64-445A-A3E8-CFFC83C8687F" width="200" height="198">
-
+        <image name="B7EE29A6-6C76-4D6B-9305-01248451C988" width="200" height="198">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz
