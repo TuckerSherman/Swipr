@@ -113,7 +113,7 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
-    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
     self.userProfileImageView.image = chosenImage;
     NSData* imageToBeUploaded = UIImageJPEGRepresentation(chosenImage, 75);
     PFFile *imageFile = [PFFile fileWithName:@"profileImage" data:imageToBeUploaded];
@@ -123,7 +123,7 @@
             NSLog(@"saved new user profile image");
         }
         else{
-            NSLog(@"error saving profile image %@",&error);
+            NSLog(@"error saving profile image %@",error);
         }
     }];
 }
@@ -148,7 +148,7 @@ shouldChangeTextInRange:(NSRange)range
             NSLog(@"saved user bio string");
         }
         else{
-            NSLog(@"error saving bio string: %@",&error);
+            NSLog(@"error saving bio string: %@",error);
         }
     }];
     [self.userEmailTextFeild becomeFirstResponder];
@@ -168,7 +168,7 @@ shouldChangeTextInRange:(NSRange)range
                         NSLog(@"saved user bio string");
                     }
                     else{
-                        NSLog(@"error saving bio string: %@",&error);
+                        NSLog(@"error saving bio string: %@",error);
                     }
                 }];
             [self.userEmailTextFeild becomeFirstResponder];
