@@ -22,10 +22,8 @@
     self.draggableBackground = [[DraggableViewBackground alloc]initWithFrame:self.view.frame];
     [self.view addSubview:self.draggableBackground];
     
-
     [self retreiveFromParse];
     
-
 }
 
 -(void)retreiveFromParse {
@@ -34,15 +32,17 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         NSLog(@"%@", objects);
         if (!error) {
-            NSArray *doges = [[NSArray alloc] initWithArray:objects];
+            // Copy objects array fetched from Parse to "items"
+            NSArray *items = [[NSArray alloc] initWithArray:objects];
             
-            NSMutableArray *dogetext = [[NSMutableArray alloc] init];
+            NSMutableArray *itemText = [[NSMutableArray alloc] init];
             
-            for (PFObject *object in doges) {
-                [dogetext addObject:[object objectForKey:@"text"]];
+            for (PFObject *object in items) {
+                [itemText addObject:[object objectForKey:@"text"]];
+                // Add all items for key "text" from items array to itemText
             }
-            
-            [self loadCardsFromParse:dogetext];
+            // Add everything from itemText arry to the cards
+            [self loadCardsFromParse:itemText];
             
         } else {
             NSLog(@"Error grabbing from Parse!");
@@ -52,8 +52,7 @@
 }
 
 -(void)loadCardsFromParse:(NSMutableArray *)objects {
-    NSLog(@"%@", objects);
-    self.draggableBackground.exampleCardLabels = @[objects[0], objects[1]];
+    self.draggableBackground.exampleCardLabels = [objects mutableCopy];
     // loadCards needs to be called when array is loaded;
     [self.draggableBackground loadCards];
 
