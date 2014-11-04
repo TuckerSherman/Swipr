@@ -25,8 +25,6 @@
     //default view has profile editing locked
     [self performSelector:@selector(lockUserTap:)withObject:nil];
     [self setupCurrentUser];
-    
-    
 }
 
 -(void) setupCurrentUser{
@@ -74,6 +72,7 @@
 }
 
 - (IBAction)unlockUserTap:(id)sender {
+    //enable all fields that accept user interaction - make everything editable slighly opaque - hide the unlock button and show the lock button
     self.userNameTextFeild.userInteractionEnabled = YES;
     self.userBioTextFeild.userInteractionEnabled=YES;
     self.userBioTextFeild.alpha=.7;
@@ -86,11 +85,9 @@
     self.lockButton.hidden = NO;
     self.lockButton.userInteractionEnabled=YES;
     self.userProfileImageView.alpha =.5;
-    
-
-    
 }
 - (IBAction)lockUserTap:(id)sender {
+    //disable all fields that accept user interaction - make everything totally opaque - hide the lock button and show the unlock button
     self.userNameTextFeild.userInteractionEnabled=NO;
     self.userBioTextFeild.userInteractionEnabled=NO;
     self.userBioTextFeild.alpha=1;
@@ -116,6 +113,8 @@
     
 }
 
+#pragma mark - action sheet delegate 
+
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     switch (buttonIndex) {
@@ -124,7 +123,6 @@
             break;
         case 1:
             [self pickOldPhoto];
-        default:
             break;
     }
 }
@@ -133,7 +131,6 @@
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.delegate = self;
     picker.allowsEditing = YES;
-    
     picker.sourceType = UIImagePickerControllerCameraCaptureModePhoto;
     
     [self presentViewController:picker animated:YES completion:NULL];
@@ -143,7 +140,6 @@
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.delegate = self;
     picker.allowsEditing = YES;
-    
     picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     
     [self presentViewController:picker animated:YES completion:NULL];
@@ -207,7 +203,7 @@ shouldChangeTextInRange:(NSRange)range
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
 
-    //feild is only accessable if user profile is "unlocked"
+//feild is only accessable if user profile is "unlocked"
     [textField resignFirstResponder];
         _currentUser[@"email"]= self.userEmailTextFeild.text;
         [_currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
