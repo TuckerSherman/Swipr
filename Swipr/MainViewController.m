@@ -31,36 +31,41 @@
 #pragma mark - Working with Parse methods
 
 -(void)retreiveFromParse {
-    PFQuery *query = [PFQuery queryWithClassName:@"TestObjects"];
+    PFQuery *query = [PFQuery queryWithClassName:@"Item"];
     [query orderByAscending:@"createdAt"];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             // Copy objects array fetched from Parse to "items"
-            NSArray *items = [[NSArray alloc] initWithArray:objects];
+            NSMutableArray *items = [[NSMutableArray alloc] initWithArray:objects];
+            self.draggableBackground.items = [items mutableCopy];
+            [self.draggableBackground loadCards];
             
-            NSMutableArray *itemText = [[NSMutableArray alloc] init];
             
-            for (PFObject *object in items) {
-                [itemText addObject:[object objectForKey:@"text"]];
-                // Add all items for key "text" from items array to itemText
-            }
+//            for (PFObject *object in items) {
+//                [itemText addObject:[object objectForKey:@"description"]];
+//                // Add all items for key "text" from items array to itemText
+//            }
             // Add everything from itemText arry to the cards
-            [self loadCardsFromParse:itemText];
+//            [self loadCardsFromParse:itemText];
             
         } else {
-            NSLog(@"Error grabbing from Parse!");
+            NSLog(@"Error grabbing from Parse! %@",error);
         }
     }];
     
 }
 
--(void)loadCardsFromParse:(NSMutableArray *)objects {
-    self.draggableBackground.exampleCardLabels = [objects mutableCopy];
-    // loadCards needs to be called when array is loaded;
-    [self.draggableBackground loadCards];
-
-}
+//-(void)loadCardsFromParse:(NSMutableArray *)objects {
+//    
+//    self.draggableBackground.cardLabels = [objects mutableCopy];
+//    
+//    self.draggableBackground.items = [objects mutableCopy];
+//    
+//    // loadCards needs to be called when array is loaded;
+//    [self.draggableBackground loadCards];
+//
+//}
 
 #pragma mark - Log Out Button Methods
 

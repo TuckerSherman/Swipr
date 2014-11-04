@@ -39,7 +39,9 @@
 -(void)cardSwipedLeft:(UIView *)card;
 -(void)cardSwipedRight:(UIView *)card;
 
-@property (retain,nonatomic)NSArray* exampleCardLabels; //%%% the labels the cards
+@property (retain,nonatomic)NSArray* cardLabels; //%%% the labels the cards
+@property (strong, nonatomic) NSArray* items; //the actual PFObjects we want to display
+
 @property (retain,nonatomic)NSMutableArray* allCards; //%%% the labels the cards
 
 -(void)loadCards;
