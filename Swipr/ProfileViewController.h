@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Item.h"
 
 @interface ProfileViewController : UIViewController<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate>
 
@@ -15,5 +16,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *userBioTextFeild;
 @property (strong, nonatomic) IBOutlet UITextField *userPhoneTextFeild;
 @property (strong, nonatomic) IBOutlet UITextField *userEmailTextFeild;
+
+
 
 @end

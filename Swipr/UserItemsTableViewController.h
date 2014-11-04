@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ItemTableViewCell.h"
+#import "Item.h"
+#import "ItemDetailViewController.h"
 
 @interface UserItemsTableViewController : UITableViewController
+
+@property (strong,nonatomic) NSArray* itemsForUser;
+
 
 @end

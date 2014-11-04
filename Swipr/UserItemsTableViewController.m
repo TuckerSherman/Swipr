@@ -15,6 +15,7 @@
 @implementation UserItemsTableViewController
 
 - (void)viewDidLoad {
+    self.itemsForUser = [self getItemsForUser:@"bill"];
     [super viewDidLoad];
     
     // Uncomment the following line to preserve selection between presentations.
@@ -29,29 +30,44 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+-(NSArray*)getItemsForUser:(NSString*)user{
+    
+    //Initialize some sample data
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"dogs_hero" ofType:@"png"];
+    NSData* dogImageData = [NSData dataWithContentsOfFile:path];
+    Item* dog = [[Item alloc]initWithTitle:@"Dog" image:dogImageData thumbnailImage:dogImageData description:@"such allergies, much cutes, do not want"];
+    
+    NSArray* items = @[dog];
+    
+    return items;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return self.itemsForUser.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    ItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"itemCell" forIndexPath:indexPath];
+    Item* thisItem = self.itemsForUser[indexPath.row];
+    cell.itemTitleLabel.text = thisItem.title;
+    cell.itemThumbNailImageView.image = [UIImage imageWithData:thisItem.thumbnailImageData];
     
     // Configure the cell...
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -87,14 +103,20 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
+    
+    ItemDetailViewController* detailItemViewController = [segue destinationViewController];
+    NSLog(@"%@",sender);
+    
+//    [self.tableView cellForRowAtIndexPath:
+    [detailItemViewController setItem:self.itemsForUser[0]];
+    
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end

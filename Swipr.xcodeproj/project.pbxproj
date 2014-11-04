@@ -35,6 +35,10 @@
 		8451670A1A080FC4004663DE /* UserItemsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845167091A080FC4004663DE /* UserItemsTableViewController.m */; };
 		8461CE261A0816FA00BB3525 /* ItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8461CE251A0816FA00BB3525 /* ItemDetailViewController.m */; };
 		8461CE291A08172C00BB3525 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8461CE281A08172C00BB3525 /* ProfileViewController.m */; };
+		8484DF821A0849D4006C5FC7 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 8484DF811A0849D4006C5FC7 /* Item.m */; };
+		8484DF841A084E33006C5FC7 /* dogs_hero.png in Resources */ = {isa = PBXBuildFile; fileRef = 8484DF831A084E33006C5FC7 /* dogs_hero.png */; };
+		8484DF861A084E3A006C5FC7 /* massive-pipe-tokes-thcf.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8484DF851A084E3A006C5FC7 /* massive-pipe-tokes-thcf.jpg */; };
+		8484DF891A08598F006C5FC7 /* UserItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 8484DF881A08598F006C5FC7 /* UserItems.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +94,12 @@
 		8461CE251A0816FA00BB3525 /* ItemDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemDetailViewController.m; sourceTree = "<group>"; };
 		8461CE271A08172C00BB3525 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		8461CE281A08172C00BB3525 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		8484DF801A0849D4006C5FC7 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		8484DF811A0849D4006C5FC7 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
+		8484DF831A084E33006C5FC7 /* dogs_hero.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dogs_hero.png; sourceTree = "<group>"; };
+		8484DF851A084E3A006C5FC7 /* massive-pipe-tokes-thcf.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "massive-pipe-tokes-thcf.jpg"; sourceTree = "<group>"; };
+		8484DF871A08598F006C5FC7 /* UserItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserItems.h; sourceTree = "<group>"; };
+		8484DF881A08598F006C5FC7 /* UserItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserItems.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +155,8 @@
 			isa = PBXGroup;
 			children = (
 				52BE14D91A0800280090A2B0 /* MainViewController.h */,
+				8484DF871A08598F006C5FC7 /* UserItems.h */,
+				8484DF881A08598F006C5FC7 /* UserItems.m */,
 				52BE14DA1A0800280090A2B0 /* MainViewController.m */,
 				8461CE271A08172C00BB3525 /* ProfileViewController.h */,
 				8461CE281A08172C00BB3525 /* ProfileViewController.m */,
@@ -199,6 +211,8 @@
 				52BE14DD1A0800650090A2B0 /* Controllers */,
 				845166E01A07FED6004663DE /* AppDelegate.h */,
 				845166E11A07FED6004663DE /* AppDelegate.m */,
+				8484DF801A0849D4006C5FC7 /* Item.h */,
+				8484DF811A0849D4006C5FC7 /* Item.m */,
 				845166E61A07FED6004663DE /* Main.storyboard */,
 				845166E91A07FED6004663DE /* Images.xcassets */,
 				845166EB1A07FED6004663DE /* LaunchScreen.xib */,
@@ -210,6 +224,8 @@
 		845166DC1A07FED6004663DE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8484DF831A084E33006C5FC7 /* dogs_hero.png */,
+				8484DF851A084E3A006C5FC7 /* massive-pipe-tokes-thcf.jpg */,
 				5245BDB11A08191C003353F7 /* doge.jpeg */,
 				845166DD1A07FED6004663DE /* Info.plist */,
 				845166DE1A07FED6004663DE /* main.m */,
@@ -318,6 +334,8 @@
 				845166E81A07FED6004663DE /* Main.storyboard in Resources */,
 				845166ED1A07FED6004663DE /* LaunchScreen.xib in Resources */,
 				845166EA1A07FED6004663DE /* Images.xcassets in Resources */,
+				8484DF861A084E3A006C5FC7 /* massive-pipe-tokes-thcf.jpg in Resources */,
+				8484DF841A084E33006C5FC7 /* dogs_hero.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,10 +360,12 @@
 				52BE14DB1A0800280090A2B0 /* MainViewController.m in Sources */,
 				8451670A1A080FC4004663DE /* UserItemsTableViewController.m in Sources */,
 				52BE14E41A0800EC0090A2B0 /* DraggableView.m in Sources */,
+				8484DF821A0849D4006C5FC7 /* Item.m in Sources */,
 				845166DF1A07FED6004663DE /* main.m in Sources */,
 				520026271A084C37003DC9C9 /* RegisterUserViewController.m in Sources */,
 				8461CE261A0816FA00BB3525 /* ItemDetailViewController.m in Sources */,
 				52BE14E51A0800EC0090A2B0 /* DraggableViewBackground.m in Sources */,
+				8484DF891A08598F006C5FC7 /* UserItems.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
