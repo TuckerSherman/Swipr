@@ -11,12 +11,12 @@
 
 #import "Item.h"
 
-@interface ProfileViewController : UIViewController<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate>
+@interface ProfileViewController : UIViewController<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate, UITextViewDelegate>
 
 
+@property (strong, nonatomic) IBOutlet UITextField *userNameTextFeild;
 @property (strong, nonatomic) IBOutlet UIImageView *userProfileImageView;
-@property (strong, nonatomic) IBOutlet UITextField *userBioTextFeild;
-@property (strong, nonatomic) IBOutlet UITextField *userPhoneTextFeild;
+@property (strong, nonatomic) IBOutlet UITextView *userBioTextFeild;
 @property (strong, nonatomic) IBOutlet UITextField *userEmailTextFeild;
 
 

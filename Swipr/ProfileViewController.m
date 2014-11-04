@@ -13,29 +13,44 @@
 
 @end
 
-@implementation ProfileViewController
+@implementation ProfileViewController{
+    PFUser* _currentUser;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.userBioTextFeild.text = [[PFUser currentUser]username];
+    _currentUser = [PFUser currentUser];
+    self.userNameTextFeild.text = _currentUser.username;
+    self.userEmailTextFeild.text = _currentUser.email;
+    [self getUserImage];
     
     
     // Do any additional setup after loading the view.
 }
 
-//-(void)getUserInfo{
-//    PFQuery *query= [PFUser query];
-//    
-//    [query whereKey:@"username" equalTo:[[PFUser currentUser]username]];
-//    
-//    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error){
+-(void)getUserImage{
+
+    PFQuery *query= [PFUser query];
+    
+    [query whereKey:@"username" equalTo:_currentUser.username];
+
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error){
+        PFFile* profileImage = [object objectForKey:@"profileImage"];
+        NSLog(@"pulled down profile image from parse");
+        PFImageView* profile = [[PFImageView alloc]initWithFrame:self.userProfileImageView.frame];
+        profile.file= profileImage;
+        self.userProfileImageView.image = profile.image;
+        
 //        
-//        BOOL isPrivate = [[object objectForKey:@"isPrivate"]boolValue];
 //        
-//    }];
-//    
-//    
-//}
+//        UIImage* loadedProfilePic = [UIImage imageWithData:profileImage];
+//        
+//        self.userProfileImageView.image = loadedProfilePic;
+        
+        
+    }];
+   
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -99,50 +114,87 @@
     
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
     
-    
     self.userProfileImageView.image = chosenImage;
     NSData* imageToBeUploaded = UIImageJPEGRepresentation(chosenImage, 75);
+    PFFile *imageFile = [PFFile fileWithName:@"profileImage" data:imageToBeUploaded];
+    [_currentUser setObject:imageFile forKey:@"profileImage"];
+    [_currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+        if (succeeded){
+            NSLog(@"saved new user profile image");
+        }
+        else{
+            NSLog(@"error saving profile image %@",&error);
+        }
+    }];
 }
-//
-//    PFFile *file = [PFFile fileWithName:@"profileImage" data:imageToBeUploaded];
-//    
-//    [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
-//        if (succeeded){
-//        //Add the image to the object, and add the comment and the user
-//        PFObject *userObject = [PFObject objectWithClassName:@"user"];
-//        [imageObject setObject:file forKey:@"image"];
-//        [imageObject setObject:[PFUser currentUser].username forKey:@"user"];
-//        //3
-//        [imageObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//            //4
-//            if (succeeded){
-//                //Go back to the wall
-//                [self.navigationController popViewControllerAnimated:YES];
-//            }
-//            else{
-//                NSString *errorString = [[error userInfo] objectForKey:@"error"];
-//                UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-//                [errorAlertView show];
-//            }
-//        }];
-//    }
-//     else{
-//         //5
-//         NSString *errorString = [[error userInfo] objectForKey:@"error"];
-//         UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-//         [errorAlertView show];
-//     }
-//     } progressBlock:^(int percentDone) {
-//         NSLog(@"Uploaded: %d %%", percentDone);
-//     }];
-//    
-//    }
-//
-//    [picker dismissViewControllerAnimated:YES completion:NULL];
-//
-//    //TODO: change actual user profile image
-//    self.userProfileImageView.userInteractionEnabled = NO;
-//    
+
+- (BOOL)textView:(UITextView *)textView
+shouldChangeTextInRange:(NSRange)range
+ replacementText:(NSString *)text{
+    if ([text isEqualToString:@"\n"]) {
+        [self.userBioTextFeild resignFirstResponder];
+        return NO;
+    }
+    else{
+        return YES;
+    }
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView{
+    PFUser *currentUser = [PFUser currentUser];
+    currentUser[@"bio"]= self.userBioTextFeild.text;
+    [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            NSLog(@"saved user bio string");
+        }
+        else{
+            NSLog(@"error saving bio string: %@",&error);
+        }
+    }];
+    [self.userEmailTextFeild becomeFirstResponder];
+    textView.textColor = [UIColor blackColor];
+    textView.userInteractionEnabled = NO;
+
+}
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    textField.userInteractionEnabled = NO;
+    switch (textField.tag) {
+        case 1:{
+                PFUser *currentUser = [PFUser currentUser];
+                currentUser[@"bio"]= self.userBioTextFeild.text;
+                [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (succeeded) {
+                        NSLog(@"saved user bio string");
+                    }
+                    else{
+                        NSLog(@"error saving bio string: %@",&error);
+                    }
+                }];
+            [self.userEmailTextFeild becomeFirstResponder];
+            
+        }
+            break;
+        case 2:{
+            PFUser *currentUser = [PFUser currentUser];
+            currentUser[@"email"]= self.userEmailTextFeild.text;
+            [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    NSLog(@"saved user email string");
+                }
+                else{
+                    NSLog(@"error saving email string: %@",&error);
+                }
+            }];
+        }
+            break;
+            
+        default:
+            break;
+    }
+    return YES;
+    
+}
 
 @end
 
