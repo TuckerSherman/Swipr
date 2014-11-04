@@ -53,6 +53,8 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
     
     [self addSubview:xButton];
     [self addSubview:checkButton];
+    
+    
 
 
 }
