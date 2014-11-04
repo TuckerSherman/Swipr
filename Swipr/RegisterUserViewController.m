@@ -19,12 +19,20 @@
 
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    
+    PFUser *user = [PFUser currentUser];
+    if (user.username != nil) {
+        [self performSegueWithIdentifier:@"registerSegue" sender:self];
+    }
+}
+
 
 - (IBAction)registerButtonPressed:(UIButton *)sender {
     
     [self checkFieldsComplete];
-    NSLog(@"tapped");
 }
+
 
 -(void)checkFieldsComplete {
     
@@ -72,7 +80,7 @@
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
             NSLog(@"Signed up!");
-            [self performSegueWithIdentifier:@"loginSegue" sender:self];
+            [self performSegueWithIdentifier:@"registerSegue" sender:self];
         } else {
             
             NSLog(@"Error in signing up");
@@ -91,4 +99,5 @@
  // Pass the selected object to the new view controller.
  }
  */
+
 @end
