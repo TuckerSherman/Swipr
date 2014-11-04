@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		520026271A084C37003DC9C9 /* RegisterUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 520026261A084C37003DC9C9 /* RegisterUserViewController.m */; };
 		5245BDB21A08191C003353F7 /* doge.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 5245BDB11A08191C003353F7 /* doge.jpeg */; };
 		5245BDB41A082593003353F7 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5245BDB31A082593003353F7 /* Parse.framework */; };
 		5245BDB61A08276E003353F7 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5245BDB51A08276E003353F7 /* AudioToolbox.framework */; };
@@ -47,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		520026251A084C37003DC9C9 /* RegisterUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterUserViewController.h; sourceTree = "<group>"; };
+		520026261A084C37003DC9C9 /* RegisterUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterUserViewController.m; sourceTree = "<group>"; };
 		5245BDB11A08191C003353F7 /* doge.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = doge.jpeg; sourceTree = "<group>"; };
 		5245BDB31A082593003353F7 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		5245BDB51A08276E003353F7 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -149,6 +152,8 @@
 				845167091A080FC4004663DE /* UserItemsTableViewController.m */,
 				8461CE241A0816FA00BB3525 /* ItemDetailViewController.h */,
 				8461CE251A0816FA00BB3525 /* ItemDetailViewController.m */,
+				520026251A084C37003DC9C9 /* RegisterUserViewController.h */,
+				520026261A084C37003DC9C9 /* RegisterUserViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -338,6 +343,7 @@
 				8451670A1A080FC4004663DE /* UserItemsTableViewController.m in Sources */,
 				52BE14E41A0800EC0090A2B0 /* DraggableView.m in Sources */,
 				845166DF1A07FED6004663DE /* main.m in Sources */,
+				520026271A084C37003DC9C9 /* RegisterUserViewController.m in Sources */,
 				8461CE261A0816FA00BB3525 /* ItemDetailViewController.m in Sources */,
 				52BE14E51A0800EC0090A2B0 /* DraggableViewBackground.m in Sources */,
 			);
