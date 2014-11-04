@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		520026271A084C37003DC9C9 /* RegisterUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 520026261A084C37003DC9C9 /* RegisterUserViewController.m */; };
+		520026291A085CF5003DC9C9 /* logoutButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 520026281A085CF5003DC9C9 /* logoutButton.png */; };
+		5200262C1A086D7B003DC9C9 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5200262B1A086D7B003DC9C9 /* LoginViewController.m */; };
 		5245BDB21A08191C003353F7 /* doge.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 5245BDB11A08191C003353F7 /* doge.jpeg */; };
 		5245BDB41A082593003353F7 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5245BDB31A082593003353F7 /* Parse.framework */; };
 		5245BDB61A08276E003353F7 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5245BDB51A08276E003353F7 /* AudioToolbox.framework */; };
@@ -54,6 +56,9 @@
 /* Begin PBXFileReference section */
 		520026251A084C37003DC9C9 /* RegisterUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterUserViewController.h; sourceTree = "<group>"; };
 		520026261A084C37003DC9C9 /* RegisterUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterUserViewController.m; sourceTree = "<group>"; };
+		520026281A085CF5003DC9C9 /* logoutButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoutButton.png; sourceTree = "<group>"; };
+		5200262A1A086D7B003DC9C9 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		5200262B1A086D7B003DC9C9 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		5245BDB11A08191C003353F7 /* doge.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = doge.jpeg; sourceTree = "<group>"; };
 		5245BDB31A082593003353F7 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		5245BDB51A08276E003353F7 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -154,10 +159,12 @@
 		52BE14DD1A0800650090A2B0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5200262A1A086D7B003DC9C9 /* LoginViewController.h */,
+				5200262B1A086D7B003DC9C9 /* LoginViewController.m */,
 				52BE14D91A0800280090A2B0 /* MainViewController.h */,
+				52BE14DA1A0800280090A2B0 /* MainViewController.m */,
 				8484DF871A08598F006C5FC7 /* UserItems.h */,
 				8484DF881A08598F006C5FC7 /* UserItems.m */,
-				52BE14DA1A0800280090A2B0 /* MainViewController.m */,
 				8461CE271A08172C00BB3525 /* ProfileViewController.h */,
 				8461CE281A08172C00BB3525 /* ProfileViewController.m */,
 				845167081A080FC4004663DE /* UserItemsTableViewController.h */,
@@ -224,6 +231,7 @@
 		845166DC1A07FED6004663DE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				520026281A085CF5003DC9C9 /* logoutButton.png */,
 				8484DF831A084E33006C5FC7 /* dogs_hero.png */,
 				8484DF851A084E3A006C5FC7 /* massive-pipe-tokes-thcf.jpg */,
 				5245BDB11A08191C003353F7 /* doge.jpeg */,
@@ -334,6 +342,7 @@
 				845166E81A07FED6004663DE /* Main.storyboard in Resources */,
 				845166ED1A07FED6004663DE /* LaunchScreen.xib in Resources */,
 				845166EA1A07FED6004663DE /* Images.xcassets in Resources */,
+				520026291A085CF5003DC9C9 /* logoutButton.png in Resources */,
 				8484DF861A084E3A006C5FC7 /* massive-pipe-tokes-thcf.jpg in Resources */,
 				8484DF841A084E33006C5FC7 /* dogs_hero.png in Resources */,
 			);
@@ -357,6 +366,7 @@
 				8461CE291A08172C00BB3525 /* ProfileViewController.m in Sources */,
 				84437E611A08250B00371196 /* ItemTableViewCell.m in Sources */,
 				52BE14E81A08015D0090A2B0 /* OverlayView.m in Sources */,
+				5200262C1A086D7B003DC9C9 /* LoginViewController.m in Sources */,
 				52BE14DB1A0800280090A2B0 /* MainViewController.m in Sources */,
 				8451670A1A080FC4004663DE /* UserItemsTableViewController.m in Sources */,
 				52BE14E41A0800EC0090A2B0 /* DraggableView.m in Sources */,

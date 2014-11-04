@@ -30,7 +30,6 @@
     PFQuery *query = [PFQuery queryWithClassName:@"TestObjects"];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        NSLog(@"%@", objects);
         if (!error) {
             // Copy objects array fetched from Parse to "items"
             NSArray *items = [[NSArray alloc] initWithArray:objects];
@@ -57,9 +56,6 @@
     [self.draggableBackground loadCards];
 
 }
-
-
-
 
 
 /*
