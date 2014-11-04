@@ -166,6 +166,8 @@
 				5200262B1A086D7B003DC9C9 /* LoginViewController.m */,
 				52BE14D91A0800280090A2B0 /* MainViewController.h */,
 				52BE14DA1A0800280090A2B0 /* MainViewController.m */,
+				8484DF871A08598F006C5FC7 /* UserItems.h */,
+				8484DF881A08598F006C5FC7 /* UserItems.m */,
 				8461CE271A08172C00BB3525 /* ProfileViewController.h */,
 				8461CE281A08172C00BB3525 /* ProfileViewController.m */,
 				845167081A080FC4004663DE /* UserItemsTableViewController.h */,
