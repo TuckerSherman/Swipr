@@ -20,36 +20,43 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _currentUser = [PFUser currentUser];
+    
     self.userNameTextFeild.text = _currentUser.username;
     self.userEmailTextFeild.text = _currentUser.email;
-    [self getUserImage];
+    [self getUserBio];
+    PFFile* profileImageFile = (PFFile*)_currentUser[@"profileImage"];
+    
+    
+    [self.userProfileImageView setFile:profileImageFile];
+    [self.userProfileImageView loadInBackground:^(UIImage *image, NSError *error) {
+        if (!error)
+            NSLog(@"profilePic loadInBackground completed");
+        else {
+            NSLog(@"profilePic loadInBackground failed with error: %@", error);
+            
+        }
+    }];
     
     
     // Do any additional setup after loading the view.
 }
 
--(void)getUserImage{
 
-    PFQuery *query= [PFUser query];
+
+-(void) getUserBio{
     
+    PFQuery *query= [PFUser query];
     [query whereKey:@"username" equalTo:_currentUser.username];
-
     [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error){
-        PFFile* profileImage = [object objectForKey:@"profileImage"];
-        NSLog(@"pulled down profile image from parse");
-        PFImageView* profile = [[PFImageView alloc]initWithFrame:self.userProfileImageView.frame];
-        profile.file= profileImage;
-        self.userProfileImageView.image = profile.image;
+        NSString* userBio = [object objectForKey:@"bio"];
+        NSLog(@"pulled down bio:%@",userBio);
         
-//        
-//        
-//        UIImage* loadedProfilePic = [UIImage imageWithData:profileImage];
-//        
-//        self.userProfileImageView.image = loadedProfilePic;
-        
-        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.userBioTextFeild.text = userBio;
+        });
     }];
-   
+    
+        
 }
 
 - (void)didReceiveMemoryWarning {
@@ -183,7 +190,7 @@ shouldChangeTextInRange:(NSRange)range
                     NSLog(@"saved user email string");
                 }
                 else{
-                    NSLog(@"error saving email string: %@",&error);
+                    NSLog(@"error saving email string: %@",error);
                 }
             }];
         }

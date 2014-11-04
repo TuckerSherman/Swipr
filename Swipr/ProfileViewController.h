@@ -15,7 +15,7 @@
 
 
 @property (strong, nonatomic) IBOutlet UITextField *userNameTextFeild;
-@property (strong, nonatomic) IBOutlet UIImageView *userProfileImageView;
+@property (strong, nonatomic) IBOutlet PFImageView *userProfileImageView;
 @property (strong, nonatomic) IBOutlet UITextView *userBioTextFeild;
 @property (strong, nonatomic) IBOutlet UITextField *userEmailTextFeild;
 

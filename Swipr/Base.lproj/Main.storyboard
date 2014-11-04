@@ -69,9 +69,9 @@
                                             <outlet property="delegate" destination="JK5-Cl-0ME" id="wuh-zc-Yd6"/>
                                         </connections>
                                     </textField>
-                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="LHl-5L-JsH">
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="LHl-5L-JsH" customClass="PFImageView">
                                         <rect key="frame" x="10" y="10" width="180" height="180"/>
-                                        <color key="backgroundColor" patternImage="25AC911E-13CC-4B35-8117-1FC6FBC1FE26" colorSpace="pattern"/>
+                                        <color key="backgroundColor" patternImage="B80443BA-F094-468B-B30E-A64AB7636C7D" colorSpace="pattern"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="180" id="1KE-Q8-E0C"/>
@@ -91,12 +91,6 @@
                                             <outlet property="delegate" destination="JK5-Cl-0ME" id="c9x-xo-csC"/>
                                         </connections>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DTU-03-Dyi">
-                                        <rect key="frame" x="241" y="162" width="62" height="22"/>
-                                        <state key="normal" title="edit">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="tap here to input a short bio" translatesAutoresizingMaskIntoConstraints="NO" id="9ex-m9-VtV">
                                         <rect key="frame" x="200" y="40" width="165" height="70"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -110,6 +104,13 @@
                                             <outlet property="delegate" destination="JK5-Cl-0ME" id="0cH-Rx-E1f"/>
                                         </connections>
                                     </textView>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="tyS-W7-vdM">
+                                        <rect key="frame" x="274" y="162" width="93" height="29"/>
+                                        <segments>
+                                            <segment title="Edit"/>
+                                            <segment title="Done"/>
+                                        </segments>
+                                    </segmentedControl>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -446,7 +447,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="25AC911E-13CC-4B35-8117-1FC6FBC1FE26" width="200" height="198">
+        <image name="B80443BA-F094-468B-B30E-A64AB7636C7D" width="200" height="198">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz
