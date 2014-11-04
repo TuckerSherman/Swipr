@@ -15,5 +15,6 @@
 
 @property (strong, nonatomic) DraggableViewBackground *draggableBackground;
 - (IBAction)logOutButtonPressed:(UIBarButtonItem *)sender;
+- (IBAction)refreshButtonPressed:(UIBarButtonItem *)sender;
 
 @end

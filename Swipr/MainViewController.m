@@ -17,12 +17,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.navigationItem setHidesBackButton:YES];
     
     // Setup draggable background
     self.draggableBackground = [[DraggableViewBackground alloc]initWithFrame:self.view.frame];
     [self.view addSubview:self.draggableBackground];
     
     [self retreiveFromParse];
+    
+    
     
 }
 
@@ -31,6 +34,7 @@
 
 -(void)retreiveFromParse {
     PFQuery *query = [PFQuery queryWithClassName:@"TestObjects"];
+    [query orderByAscending:@"createdAt"];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
@@ -74,6 +78,8 @@
 
 }
 
+
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == [alertView cancelButtonIndex]){
 
@@ -81,5 +87,12 @@
         [PFUser logOut];
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
+}
+
+#pragma mark - Refresh button
+
+- (IBAction)refreshButtonPressed:(UIBarButtonItem *)sender {
+    
+    [self retreiveFromParse];
 }
 @end
