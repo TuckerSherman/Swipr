@@ -71,7 +71,7 @@
                                     </textField>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="LHl-5L-JsH" customClass="PFImageView">
                                         <rect key="frame" x="10" y="10" width="180" height="180"/>
-                                        <color key="backgroundColor" patternImage="B80443BA-F094-468B-B30E-A64AB7636C7D" colorSpace="pattern"/>
+                                        <color key="backgroundColor" patternImage="BA4D7075-9D51-42A6-8668-7F7109814A29" colorSpace="pattern"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="180" id="1KE-Q8-E0C"/>
@@ -91,7 +91,7 @@
                                             <outlet property="delegate" destination="JK5-Cl-0ME" id="c9x-xo-csC"/>
                                         </connections>
                                     </textField>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="tap here to input a short bio" translatesAutoresizingMaskIntoConstraints="NO" id="9ex-m9-VtV">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="Tap here to input a short bio" translatesAutoresizingMaskIntoConstraints="NO" id="9ex-m9-VtV">
                                         <rect key="frame" x="200" y="40" width="165" height="70"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -104,13 +104,34 @@
                                             <outlet property="delegate" destination="JK5-Cl-0ME" id="0cH-Rx-E1f"/>
                                         </connections>
                                     </textView>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="tyS-W7-vdM">
-                                        <rect key="frame" x="274" y="162" width="93" height="29"/>
-                                        <segments>
-                                            <segment title="Edit"/>
-                                            <segment title="Done"/>
-                                        </segments>
-                                    </segmentedControl>
+                                    <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3B-bv-WGf">
+                                        <rect key="frame" x="340" y="165" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="FcS-hO-JwM"/>
+                                            <constraint firstAttribute="width" constant="30" id="qRh-Hd-7p5"/>
+                                        </constraints>
+                                        <state key="normal" title="lock" image="Unlock">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="lockUserTap:" destination="JK5-Cl-0ME" eventType="touchUpInside" id="0ta-X2-FhW"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" alpha="0.69999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m2e-Bt-Mbe">
+                                        <rect key="frame" x="340" y="165" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="8Vt-ig-tu7"/>
+                                            <constraint firstAttribute="height" constant="30" id="8an-v5-dUD"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="J9E-Zk-GYw"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="Yyi-wF-b4J"/>
+                                        </constraints>
+                                        <state key="normal" title="unlock" image="lock">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="unlockUserTap:" destination="JK5-Cl-0ME" eventType="touchUpInside" id="LOH-ux-vq3"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -119,13 +140,17 @@
                                     <constraint firstAttribute="height" constant="200" id="9yh-Lm-3GN"/>
                                     <constraint firstItem="9ex-m9-VtV" firstAttribute="top" secondItem="5aU-wb-S5G" secondAttribute="bottom" constant="5" id="AnX-Fi-RDt"/>
                                     <constraint firstAttribute="trailing" secondItem="ZIN-ih-kMD" secondAttribute="trailing" constant="10" id="DGZ-yR-d1K"/>
+                                    <constraint firstAttribute="trailing" secondItem="m2e-Bt-Mbe" secondAttribute="trailing" constant="5" id="F8o-zo-0bg"/>
                                     <constraint firstItem="LHl-5L-JsH" firstAttribute="top" secondItem="wGu-W4-sQD" secondAttribute="top" constant="10" id="KLF-eO-CNr"/>
                                     <constraint firstItem="5aU-wb-S5G" firstAttribute="leading" secondItem="LHl-5L-JsH" secondAttribute="trailing" constant="10" id="Lju-c2-bLh"/>
                                     <constraint firstItem="ZIN-ih-kMD" firstAttribute="top" secondItem="9ex-m9-VtV" secondAttribute="bottom" constant="5" id="N94-Tp-Ark"/>
                                     <constraint firstItem="5aU-wb-S5G" firstAttribute="top" secondItem="wGu-W4-sQD" secondAttribute="top" constant="10" id="PeJ-lr-d7s"/>
+                                    <constraint firstAttribute="trailing" secondItem="e3B-bv-WGf" secondAttribute="trailing" constant="5" id="ddm-p6-mi2"/>
                                     <constraint firstAttribute="bottom" secondItem="LHl-5L-JsH" secondAttribute="bottom" constant="10" id="ddy-lG-WN9"/>
                                     <constraint firstAttribute="trailing" secondItem="5aU-wb-S5G" secondAttribute="trailing" constant="10" id="kL5-pv-Cye"/>
                                     <constraint firstItem="9ex-m9-VtV" firstAttribute="leading" secondItem="LHl-5L-JsH" secondAttribute="trailing" constant="10" id="kez-1t-CJf"/>
+                                    <constraint firstAttribute="bottom" secondItem="m2e-Bt-Mbe" secondAttribute="bottom" constant="5" id="xG8-CP-5xA"/>
+                                    <constraint firstAttribute="bottom" secondItem="e3B-bv-WGf" secondAttribute="bottom" constant="5" id="yyh-Kl-tWt"/>
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P3s-ok-eTA">
@@ -151,6 +176,8 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="5mw-1i-xxa"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="lockButton" destination="e3B-bv-WGf" id="zWD-un-zPF"/>
+                        <outlet property="unlockButton" destination="m2e-Bt-Mbe" id="ue7-pj-jVR"/>
                         <outlet property="userBioTextFeild" destination="9ex-m9-VtV" id="iUZ-dg-1Eb"/>
                         <outlet property="userEmailTextFeild" destination="ZIN-ih-kMD" id="kT9-yV-3vs"/>
                         <outlet property="userNameTextFeild" destination="5aU-wb-S5G" id="KQ2-Qs-h28"/>
@@ -296,7 +323,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X2I-aI-pmo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2064.5" y="741.5"/>
+            <point key="canvasLocation" x="2150.5" y="741.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DGw-26-obX">
@@ -443,11 +470,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lfW-jE-apO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="615.5" y="1254.5"/>
+            <point key="canvasLocation" x="843.5" y="1132.5"/>
         </scene>
     </scenes>
     <resources>
-        <image name="B80443BA-F094-468B-B30E-A64AB7636C7D" width="200" height="198">
+        <image name="BA4D7075-9D51-42A6-8668-7F7109814A29" width="200" height="198">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz
@@ -463,7 +490,9 @@ AZkBoAGoAbUBugG8Ab4BwwHLAc4B0wHbAd4B8AHzAfgAAAAAAAACAQAAAAAAAAA/AAAAAAAAAAAAAAAA
 AAAB+g
 </mutableData>
         </image>
+        <image name="Unlock" width="100" height="99"/>
         <image name="itemImagePlaceholder" width="200" height="198"/>
+        <image name="lock" width="100" height="99"/>
         <image name="logoutButton.png" width="27" height="30"/>
         <image name="profilePlaceholder" width="200" height="198"/>
     </resources>

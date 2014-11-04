@@ -20,6 +20,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _currentUser = [PFUser currentUser];
+    self.unlockButton.hidden = YES;
+    self.lockButton.hidden = NO;
+
+
     
     self.userNameTextFeild.text = _currentUser.username;
     self.userEmailTextFeild.text = _currentUser.email;
@@ -52,7 +56,17 @@
         NSLog(@"pulled down bio:%@",userBio);
         
         dispatch_async(dispatch_get_main_queue(), ^{
+            if (!userBio) {
+                
+                self.userBioTextFeild.text = nil;
+                [self.userBioTextFeild becomeFirstResponder];
+                [self performSelector:@selector(unlockUserTap:)withObject:nil];
+            }
+
             self.userBioTextFeild.text = userBio;
+            self.userBioTextFeild.textColor = [UIColor blackColor];
+            [self performSelector:@selector(lockUserTap:)withObject:nil];
+            
         });
     }];
     
@@ -63,6 +77,47 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)unlockUserTap:(id)sender {
+    self.userNameTextFeild.userInteractionEnabled = YES;
+    self.userBioTextFeild.userInteractionEnabled=YES;
+    self.userBioTextFeild.alpha=.7;
+    self.userEmailTextFeild.userInteractionEnabled = YES;
+    self.userEmailTextFeild.alpha=.7;
+    self.userProfileImageView.userInteractionEnabled = YES;
+    self.userProfileImageView.alpha =.7;
+    self.unlockButton.hidden = YES;
+    self.unlockButton.userInteractionEnabled = NO;
+    self.lockButton.hidden = NO;
+    self.lockButton.userInteractionEnabled=YES;
+    self.userProfileImageView.alpha =.5;
+    
+
+    
+}
+- (IBAction)lockUserTap:(id)sender {
+    self.userNameTextFeild.userInteractionEnabled=NO;
+    self.userBioTextFeild.userInteractionEnabled=NO;
+    self.userBioTextFeild.alpha=1;
+    self.userEmailTextFeild.userInteractionEnabled = NO;
+    self.userEmailTextFeild.alpha=1;
+    self.userProfileImageView.userInteractionEnabled = NO;
+    self.userProfileImageView.alpha=1;
+    self.lockButton.hidden = YES;
+    self.lockButton.userInteractionEnabled=NO;
+    self.unlockButton.hidden = NO;
+    self.unlockButton.userInteractionEnabled = YES;
+
+
+}
+
+
+
+
+
+
+
+
+
 - (IBAction)userImageTap:(id)sender {
     
     //TODO: check if the user has a profile picture
@@ -160,7 +215,6 @@ shouldChangeTextInRange:(NSRange)range
     }];
     [self.userEmailTextFeild becomeFirstResponder];
     textView.textColor = [UIColor blackColor];
-    textView.userInteractionEnabled = NO;
 
 }
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
@@ -178,7 +232,6 @@ shouldChangeTextInRange:(NSRange)range
                         NSLog(@"error saving bio string: %@",error);
                     }
                 }];
-            [self.userEmailTextFeild becomeFirstResponder];
             
         }
             break;
