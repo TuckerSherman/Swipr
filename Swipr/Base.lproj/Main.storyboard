@@ -70,7 +70,7 @@
                                     </textField>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="LHl-5L-JsH">
                                         <rect key="frame" x="10" y="10" width="180" height="180"/>
-                                        <color key="backgroundColor" patternImage="BC9165D6-32E3-4AA8-8476-9E43830A7DAC" colorSpace="pattern"/>
+                                        <color key="backgroundColor" patternImage="3469CB22-B281-426B-9B34-95A7647208A7" colorSpace="pattern"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="180" id="1KE-Q8-E0C"/>
@@ -148,7 +148,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1329" y="263"/>
+            <point key="canvasLocation" x="1219" y="319"/>
         </scene>
         <!--User Items Table View Controller-->
         <scene sceneID="Rza-G0-G5L">
@@ -201,7 +201,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yLI-dK-tVV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1329" y="906"/>
+            <point key="canvasLocation" x="1219" y="896"/>
         </scene>
         <!--Item Detail View Controller-->
         <scene sceneID="WxN-H7-B6u">
@@ -280,7 +280,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X2I-aI-pmo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1845" y="656"/>
+            <point key="canvasLocation" x="1617" y="742"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DGw-26-obX">
@@ -305,7 +305,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="BC9165D6-32E3-4AA8-8476-9E43830A7DAC" width="320" height="460">
+        <image name="3469CB22-B281-426B-9B34-95A7647208A7" width="320" height="460">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGTk9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QEQcI
 ExQZHh8nKzIzNDw/QkhLVSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NW
