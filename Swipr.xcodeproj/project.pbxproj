@@ -39,6 +39,7 @@
 		8484DF841A084E33006C5FC7 /* dogs_hero.png in Resources */ = {isa = PBXBuildFile; fileRef = 8484DF831A084E33006C5FC7 /* dogs_hero.png */; };
 		8484DF861A084E3A006C5FC7 /* massive-pipe-tokes-thcf.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8484DF851A084E3A006C5FC7 /* massive-pipe-tokes-thcf.jpg */; };
 		8484DF891A08598F006C5FC7 /* UserItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 8484DF881A08598F006C5FC7 /* UserItems.m */; };
+		8484DF8C1A0862DD006C5FC7 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 8484DF8B1A0862DD006C5FC7 /* User.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,8 @@
 		8484DF851A084E3A006C5FC7 /* massive-pipe-tokes-thcf.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "massive-pipe-tokes-thcf.jpg"; sourceTree = "<group>"; };
 		8484DF871A08598F006C5FC7 /* UserItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserItems.h; sourceTree = "<group>"; };
 		8484DF881A08598F006C5FC7 /* UserItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserItems.m; sourceTree = "<group>"; };
+		8484DF8A1A0862DD006C5FC7 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		8484DF8B1A0862DD006C5FC7 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,8 +158,6 @@
 			isa = PBXGroup;
 			children = (
 				52BE14D91A0800280090A2B0 /* MainViewController.h */,
-				8484DF871A08598F006C5FC7 /* UserItems.h */,
-				8484DF881A08598F006C5FC7 /* UserItems.m */,
 				52BE14DA1A0800280090A2B0 /* MainViewController.m */,
 				8461CE271A08172C00BB3525 /* ProfileViewController.h */,
 				8461CE281A08172C00BB3525 /* ProfileViewController.m */,
@@ -207,12 +208,11 @@
 		845166DB1A07FED6004663DE /* Swipr */ = {
 			isa = PBXGroup;
 			children = (
-				52BE14DF1A08007D0090A2B0 /* Views */,
-				52BE14DD1A0800650090A2B0 /* Controllers */,
 				845166E01A07FED6004663DE /* AppDelegate.h */,
 				845166E11A07FED6004663DE /* AppDelegate.m */,
-				8484DF801A0849D4006C5FC7 /* Item.h */,
-				8484DF811A0849D4006C5FC7 /* Item.m */,
+				52BE14DF1A08007D0090A2B0 /* Views */,
+				52BE14DD1A0800650090A2B0 /* Controllers */,
+				8484DF8D1A086302006C5FC7 /* Model */,
 				845166E61A07FED6004663DE /* Main.storyboard */,
 				845166E91A07FED6004663DE /* Images.xcassets */,
 				845166EB1A07FED6004663DE /* LaunchScreen.xib */,
@@ -248,6 +248,19 @@
 				845166F71A07FED6004663DE /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8484DF8D1A086302006C5FC7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8484DF871A08598F006C5FC7 /* UserItems.h */,
+				8484DF881A08598F006C5FC7 /* UserItems.m */,
+				8484DF8A1A0862DD006C5FC7 /* User.h */,
+				8484DF8B1A0862DD006C5FC7 /* User.m */,
+				8484DF801A0849D4006C5FC7 /* Item.h */,
+				8484DF811A0849D4006C5FC7 /* Item.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -361,6 +374,7 @@
 				8451670A1A080FC4004663DE /* UserItemsTableViewController.m in Sources */,
 				52BE14E41A0800EC0090A2B0 /* DraggableView.m in Sources */,
 				8484DF821A0849D4006C5FC7 /* Item.m in Sources */,
+				8484DF8C1A0862DD006C5FC7 /* User.m in Sources */,
 				845166DF1A07FED6004663DE /* main.m in Sources */,
 				520026271A084C37003DC9C9 /* RegisterUserViewController.m in Sources */,
 				8461CE261A0816FA00BB3525 /* ItemDetailViewController.m in Sources */,
