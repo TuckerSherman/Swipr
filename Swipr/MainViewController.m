@@ -25,8 +25,6 @@
     
     [self retreiveFromParse];
     
-    
-    
 }
 
 
