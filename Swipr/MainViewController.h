@@ -11,8 +11,9 @@
 #import "DraggableView.h"
 #import <Parse/Parse.h>
 
-@interface MainViewController : UIViewController
+@interface MainViewController : UIViewController <UIAlertViewDelegate>
 
 @property (strong, nonatomic) DraggableViewBackground *draggableBackground;
+- (IBAction)logOutButtonPressed:(UIBarButtonItem *)sender;
 
 @end

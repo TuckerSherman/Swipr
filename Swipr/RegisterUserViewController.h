@@ -14,15 +14,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *emailTextfield;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextfield;
 @property (weak, nonatomic) IBOutlet UITextField *confirmPasswordTextfield;
-@property (weak, nonatomic) IBOutlet UIView *loginOverlayView;
 - (IBAction)registerButtonPressed:(UIButton *)sender;
-- (IBAction)loginButtonPressed:(UIButton *)sender;
 
 
-// Login overlay view
-@property (weak, nonatomic) IBOutlet UITextField *loginUsernameTextField;
-@property (weak, nonatomic) IBOutlet UITextField *loginPasswordTextField;
-- (IBAction)confirmLoginButtonPressed:(UIButton *)sender;
 
 
 @end
