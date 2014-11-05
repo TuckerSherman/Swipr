@@ -83,6 +83,7 @@
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.delegate = self;
     picker.allowsEditing = YES;
+    NSLog(@"use the camera!");
     picker.sourceType = UIImagePickerControllerCameraCaptureModePhoto;
     
     [self presentViewController:picker animated:YES completion:NULL];
