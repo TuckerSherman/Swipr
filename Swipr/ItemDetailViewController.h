@@ -12,7 +12,7 @@
 @interface ItemDetailViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet PFImageView *itemImageView;
-@property (strong, nonatomic) IBOutlet UITextField *itemDescriptionTextFeild;
+@property (strong, nonatomic) IBOutlet UITextField *itemDescriptionTextField;
 @property (strong, nonatomic) IBOutlet UITextField *userContactTextFeild;
 @property (strong, nonatomic) PFObject* item;
 

@@ -23,6 +23,7 @@
     
     // Setup draggable background
     self.draggableBackground = [[DraggableViewBackground alloc]initWithFrame:self.view.frame];
+    self.draggableBackground.delegate = self;
     [self.subView addSubview:self.draggableBackground];
     [self.subView bringSubviewToFront:self.infoButton];
     
@@ -92,9 +93,20 @@
     
     if ([[segue identifier] isEqualToString:@"itemDetailSegue"]) {
         ItemDetailViewController *itemDetailVC = segue.destinationViewController;
+        
+        itemDetailVC.itemDescriptionTextField.text = self.currentCard.description;
         itemDetailVC.item = [self.draggableBackground.items objectAtIndex:self.draggableBackground.cardCounter];
 
     }
+    
+}
+
+#pragma mark - DraggableViewBackground Method
+
+-(void)currentCard:(DraggableView *)card {
+    
+    self.currentCard = card;
+    NSLog(@"%@", self.currentCard.information.text);
     
 }
 
