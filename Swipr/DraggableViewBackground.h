@@ -50,7 +50,6 @@
 @property (strong, nonatomic) NSArray* items; //the actual PFObjects we want to display
 @property (retain,nonatomic) NSMutableArray* allCards; //%%% the labels the cards
 @property (assign, nonatomic) NSInteger cardsLoadedIndex;
-@property (assign, nonatomic) NSInteger cardCounter;
 
 -(void)loadCards;
 

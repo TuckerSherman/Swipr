@@ -37,7 +37,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
         loadedCards = [[NSMutableArray alloc] init];
         allCards = [[NSMutableArray alloc] init];
         self.cardsLoadedIndex = 0;
-        self.cardCounter = 0;
+
         [self loadCards];
     }
     return self;
@@ -126,14 +126,12 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
     }
 }
 
-#warning include own action here!
 //%%% action called when the card goes to the left.
 // This should be customized with your own action
 -(void)cardSwipedLeft:(UIView *)card;
 {
     //do whatever you want with the card that was swiped
-    DraggableView *c = (DraggableView *)card;
-    self.cardCounter++;
+//    DraggableView *c = (DraggableView *)card;
     [loadedCards removeObjectAtIndex:0]; //%%% card was swiped, so it's no longer a "loaded card"
     
     if (self.cardsLoadedIndex < [allCards count]) { //%%% if we haven't reached the end of all cards, put another into the loaded cards
@@ -141,17 +139,15 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
         self.cardsLoadedIndex++;//%%% loaded a card, so have to increment count
         [self insertSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE-1)] belowSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE-2)]];
     }
-    [self.delegate currentCard:c];
+    [self.delegate currentCard:[loadedCards objectAtIndex:0]];
 }
 
-#warning include own action here!
 //%%% action called when the card goes to the right.
 // This should be customized with your own action
 -(void)cardSwipedRight:(UIView *)card
 {
     //do whatever you want with the card that was swiped
-        DraggableView *c = (DraggableView *)card;
-    self.cardCounter++;
+//        DraggableView *c = (DraggableView *)card;
     [loadedCards removeObjectAtIndex:0]; //%%% card was swiped, so it's no longer a "loaded card"
     
     if (self.cardsLoadedIndex < [allCards count]) { //%%% if we haven't reached the end of all cards, put another into the loaded cards
@@ -159,7 +155,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
         self.cardsLoadedIndex++;//%%% loaded a card, so have to increment count
         [self insertSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE-1)] belowSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE-2)]];
     }
-    [self.delegate currentCard:c];
+    [self.delegate currentCard:[loadedCards objectAtIndex:0]];
 }
 
 //%%% when you hit the right button, this is called and substitutes the swipe
@@ -171,7 +167,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
         dragView.overlayView.alpha = 1;
     }];
     [dragView rightClickAction];
-    [self.delegate currentCard:dragView];
+    [self.delegate currentCard:[loadedCards objectAtIndex:0]];
 }
 
 //%%% when you hit the left button, this is called and substitutes the swipe
@@ -183,7 +179,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
         dragView.overlayView.alpha = 1;
     }];
     [dragView leftClickAction];
-    [self.delegate currentCard:dragView];
+    [self.delegate currentCard:[loadedCards objectAtIndex:0]];
 }
 
 

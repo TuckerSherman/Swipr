@@ -26,7 +26,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="xC8-yD-2A2" kind="modal" identifier="itemDetailSegue" id="KFd-wu-nFE"/>
+                                            <segue destination="ZlJ-DZ-vld" kind="modal" identifier="itemDetailSegue" id="cwp-pc-1ZS"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -98,7 +98,7 @@
                                     </textField>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="LHl-5L-JsH" customClass="PFImageView">
                                         <rect key="frame" x="10" y="10" width="180" height="180"/>
-                                        <color key="backgroundColor" patternImage="DAE6F5F1-5B95-41CA-9D4A-E7FF1DA7F2B3" colorSpace="pattern"/>
+                                        <color key="backgroundColor" patternImage="063A441B-DC6F-4D0D-B26F-D5C6FC32D023" colorSpace="pattern"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="180" id="1KE-Q8-E0C"/>
@@ -635,9 +635,74 @@
             </objects>
             <point key="canvasLocation" x="615.5" y="1170.5"/>
         </scene>
+        <!--Main Item Detail View Controller-->
+        <scene sceneID="be5-ia-XMy">
+            <objects>
+                <viewController id="ZlJ-DZ-vld" customClass="MainItemDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Hyc-P3-VWf"/>
+                        <viewControllerLayoutGuide type="bottom" id="7ZX-ge-aja"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DnU-HD-0UM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Item description" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rdP-Xl-61V">
+                                <rect key="frame" x="62" y="315" width="250" height="120"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="xC8-yD-2A2" id="egf-rA-cQq"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="User Contact Info" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I73-CK-IRx">
+                                <rect key="frame" x="62" y="445" width="250" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="xC8-yD-2A2" id="LQe-a7-9F9"/>
+                                </connections>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="itemImagePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="GJY-cb-ZSm" customClass="PFImageView">
+                                <rect key="frame" x="62" y="55" width="250" height="250"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bkb-Sv-wTg">
+                                <rect key="frame" x="62" y="550" width="48" height="30"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonPressed:" destination="ZlJ-DZ-vld" eventType="touchUpInside" id="EBm-rM-t7i"/>
+                                    <action selector="userTapsBack:" destination="xC8-yD-2A2" eventType="touchUpInside" id="YDM-Y7-Fa5"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bkb-Sv-wTg" firstAttribute="leading" secondItem="GJY-cb-ZSm" secondAttribute="leading" id="3Ia-zu-MgW"/>
+                            <constraint firstItem="bkb-Sv-wTg" firstAttribute="top" secondItem="I73-CK-IRx" secondAttribute="bottom" constant="88" id="D0u-pX-VxO"/>
+                            <constraint firstItem="bkb-Sv-wTg" firstAttribute="leading" secondItem="DnU-HD-0UM" secondAttribute="leadingMargin" constant="46" id="IbT-uy-bcS"/>
+                            <constraint firstAttribute="centerX" secondItem="I73-CK-IRx" secondAttribute="centerX" id="KUq-9o-6pf"/>
+                            <constraint firstAttribute="centerX" secondItem="rdP-Xl-61V" secondAttribute="centerX" id="OAX-xn-Swt"/>
+                            <constraint firstItem="bkb-Sv-wTg" firstAttribute="leading" secondItem="I73-CK-IRx" secondAttribute="leading" id="Th3-Nb-oMX"/>
+                            <constraint firstItem="bkb-Sv-wTg" firstAttribute="leading" secondItem="rdP-Xl-61V" secondAttribute="leading" id="Vp5-up-KaR"/>
+                            <constraint firstAttribute="centerX" secondItem="GJY-cb-ZSm" secondAttribute="centerX" id="Ynp-iX-bEK"/>
+                            <constraint firstItem="7ZX-ge-aja" firstAttribute="top" secondItem="bkb-Sv-wTg" secondAttribute="bottom" constant="87" id="r5L-pR-zYW"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="GJY-cb-ZSm" id="sBu-XQ-mys"/>
+                        <outlet property="itemDescriptionTextField" destination="rdP-Xl-61V" id="NZD-9n-eDj"/>
+                        <outlet property="userInfoTextField" destination="I73-CK-IRx" id="iJA-Km-Gdi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eX7-eR-ESe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1131.5" y="1161.5"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="DAE6F5F1-5B95-41CA-9D4A-E7FF1DA7F2B3" width="80" height="80">
+        <image name="063A441B-DC6F-4D0D-B26F-D5C6FC32D023" width="80" height="80">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz
@@ -665,8 +730,5 @@ Afg
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina47"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="Yf9-IY-pGl"/>
-    </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.36574475090000003" blue="0.27605346510000001" alpha="1" colorSpace="calibratedRGB"/>
 </document>

@@ -7,7 +7,7 @@
 //
 
 #import "MainViewController.h"
-#import "ItemDetailViewController.h"
+#import "MainItemDetailViewController.h"
 
 
 @interface MainViewController ()
@@ -19,6 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationItem setHidesBackButton:YES];
+    
     
     
     // Setup draggable background
@@ -47,6 +48,7 @@
             self.draggableBackground.items = [items mutableCopy];
              NSLog(@"%d",(int)[self.draggableBackground.items count]);
             [self.draggableBackground loadCards];
+            self.currentCard = [self.draggableBackground.allCards objectAtIndex:0];
             
         } else {
             NSLog(@"Error grabbing from Parse! %@",error);
@@ -92,11 +94,12 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     if ([[segue identifier] isEqualToString:@"itemDetailSegue"]) {
-        ItemDetailViewController *itemDetailVC = segue.destinationViewController;
         
-        itemDetailVC.itemDescriptionTextField.text = self.currentCard.description;
-        itemDetailVC.item = [self.draggableBackground.items objectAtIndex:self.draggableBackground.cardCounter];
-
+        MainItemDetailViewController *itemDetailVC = segue.destinationViewController;
+        itemDetailVC.item = [[Item alloc] init];
+        itemDetailVC.imageFile = self.currentCard.itemImage.file;
+        itemDetailVC.item.desc = self.currentCard.information.text;
+        NSLog(@"%@", itemDetailVC.item.desc);
     }
     
 }
