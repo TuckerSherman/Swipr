@@ -353,15 +353,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="itemImagePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="4Ou-aT-TbL" customClass="PFImageView">
-                                <rect key="frame" x="38" y="10" width="300" height="300"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="SDS-nT-O5V"/>
-                                    <constraint firstAttribute="width" constant="300" id="eZa-KV-BRn"/>
-                                </constraints>
-                            </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Item description" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6g4-Qw-kfz">
-                                <rect key="frame" x="38" y="320" width="300" height="120"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Item description" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6g4-Qw-kfz">
+                                <rect key="frame" x="62" y="381" width="250" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="6Uw-cP-aNz"/>
                                 </constraints>
@@ -425,7 +418,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X2I-aI-pmo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2199.5" y="1035.5"/>
+            <point key="canvasLocation" x="1151.5" y="1412.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DGw-26-obX">
