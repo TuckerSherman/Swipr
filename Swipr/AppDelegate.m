@@ -28,6 +28,8 @@
     // [PFFacebookUtils initializeFacebook];
     // ****************************************************************************
     [PFImageView class];
+    [PFQueryTableViewController class];
+
     
     [Parse setApplicationId:@"BnoNW84s5syR018qZP1zDSWP6hTPNXrvS1vQh3dq"
                   clientKey:@"s62gxiYrmlcG44SoTIKpSedO8Fl1MKGpAZapNVZ5"];

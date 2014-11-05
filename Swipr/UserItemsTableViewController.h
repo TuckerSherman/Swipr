@@ -12,7 +12,7 @@
 #import "Item.h"
 #import "ItemDetailViewController.h"
 
-@interface UserItemsTableViewController : UITableViewController
+@interface UserItemsTableViewController : PFQueryTableViewController
 
 @property (strong,nonatomic) NSArray* itemsForUser;
 
