@@ -76,6 +76,8 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
     
     draggableView.information.text = [currentObject objectForKey:@"description"];
     draggableView.itemImage.file = [currentObject objectForKey:@"image"];
+    draggableView.owner = [currentObject objectForKey:@"user"];
+    draggableView.objectId = [currentObject objectForKey:@"objectId"];
     
     [draggableView.itemImage loadInBackground:^(UIImage *image, NSError *error) {
         if (!error) {
@@ -130,7 +132,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
 -(void)cardSwipedLeft:(UIView *)card;
 {
     //do whatever you want with the card that was swiped
-    //    DraggableView *c = (DraggableView *)card;
+    DraggableView *c = (DraggableView *)card;
     self.cardCounter++;
     [loadedCards removeObjectAtIndex:0]; //%%% card was swiped, so it's no longer a "loaded card"
     
@@ -139,6 +141,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
         self.cardsLoadedIndex++;//%%% loaded a card, so have to increment count
         [self insertSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE-1)] belowSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE-2)]];
     }
+    [self.delegate currentCard:c];
 }
 
 #warning include own action here!
@@ -147,7 +150,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
 -(void)cardSwipedRight:(UIView *)card
 {
     //do whatever you want with the card that was swiped
-    //    DraggableView *c = (DraggableView *)card;
+        DraggableView *c = (DraggableView *)card;
     self.cardCounter++;
     [loadedCards removeObjectAtIndex:0]; //%%% card was swiped, so it's no longer a "loaded card"
     
@@ -156,7 +159,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
         self.cardsLoadedIndex++;//%%% loaded a card, so have to increment count
         [self insertSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE-1)] belowSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE-2)]];
     }
-
+    [self.delegate currentCard:c];
 }
 
 //%%% when you hit the right button, this is called and substitutes the swipe
@@ -168,6 +171,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
         dragView.overlayView.alpha = 1;
     }];
     [dragView rightClickAction];
+    [self.delegate currentCard:dragView];
 }
 
 //%%% when you hit the left button, this is called and substitutes the swipe
@@ -179,6 +183,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
         dragView.overlayView.alpha = 1;
     }];
     [dragView leftClickAction];
+    [self.delegate currentCard:dragView];
 }
 
 

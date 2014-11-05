@@ -33,12 +33,19 @@
 #import <UIKit/UIKit.h>
 #import "DraggableView.h"
 
+@protocol DraggableViewBackgroundDelegate <NSObject>
+
+-(void)currentCard:(DraggableView *)card;
+
+@end
+
 @interface DraggableViewBackground : UIView <DraggableViewDelegate>
 
 //methods called in DraggableView
 -(void)cardSwipedLeft:(UIView *)card;
 -(void)cardSwipedRight:(UIView *)card;
 
+@property (weak, nonatomic) id<DraggableViewBackgroundDelegate> delegate;
 @property (retain,nonatomic) NSArray* cardLabels; //%%% the labels the cards
 @property (strong, nonatomic) NSArray* items; //the actual PFObjects we want to display
 @property (retain,nonatomic) NSMutableArray* allCards; //%%% the labels the cards
