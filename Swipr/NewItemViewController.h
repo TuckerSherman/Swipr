@@ -16,6 +16,7 @@
 @property (strong, nonatomic) Item *item;
 @property (weak, nonatomic) IBOutlet UIButton *itemImageButton;
 @property (weak, nonatomic) IBOutlet UITextField *itemDescriptionTextField;
+@property (weak, nonatomic) IBOutlet UIImageView *placeholderImageView;
 
 - (IBAction)cancelButtonPressed:(UIButton *)sender;
 - (IBAction)saveItemButtonPressed:(UIButton *)sender;
