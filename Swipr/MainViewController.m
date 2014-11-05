@@ -122,7 +122,7 @@
         NSLog(@"other items this user doesnt want: %@", [thisItem objectForKey:@"description"]);
         [unwantedItems addObject:thisItem];
         [thisUser addObject:unwantedItems forKey:@"itemsUserDoesNotWant"];
-        [thisItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        [thisUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
                 NSLog(@"added item to user's preferences");
             }
@@ -140,7 +140,7 @@
         NSLog(@"other items this user does want: %@", wantedItems);
         [wantedItems addObject:thisItem];
         [thisUser addObject:unwantedItems forKey:@"itemsUserDoesWant"];
-        [thisItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        [thisUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
                 NSLog(@"added item to user's preferences");
             }
