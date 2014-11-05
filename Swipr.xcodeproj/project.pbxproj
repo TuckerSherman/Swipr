@@ -11,7 +11,7 @@
 		520026291A085CF5003DC9C9 /* logoutButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 520026281A085CF5003DC9C9 /* logoutButton.png */; };
 		5200262C1A086D7B003DC9C9 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5200262B1A086D7B003DC9C9 /* LoginViewController.m */; };
 		5200267A1A0953B2003DC9C9 /* NewItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 520026791A0953B2003DC9C9 /* NewItemViewController.m */; };
-		5245BDB21A08191C003353F7 /* doge.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 5245BDB11A08191C003353F7 /* doge.jpeg */; };
+		5200267D1A09CBF8003DC9C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5200267B1A09CBF8003DC9C9 /* Main.storyboard */; };
 		5245BDB41A082593003353F7 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5245BDB31A082593003353F7 /* Parse.framework */; };
 		5245BDB61A08276E003353F7 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5245BDB51A08276E003353F7 /* AudioToolbox.framework */; };
 		5245BDB81A082774003353F7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5245BDB71A082774003353F7 /* CFNetwork.framework */; };
@@ -31,7 +31,6 @@
 		84437E611A08250B00371196 /* ItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84437E601A08250B00371196 /* ItemTableViewCell.m */; };
 		845166DF1A07FED6004663DE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 845166DE1A07FED6004663DE /* main.m */; };
 		845166E21A07FED6004663DE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 845166E11A07FED6004663DE /* AppDelegate.m */; };
-		845166E81A07FED6004663DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 845166E61A07FED6004663DE /* Main.storyboard */; };
 		845166EA1A07FED6004663DE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 845166E91A07FED6004663DE /* Images.xcassets */; };
 		845166ED1A07FED6004663DE /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845166EB1A07FED6004663DE /* LaunchScreen.xib */; };
 		845166F91A07FED6004663DE /* SwiprTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 845166F81A07FED6004663DE /* SwiprTests.m */; };
@@ -63,7 +62,7 @@
 		5200262B1A086D7B003DC9C9 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		520026781A0953B2003DC9C9 /* NewItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewItemViewController.h; sourceTree = "<group>"; };
 		520026791A0953B2003DC9C9 /* NewItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewItemViewController.m; sourceTree = "<group>"; };
-		5245BDB11A08191C003353F7 /* doge.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = doge.jpeg; sourceTree = "<group>"; };
+		5200267C1A09CBF8003DC9C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Swipr/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5245BDB31A082593003353F7 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		5245BDB51A08276E003353F7 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		5245BDB71A082774003353F7 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -91,7 +90,6 @@
 		845166DE1A07FED6004663DE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		845166E01A07FED6004663DE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		845166E11A07FED6004663DE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		845166E71A07FED6004663DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		845166E91A07FED6004663DE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		845166EC1A07FED6004663DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		845166F21A07FED6004663DE /* SwiprTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiprTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -223,8 +221,8 @@
 				52BE14DF1A08007D0090A2B0 /* Views */,
 				52BE14DD1A0800650090A2B0 /* Controllers */,
 				8484DF8D1A086302006C5FC7 /* Model */,
-				845166E61A07FED6004663DE /* Main.storyboard */,
 				845166E91A07FED6004663DE /* Images.xcassets */,
+				5200267B1A09CBF8003DC9C9 /* Main.storyboard */,
 				845166EB1A07FED6004663DE /* LaunchScreen.xib */,
 				845166DC1A07FED6004663DE /* Supporting Files */,
 			);
@@ -239,7 +237,6 @@
 				520026281A085CF5003DC9C9 /* logoutButton.png */,
 				8484DF831A084E33006C5FC7 /* dogs_hero.png */,
 				8484DF851A084E3A006C5FC7 /* massive-pipe-tokes-thcf.jpg */,
-				5245BDB11A08191C003353F7 /* doge.jpeg */,
 				845166DD1A07FED6004663DE /* Info.plist */,
 				845166DE1A07FED6004663DE /* main.m */,
 			);
@@ -356,11 +353,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5245BDB21A08191C003353F7 /* doge.jpeg in Resources */,
-				845166E81A07FED6004663DE /* Main.storyboard in Resources */,
 				845166ED1A07FED6004663DE /* LaunchScreen.xib in Resources */,
 				845166EA1A07FED6004663DE /* Images.xcassets in Resources */,
 				520026291A085CF5003DC9C9 /* logoutButton.png in Resources */,
+				5200267D1A09CBF8003DC9C9 /* Main.storyboard in Resources */,
 				8484DF861A084E3A006C5FC7 /* massive-pipe-tokes-thcf.jpg in Resources */,
 				8484DF841A084E33006C5FC7 /* dogs_hero.png in Resources */,
 			);
@@ -418,12 +414,13 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		845166E61A07FED6004663DE /* Main.storyboard */ = {
+		5200267B1A09CBF8003DC9C9 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				845166E71A07FED6004663DE /* Base */,
+				5200267C1A09CBF8003DC9C9 /* Base */,
 			);
 			name = Main.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		845166EB1A07FED6004663DE /* LaunchScreen.xib */ = {

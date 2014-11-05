@@ -17,4 +17,6 @@
 - (IBAction)logOutButtonPressed:(UIBarButtonItem *)sender;
 - (IBAction)refreshButtonPressed:(UIBarButtonItem *)sender;
 
+-(void)goToItemDetail;
+
 @end

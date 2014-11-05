@@ -7,13 +7,16 @@
 //
 
 #import "DraggableViewBackground.h"
+#import "MainViewController.h"
+
 
 @implementation DraggableViewBackground{
-    NSInteger cardsLoadedIndex; //%%% the index of the card you have loaded into the loadedCards array last
+
     NSMutableArray *loadedCards; //%%% the array of card loaded (change max_buffer_size to increase or decrease the number of cards this holds)
     
     UIButton* checkButton;
     UIButton* xButton;
+    UIButton* infoButton;
 }
 //this makes it so only two cards are loaded at a time to
 //avoid performance and memory costs
@@ -33,7 +36,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
         
         loadedCards = [[NSMutableArray alloc] init];
         allCards = [[NSMutableArray alloc] init];
-        cardsLoadedIndex = 0;
+        self.cardsLoadedIndex = 0;
         [self loadCards];
     }
     return self;
@@ -47,11 +50,17 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
     xButton = [[UIButton alloc]initWithFrame:CGRectMake(90, 545, 59, 59)];
     [xButton setImage:[UIImage imageNamed:@"xButton"] forState:UIControlStateNormal];
     [xButton addTarget:self action:@selector(swipeLeft) forControlEvents:UIControlEventTouchUpInside];
+    
+    infoButton = [[UIButton alloc]initWithFrame:CGRectMake(170, 555, 40, 40)];
+    [infoButton setImage:[UIImage imageNamed:@"infoButton"] forState:UIControlStateNormal];
+    [infoButton addTarget:self action:@selector(showItemDetails:) forControlEvents:UIControlEventTouchUpInside];
+    
     checkButton = [[UIButton alloc]initWithFrame:CGRectMake(230, 545, 59, 59)];
     [checkButton setImage:[UIImage imageNamed:@"checkButton"] forState:UIControlStateNormal];
     [checkButton addTarget:self action:@selector(swipeRight) forControlEvents:UIControlEventTouchUpInside];
     
     [self addSubview:xButton];
+    [self addSubview:infoButton];
     [self addSubview:checkButton];
     
     
@@ -113,7 +122,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
             } else {
                 [self addSubview:[loadedCards objectAtIndex:i]];
             }
-            cardsLoadedIndex++; //%%% we loaded a card into loaded cards, so we have to increment
+            self.cardsLoadedIndex++; //%%% we loaded a card into loaded cards, so we have to increment
         }
     }
 }
@@ -128,9 +137,9 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
     
     [loadedCards removeObjectAtIndex:0]; //%%% card was swiped, so it's no longer a "loaded card"
     
-    if (cardsLoadedIndex < [allCards count]) { //%%% if we haven't reached the end of all cards, put another into the loaded cards
-        [loadedCards addObject:[allCards objectAtIndex:cardsLoadedIndex]];
-        cardsLoadedIndex++;//%%% loaded a card, so have to increment count
+    if (self.cardsLoadedIndex < [allCards count]) { //%%% if we haven't reached the end of all cards, put another into the loaded cards
+        [loadedCards addObject:[allCards objectAtIndex:self.cardsLoadedIndex]];
+        self.cardsLoadedIndex++;//%%% loaded a card, so have to increment count
         [self insertSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE-1)] belowSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE-2)]];
     }
 }
@@ -145,9 +154,9 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
     
     [loadedCards removeObjectAtIndex:0]; //%%% card was swiped, so it's no longer a "loaded card"
     
-    if (cardsLoadedIndex < [allCards count]) { //%%% if we haven't reached the end of all cards, put another into the loaded cards
-        [loadedCards addObject:[allCards objectAtIndex:cardsLoadedIndex]];
-        cardsLoadedIndex++;//%%% loaded a card, so have to increment count
+    if (self.cardsLoadedIndex < [allCards count]) { //%%% if we haven't reached the end of all cards, put another into the loaded cards
+        [loadedCards addObject:[allCards objectAtIndex:self.cardsLoadedIndex]];
+        self.cardsLoadedIndex++;//%%% loaded a card, so have to increment count
         [self insertSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE-1)] belowSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE-2)]];
     }
 
@@ -173,6 +182,14 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
         dragView.overlayView.alpha = 1;
     }];
     [dragView leftClickAction];
+}
+
+-(void)showItemDetails:(UIButton *)sender {
+    MainViewController *mainvc = 
+    [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MainViewController"];
+    
+    [mainvc goToItemDetail];
+    
 }
 
 

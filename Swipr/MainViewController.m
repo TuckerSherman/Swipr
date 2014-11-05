@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import "ItemDetailViewController.h"
 
 
 @interface MainViewController ()
@@ -18,6 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationItem setHidesBackButton:YES];
+    
     
     // Setup draggable background
     self.draggableBackground = [[DraggableViewBackground alloc]initWithFrame:self.view.frame];
@@ -81,7 +83,11 @@
 
 }
 
-
+-(void)goToItemDetail {
+    
+    ItemDetailViewController *itemDetailVC =  [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ItemDetailViewController"];
+    [self.navigationController pushViewController:itemDetailVC animated:YES];
+}
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == [alertView cancelButtonIndex]){
@@ -98,4 +104,18 @@
     
     [self retreiveFromParse];
 }
+
+
+
+#pragma mark - Prepare for Segue method
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([[segue identifier] isEqualToString:@"itemDetailSegue"]) {
+        
+
+    }
+    
+}
+
 @end

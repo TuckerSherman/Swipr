@@ -12,6 +12,7 @@
     
     PFUser *currentUser;
     CIImage *originalImage;
+    NSArray *items;
 }
 
 @end
@@ -26,6 +27,7 @@
     
 }
 
+#pragma mark - IBActions
 - (IBAction)cancelButtonPressed:(UIButton *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -47,6 +49,7 @@
             NSLog(@"Error saving to Parse");
         }
     }];
+    [self saveItemArrayToParse:newItem];
     newItem = nil;
     
 }
@@ -95,6 +98,8 @@
     CIImage *outputImage = [self oldPhoto:originalImage withAmount:0.6];
     CGImageRef cgimg = [context createCGImage:outputImage fromRect:[outputImage extent]];
     UIImage *newImage = [[UIImage alloc] initWithCGImage:cgimg];
+    
+    // Set views
     [self.itemImageButton setBackgroundImage:newImage forState:UIControlStateNormal];
     self.placeholderImageView.image = nil;
     self.item.imageData = UIImagePNGRepresentation(newImage);
@@ -150,6 +155,21 @@
     
     [textField resignFirstResponder];
     return YES;
+}
+
+#pragma mark - Parse helper method
+-(void)saveItemArrayToParse:(PFObject *)item {
+    items = [currentUser objectForKey:@"items"];
+    NSLog(@"%@", items);
+    NSMutableArray *itemsMutable = [[NSMutableArray alloc] initWithArray:items];
+    [itemsMutable addObject:item];
+    
+    items = [itemsMutable mutableCopy];
+    NSLog(@"%@", items);
+    
+    [currentUser setObject:items forKey:@"items"];
+    
+    [currentUser saveInBackground];
 }
 
 @end
