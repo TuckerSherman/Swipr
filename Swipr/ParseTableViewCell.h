@@ -8,7 +8,7 @@
 
 #import <Parse/Parse.h>
 
-@interface ParseTableViewCell : PFTableViewCell
+@interface ParseTableViewCell : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel *parseItemTitleLabel;
 @property (strong, nonatomic) IBOutlet PFImageView *itemThumbnailPFImageView;

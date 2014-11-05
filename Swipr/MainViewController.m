@@ -22,7 +22,6 @@
     // Setup draggable background
     self.draggableBackground = [[DraggableViewBackground alloc]initWithFrame:self.view.frame];
     [self.view addSubview:self.draggableBackground];
-    
     [self retreiveFromParse];
     
 }
@@ -34,7 +33,6 @@
     NSString*thisUser = [[PFUser currentUser] username];
     PFQuery *query = [PFQuery queryWithClassName:@"Item"];
     [query whereKey:@"user" notEqualTo:thisUser];
-    
     [query orderByAscending:@"createdAt"];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {

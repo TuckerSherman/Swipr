@@ -16,10 +16,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.itemImageView.image = [UIImage imageWithData:self.item.imageData];
-    self.itemDescriptionTextFeild.text = self.item.desc;
+    self.itemImageView.file = [self.item objectForKey:@"image"];
+    [self.itemImageView loadInBackground];
     
-    // Do any additional setup after loading the view.
+    self.itemDescriptionTextFeild.text = [self.item objectForKey:@"description"];
+    
 }
 
 - (void)didReceiveMemoryWarning {
