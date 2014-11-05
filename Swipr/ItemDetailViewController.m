@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.itemImageView.image = [UIImage imageWithData:self.item.imageData];
+    self.itemImageView.file = self.pfImage;
     self.itemDescriptionTextFeild.text = self.item.desc;
     
     // Do any additional setup after loading the view.

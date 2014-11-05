@@ -16,7 +16,7 @@
     
     UIButton* checkButton;
     UIButton* xButton;
-    UIButton* infoButton;
+
 }
 //this makes it so only two cards are loaded at a time to
 //avoid performance and memory costs
@@ -37,6 +37,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
         loadedCards = [[NSMutableArray alloc] init];
         allCards = [[NSMutableArray alloc] init];
         self.cardsLoadedIndex = 0;
+        self.cardCounter = 0;
         [self loadCards];
     }
     return self;
@@ -45,22 +46,18 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
 //%%% sets up the extra buttons on the screen
 -(void)setupView
 {
-    self.backgroundColor = [UIColor whiteColor]; 
+    self.backgroundColor = [UIColor clearColor];
 
     xButton = [[UIButton alloc]initWithFrame:CGRectMake(90, 545, 59, 59)];
     [xButton setImage:[UIImage imageNamed:@"xButton"] forState:UIControlStateNormal];
     [xButton addTarget:self action:@selector(swipeLeft) forControlEvents:UIControlEventTouchUpInside];
-    
-    infoButton = [[UIButton alloc]initWithFrame:CGRectMake(170, 555, 40, 40)];
-    [infoButton setImage:[UIImage imageNamed:@"infoButton"] forState:UIControlStateNormal];
-    [infoButton addTarget:self action:@selector(showItemDetails:) forControlEvents:UIControlEventTouchUpInside];
     
     checkButton = [[UIButton alloc]initWithFrame:CGRectMake(230, 545, 59, 59)];
     [checkButton setImage:[UIImage imageNamed:@"checkButton"] forState:UIControlStateNormal];
     [checkButton addTarget:self action:@selector(swipeRight) forControlEvents:UIControlEventTouchUpInside];
     
     [self addSubview:xButton];
-    [self addSubview:infoButton];
+
     [self addSubview:checkButton];
     
     
@@ -134,7 +131,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
 {
     //do whatever you want with the card that was swiped
     //    DraggableView *c = (DraggableView *)card;
-    
+    self.cardCounter++;
     [loadedCards removeObjectAtIndex:0]; //%%% card was swiped, so it's no longer a "loaded card"
     
     if (self.cardsLoadedIndex < [allCards count]) { //%%% if we haven't reached the end of all cards, put another into the loaded cards
@@ -151,7 +148,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
 {
     //do whatever you want with the card that was swiped
     //    DraggableView *c = (DraggableView *)card;
-    
+    self.cardCounter++;
     [loadedCards removeObjectAtIndex:0]; //%%% card was swiped, so it's no longer a "loaded card"
     
     if (self.cardsLoadedIndex < [allCards count]) { //%%% if we haven't reached the end of all cards, put another into the loaded cards
@@ -183,15 +180,6 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
     }];
     [dragView leftClickAction];
 }
-
--(void)showItemDetails:(UIButton *)sender {
-    MainViewController *mainvc = 
-    [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MainViewController"];
-    
-    [mainvc goToItemDetail];
-    
-}
-
 
 
 @end

@@ -10,13 +10,17 @@
 #import "DraggableViewBackground.h"
 #import "DraggableView.h"
 #import <Parse/Parse.h>
+#import "Item.h"
 
 @interface MainViewController : UIViewController <UIAlertViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UIView *subView;
 @property (strong, nonatomic) DraggableViewBackground *draggableBackground;
+@property (weak, nonatomic) IBOutlet UIButton *infoButton;
+@property (strong, nonatomic) Item *item;
+
 - (IBAction)logOutButtonPressed:(UIBarButtonItem *)sender;
 - (IBAction)refreshButtonPressed:(UIBarButtonItem *)sender;
 
--(void)goToItemDetail;
 
 @end

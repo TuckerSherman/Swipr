@@ -23,7 +23,8 @@
     
     // Setup draggable background
     self.draggableBackground = [[DraggableViewBackground alloc]initWithFrame:self.view.frame];
-    [self.view addSubview:self.draggableBackground];
+    [self.subView addSubview:self.draggableBackground];
+    [self.subView bringSubviewToFront:self.infoButton];
     
     [self retreiveFromParse];
     
@@ -83,12 +84,6 @@
 
 }
 
--(void)goToItemDetail {
-    
-    ItemDetailViewController *itemDetailVC =  [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ItemDetailViewController"];
-    [self.navigationController pushViewController:itemDetailVC animated:YES];
-}
-
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == [alertView cancelButtonIndex]){
 
@@ -112,7 +107,11 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     if ([[segue identifier] isEqualToString:@"itemDetailSegue"]) {
+        ItemDetailViewController *itemDetailVC = segue.destinationViewController;
+        itemDetailVC.item = [[Item alloc] init];
         
+        itemDetailVC.item.desc = [[self.draggableBackground.items objectAtIndex:self.draggableBackground.cardCounter] objectForKey:@"description"];
+        itemDetailVC.pfImage= [[self.draggableBackground.items objectAtIndex:self.draggableBackground.cardsLoadedIndex] objectForKey:@"image"];
 
     }
     
