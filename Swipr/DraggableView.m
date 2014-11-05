@@ -182,7 +182,7 @@
     
     [self.delegate cardSwipedRight:self];
     
-    NSLog(@"YES");
+//    NSLog(@"YES");
 }
 
 //%%% called when a swip exceeds the ACTION_MARGIN to the left
@@ -198,7 +198,7 @@
     
     [self.delegate cardSwipedLeft:self];
     
-    NSLog(@"NO");
+//    NSLog(@"NO");
 }
 
 -(void)rightClickAction
@@ -214,7 +214,7 @@
     
     [self.delegate cardSwipedRight:self];
     
-    NSLog(@"YES");
+//    NSLog(@"YES");
 }
 
 -(void)leftClickAction
@@ -230,7 +230,7 @@
     
     [self.delegate cardSwipedLeft:self];
     
-    NSLog(@"NO");
+//    NSLog(@"NO");
 }
 
 

@@ -105,18 +105,23 @@
 -(void)currentCard:(DraggableView *)card {
     
     self.currentCard = card;
-    NSLog(@"%@", self.currentCard.information.text);
+    
+//    NSLog(@"%@", self.currentCard.information.text);
     
 }
 
 -(void)setUserPreference:(DraggableView *)card preference:(BOOL)userPreference{
     PFObject* thisItem = card.pfItem;
+    NSMutableArray* wantedItems;
+    NSMutableArray* unwantedItems;
     
 //    PFQuery *query = [PFQuery queryWithClassName:@"Item"];
 //    [query whereKey:@"objectID" equalTo:card.objectId];
     if (userPreference == NO) {
         NSLog(@"USER DOES NOT WANT : %@",[thisItem objectForKey:@"description"]);
-
+        unwantedItems = [NSMutableArray arrayWithArray:[thisItem objectForKey:@"usersWhoDoNotWant"]];
+        NSLog(@"other users who dont want this item: %@", unwantedItems);
+        [unwantedItems addObject:[PFUser currentUser]];
         
         //add item to user's NO preference array and upload to parse
     }
@@ -127,6 +132,20 @@
         //add item to users YES preference array and upload to parse
     }
 }
+//#pragma mark - Parse helper method
+//-(void)saveItemArrayToParse:(PFObject *)item {
+//    items = [currentUser objectForKey:@"items"];
+//    NSLog(@"%@", items);
+//    NSMutableArray *itemsMutable = [[NSMutableArray alloc] initWithArray:items];
+//    [itemsMutable addObject:item];
+//    
+//    items = [itemsMutable mutableCopy];
+//    NSLog(@"%@", items);
+//    
+//    [currentUser setObject:items forKey:@"items"];
+//    
+//    [currentUser saveInBackground];
+//}
 
 
 @end
