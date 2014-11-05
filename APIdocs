@@ -1,0 +1,23 @@
+User has
+    ObjectId (string)
+    username (string)
+    password
+    authData
+    emailVerified
+    bio (string)
+    email (string)
+    profileImage
+    createdAt
+    ACL
+
+Item has
+    ObjectId
+    image (file)
+    thumbnailImage (file)
+    description (string)
+    createdAt (date)
+    updatedAt (date)
+    ACL (ACL)
+    user (string)
+    owner (relation)
+

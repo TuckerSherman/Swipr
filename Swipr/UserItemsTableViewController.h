@@ -8,13 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
-#import "ItemTableViewCell.h"
-#import "Item.h"
+#import "ParseTableViewCell.h"
+#import "PFItem.h"
 #import "ItemDetailViewController.h"
 
-@interface UserItemsTableViewController : UITableViewController
+@interface UserItemsTableViewController : PFQueryTableViewController
 
 @property (strong,nonatomic) NSArray* itemsForUser;
+
+
+- (id)initWithCoder:(NSCoder *)aCoder;
 
 
 @end
