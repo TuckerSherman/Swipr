@@ -58,7 +58,6 @@
             NSLog(@"profilePic loadInBackground completed");
         else {
             NSLog(@"profilePic loadInBackground failed with error: %@", error);
-            
         }
     }];
 }
@@ -202,7 +201,6 @@ shouldChangeTextInRange:(NSRange)range
 #pragma mark - text feild delegate calls (only for the email feild)
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
-
 //feild is only accessable if user profile is "unlocked"
     [textField resignFirstResponder];
         _currentUser[@"email"]= self.userEmailTextFeild.text;
