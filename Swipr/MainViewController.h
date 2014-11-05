@@ -15,6 +15,7 @@
 @interface MainViewController : UIViewController <UIAlertViewDelegate, DraggableViewBackgroundDelegate>
 
 @property (strong, nonatomic) Item *item;
+
 @property (strong, nonatomic) DraggableView *currentCard;
 @property (strong, nonatomic) DraggableViewBackground *draggableBackground;
 @property (weak, nonatomic) IBOutlet UIView *subView;

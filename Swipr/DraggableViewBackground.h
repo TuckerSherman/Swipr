@@ -36,22 +36,22 @@
 @protocol DraggableViewBackgroundDelegate <NSObject>
 
 -(void)currentCard:(DraggableView *)card;
+-(void)setUserPreference:(DraggableView *)card preference:(BOOL)leftOrRight;
+
 
 @end
 
 @interface DraggableViewBackground : UIView <DraggableViewDelegate>
 
-//methods called in DraggableView
--(void)cardSwipedLeft:(UIView *)card;
--(void)cardSwipedRight:(UIView *)card;
-
 @property (weak, nonatomic) id<DraggableViewBackgroundDelegate> delegate;
 @property (retain,nonatomic) NSArray* cardLabels; //%%% the labels the cards
-@property (strong, nonatomic) NSArray* items; //the actual PFObjects we want to display
+@property (strong, nonatomic) NSArray* pfItemsArray; //the actual PFObjects we want to display
 @property (retain,nonatomic) NSMutableArray* allCards; //%%% the labels the cards
 @property (assign, nonatomic) NSInteger cardsLoadedIndex;
 @property (assign, nonatomic) NSInteger cardCounter;
 
 -(void)loadCards;
+-(void)cardSwipedLeft:(UIView *)card;
+-(void)cardSwipedRight:(UIView *)card;
 
 @end

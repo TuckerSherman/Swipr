@@ -72,7 +72,9 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
     
     DraggableView *draggableView = [[DraggableView alloc]initWithFrame:CGRectMake((self.frame.size.width - CARD_WIDTH)/2, (self.frame.size.height - CARD_HEIGHT)/2, CARD_WIDTH, CARD_HEIGHT)];
     
-    PFObject* currentObject = [self.items objectAtIndex:index];
+    PFObject* currentObject = [self.pfItemsArray objectAtIndex:index];
+    
+    draggableView.pfItem = currentObject;
     
     draggableView.information.text = [currentObject objectForKey:@"description"];
     draggableView.itemImage.file = [currentObject objectForKey:@"image"];
@@ -82,7 +84,8 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
     [draggableView.itemImage loadInBackground:^(UIImage *image, NSError *error) {
         if (!error) {
             NSLog(@"loaded image for card");
-//            DraggableView* thisCard = [loadedCards objectAtIndex:index]
+//            DraggableView* thisCard = [loadedCards objectAtIndex:index];
+//            thisCard.itemImage.image = image;
         }
         else{
             NSLog(@"error attempting to load item image in background");
@@ -98,13 +101,12 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
 //%%% loads all the cards and puts the first x in the "loaded cards" array
 -(void)loadCards
 {
-    if([self.items count] > 0) {
-        NSInteger numLoadedCardsCap =(([self.items count] > MAX_BUFFER_SIZE)?MAX_BUFFER_SIZE:[self.items count]);
+    if([self.pfItemsArray count] > 0) {
+        NSInteger numLoadedCardsCap =(([self.pfItemsArray count] > MAX_BUFFER_SIZE)?MAX_BUFFER_SIZE:[self.pfItemsArray count]);
         //%%% if the buffer size is greater than the data size, there will be an array error, so this makes sure that doesn't happen
         
         //%%% loops through the exampleCardsLabels array to create a card for each label.  This should be customized by removing "exampleCardLabels" with your own array of data
-        
-        for (int i = 0; i<[self.items count]; i++) {
+        for (int i = 0; i<[self.pfItemsArray count]; i++) {
             DraggableView* newCard = [self createDraggableViewWithDataAtIndex:i];
             [allCards addObject:newCard];
             
@@ -132,7 +134,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
 -(void)cardSwipedLeft:(UIView *)card;
 {
     //do whatever you want with the card that was swiped
-    DraggableView *c = (DraggableView *)card;
+    DraggableView *thisCard = (DraggableView *)card;
     self.cardCounter++;
     [loadedCards removeObjectAtIndex:0]; //%%% card was swiped, so it's no longer a "loaded card"
     
@@ -141,7 +143,9 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
         self.cardsLoadedIndex++;//%%% loaded a card, so have to increment count
         [self insertSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE-1)] belowSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE-2)]];
     }
-    [self.delegate currentCard:c];
+    [self.delegate currentCard:thisCard];
+    [self.delegate setUserPreference:thisCard preference:NO];
+
 }
 
 #warning include own action here!
@@ -150,7 +154,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
 -(void)cardSwipedRight:(UIView *)card
 {
     //do whatever you want with the card that was swiped
-        DraggableView *c = (DraggableView *)card;
+    DraggableView *thisCard = (DraggableView *)card;
     self.cardCounter++;
     [loadedCards removeObjectAtIndex:0]; //%%% card was swiped, so it's no longer a "loaded card"
     
@@ -159,7 +163,12 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
         self.cardsLoadedIndex++;//%%% loaded a card, so have to increment count
         [self insertSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE-1)] belowSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE-2)]];
     }
-    [self.delegate currentCard:c];
+    [self.delegate currentCard:thisCard];
+    [self.delegate setUserPreference:thisCard preference:YES];
+    
+    
+    
+    
 }
 
 //%%% when you hit the right button, this is called and substitutes the swipe

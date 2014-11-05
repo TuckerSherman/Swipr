@@ -44,8 +44,8 @@
         if (!error) {
             // Copy objects array fetched from Parse to "items"
             NSMutableArray *items = [[NSMutableArray alloc] initWithArray:objects];
-            self.draggableBackground.items = [items mutableCopy];
-             NSLog(@"%d",(int)[self.draggableBackground.items count]);
+            self.draggableBackground.pfItemsArray = [items mutableCopy];
+             NSLog(@"%d",(int)[self.draggableBackground.pfItemsArray count]);
             [self.draggableBackground loadCards];
             
         } else {
@@ -94,8 +94,7 @@
     if ([[segue identifier] isEqualToString:@"itemDetailSegue"]) {
         ItemDetailViewController *itemDetailVC = segue.destinationViewController;
         
-        itemDetailVC.itemDescriptionTextField.text = self.currentCard.description;
-        itemDetailVC.item = [self.draggableBackground.items objectAtIndex:self.draggableBackground.cardCounter];
+        itemDetailVC.item = [self.draggableBackground.pfItemsArray objectAtIndex:self.draggableBackground.cardCounter];
 
     }
     
@@ -109,5 +108,25 @@
     NSLog(@"%@", self.currentCard.information.text);
     
 }
+
+-(void)setUserPreference:(DraggableView *)card preference:(BOOL)userPreference{
+    PFObject* thisItem = card.pfItem;
+    
+//    PFQuery *query = [PFQuery queryWithClassName:@"Item"];
+//    [query whereKey:@"objectID" equalTo:card.objectId];
+    if (userPreference == NO) {
+        NSLog(@"USER DOES NOT WANT : %@",[thisItem objectForKey:@"description"]);
+
+        
+        //add item to user's NO preference array and upload to parse
+    }
+    else if(userPreference == YES)
+    {
+        NSLog(@"USER WANTS : %@",[thisItem objectForKey:@"description"]);
+
+        //add item to users YES preference array and upload to parse
+    }
+}
+
 
 @end

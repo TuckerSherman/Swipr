@@ -50,9 +50,13 @@
 
 @property (nonatomic, strong) UIPanGestureRecognizer *panGestureRecognizer;
 @property (nonatomic)         CGPoint originalPoint;
+
 @property (nonatomic,strong)  OverlayView* overlayView;
 @property (nonatomic,strong)  UILabel* information; //%%% a placeholder for any card-specific information
 @property (nonatomic, strong) PFImageView *itemImage;
+
+@property (nonatomic, strong)PFObject* pfItem;
+
 @property (nonatomic, strong) NSString *objectId;
 @property (nonatomic, strong) NSString *owner;
 

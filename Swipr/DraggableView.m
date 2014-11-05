@@ -28,16 +28,29 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self setupView];
+        PFObject* thisObject = self.pfItem;
         
         // View Setup for draggable cards
         // Image view
         self.itemImage = [[PFImageView alloc] initWithFrame:CGRectMake(10, 10, self.frame.size.width - 20, 310)];
-        self.itemImage.image = [UIImage imageNamed:@"itemImagePlaceholder"];
+
+//        self.itemImage.file = [thisObject objectForKey:@"image"];
+//        [self.itemImage loadInBackground:^(UIImage *image, NSError *error) {
+//            if (!error) {
+//                NSLog(@"I GOT AN IMAGE");
+//                self.itemImage.image = image;
+//            }
+//        }];
         
+        self.information.text = @"no info given";
+        self.information.text = [thisObject objectForKey:@"description"];
+        
+        
+        self.itemImage.image = [UIImage imageNamed:@"itemImagePlaceholder"];
         
         // Text label
         self.information = [[UILabel alloc]initWithFrame:CGRectMake(0, 300, self.frame.size.width, 100)];
-        self.information.text = @"no info given";
+ 
         [self.information setTextAlignment:NSTextAlignmentCenter];
         self.information.textColor = [UIColor blackColor];
         
