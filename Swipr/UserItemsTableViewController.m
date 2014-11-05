@@ -14,10 +14,27 @@
 
 @implementation UserItemsTableViewController
 
+- (id)initWithCoder:(NSCoder *)aCoder {
+    self = [super initWithCoder:aCoder];
+    if (self) {
+        // Customize the table
+        self.parseClassName = @"Item";
+        self.textKey = @"description";
+        self.imageKey = @"image";
+        self.placeholderImage = [UIImage imageNamed:@"itemImagePlaceholder"];
+        self.objectsPerPage = 25;
+
+        self.pullToRefreshEnabled = YES;
+        self.paginationEnabled = YES;
+        
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
-    self.itemsForUser = [self getItemsForUser:@"bill"];
     [super viewDidLoad];
-    
+    [self loadObjects];
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -30,44 +47,99 @@
     // Dispose of any resources that can be recreated.
 }
 
-
--(NSArray*)getItemsForUser:(NSString*)user{
+- (PFQuery *)queryForTable
+{
+   
     
-    //Initialize some sample data
+    PFUser* thisUser = [PFUser currentUser];
+     NSLog(@"user = '%@'",thisUser.username);
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"dogs_hero" ofType:@"png"];
-    NSData* dogImageData = [NSData dataWithContentsOfFile:path];
-    Item* dog = [[Item alloc]initWithTitle:@"Dog" image:dogImageData thumbnailImage:dogImageData description:@"such allergies, much cutes, do not want"];
-    
-    NSArray* items = @[dog];
-    
-    return items;
+    NSPredicate* onlyThisUser = [NSPredicate predicateWithFormat:@"user='%@'",thisUser.username];
+    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
+    [query whereKey:@"user" equalTo:thisUser.username];
+    if(self.objects.count == 0){
+        NSLog(@"query to parse came back empty");
+    }
+    [query orderByAscending:@"createdAt"];
+    return query;
 }
 
-#pragma mark - Table view data source
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object{
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    return self.itemsForUser.count;
-}
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"itemCell" forIndexPath:indexPath];
-    Item* thisItem = self.itemsForUser[indexPath.row];
-    cell.itemTitleLabel.text = thisItem.title;
-    cell.itemThumbNailImageView.image = [UIImage imageWithData:thisItem.thumbnailImageData];
     
-    // Configure the cell...
+    
+    PFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    if (cell == nil) {
+        cell = [[ParseTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    }
+    cell.textLabel.text = [object objectForKey:@"description"];
+    cell.imageView.image = [UIImage imageNamed:@"itemImagePlaceholder"];
+    cell.imageView.file = [object objectForKey:@"image"];
+    
+    [cell.imageView loadInBackground:^(UIImage *image, NSError *error) {
+        if(!error){
+            dispatch_async(dispatch_get_main_queue(), ^{
+                cell.imageView.image = image;
+            });
+        }}];
+    
+        
+                           
+                           
+    
+//    cell.parseItemTitleLabel.text = [object objectForKey:@"description"];
+//    cell.itemThumbnailPFImageView.image = [UIImage imageNamed:@"itemImagePlaceholder"];
+//
+//    cell.itemThumbnailPFImageView.file = [object objectForKey:@"image"];
+//    [cell.itemThumbnailPFImageView loadInBackground:^(UIImage *image, NSError *error) {
+//        if (!error) {
+//            NSLog(@"loaded cell image!");
+//        }
+//        else{
+//            NSLog(@"error loading cell image: %@",error);
+//        }
+//    }];
     
     return cell;
 }
 
+//-(NSArray*)getItemsForUser:(NSString*)user{
+//    
+//    //Initialize some sample data
+//    
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"dogs_hero" ofType:@"png"];
+//    NSData* dogImageData = [NSData dataWithContentsOfFile:path];
+//    Item* dog = [[Item alloc]initWithTitle:@"Dog" image:dogImageData thumbnailImage:dogImageData description:@"such allergies, much cutes, do not want"];
+//    
+//    NSArray* items = @[dog];
+//    
+//    return items;
+//}
+
+#pragma mark - Table view data source
+//
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+//    // Return the number of sections.
+//    return 1;
+//}
+//
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+//    // Return the number of rows in the section.
+//    return self.itemsForUser.count;
+//}
+//
+//
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    ItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"itemCell" forIndexPath:indexPath];
+//    Item* thisItem = self.itemsForUser[indexPath.row];
+//    cell.itemTitleLabel.text = thisItem.title;
+//    cell.itemThumbNailImageView.image = [UIImage imageWithData:thisItem.thumbnailImageData];
+//    
+//    // Configure the cell...
+//    
+//    return cell;
+//}
+//
 
 /*
 // Override to support conditional editing of the table view.
@@ -105,18 +177,18 @@
 
 
 #pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-    ItemDetailViewController* detailItemViewController = [segue destinationViewController];
-    NSLog(@"%@",sender);
-    
-//    [self.tableView cellForRowAtIndexPath:
-    [detailItemViewController setItem:self.itemsForUser[0]];
-    
-    // Pass the selected object to the new view controller.
-}
+//
+//// In a storyboard-based application, you will often want to do a little preparation before navigation
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    
+//    ItemDetailViewController* detailItemViewController = [segue destinationViewController];
+//    NSLog(@"%@",sender);
+//    
+////    [self.tableView cellForRowAtIndexPath:
+//    [detailItemViewController setItem:self.itemsForUser[0]];
+//    
+//    // Pass the selected object to the new view controller.
+//}
 
 
 @end

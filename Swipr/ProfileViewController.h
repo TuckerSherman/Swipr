@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
-#import "Item.h"
-
 @interface ProfileViewController : UIViewController<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate, UITextViewDelegate>
 
 

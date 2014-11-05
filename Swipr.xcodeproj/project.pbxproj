@@ -45,6 +45,8 @@
 		8484DF8C1A0862DD006C5FC7 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 8484DF8B1A0862DD006C5FC7 /* User.m */; };
 		84F8158D1A09AD3800179034 /* ParseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F8158C1A09AD3800179034 /* ParseTableViewCell.m */; };
 		84F8158F1A09ADD800179034 /* APIdocs in Resources */ = {isa = PBXBuildFile; fileRef = 84F8158E1A09ADD800179034 /* APIdocs */; };
+		84F815921A09AF8100179034 /* PFUserItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F815911A09AF8100179034 /* PFUserItemsViewController.m */; };
+		84F815951A09C90D00179034 /* PFItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F815941A09C90C00179034 /* PFItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +118,10 @@
 		84F8158B1A09AD3700179034 /* ParseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseTableViewCell.h; sourceTree = "<group>"; };
 		84F8158C1A09AD3800179034 /* ParseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseTableViewCell.m; sourceTree = "<group>"; };
 		84F8158E1A09ADD800179034 /* APIdocs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = APIdocs; sourceTree = "<group>"; };
+		84F815901A09AF8100179034 /* PFUserItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFUserItemsViewController.h; sourceTree = "<group>"; };
+		84F815911A09AF8100179034 /* PFUserItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFUserItemsViewController.m; sourceTree = "<group>"; };
+		84F815931A09C90C00179034 /* PFItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFItem.h; sourceTree = "<group>"; };
+		84F815941A09C90C00179034 /* PFItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,8 +182,8 @@
 				8461CE281A08172C00BB3525 /* ProfileViewController.m */,
 				845167081A080FC4004663DE /* UserItemsTableViewController.h */,
 				845167091A080FC4004663DE /* UserItemsTableViewController.m */,
-				84F8158B1A09AD3700179034 /* ParseTableViewCell.h */,
-				84F8158C1A09AD3800179034 /* ParseTableViewCell.m */,
+				84F815901A09AF8100179034 /* PFUserItemsViewController.h */,
+				84F815911A09AF8100179034 /* PFUserItemsViewController.m */,
 				520026781A0953B2003DC9C9 /* NewItemViewController.h */,
 				520026791A0953B2003DC9C9 /* NewItemViewController.m */,
 				8461CE241A0816FA00BB3525 /* ItemDetailViewController.h */,
@@ -201,6 +207,8 @@
 				52BE14E31A0800EC0090A2B0 /* DraggableViewBackground.m */,
 				84437E5F1A08250B00371196 /* ItemTableViewCell.h */,
 				84437E601A08250B00371196 /* ItemTableViewCell.m */,
+				84F8158B1A09AD3700179034 /* ParseTableViewCell.h */,
+				84F8158C1A09AD3800179034 /* ParseTableViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -275,6 +283,8 @@
 			isa = PBXGroup;
 			children = (
 				8484DF871A08598F006C5FC7 /* UserItems.h */,
+				84F815931A09C90C00179034 /* PFItem.h */,
+				84F815941A09C90C00179034 /* PFItem.m */,
 				8484DF881A08598F006C5FC7 /* UserItems.m */,
 				8484DF8A1A0862DD006C5FC7 /* User.h */,
 				8484DF8B1A0862DD006C5FC7 /* User.m */,
@@ -395,8 +405,10 @@
 				84437E611A08250B00371196 /* ItemTableViewCell.m in Sources */,
 				52BE14E81A08015D0090A2B0 /* OverlayView.m in Sources */,
 				5200262C1A086D7B003DC9C9 /* LoginViewController.m in Sources */,
+				84F815951A09C90D00179034 /* PFItem.m in Sources */,
 				52BE14DB1A0800280090A2B0 /* MainViewController.m in Sources */,
 				8451670A1A080FC4004663DE /* UserItemsTableViewController.m in Sources */,
+				84F815921A09AF8100179034 /* PFUserItemsViewController.m in Sources */,
 				52BE14E41A0800EC0090A2B0 /* DraggableView.m in Sources */,
 				8484DF821A0849D4006C5FC7 /* Item.m in Sources */,
 				8484DF8C1A0862DD006C5FC7 /* User.m in Sources */,

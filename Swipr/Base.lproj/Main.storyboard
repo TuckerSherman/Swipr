@@ -71,7 +71,7 @@
                                     </textField>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="LHl-5L-JsH" customClass="PFImageView">
                                         <rect key="frame" x="10" y="10" width="180" height="180"/>
-                                        <color key="backgroundColor" patternImage="6CD1CE04-32DF-40A3-8DD6-599BF6A1332E" colorSpace="pattern"/>
+                                        <color key="backgroundColor" patternImage="1DBF4B4A-F3FA-45C6-BD1C-7E81CB0C9003" colorSpace="pattern"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="180" id="1KE-Q8-E0C"/>
@@ -276,12 +276,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="itemCell" rowHeight="50" id="3Jc-1a-Jvq" customClass="ItemTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="itemCell" rowHeight="50" id="3Jc-1a-Jvq" customClass="ParseTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Jc-1a-Jvq" id="non-xI-l5H">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="24E-oM-ydw">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="24E-oM-ydw" customClass="PFImageView">
                                             <rect key="frame" x="13" y="5" width="40" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="40" id="Vss-I2-pzL"/>
@@ -303,8 +303,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="itemThumbNailImageView" destination="24E-oM-ydw" id="QYi-HK-diO"/>
+                                    <outlet property="itemThumbnailPFImageView" destination="24E-oM-ydw" id="l01-R9-b4U"/>
                                     <outlet property="itemTitleLabel" destination="C3v-jf-J1v" id="6ok-ha-bqL"/>
+                                    <outlet property="parseItemTitleLabel" destination="C3v-jf-J1v" id="qDU-Y4-RnV"/>
                                     <segue destination="xC8-yD-2A2" kind="modal" id="Yf9-IY-pGl"/>
                                 </connections>
                             </tableViewCell>
@@ -548,7 +549,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="6CD1CE04-32DF-40A3-8DD6-599BF6A1332E" width="27" height="30">
+        <image name="1DBF4B4A-F3FA-45C6-BD1C-7E81CB0C9003" width="27" height="30">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz

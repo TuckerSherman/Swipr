@@ -10,4 +10,7 @@
 
 @interface ParseTableViewCell : PFTableViewCell
 
+@property (strong, nonatomic) IBOutlet UILabel *parseItemTitleLabel;
+@property (strong, nonatomic) IBOutlet PFImageView *itemThumbnailPFImageView;
+
 @end
