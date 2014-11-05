@@ -113,6 +113,9 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
             if (i<numLoadedCardsCap) {
                 //%%% adds a small number of cards to be loaded
                 [loadedCards addObject:newCard];
+                if ([loadedCards count] > 0) {
+                    [self.delegate currentCard:[loadedCards objectAtIndex:0]];
+                }
             }
         }
         //%%% displays the small number of loaded cards dictated by MAX_BUFFER_SIZE so that not all the cards
@@ -126,6 +129,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
             self.cardsLoadedIndex++; //%%% we loaded a card into loaded cards, so we have to increment
         }
     }
+    
 }
 
 #warning include own action here!
@@ -143,7 +147,9 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
         self.cardsLoadedIndex++;//%%% loaded a card, so have to increment count
         [self insertSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE-1)] belowSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE-2)]];
     }
-    [self.delegate currentCard:thisCard];
+    if ([loadedCards count] > 0) {
+    [self.delegate currentCard:[loadedCards objectAtIndex:0]];
+    }
     [self.delegate setUserPreference:thisCard preference:NO];
 
 }
@@ -163,7 +169,9 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
         self.cardsLoadedIndex++;//%%% loaded a card, so have to increment count
         [self insertSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE-1)] belowSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE-2)]];
     }
-    [self.delegate currentCard:thisCard];
+    if ([loadedCards count] > 0) {
+        [self.delegate currentCard:[loadedCards objectAtIndex:0]];
+    }
     [self.delegate setUserPreference:thisCard preference:YES];
     
     
@@ -180,7 +188,9 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
         dragView.overlayView.alpha = 1;
     }];
     [dragView rightClickAction];
-    [self.delegate currentCard:dragView];
+    if ([loadedCards count] > 0) {
+        [self.delegate currentCard:[loadedCards objectAtIndex:0]];
+    }
 }
 
 //%%% when you hit the left button, this is called and substitutes the swipe
@@ -192,7 +202,9 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
         dragView.overlayView.alpha = 1;
     }];
     [dragView leftClickAction];
-    [self.delegate currentCard:dragView];
+    if ([loadedCards count] > 0) {
+        [self.delegate currentCard:[loadedCards objectAtIndex:0]];
+    }
 }
 
 

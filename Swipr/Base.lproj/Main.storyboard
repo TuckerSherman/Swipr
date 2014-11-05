@@ -99,7 +99,7 @@
                                     </textField>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="LHl-5L-JsH" customClass="PFImageView">
                                         <rect key="frame" x="10" y="10" width="180" height="180"/>
-                                        <color key="backgroundColor" patternImage="DAE6F5F1-5B95-41CA-9D4A-E7FF1DA7F2B3" colorSpace="pattern"/>
+                                        <color key="backgroundColor" patternImage="62BA78A0-3E83-4663-806F-FBE8B9981E74" colorSpace="pattern"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="180" id="1KE-Q8-E0C"/>
@@ -636,7 +636,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="DAE6F5F1-5B95-41CA-9D4A-E7FF1DA7F2B3" width="80" height="80">
+        <image name="62BA78A0-3E83-4663-806F-FBE8B9981E74" width="80" height="80">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz
@@ -665,7 +665,7 @@ Afg
         <simulatedScreenMetrics key="destination" type="retina47"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Yf9-IY-pGl"/>
+        <segue reference="KFd-wu-nFE"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.36574475090000003" blue="0.27605346510000001" alpha="1" colorSpace="calibratedRGB"/>
 </document>
