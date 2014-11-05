@@ -46,7 +46,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
 //%%% sets up the extra buttons on the screen
 -(void)setupView
 {
-    self.backgroundColor = [UIColor clearColor];
+    self.backgroundColor = [UIColor whiteColor];
 
     xButton = [[UIButton alloc]initWithFrame:CGRectMake(90, 545, 59, 59)];
     [xButton setImage:[UIImage imageNamed:@"xButton"] forState:UIControlStateNormal];

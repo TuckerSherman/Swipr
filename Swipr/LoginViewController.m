@@ -17,6 +17,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.loginPasswordTextfield.delegate = self;
+    self.loginUsernameTextfield.delegate = self;
 }
 
 - (IBAction)loginButtonPressed:(UIButton *)sender {
@@ -36,5 +39,17 @@
     }];
     self.loginUsernameTextfield.text = nil;
     self.loginPasswordTextfield.text = nil;
+}
+
+- (IBAction)cancelButtonPressed:(UIButton *)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - UITextFieldDelegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    [textField resignFirstResponder];
+    return YES;
 }
 @end
