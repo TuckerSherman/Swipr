@@ -42,7 +42,6 @@
 		8484DF891A08598F006C5FC7 /* UserItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 8484DF881A08598F006C5FC7 /* UserItems.m */; };
 		8484DF8C1A0862DD006C5FC7 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 8484DF8B1A0862DD006C5FC7 /* User.m */; };
 		84F8158D1A09AD3800179034 /* ParseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F8158C1A09AD3800179034 /* ParseTableViewCell.m */; };
-		84F8158F1A09ADD800179034 /* APIdocs in Resources */ = {isa = PBXBuildFile; fileRef = 84F8158E1A09ADD800179034 /* APIdocs */; };
 		84F815921A09AF8100179034 /* PFUserItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F815911A09AF8100179034 /* PFUserItemsViewController.m */; };
 		84F815951A09C90D00179034 /* PFItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F815941A09C90C00179034 /* PFItem.m */; };
 /* End PBXBuildFile section */
@@ -171,6 +170,10 @@
 		52BE14DD1A0800650090A2B0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				520026251A084C37003DC9C9 /* RegisterUserViewController.h */,
+				520026261A084C37003DC9C9 /* RegisterUserViewController.m */,
+				5200262A1A086D7B003DC9C9 /* LoginViewController.h */,
+				5200262B1A086D7B003DC9C9 /* LoginViewController.m */,
 				52BE14D91A0800280090A2B0 /* MainViewController.h */,
 				52BE14DA1A0800280090A2B0 /* MainViewController.m */,
 				8461CE271A08172C00BB3525 /* ProfileViewController.h */,
@@ -183,10 +186,6 @@
 				520026791A0953B2003DC9C9 /* NewItemViewController.m */,
 				8461CE241A0816FA00BB3525 /* ItemDetailViewController.h */,
 				8461CE251A0816FA00BB3525 /* ItemDetailViewController.m */,
-				520026251A084C37003DC9C9 /* RegisterUserViewController.h */,
-				520026261A084C37003DC9C9 /* RegisterUserViewController.m */,
-				5200262A1A086D7B003DC9C9 /* LoginViewController.h */,
-				5200262B1A086D7B003DC9C9 /* LoginViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";

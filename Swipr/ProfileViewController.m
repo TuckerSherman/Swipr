@@ -62,11 +62,6 @@
     }];
 }
 
-//-(void) setQueryTableView{
-//    PFQueryTableViewController* ourPFTableView = self.childViewControllers[0];
-//    ourPFTableView.parseClassName = @"item";
-//    
-//}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
