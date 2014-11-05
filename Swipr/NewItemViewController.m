@@ -12,6 +12,7 @@
     
     PFUser *currentUser;
     CIImage *originalImage;
+    NSArray *items;
 }
 
 @end
@@ -47,6 +48,7 @@
             NSLog(@"Error saving to Parse");
         }
     }];
+    [self saveItemArrayToParse:newItem];
     newItem = nil;
     
 }
@@ -149,6 +151,20 @@
     
     [textField resignFirstResponder];
     return YES;
+}
+
+-(void)saveItemArrayToParse:(PFObject *)item {
+    items = [currentUser objectForKey:@"items"];
+    NSLog(@"%@", items);
+    NSMutableArray *itemsMutable = [[NSMutableArray alloc] initWithArray:items];
+    [itemsMutable addObject:item];
+    
+    items = [itemsMutable mutableCopy];
+    NSLog(@"%@", items);
+    
+    [currentUser setObject:items forKey:@"items"];
+    
+    [currentUser saveInBackground];
 }
 
 @end
