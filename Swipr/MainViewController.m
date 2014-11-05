@@ -45,6 +45,7 @@
             // Copy objects array fetched from Parse to "items"
             NSMutableArray *items = [[NSMutableArray alloc] initWithArray:objects];
             self.draggableBackground.items = [items mutableCopy];
+             NSLog(@"%d",(int)[self.draggableBackground.items count]);
             [self.draggableBackground loadCards];
             
         } else {
@@ -81,6 +82,7 @@
 - (IBAction)refreshButtonPressed:(UIBarButtonItem *)sender {
     
     [self retreiveFromParse];
+
 }
 
 

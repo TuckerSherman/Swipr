@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rc1-q1-oHm">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rc1-q1-oHm">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W47-Nz-Cji">
@@ -33,6 +33,13 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="rc1-q1-oHm" secondAttribute="trailing" id="5ld-1P-Iwl"/>
+                            <constraint firstItem="rc1-q1-oHm" firstAttribute="bottom" secondItem="kh9-bI-dsS" secondAttribute="bottomMargin" id="Kk6-ZI-KnO"/>
+                            <constraint firstItem="rc1-q1-oHm" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="hRX-KW-4D6"/>
+                            <constraint firstItem="rc1-q1-oHm" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" id="zRV-tM-fzi"/>
+                        </constraints>
                     </view>
                     <toolbarItems>
                         <barButtonItem image="logoutButton.png" id="UHr-zA-Zpj">
@@ -91,11 +98,7 @@
                                     </textField>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="LHl-5L-JsH" customClass="PFImageView">
                                         <rect key="frame" x="10" y="10" width="180" height="180"/>
-<<<<<<< HEAD
-                                        <color key="backgroundColor" patternImage="DC23211E-B46D-4F8E-8273-17E55637C945" colorSpace="pattern"/>
-=======
-                                        <color key="backgroundColor" patternImage="0D1AD048-578F-4C7E-8CF4-2D942509A5E0" colorSpace="pattern"/>
->>>>>>> jacobBranch
+                                        <color key="backgroundColor" patternImage="2E9F3D89-B634-43A7-AE94-E1B32565B88A" colorSpace="pattern"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="180" id="1KE-Q8-E0C"/>
@@ -574,15 +577,11 @@
         </scene>
     </scenes>
     <resources>
-<<<<<<< HEAD
-        <image name="DC23211E-B46D-4F8E-8273-17E55637C945" width="27" height="30">
-=======
-        <image name="0D1AD048-578F-4C7E-8CF4-2D942509A5E0" width="27" height="30">
->>>>>>> jacobBranch
+        <image name="2E9F3D89-B634-43A7-AE94-E1B32565B88A" width="80" height="80">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz
-V05TQ29sb3KAAoAMEiTAAACAA4AKWHsyNywgMzB90hUKFhhaTlMub2JqZWN0c6EXgASACdIVChoYohsc
+V05TQ29sb3KAAoAMEiTAAACAA4AKWHs4MCwgODB90hUKFhhaTlMub2JqZWN0c6EXgASACdIVChoYohsc
 gAWABoAJEAXTIAohIiMkV05TLmJhc2VbTlMucmVsYXRpdmWAAIAIgAdfEHxmaWxlOi8vL0FwcGxpY2F0
 aW9ucy9YY29kZS5hcHAvQ29udGVudHMvUGx1Z0lucy9JREVJbnRlcmZhY2VCdWlsZGVyS2l0LmlkZXBs
 dWdpbi9Db250ZW50cy9SZXNvdXJjZXMvSUJNaXNzaW5nSW1hZ2VHbHlwaC50aWZm0icoKSpaJGNsYXNz
