@@ -21,7 +21,7 @@
     [super viewDidLoad];
 
     _currentUser = [PFUser currentUser];
-    
+
     //default view has profile editing locked
     [self performSelector:@selector(lockUserTap:)withObject:nil];
     [self setupCurrentUser];
@@ -40,16 +40,13 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if (!userBio) {
-                
                 self.userBioTextFeild.text = nil;
                 [self.userBioTextFeild becomeFirstResponder];
                 [self performSelector:@selector(unlockUserTap:)withObject:nil];
             }
             
             self.userBioTextFeild.text = userBio;
-            self.userBioTextFeild.textColor = [UIColor blackColor];
             [self performSelector:@selector(lockUserTap:)withObject:nil];
-            
         });
     }];
 //dowload profile pic
@@ -91,6 +88,7 @@
     self.userNameTextFeild.userInteractionEnabled=NO;
     self.userBioTextFeild.userInteractionEnabled=NO;
     self.userBioTextFeild.alpha=1;
+    self.userBioTextFeild.textColor=[UIColor blackColor];
     self.userEmailTextFeild.userInteractionEnabled = NO;
     self.userEmailTextFeild.alpha=1;
     self.userProfileImageView.userInteractionEnabled = NO;
@@ -112,7 +110,6 @@
     [actionSheet showInView:self.view];
     
 }
-
 #pragma mark - action sheet delegate 
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -144,7 +141,6 @@
     
     [self presentViewController:picker animated:YES completion:NULL];
 }
-
 #pragma mark - image picker controller delegate calls
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
