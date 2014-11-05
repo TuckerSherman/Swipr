@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
-@interface LoginViewController : UIViewController
+@interface LoginViewController : UIViewController <UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *loginUsernameTextfield;
 @property (weak, nonatomic) IBOutlet UITextField *loginPasswordTextfield;
 - (IBAction)loginButtonPressed:(UIButton *)sender;
+- (IBAction)cancelButtonPressed:(UIButton *)sender;
 
 @end
