@@ -94,7 +94,7 @@
     if ([[segue identifier] isEqualToString:@"itemDetailSegue"]) {
         ItemDetailViewController *itemDetailVC = segue.destinationViewController;
         
-        itemDetailVC.item = [self.draggableBackground.pfItemsArray objectAtIndex:self.draggableBackground.cardCounter];
+        itemDetailVC.item = self.currentCard.pfItem;
 
     }
     
@@ -105,8 +105,6 @@
 -(void)currentCard:(DraggableView *)card {
     
     self.currentCard = card;
-    
-//    NSLog(@"%@", self.currentCard.information.text);
     
 }
 

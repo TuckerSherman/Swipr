@@ -19,7 +19,7 @@
     self.itemImageView.file = [self.item objectForKey:@"image"];
     [self.itemImageView loadInBackground];
     
-    self.itemDescriptionTextField.text = [self.item objectForKey:@"description"];
+    self.itemDescriptionTextFeild.text = [self.item objectForKey:@"description"];
     
 }
 
