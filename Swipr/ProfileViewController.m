@@ -37,7 +37,7 @@
     [query whereKey:@"username" equalTo:_currentUser.username];
     [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error){
         NSString* userBio = [object objectForKey:@"bio"];
-        NSLog(@"pulled down bio:%@",userBio);
+        NSLog(@"pulled down bio");
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if (!userBio) {

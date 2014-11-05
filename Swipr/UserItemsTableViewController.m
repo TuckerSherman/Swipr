@@ -75,13 +75,14 @@
     cell.textLabel.text = [object objectForKey:@"description"];
     cell.imageView.image = [UIImage imageNamed:@"itemImagePlaceholder"];
     cell.imageView.file = [object objectForKey:@"image"];
+    [cell.imageView loadInBackground];
     
-    [cell.imageView loadInBackground:^(UIImage *image, NSError *error) {
-        if(!error){
-            dispatch_async(dispatch_get_main_queue(), ^{
-                cell.imageView.image = image;
-            });
-        }}];
+//    [cell.imageView loadInBackground:^(UIImage *image, NSError *error) {
+//        if(!error){
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                cell.imageView.image = image;
+//            });
+//        }}];
     
         
                            
