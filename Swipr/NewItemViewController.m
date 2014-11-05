@@ -27,6 +27,7 @@
     
 }
 
+#pragma mark - IBActions
 - (IBAction)cancelButtonPressed:(UIButton *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -54,6 +55,7 @@
 }
 
 - (IBAction)itemImageButtonPressed:(UIButton *)sender {
+    
     
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.delegate = self;
@@ -96,8 +98,10 @@
     CIImage *outputImage = [self oldPhoto:originalImage withAmount:0.6];
     CGImageRef cgimg = [context createCGImage:outputImage fromRect:[outputImage extent]];
     UIImage *newImage = [[UIImage alloc] initWithCGImage:cgimg];
+    
+    // Set views
     [self.itemImageButton setBackgroundImage:newImage forState:UIControlStateNormal];
-    self.itemImageButton.imageView.image = nil;
+    self.placeholderImageView.image = nil;
     self.item.imageData = UIImagePNGRepresentation(newImage);
     
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -153,6 +157,7 @@
     return YES;
 }
 
+#pragma mark - Parse helper method
 -(void)saveItemArrayToParse:(PFObject *)item {
     items = [currentUser objectForKey:@"items"];
     NSLog(@"%@", items);
