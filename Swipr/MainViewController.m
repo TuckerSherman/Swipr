@@ -139,7 +139,7 @@
         wantedItems = [NSMutableArray arrayWithArray:[thisUser objectForKey:@"itemsUserDoesWant"]];
         NSLog(@"other items this user does want: %@", wantedItems);
         [wantedItems addObject:thisItem];
-        [thisUser addObject:unwantedItems forKey:@"itemsUserDoesWant"];
+        [thisUser addObject:wantedItems forKey:@"itemsUserDoesWant"];
         [thisUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
                 NSLog(@"added item to user's preferences");
