@@ -31,7 +31,10 @@
 #pragma mark - Working with Parse methods
 
 -(void)retreiveFromParse {
+    NSString*thisUser = [[PFUser currentUser] username];
     PFQuery *query = [PFQuery queryWithClassName:@"Item"];
+    [query whereKey:@"user" notEqualTo:thisUser];
+    
     [query orderByAscending:@"createdAt"];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -41,31 +44,12 @@
             self.draggableBackground.items = [items mutableCopy];
             [self.draggableBackground loadCards];
             
-            
-//            for (PFObject *object in items) {
-//                [itemText addObject:[object objectForKey:@"description"]];
-//                // Add all items for key "text" from items array to itemText
-//            }
-            // Add everything from itemText arry to the cards
-//            [self loadCardsFromParse:itemText];
-            
         } else {
             NSLog(@"Error grabbing from Parse! %@",error);
         }
     }];
     
 }
-
-//-(void)loadCardsFromParse:(NSMutableArray *)objects {
-//    
-//    self.draggableBackground.cardLabels = [objects mutableCopy];
-//    
-//    self.draggableBackground.items = [objects mutableCopy];
-//    
-//    // loadCards needs to be called when array is loaded;
-//    [self.draggableBackground loadCards];
-//
-//}
 
 #pragma mark - Log Out Button Methods
 
@@ -76,7 +60,6 @@
                                                     delegate:self
                                                     cancelButtonTitle:@"Cancel"
                                                     otherButtonTitles:@"Log out", nil];
-    
     [logoutAlert show];
 
 }

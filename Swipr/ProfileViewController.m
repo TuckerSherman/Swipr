@@ -102,7 +102,6 @@
     self.lockButton.userInteractionEnabled=NO;
     self.unlockButton.hidden = NO;
     self.unlockButton.userInteractionEnabled = YES;
-
 }
 
 - (IBAction)userImageTap:(id)sender {
