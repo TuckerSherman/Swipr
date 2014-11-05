@@ -37,7 +37,6 @@
     NSString*thisUser = [[PFUser currentUser] username];
     PFQuery *query = [PFQuery queryWithClassName:@"Item"];
     [query whereKey:@"user" notEqualTo:thisUser];
-    
     [query orderByAscending:@"createdAt"];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -93,10 +92,7 @@
     
     if ([[segue identifier] isEqualToString:@"itemDetailSegue"]) {
         ItemDetailViewController *itemDetailVC = segue.destinationViewController;
-        itemDetailVC.item = [[Item alloc] init];
-        
-        itemDetailVC.item.desc = [[self.draggableBackground.items objectAtIndex:self.draggableBackground.cardCounter] objectForKey:@"description"];
-        itemDetailVC.pfImage= [[self.draggableBackground.items objectAtIndex:self.draggableBackground.cardCounter] objectForKey:@"image"];
+        itemDetailVC.item = [self.draggableBackground.items objectAtIndex:self.draggableBackground.cardCounter];
 
     }
     

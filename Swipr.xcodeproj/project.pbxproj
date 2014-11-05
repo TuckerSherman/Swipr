@@ -28,7 +28,6 @@
 		52BE14E41A0800EC0090A2B0 /* DraggableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BE14E11A0800EC0090A2B0 /* DraggableView.m */; };
 		52BE14E51A0800EC0090A2B0 /* DraggableViewBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BE14E31A0800EC0090A2B0 /* DraggableViewBackground.m */; };
 		52BE14E81A08015D0090A2B0 /* OverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BE14E71A08015D0090A2B0 /* OverlayView.m */; };
-		84437E611A08250B00371196 /* ItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84437E601A08250B00371196 /* ItemTableViewCell.m */; };
 		845166DF1A07FED6004663DE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 845166DE1A07FED6004663DE /* main.m */; };
 		845166E21A07FED6004663DE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 845166E11A07FED6004663DE /* AppDelegate.m */; };
 		845166EA1A07FED6004663DE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 845166E91A07FED6004663DE /* Images.xcassets */; };
@@ -43,7 +42,6 @@
 		8484DF891A08598F006C5FC7 /* UserItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 8484DF881A08598F006C5FC7 /* UserItems.m */; };
 		8484DF8C1A0862DD006C5FC7 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 8484DF8B1A0862DD006C5FC7 /* User.m */; };
 		84F8158D1A09AD3800179034 /* ParseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F8158C1A09AD3800179034 /* ParseTableViewCell.m */; };
-		84F8158F1A09ADD800179034 /* APIdocs in Resources */ = {isa = PBXBuildFile; fileRef = 84F8158E1A09ADD800179034 /* APIdocs */; };
 		84F815921A09AF8100179034 /* PFUserItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F815911A09AF8100179034 /* PFUserItemsViewController.m */; };
 		84F815951A09C90D00179034 /* PFItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F815941A09C90C00179034 /* PFItem.m */; };
 /* End PBXBuildFile section */
@@ -87,8 +85,6 @@
 		52BE14E31A0800EC0090A2B0 /* DraggableViewBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraggableViewBackground.m; sourceTree = "<group>"; };
 		52BE14E61A08015D0090A2B0 /* OverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverlayView.h; sourceTree = "<group>"; };
 		52BE14E71A08015D0090A2B0 /* OverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverlayView.m; sourceTree = "<group>"; };
-		84437E5F1A08250B00371196 /* ItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemTableViewCell.h; sourceTree = "<group>"; };
-		84437E601A08250B00371196 /* ItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemTableViewCell.m; sourceTree = "<group>"; };
 		845166D91A07FED6004663DE /* Swipr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swipr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		845166DD1A07FED6004663DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		845166DE1A07FED6004663DE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -174,6 +170,10 @@
 		52BE14DD1A0800650090A2B0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				520026251A084C37003DC9C9 /* RegisterUserViewController.h */,
+				520026261A084C37003DC9C9 /* RegisterUserViewController.m */,
+				5200262A1A086D7B003DC9C9 /* LoginViewController.h */,
+				5200262B1A086D7B003DC9C9 /* LoginViewController.m */,
 				52BE14D91A0800280090A2B0 /* MainViewController.h */,
 				52BE14DA1A0800280090A2B0 /* MainViewController.m */,
 				8461CE271A08172C00BB3525 /* ProfileViewController.h */,
@@ -186,10 +186,6 @@
 				520026791A0953B2003DC9C9 /* NewItemViewController.m */,
 				8461CE241A0816FA00BB3525 /* ItemDetailViewController.h */,
 				8461CE251A0816FA00BB3525 /* ItemDetailViewController.m */,
-				520026251A084C37003DC9C9 /* RegisterUserViewController.h */,
-				520026261A084C37003DC9C9 /* RegisterUserViewController.m */,
-				5200262A1A086D7B003DC9C9 /* LoginViewController.h */,
-				5200262B1A086D7B003DC9C9 /* LoginViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -203,8 +199,6 @@
 				52BE14E71A08015D0090A2B0 /* OverlayView.m */,
 				52BE14E21A0800EC0090A2B0 /* DraggableViewBackground.h */,
 				52BE14E31A0800EC0090A2B0 /* DraggableViewBackground.m */,
-				84437E5F1A08250B00371196 /* ItemTableViewCell.h */,
-				84437E601A08250B00371196 /* ItemTableViewCell.m */,
 				84F8158B1A09AD3700179034 /* ParseTableViewCell.h */,
 				84F8158C1A09AD3800179034 /* ParseTableViewCell.m */,
 			);
@@ -397,7 +391,6 @@
 				845166E21A07FED6004663DE /* AppDelegate.m in Sources */,
 				8461CE291A08172C00BB3525 /* ProfileViewController.m in Sources */,
 				84F8158D1A09AD3800179034 /* ParseTableViewCell.m in Sources */,
-				84437E611A08250B00371196 /* ItemTableViewCell.m in Sources */,
 				52BE14E81A08015D0090A2B0 /* OverlayView.m in Sources */,
 				5200262C1A086D7B003DC9C9 /* LoginViewController.m in Sources */,
 				84F815951A09C90D00179034 /* PFItem.m in Sources */,

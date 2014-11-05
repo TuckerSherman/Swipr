@@ -27,9 +27,10 @@
     // described here: https://developers.facebook.com/docs/getting-started/facebook-sdk-for-ios/
     // [PFFacebookUtils initializeFacebook];
     // ****************************************************************************
+    
     [PFImageView class];
     [PFQueryTableViewController class];
-
+    [PFTableViewCell class];
     
     [Parse setApplicationId:@"BnoNW84s5syR018qZP1zDSWP6hTPNXrvS1vQh3dq"
                   clientKey:@"s62gxiYrmlcG44SoTIKpSedO8Fl1MKGpAZapNVZ5"];

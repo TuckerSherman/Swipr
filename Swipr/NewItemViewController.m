@@ -57,23 +57,45 @@
 - (IBAction)itemImageButtonPressed:(UIButton *)sender {
     
     
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle: nil
+                                                             delegate: self
+                                                    cancelButtonTitle: @"Cancel"
+                                               destructiveButtonTitle: nil
+                                                    otherButtonTitles: @"Take a new photo", @"Choose from existing", nil];
+    [actionSheet showInView:self.view];
+    
+}
+#pragma mark - action sheet delegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex) {
+        case 0:
+            [self takeNewPhoto];
+            break;
+        case 1:
+            [self pickOldPhoto];
+            break;
+    }
+}
+
+-(void)takeNewPhoto{
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.delegate = self;
     picker.allowsEditing = YES;
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        
-        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        
-    } else if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum]) {
-        
-        picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-        
-    }
+    picker.sourceType = UIImagePickerControllerCameraCaptureModePhoto;
     
-    [self presentViewController:picker animated:YES completion:nil];
- 
+    [self presentViewController:picker animated:YES completion:NULL];
 }
 
+-(void)pickOldPhoto{
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:picker animated:YES completion:NULL];
+}
 
 #pragma mark - UIImagePickerControllerDelegate
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {

@@ -58,16 +58,10 @@
             NSLog(@"profilePic loadInBackground completed");
         else {
             NSLog(@"profilePic loadInBackground failed with error: %@", error);
-            
         }
     }];
 }
 
-//-(void) setQueryTableView{
-//    PFQueryTableViewController* ourPFTableView = self.childViewControllers[0];
-//    ourPFTableView.parseClassName = @"item";
-//    
-//}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -202,7 +196,6 @@ shouldChangeTextInRange:(NSRange)range
 #pragma mark - text feild delegate calls (only for the email feild)
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
-
 //feild is only accessable if user profile is "unlocked"
     [textField resignFirstResponder];
         _currentUser[@"email"]= self.userEmailTextFeild.text;

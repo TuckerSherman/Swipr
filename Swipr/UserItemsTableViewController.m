@@ -47,19 +47,12 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (PFQuery *)queryForTable
-{
-   
-    
+- (PFQuery *)queryForTable{
     PFUser* thisUser = [PFUser currentUser];
      NSLog(@"user = '%@'",thisUser.username);
     
-    NSPredicate* onlyThisUser = [NSPredicate predicateWithFormat:@"user='%@'",thisUser.username];
     PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
     [query whereKey:@"user" equalTo:thisUser.username];
-    if(self.objects.count == 0){
-        NSLog(@"query to parse came back empty");
-    }
     [query orderByAscending:@"createdAt"];
     return query;
 }
@@ -67,55 +60,40 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object{
 
     
-    
-    PFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    if (cell == nil) {
-        cell = [[ParseTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    ParseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"itemCell"];// forIndexPath:indexPath];
+    if (!cell) {
+        cell = [[ParseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"itemCell"];
     }
-    cell.textLabel.text = [object objectForKey:@"description"];
-    cell.imageView.image = [UIImage imageNamed:@"itemImagePlaceholder"];
-    cell.imageView.file = [object objectForKey:@"image"];
-    [cell.imageView loadInBackground];
+    cell.parseItemTitleLabel.text = [object objectForKey:@"description"];
+    cell.itemThumbnailPFImageView.image = [UIImage imageNamed:@"itemImagePlaceholder"];
+    cell.itemThumbnailPFImageView.file = [object objectForKey:@"image"];
     
-//    [cell.imageView loadInBackground:^(UIImage *image, NSError *error) {
-//        if(!error){
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                cell.imageView.image = image;
-//            });
-//        }}];
-    
-        
-                           
-                           
-    
-//    cell.parseItemTitleLabel.text = [object objectForKey:@"description"];
-//    cell.itemThumbnailPFImageView.image = [UIImage imageNamed:@"itemImagePlaceholder"];
-//
-//    cell.itemThumbnailPFImageView.file = [object objectForKey:@"image"];
-//    [cell.itemThumbnailPFImageView loadInBackground:^(UIImage *image, NSError *error) {
-//        if (!error) {
-//            NSLog(@"loaded cell image!");
-//        }
-//        else{
-//            NSLog(@"error loading cell image: %@",error);
-//        }
-//    }];
-    
+    [cell.itemThumbnailPFImageView loadInBackground:^(UIImage *image, NSError *error) {
+        if(!error){
+            NSLog(@"downloaded cell image");
+        }
+        else{
+            NSLog(@"error downloading cell image:%@", error);
+        }
+    }];
+
     return cell;
 }
 
-//-(NSArray*)getItemsForUser:(NSString*)user{
-//    
-//    //Initialize some sample data
-//    
-//    NSString *path = [[NSBundle mainBundle] pathForResource:@"dogs_hero" ofType:@"png"];
-//    NSData* dogImageData = [NSData dataWithContentsOfFile:path];
-//    Item* dog = [[Item alloc]initWithTitle:@"Dog" image:dogImageData thumbnailImage:dogImageData description:@"such allergies, much cutes, do not want"];
-//    
-//    NSArray* items = @[dog];
-//    
-//    return items;
-//}
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(ParseTableViewCell*)sender {
+    NSIndexPath *path = [self.tableView indexPathForSelectedRow];
+    
+    ItemDetailViewController* detailItemViewController = [segue destinationViewController];
+    NSLog(@"%@",sender);
+    
+    [detailItemViewController setItem:self.objects[path.row]];
+    
+}
+
+
+
 
 #pragma mark - Table view data source
 //
@@ -177,19 +155,6 @@
 */
 
 
-#pragma mark - Navigation
-//
-//// In a storyboard-based application, you will often want to do a little preparation before navigation
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    
-//    ItemDetailViewController* detailItemViewController = [segue destinationViewController];
-//    NSLog(@"%@",sender);
-//    
-////    [self.tableView cellForRowAtIndexPath:
-//    [detailItemViewController setItem:self.itemsForUser[0]];
-//    
-//    // Pass the selected object to the new view controller.
-//}
 
 
 @end

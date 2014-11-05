@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Item.h"
 #import <Parse/Parse.h>
 
 @interface ItemDetailViewController : UIViewController
@@ -15,8 +14,7 @@
 @property (strong, nonatomic) IBOutlet PFImageView *itemImageView;
 @property (strong, nonatomic) IBOutlet UITextField *itemDescriptionTextFeild;
 @property (strong, nonatomic) IBOutlet UITextField *userContactTextFeild;
-@property (strong, nonatomic) Item* item;
-@property (strong, nonatomic) PFFile *pfImage;
+@property (strong, nonatomic) PFObject* item;
 
 
 @end
