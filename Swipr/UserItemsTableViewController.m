@@ -47,10 +47,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (PFQuery *)queryForTable
-{
-   
-    
+- (PFQuery *)queryForTable{
     PFUser* thisUser = [PFUser currentUser];
      NSLog(@"user = '%@'",thisUser.username);
     
@@ -79,45 +76,11 @@
             NSLog(@"error downloading cell image:%@", error);
         }
     }];
-//    ParseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"itemCell"];
-//    if (cell == nil) {
-//        cell = [[ParseTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"itemCell"];
-//    }
-//    cell.parseItemTitleLabel.text = [object objectForKey:@"description"];
-//    cell.itemThumbnailPFImageView.image = [UIImage imageNamed:@"itemImagePlaceholder"];
-//    
 
-                           
-                           
-    
-//    cell.parseItemTitleLabel.text = [object objectForKey:@"description"];
-//    cell.itemThumbnailPFImageView.image = [UIImage imageNamed:@"itemImagePlaceholder"];
-//
-//    cell.itemThumbnailPFImageView.file = [object objectForKey:@"image"];
-//    [cell.itemThumbnailPFImageView loadInBackground:^(UIImage *image, NSError *error) {
-//        if (!error) {
-//            NSLog(@"loaded cell image!");
-//        }
-//        else{
-//            NSLog(@"error loading cell image: %@",error);
-//        }
-//    }];
-    
     return cell;
 }
 
-//-(NSArray*)getItemsForUser:(NSString*)user{
-//    
-//    //Initialize some sample data
-//    
-//    NSString *path = [[NSBundle mainBundle] pathForResource:@"dogs_hero" ofType:@"png"];
-//    NSData* dogImageData = [NSData dataWithContentsOfFile:path];
-//    Item* dog = [[Item alloc]initWithTitle:@"Dog" image:dogImageData thumbnailImage:dogImageData description:@"such allergies, much cutes, do not want"];
-//    
-//    NSArray* items = @[dog];
-//    
-//    return items;
-//}
+
 
 #pragma mark - Table view data source
 //
