@@ -111,7 +111,7 @@
         itemDetailVC.item = [[Item alloc] init];
         
         itemDetailVC.item.desc = [[self.draggableBackground.items objectAtIndex:self.draggableBackground.cardCounter] objectForKey:@"description"];
-        itemDetailVC.pfImage= [[self.draggableBackground.items objectAtIndex:self.draggableBackground.cardsLoadedIndex] objectForKey:@"image"];
+        itemDetailVC.pfImage= [[self.draggableBackground.items objectAtIndex:self.draggableBackground.cardCounter] objectForKey:@"image"];
 
     }
     
