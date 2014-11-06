@@ -24,6 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationItem setHidesBackButton:YES];
+    [self makeBarButtons];
     
     // Setup draggable background
     self.draggableBackground = [[DraggableViewBackground alloc]initWithFrame:self.view.frame];
@@ -33,6 +34,15 @@
     [self myWantedItems];
     [self retreiveFromParse];
     
+}
+
+-(void)makeBarButtons{
+    UIButton *logOutButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    [logOutButton addTarget:self action:@selector(logOutButtonPressed:)forControlEvents:UIControlEventTouchUpInside];
+    [logOutButton setImage:[UIImage imageNamed:@"logOutIcon"] forState:UIControlStateNormal];
+//    [logOutButton setBackgroundImage:[UIImage imageNamed:@"logOutIcon"] forState:UIControlStateNormal];
+    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithCustomView:logOutButton];
+    [self.navigationItem setLeftBarButtonItem:settingsButton];
 }
 
 //@"username", @"itemsUserDoesWant", @"itemsUserDoesNotWant",
