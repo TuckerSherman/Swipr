@@ -15,6 +15,9 @@
 
 @implementation ProfileViewController{
     PFUser* _currentUser;
+    BOOL editing;
+    UIBarButtonItem* lockButton;
+    UIBarButtonItem* unlockButton;
 }
 
 - (void)viewDidLoad {
@@ -26,11 +29,14 @@
     [self performSelector:@selector(lockUserTap:)withObject:nil];
     [self setupCurrentUser];
     
-    UIBarButtonItem* lockButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"lock"]
+    lockButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"lock"]
+                                                                  style:UIBarButtonItemStylePlain
+                                                                 target:self
+                                                                 action:@selector(unlockUserTap:)];
+    unlockButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"Unlock"]
                                                                   style:UIBarButtonItemStylePlain
                                                                  target:self
                                                                  action:@selector(lockUserTap:)];
-    self.navigationItem.rightBarButtonItem = lockButton;
     
     
     
@@ -40,6 +46,8 @@
 -(void) setupCurrentUser{
     self.userNameTextFeild.text = _currentUser.username;
     self.userEmailTextFeild.text = _currentUser.email;
+    self.navigationItem.rightBarButtonItem = lockButton;
+
     
 //dowload user bio
     PFQuery *query= [PFUser query];
@@ -90,9 +98,13 @@
     self.lockButton.hidden = NO;
     self.lockButton.userInteractionEnabled=YES;
     self.userProfileImageView.alpha =.5;
+    
+    self.navigationItem.rightBarButtonItem = unlockButton;
+
 }
 - (IBAction)lockUserTap:(id)sender {
     //disable all fields that accept user interaction - make everything totally opaque - hide the lock button and show the unlock button
+
     self.userNameTextFeild.userInteractionEnabled=NO;
     self.userBioTextFeild.userInteractionEnabled=NO;
     self.userBioTextFeild.alpha=1;
@@ -105,6 +117,9 @@
     self.lockButton.userInteractionEnabled=NO;
     self.unlockButton.hidden = NO;
     self.unlockButton.userInteractionEnabled = YES;
+    
+    self.navigationItem.rightBarButtonItem = lockButton;
+
 }
 
 - (IBAction)userImageTap:(id)sender {
