@@ -3,16 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "Group.png"
+      "filename" : "whiteLogo1x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "Group-1.png"
+      "filename" : "whiteLogo2x.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "whiteLogo3x.png"
     }
   ],
   "info" : {
