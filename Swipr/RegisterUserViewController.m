@@ -80,12 +80,18 @@
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
             NSLog(@"Signed up!");
+            
             [self performSegueWithIdentifier:@"registerSegue" sender:self];
         } else {
             
             NSLog(@"Error in signing up");
         }
     }];
+    
+    self.usernameTextfield = nil;
+    self.emailTextfield = nil;
+    self.passwordTextfield = nil;
+    self.confirmPasswordTextfield = nil;
     
 }
 

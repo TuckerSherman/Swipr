@@ -8,7 +8,7 @@
 
 #import "MainViewController.h"
 #import "ItemDetailViewController.h"
-
+#import "MatchViewController.h"
 
 @interface MainViewController ()
 
@@ -73,17 +73,27 @@
                                                     delegate:self
                                                     cancelButtonTitle:@"Cancel"
                                                     otherButtonTitles:@"Log out", nil];
+    logoutAlert.tag = 0;
     [logoutAlert show];
 
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == [alertView cancelButtonIndex]){
+    if (alertView.tag == 0) {
+        if (buttonIndex == [alertView cancelButtonIndex]){
 
-    }else{
-        [PFUser logOut];
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        }else{
+            [PFUser logOut];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }
     }
+    else if (alertView.tag == 1) {
+        
+        if ([alertView buttonTitleAtIndex:1]) {
+            [self goToMatch];
+        }
+    }
+    
 }
 
 #pragma mark - Refresh button
@@ -105,6 +115,10 @@
         
         itemDetailVC.item = self.currentCard.pfItem;
 
+    }
+    else if ([[segue identifier] isEqualToString:@"MatchSegue"]) {
+        MatchViewController *matchVC = segue.destinationViewController;
+        
     }
     
 }
@@ -155,6 +169,7 @@
     }
 }
 
+#pragma mark - Match Methods
 
 -(void)matchItems:(PFObject *)item withOwnerArray:(NSArray *)array {
     
@@ -170,6 +185,7 @@
                                                                    delegate:self
                                                           cancelButtonTitle:@"Ok"
                                                           otherButtonTitles:@"Show Me", nil];
+            matchAlert.tag = 1;
             
             [matchAlert show];
     
@@ -203,10 +219,11 @@
             NSLog(@"Error grabbing from Parse! %@",error);
         }
     }];
-    
-    
-    
 }
 
+-(void)goToMatch {
+    MatchViewController *matchVC = [self.storyboard instantiateViewControllerWithIdentifier:@"MatchViewController"];
+    [self presentViewController:matchVC animated:YES completion:nil];
+}
 
 @end
