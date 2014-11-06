@@ -39,6 +39,11 @@
     PFRelation *owner = [newItem objectForKey:@"owner"];
     [owner addObject:currentUser];
     newItem[@"user"] = [currentUser objectForKey:@"username"];
+    
+    PFACL *groupACL = [PFACL ACL];
+    [groupACL setPublicWriteAccess:YES];
+    newItem.ACL = groupACL;
+    
     [newItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
             NSLog(@"Save successful!");
