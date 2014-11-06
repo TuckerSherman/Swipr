@@ -54,6 +54,7 @@
                     <connections>
                         <outlet property="infoButton" destination="W47-Nz-Cji" id="wUh-SL-jhz"/>
                         <outlet property="subView" destination="rc1-q1-oHm" id="ebJ-si-JvM"/>
+                        <segue destination="Yqm-n8-Yg1" kind="modal" identifier="MatchSegue" id="AMY-dj-RsY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -638,6 +639,84 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lfW-jE-apO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="615.5" y="1170.5"/>
+        </scene>
+        <!--Match View Controller-->
+        <scene sceneID="c6e-pL-WJT">
+            <objects>
+                <viewController storyboardIdentifier="MatchViewController" id="Yqm-n8-Yg1" customClass="MatchViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="99H-km-B5C"/>
+                        <viewControllerLayoutGuide type="bottom" id="GsJ-ZO-jg5"/>
+                    </layoutGuides>
+                    <view key="view" clipsSubviews="YES" contentMode="scaleAspectFill" id="ysx-VU-7ko">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pnl-iD-TMS">
+                                <rect key="frame" x="32" y="591" width="35" height="30"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="Yqm-n8-Yg1" eventType="touchUpInside" id="UtX-05-NvE"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Some user wants to trade for this!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uw5-u1-qcI">
+                                <rect key="frame" x="32" y="55" width="327" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Item that you wanted:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Edh-il-OMc">
+                                <rect key="frame" x="32" y="323" width="167" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Xg-xX-FMd" customClass="PFImageView">
+                                <rect key="frame" x="32" y="352" width="230" height="189"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="230" id="MZ2-td-kpu"/>
+                                    <constraint firstAttribute="height" constant="189" id="Ztg-Yd-2Sc"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gD8-mo-4mg">
+                                <rect key="frame" x="224" y="591" width="38" height="30"/>
+                                <state key="normal" title="Email">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="emailButtonPressed:" destination="Yqm-n8-Yg1" eventType="touchUpInside" id="s4P-X6-44y"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="MATCH!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kRV-ud-dNe">
+                                <rect key="frame" x="137" y="17" width="100" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MG7-Pg-GAq" customClass="PFImageView">
+                                <rect key="frame" x="27" y="92" width="230" height="189"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="230" id="Kft-Ds-vC9"/>
+                                    <constraint firstAttribute="height" constant="189" id="bLK-Y3-szy"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="kRV-ud-dNe" secondAttribute="centerX" id="6T6-78-bwJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="itemOwnerLabel" destination="uw5-u1-qcI" id="Opo-j0-aBc"/>
+                        <outlet property="itemYouWantImageView" destination="2Xg-xX-FMd" id="V9k-7e-TX1"/>
+                        <outlet property="yourItemImageView" destination="MG7-Pg-GAq" id="aey-Nj-4p0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kCF-a2-rZg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1121.5" y="1207.5"/>
         </scene>
     </scenes>
     <resources>
