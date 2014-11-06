@@ -110,16 +110,26 @@
 
 -(void)setUserPreference:(DraggableView *)card preference:(BOOL)userPreference{
     PFObject* thisItem = card.pfItem;
-    NSMutableArray* wantedItems;
-    NSMutableArray* unwantedItems;
+    PFUser* thisUser = [PFUser currentUser];
+    NSMutableArray* wantedItems = [NSMutableArray new];
+    NSMutableArray* unwantedItems = [NSMutableArray new];
     
 //    PFQuery *query = [PFQuery queryWithClassName:@"Item"];
 //    [query whereKey:@"objectID" equalTo:card.objectId];
     if (userPreference == NO) {
-        NSLog(@"USER DOES NOT WANT : %@",[thisItem objectForKey:@"description"]);
-        unwantedItems = [NSMutableArray arrayWithArray:[thisItem objectForKey:@"usersWhoDoNotWant"]];
-        NSLog(@"other users who dont want this item: %@", unwantedItems);
-        [unwantedItems addObject:[PFUser currentUser]];
+        NSLog(@"USER DOES NOT WANT : %@",[thisUser objectForKey:@"itemsUserDoesNotWant"]);
+        unwantedItems = [NSMutableArray arrayWithArray:[thisUser objectForKey:@"itemsUserDoesNotWant"]];
+        NSLog(@"other items this user doesnt want: %@", [thisItem objectForKey:@"description"]);
+        [unwantedItems addObject:thisItem];
+        [thisUser addObject:unwantedItems forKey:@"itemsUserDoesNotWant"];
+        [thisUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!error) {
+                NSLog(@"added item to user's preferences");
+            }
+            if (error) {
+                NSLog(@"error saving user's preferences(negative): %@",error);
+            }
+        }];
         
         //add item to user's NO preference array and upload to parse
     }
