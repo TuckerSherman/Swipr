@@ -96,7 +96,7 @@
                                     </textField>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="LHl-5L-JsH" customClass="PFImageView">
                                         <rect key="frame" x="10" y="10" width="180" height="180"/>
-                                        <color key="backgroundColor" patternImage="22B72941-7B76-4CFD-B0AE-D0FCB62893E0" colorSpace="pattern"/>
+                                        <color key="backgroundColor" patternImage="5515097B-D2DD-4CF6-A8A7-501A670EDD37" colorSpace="pattern"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="180" id="1KE-Q8-E0C"/>
@@ -635,7 +635,7 @@
                         <viewControllerLayoutGuide type="top" id="99H-km-B5C"/>
                         <viewControllerLayoutGuide type="bottom" id="GsJ-ZO-jg5"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ysx-VU-7ko">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleAspectFill" id="ysx-VU-7ko">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -648,9 +648,6 @@
                                     <action selector="backButtonPressed:" destination="Yqm-n8-Yg1" eventType="touchUpInside" id="UtX-05-NvE"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MG7-Pg-GAq" customClass="PFImageView">
-                                <rect key="frame" x="32" y="94" width="230" height="189"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Some user wants to trade for this!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uw5-u1-qcI">
                                 <rect key="frame" x="32" y="55" width="327" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -663,8 +660,12 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Xg-xX-FMd" customClass="PFImageView">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Xg-xX-FMd" customClass="PFImageView">
                                 <rect key="frame" x="32" y="352" width="230" height="189"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="230" id="MZ2-td-kpu"/>
+                                    <constraint firstAttribute="height" constant="189" id="Ztg-Yd-2Sc"/>
+                                </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gD8-mo-4mg">
                                 <rect key="frame" x="224" y="591" width="38" height="30"/>
@@ -681,6 +682,13 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MG7-Pg-GAq" customClass="PFImageView">
+                                <rect key="frame" x="27" y="92" width="230" height="189"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="230" id="Kft-Ds-vC9"/>
+                                    <constraint firstAttribute="height" constant="189" id="bLK-Y3-szy"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -688,6 +696,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="itemOwnerLabel" destination="uw5-u1-qcI" id="Opo-j0-aBc"/>
                         <outlet property="itemYouWantImageView" destination="2Xg-xX-FMd" id="V9k-7e-TX1"/>
                         <outlet property="yourItemImageView" destination="MG7-Pg-GAq" id="aey-Nj-4p0"/>
                     </connections>
@@ -698,7 +707,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="22B72941-7B76-4CFD-B0AE-D0FCB62893E0" width="80" height="80">
+        <image name="5515097B-D2DD-4CF6-A8A7-501A670EDD37" width="80" height="80">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz

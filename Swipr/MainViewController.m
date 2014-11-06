@@ -17,7 +17,8 @@
 @implementation MainViewController{
     NSMutableArray* unwantedItems;
     NSMutableArray* wantedItems;
-    NSArray *ownersWhoWantMyStuff;
+    NSArray *ownersWhoWantYourStuff;
+    PFObject *swipedCard;
 }
 
 - (void)viewDidLoad {
@@ -116,10 +117,6 @@
         itemDetailVC.item = self.currentCard.pfItem;
 
     }
-    else if ([[segue identifier] isEqualToString:@"MatchSegue"]) {
-        MatchViewController *matchVC = segue.destinationViewController;
-        
-    }
     
 }
 
@@ -133,6 +130,7 @@
 -(void)setUserPreference:(DraggableView *)card preference:(BOOL)userPreference{
     PFObject* thisItem = card.pfItem;
     PFUser* thisUser = [PFUser currentUser];
+    swipedCard = thisItem;
 
     if (userPreference == NO) {
         NSLog(@"USER DOES NOT WANTS : %@",[thisItem objectForKey:@"description"]);
@@ -153,7 +151,7 @@
     {
         NSLog(@"USER WANTS : %@",[thisItem objectForKey:@"description"]);
         
-        [self matchItems:thisItem withOwnerArray:ownersWhoWantMyStuff];
+        [self matchItems:thisItem withOwnerArray:ownersWhoWantYourStuff];
 
         PFRelation *relation = [thisItem relationForKey:@"usersWhoWant"];
         [relation addObject:thisUser];
@@ -205,12 +203,11 @@
         if (!error) {
             // Go through my items and query for relation usersWhoWant, see if anyone liked my items
             for (PFObject *myItem in objects) {
-                
                 PFRelation *wanted = [myItem relationForKey:@"usersWhoWant"];
                 PFQuery *wantedQuery = [wanted query];
                 
                 [wantedQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-                    ownersWhoWantMyStuff = objects;
+                    ownersWhoWantYourStuff = objects;
                     
                 }];
             }
@@ -223,6 +220,8 @@
 
 -(void)goToMatch {
     MatchViewController *matchVC = [self.storyboard instantiateViewControllerWithIdentifier:@"MatchViewController"];
+    matchVC.itemYouWant = swipedCard;
+    matchVC.ownerWhoWantsYourItem = [ownersWhoWantYourStuff objectAtIndex:0];
     [self presentViewController:matchVC animated:YES completion:nil];
 }
 

@@ -7,13 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
+#import <MessageUI/MessageUI.h>
 
-@interface MatchViewController : UIViewController
+@interface MatchViewController : UIViewController <MFMailComposeViewControllerDelegate>
 - (IBAction)backButtonPressed:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet PFImageView *yourItemImageView;
 @property (weak, nonatomic) IBOutlet PFImageView *itemYouWantImageView;
-@property (strong, nonatomic) PFObject *yourItem;
+@property (weak, nonatomic) IBOutlet UILabel *itemOwnerLabel;
+@property (strong, nonatomic) PFObject *ownerWhoWantsYourItem;
 @property (strong, nonatomic) PFObject *itemYouWant;
+@property (strong, nonatomic) PFObject *yourItem;
+
+
 
 - (IBAction)emailButtonPressed:(UIButton *)sender;
 
