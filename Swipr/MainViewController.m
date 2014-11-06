@@ -15,15 +15,12 @@
 @end
 
 @implementation MainViewController{
-    NSMutableArray* unwantedItems;
-    NSMutableArray* wantedItems;
+
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationItem setHidesBackButton:YES];
-    wantedItems = [NSMutableArray new];
-    unwantedItems = [NSMutableArray new];
     
     // Setup draggable background
     self.draggableBackground = [[DraggableViewBackground alloc]initWithFrame:self.view.frame];
@@ -39,9 +36,10 @@
 #pragma mark - Working with Parse methods
 
 -(void)retreiveFromParse {
-    NSString*thisUser = [[PFUser currentUser] username];
+    NSString*thisUserString = [[PFUser currentUser] username];
+    
     PFQuery *query = [PFQuery queryWithClassName:@"Item"];
-    [query whereKey:@"user" notEqualTo:thisUser];
+    [query whereKey:@"user" notEqualTo:thisUserString];
     
     [query whereKey:@"usersWhoDontWant" notEqualTo:[PFUser currentUser]];
     [query whereKey:@"usersWhoWant" notEqualTo:[PFUser currentUser]];

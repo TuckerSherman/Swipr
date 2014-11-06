@@ -99,7 +99,7 @@
                                     </textField>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="LHl-5L-JsH" customClass="PFImageView">
                                         <rect key="frame" x="10" y="10" width="180" height="180"/>
-                                        <color key="backgroundColor" patternImage="8C59F447-A4DE-4024-B68D-63A9F20CCC7A" colorSpace="pattern"/>
+                                        <color key="backgroundColor" patternImage="280038C3-CC81-4CEC-B4AE-4F6CAE617CFF" colorSpace="pattern"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="180" id="1KE-Q8-E0C"/>
@@ -250,17 +250,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Item description" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oGG-Ie-wql">
-                                <rect key="frame" x="20" y="258" width="335" height="120"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="BfI-GU-niP"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
-                                <connections>
-                                    <outlet property="delegate" destination="xC8-yD-2A2" id="ha7-N8-EwX"/>
-                                </connections>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d8z-p5-kbV">
                                 <rect key="frame" x="20" y="617" width="48" height="30"/>
                                 <state key="normal" title="Cancel">
@@ -270,17 +259,15 @@
                                     <action selector="cancelButtonPressed:" destination="Ikm-X6-9vM" eventType="touchUpInside" id="gou-y3-lPD"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jle-i8-fr9">
-                                <rect key="frame" x="20" y="40" width="335" height="198"/>
-                                <state key="normal">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="itemImagePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="4vr-bB-POq">
+                                <rect key="frame" x="60" y="40" width="255" height="200"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="oyR-Px-j3f"/>
+                                </constraints>
                                 <connections>
-                                    <action selector="itemImageButtonPressed:" destination="Ikm-X6-9vM" eventType="touchUpInside" id="bVF-Da-y4t"/>
+                                    <outletCollection property="gestureRecognizers" destination="9yH-BM-zGZ" appends="YES" id="W83-ab-Vr5"/>
                                 </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="itemImagePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="4vr-bB-POq">
-                                <rect key="frame" x="20" y="40" width="335" height="198"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RCJ-Es-DAV">
                                 <rect key="frame" x="307" y="617" width="32" height="30"/>
@@ -291,35 +278,65 @@
                                     <action selector="saveItemButtonPressed:" destination="Ikm-X6-9vM" eventType="touchUpInside" id="1JQ-Ii-jlA"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="Tap here to input a description" translatesAutoresizingMaskIntoConstraints="NO" id="jqg-gb-etr">
+                                <rect key="frame" x="36" y="260" width="303" height="347"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Ikm-X6-9vM" id="Tqu-54-5l5"/>
+                                </connections>
+                            </textView>
+                            <button opaque="NO" alpha="0.69999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5wZ-LH-rRp">
+                                <rect key="frame" x="329" y="210" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="XIl-LH-7wS"/>
+                                    <constraint firstAttribute="height" constant="30" id="pxz-7n-aac"/>
+                                </constraints>
+                                <state key="normal" title="lock" image="Unlock">
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected">
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="lockUserTap:" destination="JK5-Cl-0ME" eventType="touchUpInside" id="e0x-AS-9qm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="oGG-Ie-wql" firstAttribute="leading" secondItem="Auy-y9-7Hv" secondAttribute="leading" constant="20" id="CT7-4t-DDn"/>
-                            <constraint firstItem="4vr-bB-POq" firstAttribute="leading" secondItem="Auy-y9-7Hv" secondAttribute="leading" constant="20" id="GQ6-sC-9Uu"/>
-                            <constraint firstAttribute="centerX" secondItem="oGG-Ie-wql" secondAttribute="centerX" id="JED-i0-a0y"/>
-                            <constraint firstAttribute="trailing" secondItem="4vr-bB-POq" secondAttribute="trailing" constant="20" id="JxL-HV-tlL"/>
-                            <constraint firstItem="jle-i8-fr9" firstAttribute="leading" secondItem="Auy-y9-7Hv" secondAttribute="leading" constant="20" id="Kzb-BF-wsG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jqg-gb-etr" secondAttribute="trailing" constant="20" id="25m-TN-Ioh"/>
+                            <constraint firstItem="jqg-gb-etr" firstAttribute="leading" secondItem="Auy-y9-7Hv" secondAttribute="leadingMargin" constant="20" id="978-z0-mYv"/>
+                            <constraint firstItem="rFb-m6-FM6" firstAttribute="top" secondItem="jqg-gb-etr" secondAttribute="bottom" constant="60" id="EFS-ZT-oKb"/>
+                            <constraint firstItem="4vr-bB-POq" firstAttribute="leading" secondItem="Auy-y9-7Hv" secondAttribute="leading" constant="60" id="GQ6-sC-9Uu"/>
+                            <constraint firstAttribute="trailing" secondItem="4vr-bB-POq" secondAttribute="trailing" constant="60" id="JxL-HV-tlL"/>
                             <constraint firstItem="rFb-m6-FM6" firstAttribute="top" secondItem="RCJ-Es-DAV" secondAttribute="bottom" constant="20" id="LhV-wK-Suo"/>
-                            <constraint firstAttribute="trailing" secondItem="oGG-Ie-wql" secondAttribute="trailing" constant="20" id="Opf-oP-KAF"/>
                             <constraint firstItem="rFb-m6-FM6" firstAttribute="top" secondItem="d8z-p5-kbV" secondAttribute="bottom" constant="20" id="RhY-Hq-8tw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="RCJ-Es-DAV" secondAttribute="trailing" constant="20" id="SQo-4K-RND"/>
-                            <constraint firstAttribute="trailing" secondItem="jle-i8-fr9" secondAttribute="trailing" constant="20" id="cuY-kf-ona"/>
-                            <constraint firstItem="jle-i8-fr9" firstAttribute="height" secondItem="4vr-bB-POq" secondAttribute="height" id="ec2-5x-U7h"/>
                             <constraint firstAttribute="centerX" secondItem="4vr-bB-POq" secondAttribute="centerX" id="hJn-ht-V7g"/>
                             <constraint firstItem="d8z-p5-kbV" firstAttribute="leading" secondItem="Auy-y9-7Hv" secondAttribute="leading" constant="20" id="kh4-dN-byB"/>
-                            <constraint firstAttribute="centerX" secondItem="jle-i8-fr9" secondAttribute="centerX" id="pYd-oP-64C"/>
-                            <constraint firstItem="oGG-Ie-wql" firstAttribute="top" secondItem="4vr-bB-POq" secondAttribute="bottom" constant="20" id="uUx-wE-hKF"/>
-                            <constraint firstItem="jle-i8-fr9" firstAttribute="top" secondItem="2I6-ts-8on" secondAttribute="bottom" constant="20" id="w7V-8G-yqm"/>
+                            <constraint firstItem="5wZ-LH-rRp" firstAttribute="top" secondItem="2I6-ts-8on" secondAttribute="bottom" constant="190" id="lkZ-Wi-qV7"/>
+                            <constraint firstItem="jqg-gb-etr" firstAttribute="top" secondItem="4vr-bB-POq" secondAttribute="bottom" constant="20" id="pRo-vI-Xaw"/>
+                            <constraint firstItem="5wZ-LH-rRp" firstAttribute="trailing" secondItem="Auy-y9-7Hv" secondAttribute="trailingMargin" id="que-U6-DdQ"/>
                             <constraint firstItem="4vr-bB-POq" firstAttribute="top" secondItem="2I6-ts-8on" secondAttribute="bottom" constant="20" id="wEy-Bw-m7d"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="itemDescriptionTextField" destination="oGG-Ie-wql" id="IJD-dz-ejJ"/>
-                        <outlet property="itemImageButton" destination="jle-i8-fr9" id="wCJ-CI-qDg"/>
+                        <outlet property="itemDescriptionTextView" destination="jqg-gb-etr" id="PAB-dJ-t2K"/>
                         <outlet property="placeholderImageView" destination="4vr-bB-POq" id="biY-3d-h5O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eXO-JP-ZRn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="9yH-BM-zGZ">
+                    <connections>
+                        <action selector="imageTapped:" destination="Ikm-X6-9vM" id="pjs-gT-kuZ"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2515.5" y="318.5"/>
         </scene>
@@ -636,7 +653,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="8C59F447-A4DE-4024-B68D-63A9F20CCC7A" width="80" height="80">
+        <image name="280038C3-CC81-4CEC-B4AE-4F6CAE617CFF" width="80" height="80">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz

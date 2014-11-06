@@ -10,12 +10,12 @@
 #import "Item.h"
 #import <Parse/Parse.h>
 
-@interface NewItemViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, UIActionSheetDelegate>
+@interface NewItemViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate, UIActionSheetDelegate>
 
 
 @property (strong, nonatomic) Item *item;
 @property (weak, nonatomic) IBOutlet UIButton *itemImageButton;
-@property (weak, nonatomic) IBOutlet UITextField *itemDescriptionTextField;
+@property (strong, nonatomic) IBOutlet UITextView *itemDescriptionTextView;
 @property (weak, nonatomic) IBOutlet UIImageView *placeholderImageView;
 
 - (IBAction)cancelButtonPressed:(UIButton *)sender;
