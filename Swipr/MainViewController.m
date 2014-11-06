@@ -14,12 +14,16 @@
 
 @end
 
-@implementation MainViewController
+@implementation MainViewController{
+    NSMutableArray* unwantedItems;
+    NSMutableArray* wantedItems;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationItem setHidesBackButton:YES];
-    
+    wantedItems = [NSMutableArray new];
+    unwantedItems = [NSMutableArray new];
     
     // Setup draggable background
     self.draggableBackground = [[DraggableViewBackground alloc]initWithFrame:self.view.frame];
@@ -31,13 +35,14 @@
     
 }
 
-
+//@"username", @"itemsUserDoesWant", @"itemsUserDoesNotWant",
 #pragma mark - Working with Parse methods
 
 -(void)retreiveFromParse {
     NSString*thisUser = [[PFUser currentUser] username];
     PFQuery *query = [PFQuery queryWithClassName:@"Item"];
     [query whereKey:@"user" notEqualTo:thisUser];
+    
     [query orderByAscending:@"createdAt"];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -111,17 +116,21 @@
 -(void)setUserPreference:(DraggableView *)card preference:(BOOL)userPreference{
     PFObject* thisItem = card.pfItem;
     PFUser* thisUser = [PFUser currentUser];
-    NSMutableArray* wantedItems = [NSMutableArray new];
-    NSMutableArray* unwantedItems = [NSMutableArray new];
+   
     
-//    PFQuery *query = [PFQuery queryWithClassName:@"Item"];
-//    [query whereKey:@"objectID" equalTo:card.objectId];
+
     if (userPreference == NO) {
-        NSLog(@"USER DOES NOT WANT : %@",[thisUser objectForKey:@"itemsUserDoesNotWant"]);
+        NSLog(@"USER WANTS : %@",[thisItem objectForKey:@"description"]);
+
         unwantedItems = [NSMutableArray arrayWithArray:[thisUser objectForKey:@"itemsUserDoesNotWant"]];
         
-        [unwantedItems addObject:thisItem];
-        [thisUser addObject:unwantedItems forKey:@"itemsUserDoesNotWant"];
+        
+        [unwantedItems addObject:thisItem.objectId];
+        
+        NSArray* packagedArray = [unwantedItems copy];
+        
+        [thisUser addObject:packagedArray forKey:@"itemsUserDoesNotWant"];
+        
         [thisUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
                 NSLog(@"added item to user's preferences");
@@ -137,8 +146,12 @@
     {
         NSLog(@"USER WANTS : %@",[thisItem objectForKey:@"description"]);
         wantedItems = [NSMutableArray arrayWithArray:[thisUser objectForKey:@"itemsUserDoesWant"]];
-        [wantedItems addObject:thisItem];
-        [thisUser addObject:wantedItems forKey:@"itemsUserDoesWant"];
+        
+        [wantedItems addObject:thisItem.objectId];
+        
+        NSArray* packagedArray = [wantedItems copy];
+
+        [thisUser addObject:packagedArray forKey:@"itemsUserDoesWant"];
         [thisUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
                 NSLog(@"added item to user's preferences");

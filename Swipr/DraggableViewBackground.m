@@ -76,10 +76,11 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
     
     draggableView.pfItem = currentObject;
     
+    
     draggableView.information.text = [currentObject objectForKey:@"description"];
     draggableView.itemImage.file = [currentObject objectForKey:@"image"];
     draggableView.owner = [currentObject objectForKey:@"user"];
-    draggableView.objectId = [currentObject objectForKey:@"objectId"];
+//    draggableView.objectId = [currentObject objectForKey:@"objectId"];
     
     [draggableView.itemImage loadInBackground:^(UIImage *image, NSError *error) {
         if (!error) {
