@@ -127,7 +127,7 @@
     PFObject *newItem = [PFObject objectWithClassName:@"Item"];
     newItem[@"description"] = self.itemDescriptionTextView.text;
     newItem[@"image"] = [PFFile fileWithName:@"Image.jpg" data:self.item.imageData];
-    PFRelation *owner = [newItem objectForKey:@"owner"];
+    PFRelation *owner = [newItem relationForKey:@"owner"];
     [owner addObject:currentUser];
     newItem[@"user"] = [currentUser objectForKey:@"username"];
     
