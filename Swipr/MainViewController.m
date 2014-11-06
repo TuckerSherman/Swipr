@@ -43,6 +43,9 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Item"];
     [query whereKey:@"user" notEqualTo:thisUser];
     
+    [query whereKey:@"usersWhoDontWant" notEqualTo:[PFUser currentUser]];
+    [query whereKey:@"usersWhoWant" notEqualTo:[PFUser currentUser]];
+    
     [query orderByAscending:@"createdAt"];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -59,6 +62,8 @@
     }];
     
 }
+
+
 
 #pragma mark - Log Out Button Methods
 
@@ -116,58 +121,77 @@
 -(void)setUserPreference:(DraggableView *)card preference:(BOOL)userPreference{
     PFObject* thisItem = card.pfItem;
     PFUser* thisUser = [PFUser currentUser];
-   
-    
 
     if (userPreference == NO) {
         NSLog(@"USER DOES NOT WANTS : %@",[thisItem objectForKey:@"description"]);
         
-        [thisUser addObject:thisItem.objectId forKey:@"itemsUserDoesNotWant"];
-        
-        [thisUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//        [thisUser addObject:thisItem.objectId forKey:@"itemsUserDoesNotWant"];
+//        
+//        
+//        [thisUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//            if (!error) {
+//                NSLog(@"added item to user's preferences");
+//            }
+//            if (error) {
+//                NSLog(@"error saving user's preferences(negative): %@",error);
+//            }
+//        }];
+        PFRelation *relation = [thisItem relationForKey:@"usersWhoDontWant"];
+        [relation addObject:thisUser];
+        [thisItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
-                NSLog(@"added item to user's preferences");
+                NSLog(@"added user to item");
             }
             if (error) {
-                NSLog(@"error saving user's preferences(negative): %@",error);
+                NSLog(@"error saving item's preferences(positive): %@",error);
             }
         }];
+        
+//        [thisItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//            if (!error) {
+//                NSLog(@"added user to item");
+//            }
+//            if (error) {
+//                NSLog(@"error saving user (negative): %@",error);
+//            }
+//        }];
         
         //add item to user's NO preference array and upload to parse
     }
     else if(userPreference == YES)
     {
         NSLog(@"USER WANTS : %@",[thisItem objectForKey:@"description"]);
-        
-        [wantedItems addObject:thisItem.objectId];
+//        
+//        
+//        [thisUser addObject:thisItem.objectId forKey:@"itemsUserDoesWant"];
+//
+//        [thisUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//            if (!error) {
+//                NSLog(@"added item to user's preferences");
+//            }
+//            if (error) {
+//                NSLog(@"error saving user's preferences(positive): %@",error);
+//            }
+//        }];
 
-        [thisUser addObject:thisItem.objectId forKey:@"itemsUserDoesWant"];
-        [thisUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        PFRelation *relation = [thisItem relationForKey:@"usersWhoWant"];
+        [relation addObject:thisUser];
+//        [thisItem addObject:@"test" forKey:@"usersWhoDoNotWant"];
+        
+
+        [thisItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
-                NSLog(@"added item to user's preferences");
+                NSLog(@"added user to item");
             }
             if (error) {
-                NSLog(@"error saving user's preferences(positive): %@",error);
+                NSLog(@"error saving item's preferences(positive): %@",error);
             }
         }];
 
         //add item to users YES preference array and upload to parse
     }
 }
-//#pragma mark - Parse helper method
-//-(void)saveItemArrayToParse:(PFObject *)item {
-//    items = [currentUser objectForKey:@"items"];
-//    NSLog(@"%@", items);
-//    NSMutableArray *itemsMutable = [[NSMutableArray alloc] initWithArray:items];
-//    [itemsMutable addObject:item];
-//    
-//    items = [itemsMutable mutableCopy];
-//    NSLog(@"%@", items);
-//    
-//    [currentUser setObject:items forKey:@"items"];
-//    
-//    [currentUser saveInBackground];
-//}
+
 
 -(void)matchItems:(PFObject *)item withWantedItems:(NSMutableArray *)wantedItems {
 
