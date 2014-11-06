@@ -42,6 +42,8 @@
     
     PFACL *groupACL = [PFACL ACL];
     [groupACL setPublicWriteAccess:YES];
+    [groupACL setPublicReadAccess:YES];
+    
     newItem.ACL = groupACL;
     
     [newItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {

@@ -115,7 +115,6 @@
 -(void)currentCard:(DraggableView *)card {
     
     self.currentCard = card;
-    
 }
 
 -(void)setUserPreference:(DraggableView *)card preference:(BOOL)userPreference{
@@ -125,17 +124,6 @@
     if (userPreference == NO) {
         NSLog(@"USER DOES NOT WANTS : %@",[thisItem objectForKey:@"description"]);
         
-//        [thisUser addObject:thisItem.objectId forKey:@"itemsUserDoesNotWant"];
-//        
-//        
-//        [thisUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//            if (!error) {
-//                NSLog(@"added item to user's preferences");
-//            }
-//            if (error) {
-//                NSLog(@"error saving user's preferences(negative): %@",error);
-//            }
-//        }];
         PFRelation *relation = [thisItem relationForKey:@"usersWhoDontWant"];
         [relation addObject:thisUser];
         [thisItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
@@ -146,38 +134,14 @@
                 NSLog(@"error saving item's preferences(positive): %@",error);
             }
         }];
-        
-//        [thisItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//            if (!error) {
-//                NSLog(@"added user to item");
-//            }
-//            if (error) {
-//                NSLog(@"error saving user (negative): %@",error);
-//            }
-//        }];
-        
-        //add item to user's NO preference array and upload to parse
+
     }
     else if(userPreference == YES)
     {
         NSLog(@"USER WANTS : %@",[thisItem objectForKey:@"description"]);
-//        
-//        
-//        [thisUser addObject:thisItem.objectId forKey:@"itemsUserDoesWant"];
-//
-//        [thisUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//            if (!error) {
-//                NSLog(@"added item to user's preferences");
-//            }
-//            if (error) {
-//                NSLog(@"error saving user's preferences(positive): %@",error);
-//            }
-//        }];
 
         PFRelation *relation = [thisItem relationForKey:@"usersWhoWant"];
         [relation addObject:thisUser];
-//        [thisItem addObject:@"test" forKey:@"usersWhoDoNotWant"];
-        
 
         [thisItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
@@ -187,8 +151,6 @@
                 NSLog(@"error saving item's preferences(positive): %@",error);
             }
         }];
-
-        //add item to users YES preference array and upload to parse
     }
 }
 
