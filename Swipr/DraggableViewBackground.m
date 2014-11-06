@@ -191,6 +191,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
     if ([loadedCards count] > 0) {
         [self.delegate currentCard:[loadedCards objectAtIndex:0]];
     }
+    [self.delegate setUserPreference:dragView preference:YES];
 }
 
 //%%% when you hit the left button, this is called and substitutes the swipe
@@ -205,6 +206,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
     if ([loadedCards count] > 0) {
         [self.delegate currentCard:[loadedCards objectAtIndex:0]];
     }
+    [self.delegate setUserPreference:dragView preference:YES];
 }
 
 

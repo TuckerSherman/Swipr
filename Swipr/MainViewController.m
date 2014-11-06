@@ -126,6 +126,8 @@
     else if(userPreference == YES)
     {
         NSLog(@"USER WANTS : %@",[thisItem objectForKey:@"description"]);
+        [self matchItems:thisItem withWantedItems:wantedItems];
+        
 
         //add item to users YES preference array and upload to parse
     }
@@ -144,6 +146,31 @@
 //    
 //    [currentUser saveInBackground];
 //}
+
+-(void)matchItems:(PFObject *)item withWantedItems:(NSMutableArray *)wantedItems {
+
+    for (PFObject *wanted in wantedItems) {
+
+        NSString *wantedId = [wanted objectForKey:@"objectId"];
+        NSString *itemId = [item objectForKey:@"objectId"];
+        NSLog(@"Wanted ID: %@", wantedId);
+        NSLog(@"Item ID: %@", itemId);
+        
+        if ([itemId isEqualToString:wantedId]) {
+            
+            UIAlertView *matchAlert = [[UIAlertView alloc] initWithTitle:@"Match!"
+                                                                    message:@"You have matched items with another user!"
+                                                                   delegate:self
+                                                          cancelButtonTitle:@"No thanks"
+                                                          otherButtonTitles:@"Show me!", nil];
+            
+            [matchAlert show];
+
+        }
+       
+    }
+    
+}
 
 
 @end

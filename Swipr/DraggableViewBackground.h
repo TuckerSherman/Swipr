@@ -38,7 +38,6 @@
 -(void)currentCard:(DraggableView *)card;
 -(void)setUserPreference:(DraggableView *)card preference:(BOOL)leftOrRight;
 
-
 @end
 
 @interface DraggableViewBackground : UIView <DraggableViewDelegate>
