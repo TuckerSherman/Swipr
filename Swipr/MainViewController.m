@@ -8,7 +8,7 @@
 
 #import "MainViewController.h"
 #import "ItemDetailViewController.h"
-
+#import "MatchViewController.h"
 
 @interface MainViewController ()
 
@@ -17,7 +17,8 @@
 @implementation MainViewController{
     NSMutableArray* unwantedItems;
     NSMutableArray* wantedItems;
-    NSArray *ownersWhoWantMyStuff;
+    NSArray *ownersWhoWantYourStuff;
+    PFObject *swipedCard;
 }
 
 - (void)viewDidLoad {
@@ -73,17 +74,27 @@
                                                     delegate:self
                                                     cancelButtonTitle:@"Cancel"
                                                     otherButtonTitles:@"Log out", nil];
+    logoutAlert.tag = 0;
     [logoutAlert show];
 
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == [alertView cancelButtonIndex]){
+    if (alertView.tag == 0) {
+        if (buttonIndex == [alertView cancelButtonIndex]){
 
-    }else{
-        [PFUser logOut];
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        }else{
+            [PFUser logOut];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }
     }
+    else if (alertView.tag == 1) {
+        
+        if ([alertView buttonTitleAtIndex:1]) {
+            [self goToMatch];
+        }
+    }
+    
 }
 
 #pragma mark - Refresh button
@@ -119,6 +130,7 @@
 -(void)setUserPreference:(DraggableView *)card preference:(BOOL)userPreference{
     PFObject* thisItem = card.pfItem;
     PFUser* thisUser = [PFUser currentUser];
+    swipedCard = thisItem;
 
     if (userPreference == NO) {
         NSLog(@"USER DOES NOT WANTS : %@",[thisItem objectForKey:@"description"]);
@@ -139,7 +151,7 @@
     {
         NSLog(@"USER WANTS : %@",[thisItem objectForKey:@"description"]);
         
-        [self matchItems:thisItem withOwnerArray:ownersWhoWantMyStuff];
+        [self matchItems:thisItem withOwnerArray:ownersWhoWantYourStuff];
 
         PFRelation *relation = [thisItem relationForKey:@"usersWhoWant"];
         [relation addObject:thisUser];
@@ -155,6 +167,7 @@
     }
 }
 
+#pragma mark - Match Methods
 
 -(void)matchItems:(PFObject *)item withOwnerArray:(NSArray *)array {
     
@@ -170,6 +183,7 @@
                                                                    delegate:self
                                                           cancelButtonTitle:@"Ok"
                                                           otherButtonTitles:@"Show Me", nil];
+            matchAlert.tag = 1;
             
             [matchAlert show];
     
@@ -189,12 +203,11 @@
         if (!error) {
             // Go through my items and query for relation usersWhoWant, see if anyone liked my items
             for (PFObject *myItem in objects) {
-                
                 PFRelation *wanted = [myItem relationForKey:@"usersWhoWant"];
                 PFQuery *wantedQuery = [wanted query];
                 
                 [wantedQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-                    ownersWhoWantMyStuff = objects;
+                    ownersWhoWantYourStuff = objects;
                     
                 }];
             }
@@ -203,10 +216,13 @@
             NSLog(@"Error grabbing from Parse! %@",error);
         }
     }];
-    
-    
-    
 }
 
+-(void)goToMatch {
+    MatchViewController *matchVC = [self.storyboard instantiateViewControllerWithIdentifier:@"MatchViewController"];
+    matchVC.itemYouWant = swipedCard;
+    matchVC.ownerWhoWantsYourItem = [ownersWhoWantYourStuff objectAtIndex:0];
+    [self presentViewController:matchVC animated:YES completion:nil];
+}
 
 @end
