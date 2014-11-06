@@ -15,7 +15,9 @@
 @end
 
 @implementation MainViewController{
-
+    NSMutableArray* unwantedItems;
+    NSMutableArray* wantedItems;
+    NSArray *ownersWhoWantMyStuff;
 }
 
 - (void)viewDidLoad {

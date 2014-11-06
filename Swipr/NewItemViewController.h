@@ -14,13 +14,11 @@
 
 
 @property (strong, nonatomic) Item *item;
-@property (weak, nonatomic) IBOutlet UIButton *itemImageButton;
 @property (strong, nonatomic) IBOutlet UITextView *itemDescriptionTextView;
 @property (weak, nonatomic) IBOutlet UIImageView *placeholderImageView;
 
 - (IBAction)cancelButtonPressed:(UIButton *)sender;
 - (IBAction)saveItemButtonPressed:(UIButton *)sender;
-- (IBAction)itemImageButtonPressed:(UIButton *)sender;
 
 
 @end
