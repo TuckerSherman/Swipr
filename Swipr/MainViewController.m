@@ -22,8 +22,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationItem setHidesBackButton:YES];
-    [self makeBarButtons];
+    
+    CGFloat navWidth = self.navigationController.navigationBar.frame.size.width;
+    CGFloat navHeight = self.navigationController.navigationBar.frame.size.height;
+    
+    UIImageView* logo =[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"WhiteLogo"]];
+    logo.contentMode = UIViewContentModeScaleAspectFit;
+    
+    logo.frame = CGRectMake(navWidth/2.0, navHeight/2.0, 200, 40);
+    
+    self.navigationItem.titleView = logo;
+    
+    
     
     // Setup draggable background
     self.draggableBackground = [[DraggableViewBackground alloc]initWithFrame:self.view.frame];
@@ -35,14 +45,7 @@
     
 }
 
--(void)makeBarButtons{
-    UIButton *logOutButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-    [logOutButton addTarget:self action:@selector(logOutButtonPressed:)forControlEvents:UIControlEventTouchUpInside];
-    [logOutButton setImage:[UIImage imageNamed:@"logOutIcon"] forState:UIControlStateNormal];
-//    [logOutButton setBackgroundImage:[UIImage imageNamed:@"logOutIcon"] forState:UIControlStateNormal];
-    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithCustomView:logOutButton];
-    [self.navigationItem setLeftBarButtonItem:settingsButton];
-}
+
 
 //@"username", @"itemsUserDoesWant", @"itemsUserDoesNotWant",
 #pragma mark - Working with Parse methods

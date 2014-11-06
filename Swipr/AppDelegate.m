@@ -17,8 +17,10 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
     
+    [self themeNavController];
+
+    // Override point for customization after application launch.
     // ****************************************************************************
     // Uncomment and fill in with your Parse credentials:
     // [Parse setApplicationId:@"your_application_id" clientKey:@"your_client_key"];
@@ -78,6 +80,13 @@
     }
 
     return YES;
+}
+
+-(void)themeNavController{
+
+        [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:113.0/255.0 green:177.0/255.0 blue:225.0/255.0 alpha:1]];
+        [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

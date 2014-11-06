@@ -25,7 +25,7 @@
     currentUser = [PFUser currentUser];
     
 }
-#define kOFFSET_FOR_KEYBOARD 80.0
+#define kOFFSET_FOR_KEYBOARD 160
 
 -(void)keyboardWillShow {
     // Animate the current view out of the way

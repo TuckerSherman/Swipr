@@ -32,16 +32,9 @@
         
         // View Setup for draggable cards
         // Image view
-        self.itemImage = [[PFImageView alloc] initWithFrame:CGRectMake(10, 10, self.frame.size.width - 20, 310)];
+        self.itemImage = [[PFImageView alloc] initWithFrame:CGRectMake(10, 10, self.frame.size.width - 20, self.frame.size.height-60)];
 
-//        self.itemImage.file = [thisObject objectForKey:@"image"];
-//        [self.itemImage loadInBackground:^(UIImage *image, NSError *error) {
-//            if (!error) {
-//                NSLog(@"I GOT AN IMAGE");
-//                self.itemImage.image = image;
-//            }
-//        }];
-        
+
         self.information.text = @"no info given";
         self.information.text = [thisObject objectForKey:@"description"];
         
@@ -49,7 +42,7 @@
         self.itemImage.image = [UIImage imageNamed:@"itemImagePlaceholder"];
         
         // Text label
-        self.information = [[UILabel alloc]initWithFrame:CGRectMake(0, 300, self.frame.size.width, 100)];
+        self.information = [[UILabel alloc]initWithFrame:CGRectMake(0, self.frame.size.height-75 , self.frame.size.width, 100)];
  
         [self.information setTextAlignment:NSTextAlignmentCenter];
         self.information.textColor = [UIColor blackColor];
@@ -74,8 +67,8 @@
 -(void)setupView
 {
     self.layer.cornerRadius = 4;
-    self.layer.shadowRadius = 3;
-    self.layer.shadowOpacity = 0.2;
+    self.layer.shadowRadius = 7;
+    self.layer.shadowOpacity = 0.05;
     self.layer.shadowOffset = CGSizeMake(1, 1);
 }
 

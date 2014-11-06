@@ -89,15 +89,15 @@
     
 }
 
-//-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    
-//    if ([[segue identifier] isEqualToString:@"itemDetailSegue"]) {
-//        ItemDetailViewController *itemDetailVC = segue.destinationViewController;
-//        
-//        itemDetailVC.item = self.currentCard.pfItem;
-//        
-//    }
-//    
-//}
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([[segue identifier] isEqualToString:@"registerSegue"]) {
+        UIViewController *mainViewController = segue.destinationViewController;
+        mainViewController.navigationController.navigationBar.backgroundColor = [UIColor blackColor];
+        
+        
+    }
+    
+}
 
 @end

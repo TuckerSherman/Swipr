@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "finalizeIcon1x.png"
+      "filename" : "whiteLock1x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "finalizeIcon2x.png"
+      "filename" : "whiteLock2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "finalizeIcon3x.png"
+      "filename" : "whiteLock3x.png"
     }
   ],
   "info" : {

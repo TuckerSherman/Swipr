@@ -16,6 +16,8 @@
     
     UIButton* checkButton;
     UIButton* xButton;
+    
+    CGSize containerSize;
 
 }
 //this makes it so only two cards are loaded at a time to
@@ -29,11 +31,11 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
+    containerSize = frame.size;
+    
     if (self) {
         [super layoutSubviews];
         [self setupView];
-//        cardLabels = [[NSArray alloc]init]; //%%% placeholder for card-specific information
-        
         loadedCards = [[NSMutableArray alloc] init];
         allCards = [[NSMutableArray alloc] init];
         self.cardsLoadedIndex = 0;
@@ -46,7 +48,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
 //%%% sets up the extra buttons on the screen
 -(void)setupView
 {
-    self.backgroundColor = [UIColor whiteColor];
+    self.backgroundColor = [UIColor colorWithRed:.95 green:.95 blue:.95 alpha:.3];
 
     xButton = [[UIButton alloc]initWithFrame:CGRectMake(90, 545, 59, 59)];
     [xButton setImage:[UIImage imageNamed:@"xButton"] forState:UIControlStateNormal];
@@ -70,7 +72,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
 // to get rid of it (eg: if you are building cards from data from the internet)
 -(DraggableView *)createDraggableViewWithDataAtIndex:(NSInteger)index{
     
-    DraggableView *draggableView = [[DraggableView alloc]initWithFrame:CGRectMake((self.frame.size.width - CARD_WIDTH)/2, (self.frame.size.height - CARD_HEIGHT)/2, CARD_WIDTH, CARD_HEIGHT)];
+    DraggableView *draggableView = [[DraggableView alloc]initWithFrame:CGRectMake(15, 80, containerSize.width-30, containerSize.height-200)];
     
     PFObject* currentObject = [self.pfItemsArray objectAtIndex:index];
     
