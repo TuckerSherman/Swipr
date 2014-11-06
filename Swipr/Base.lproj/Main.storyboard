@@ -96,11 +96,7 @@
                                     </textField>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="LHl-5L-JsH" customClass="PFImageView">
                                         <rect key="frame" x="10" y="10" width="180" height="180"/>
-<<<<<<< HEAD
-                                        <color key="backgroundColor" patternImage="054F10F9-BE5E-463C-A429-34EB452FDA9F" colorSpace="pattern"/>
-=======
-                                        <color key="backgroundColor" patternImage="5515097B-D2DD-4CF6-A8A7-501A670EDD37" colorSpace="pattern"/>
->>>>>>> jacobBranch
+                                        <color key="backgroundColor" patternImage="74258A5A-B929-40D5-B47E-1328DE2BAAEC" colorSpace="pattern"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="180" id="1KE-Q8-E0C"/>
@@ -711,11 +707,7 @@
         </scene>
     </scenes>
     <resources>
-<<<<<<< HEAD
-        <image name="054F10F9-BE5E-463C-A429-34EB452FDA9F" width="80" height="80">
-=======
-        <image name="5515097B-D2DD-4CF6-A8A7-501A670EDD37" width="80" height="80">
->>>>>>> jacobBranch
+        <image name="74258A5A-B929-40D5-B47E-1328DE2BAAEC" width="80" height="80">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBMU
 GR4fJSYsLzU4VSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBz
