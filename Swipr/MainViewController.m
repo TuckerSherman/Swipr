@@ -17,6 +17,7 @@
 @implementation MainViewController{
     NSMutableArray* unwantedItems;
     NSMutableArray* wantedItems;
+    NSArray *ownersWhoWantMyStuff;
 }
 
 - (void)viewDidLoad {
@@ -30,7 +31,7 @@
     self.draggableBackground.delegate = self;
     [self.subView addSubview:self.draggableBackground];
     [self.subView bringSubviewToFront:self.infoButton];
-    
+    [self myWantedItems];
     [self retreiveFromParse];
     
 }
@@ -53,7 +54,6 @@
             // Copy objects array fetched from Parse to "items"
             NSMutableArray *items = [[NSMutableArray alloc] initWithArray:objects];
             self.draggableBackground.pfItemsArray = [items mutableCopy];
-             NSLog(@"%d",(int)[self.draggableBackground.pfItemsArray count]);
             [self.draggableBackground loadCards];
             
         } else {
@@ -139,6 +139,8 @@
     else if(userPreference == YES)
     {
         NSLog(@"USER WANTS : %@",[thisItem objectForKey:@"description"]);
+        
+        [self matchItems:thisItem withOwnerArray:ownersWhoWantMyStuff];
 
         PFRelation *relation = [thisItem relationForKey:@"usersWhoWant"];
         [relation addObject:thisUser];
@@ -155,28 +157,55 @@
 }
 
 
--(void)matchItems:(PFObject *)item withWantedItems:(NSMutableArray *)wantedItems {
-
-    for (PFObject *wanted in wantedItems) {
-
-        NSString *wantedId = [wanted objectForKey:@"objectId"];
-        NSString *itemId = [item objectForKey:@"objectId"];
-        NSLog(@"Wanted ID: %@", wantedId);
-        NSLog(@"Item ID: %@", itemId);
-        
-        if ([itemId isEqualToString:wantedId]) {
-            
-            UIAlertView *matchAlert = [[UIAlertView alloc] initWithTitle:@"Match!"
-                                                                    message:@"You have matched items with another user!"
+-(void)matchItems:(PFObject *)item withOwnerArray:(NSArray *)array {
+    
+    // query an item for it's owner
+    NSString *itemsOwner = [item objectForKey:@"user"];
+    
+    // Check all owners in array to see if it match the item's owner
+    for (PFObject *owners in array) {
+        NSString *owner = [owners objectForKey:@"username"];
+        if ([itemsOwner isEqualToString:owner]) {
+            UIAlertView *matchAlert = [[UIAlertView alloc] initWithTitle:@"You Got A Match!"
+                                                                    message:@"Someone wanted your item too!"
                                                                    delegate:self
-                                                          cancelButtonTitle:@"No thanks"
-                                                          otherButtonTitles:@"Show me!", nil];
+                                                          cancelButtonTitle:@"Ok"
+                                                          otherButtonTitles:@"Show Me", nil];
             
             [matchAlert show];
-
+    
         }
-       
+        
     }
+}
+
+// Do query for all items that belong to me, and see if there is a user that wants them
+-(void)myWantedItems {
+    // Query my Items
+    NSString*thisUser = [[PFUser currentUser] username];
+    PFQuery *query = [PFQuery queryWithClassName:@"Item"];
+    [query whereKey:@"user" equalTo:thisUser];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // Go through my items and query for relation usersWhoWant, see if anyone liked my items
+            for (PFObject *myItem in objects) {
+                
+                PFRelation *wanted = [myItem relationForKey:@"usersWhoWant"];
+                PFQuery *wantedQuery = [wanted query];
+                
+                [wantedQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                    ownersWhoWantMyStuff = objects;
+                    
+                }];
+            }
+            
+        } else {
+            NSLog(@"Error grabbing from Parse! %@",error);
+        }
+    }];
+    
+    
     
 }
 
