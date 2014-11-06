@@ -136,8 +136,18 @@
     else if(userPreference == YES)
     {
         NSLog(@"USER WANTS : %@",[thisItem objectForKey:@"description"]);
-        [self matchItems:thisItem withWantedItems:wantedItems];
-        
+        wantedItems = [NSMutableArray arrayWithArray:[thisUser objectForKey:@"itemsUserDoesWant"]];
+        NSLog(@"other items this user does want: %@", wantedItems);
+        [wantedItems addObject:thisItem];
+        [thisUser addObject:wantedItems forKey:@"itemsUserDoesWant"];
+        [thisUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!error) {
+                NSLog(@"added item to user's preferences");
+            }
+            if (error) {
+                NSLog(@"error saving user's preferences(positive): %@",error);
+            }
+        }];
 
         //add item to users YES preference array and upload to parse
     }
