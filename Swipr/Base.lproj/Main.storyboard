@@ -222,9 +222,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="rMP-t1-0g3">
-                        <barButtonItem key="rightBarButtonItem" image="lock" id="A76-ae-lWD"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="rMP-t1-0g3"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="lockButton" destination="e3B-bv-WGf" id="zWD-un-zPF"/>

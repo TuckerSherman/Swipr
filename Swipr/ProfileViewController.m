@@ -25,6 +25,15 @@
     //default view has profile editing locked
     [self performSelector:@selector(lockUserTap:)withObject:nil];
     [self setupCurrentUser];
+    
+    UIBarButtonItem* lockButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"lock"]
+                                                                  style:UIBarButtonItemStylePlain
+                                                                 target:self
+                                                                 action:@selector(lockUserTap:)];
+    self.navigationItem.rightBarButtonItem = lockButton;
+    
+    
+    
 //    [self setQueryTableView];
 }
 
