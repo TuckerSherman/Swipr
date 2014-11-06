@@ -120,16 +120,9 @@
     
 
     if (userPreference == NO) {
-        NSLog(@"USER WANTS : %@",[thisItem objectForKey:@"description"]);
-
-        unwantedItems = [NSMutableArray arrayWithArray:[thisUser objectForKey:@"itemsUserDoesNotWant"]];
+        NSLog(@"USER DOES NOT WANTS : %@",[thisItem objectForKey:@"description"]);
         
-        
-        [unwantedItems addObject:thisItem.objectId];
-        
-        NSArray* packagedArray = [unwantedItems copy];
-        
-        [thisUser addObject:packagedArray forKey:@"itemsUserDoesNotWant"];
+        [thisUser addObject:thisItem.objectId forKey:@"itemsUserDoesNotWant"];
         
         [thisUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
@@ -145,13 +138,10 @@
     else if(userPreference == YES)
     {
         NSLog(@"USER WANTS : %@",[thisItem objectForKey:@"description"]);
-        wantedItems = [NSMutableArray arrayWithArray:[thisUser objectForKey:@"itemsUserDoesWant"]];
         
         [wantedItems addObject:thisItem.objectId];
-        
-        NSArray* packagedArray = [wantedItems copy];
 
-        [thisUser addObject:packagedArray forKey:@"itemsUserDoesWant"];
+        [thisUser addObject:thisItem.objectId forKey:@"itemsUserDoesWant"];
         [thisUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
                 NSLog(@"added item to user's preferences");
