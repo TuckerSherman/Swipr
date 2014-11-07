@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *loginUsernameTextfield;
 @property (weak, nonatomic) IBOutlet UITextField *loginPasswordTextfield;
+@property (strong, nonatomic) IBOutlet UIImageView *gradientView;
 - (IBAction)loginButtonPressed:(UIButton *)sender;
 
 @end
