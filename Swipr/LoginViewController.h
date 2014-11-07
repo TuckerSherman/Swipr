@@ -14,6 +14,5 @@
 @property (weak, nonatomic) IBOutlet UITextField *loginUsernameTextfield;
 @property (weak, nonatomic) IBOutlet UITextField *loginPasswordTextfield;
 - (IBAction)loginButtonPressed:(UIButton *)sender;
-- (IBAction)cancelButtonPressed:(UIButton *)sender;
 
 @end

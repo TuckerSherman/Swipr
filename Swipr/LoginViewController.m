@@ -32,20 +32,33 @@
 }
 
 - (IBAction)loginButtonPressed:(UIButton *)sender {
-    [PFUser logInWithUsernameInBackground:self.loginUsernameTextfield.text password:self.loginPasswordTextfield.text block:^(PFUser *user, NSError *error) {
-        if (!error) {
-            NSLog(@"Logged in");
-            [self performSegueWithIdentifier:@"logIn" sender:self];
-        } else if (error) {
+        
+        if (self.loginPasswordTextfield.text && self.loginPasswordTextfield) {
             
-            UIAlertView *loginAlert = [[UIAlertView alloc] initWithTitle:@"Could not log in"
-                                                                 message:@"Sorry, there was a problem logging in"
-                                                                delegate:self
-                                                       cancelButtonTitle:@"Ok"
-                                                       otherButtonTitles:nil];
-            [loginAlert show];
+            [PFUser logInWithUsernameInBackground:self.loginUsernameTextfield.text password:self.loginPasswordTextfield.text block:^(PFUser *user, NSError *error) {
+                if (!error) {
+                    NSLog(@"Logged in");
+                    [self performSegueWithIdentifier:@"logIn" sender:self];
+                } else if (error) {
+                    
+                    UIAlertView *loginAlert = [[UIAlertView alloc] initWithTitle:@"Could not log in"
+                                                                         message:@"Sorry, there was a problem logging in"
+                                                                        delegate:self
+                                                               cancelButtonTitle:@"Ok"
+                                                               otherButtonTitles:nil];
+                    [loginAlert show];
+                }
+            }];
+    }
+        else{
+            UIAlertView *registerAlert = [[UIAlertView alloc] initWithTitle:@"Couldnt log you in"
+                                                                    message:@"Please fill out all textfields"
+                                                                   delegate:self
+                                                          cancelButtonTitle:@"Ok"
+                                                          otherButtonTitles:nil];
+            
+            [registerAlert show];
         }
-    }];
     self.loginUsernameTextfield.text = nil;
     self.loginPasswordTextfield.text = nil;
 }

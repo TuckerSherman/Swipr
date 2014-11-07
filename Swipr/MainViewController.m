@@ -44,7 +44,9 @@
     [self.subView addSubview:self.draggableBackground];
     [self.subView bringSubviewToFront:self.infoButton];
     [self myWantedItems];
-    [self retreiveFromParse];
+    if ([PFUser currentUser]) {
+        [self retreiveFromParse];
+    }
     
 }
 
