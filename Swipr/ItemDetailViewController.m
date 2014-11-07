@@ -38,11 +38,9 @@
 -(void)checkUserStatus{
     PFUser* currentUser =[PFUser currentUser];
     if (![currentUser.username isEqualToString:[self.item objectForKey:@"user"]]) {
-        NSLog(@"Das not yo shit");
         self.contactInfoLabel.hidden = YES;
     }
     else if([currentUser.username isEqualToString:[self.item objectForKey:@"user"]]){
-        NSLog(@"Das yo shit");
        self.contactInfoLabel.hidden = NO;
     }
     
