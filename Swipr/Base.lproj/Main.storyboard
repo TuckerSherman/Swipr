@@ -609,75 +609,111 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Some user wants to trade for this!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uw5-u1-qcI">
-                                <rect key="frame" x="32" y="55" width="327" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Item that you wanted:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Edh-il-OMc">
-                                <rect key="frame" x="32" y="323" width="167" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Xg-xX-FMd" customClass="PFImageView">
-                                <rect key="frame" x="32" y="352" width="230" height="189"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" bounces="NO" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dj2-oS-0V2">
+                                <rect key="frame" x="0.0" y="0.0" width="379" height="670"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MG7-Pg-GAq" customClass="PFImageView">
+                                        <rect key="frame" x="27" y="95" width="230" height="189"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="230" id="Kft-Ds-vC9"/>
+                                            <constraint firstAttribute="height" constant="189" id="bLK-Y3-szy"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gD8-mo-4mg">
+                                        <rect key="frame" x="195" y="594" width="67" height="30"/>
+                                        <color key="backgroundColor" red="0.44313725490196076" green="0.69411764705882351" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Email">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="emailButtonPressed:" destination="Yqm-n8-Yg1" eventType="touchUpInside" id="s4P-X6-44y"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MATCH!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kRV-ud-dNe">
+                                        <rect key="frame" x="137" y="20" width="100" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="irS-fh-gR0"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Xg-xX-FMd" customClass="PFImageView">
+                                        <rect key="frame" x="32" y="355" width="230" height="189"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="230" id="MZ2-td-kpu"/>
+                                            <constraint firstAttribute="height" constant="189" id="Ztg-Yd-2Sc"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pnl-iD-TMS">
+                                        <rect key="frame" x="32" y="594" width="67" height="30"/>
+                                        <color key="backgroundColor" red="0.44313725490196076" green="0.69411764705882351" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="67" id="hOm-5b-lUE"/>
+                                        </constraints>
+                                        <state key="normal" title="Back">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backButtonPressed:" destination="Yqm-n8-Yg1" eventType="touchUpInside" id="UtX-05-NvE"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item that you wanted:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Edh-il-OMc">
+                                        <rect key="frame" x="32" y="326" width="167" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some user wants to trade for this!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uw5-u1-qcI">
+                                        <rect key="frame" x="32" y="58" width="327" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="327" id="dCa-6T-ztU"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="230" id="MZ2-td-kpu"/>
-                                    <constraint firstAttribute="height" constant="189" id="Ztg-Yd-2Sc"/>
+                                    <constraint firstItem="uw5-u1-qcI" firstAttribute="top" secondItem="kRV-ud-dNe" secondAttribute="bottom" constant="8" symbolic="YES" id="27G-Cz-W5N"/>
+                                    <constraint firstItem="pnl-iD-TMS" firstAttribute="top" secondItem="2Xg-xX-FMd" secondAttribute="bottom" constant="50" id="82G-QT-FIR"/>
+                                    <constraint firstAttribute="trailing" secondItem="uw5-u1-qcI" secondAttribute="trailing" constant="20" id="9Yt-1l-XjS"/>
+                                    <constraint firstItem="kRV-ud-dNe" firstAttribute="top" secondItem="dj2-oS-0V2" secondAttribute="top" constant="20" id="9sV-lh-Z8X"/>
+                                    <constraint firstItem="gD8-mo-4mg" firstAttribute="leading" secondItem="pnl-iD-TMS" secondAttribute="trailing" constant="96" id="BSI-fp-7ax"/>
+                                    <constraint firstItem="uw5-u1-qcI" firstAttribute="leading" secondItem="dj2-oS-0V2" secondAttribute="leading" constant="32" id="Lyq-ic-LIo"/>
+                                    <constraint firstItem="MG7-Pg-GAq" firstAttribute="top" secondItem="uw5-u1-qcI" secondAttribute="bottom" constant="16" id="Nh5-Ts-cqZ"/>
+                                    <constraint firstItem="2Xg-xX-FMd" firstAttribute="leading" secondItem="Edh-il-OMc" secondAttribute="leading" id="STp-NF-cdU"/>
+                                    <constraint firstItem="pnl-iD-TMS" firstAttribute="leading" secondItem="2Xg-xX-FMd" secondAttribute="leading" id="YtO-Cs-geN"/>
+                                    <constraint firstItem="Edh-il-OMc" firstAttribute="top" secondItem="MG7-Pg-GAq" secondAttribute="bottom" constant="42" id="Zbp-yO-IXI"/>
+                                    <constraint firstItem="MG7-Pg-GAq" firstAttribute="leading" secondItem="dj2-oS-0V2" secondAttribute="leading" constant="27" id="bZu-wY-w10"/>
+                                    <constraint firstItem="pnl-iD-TMS" firstAttribute="baseline" secondItem="gD8-mo-4mg" secondAttribute="baseline" id="fpW-CS-OG0"/>
+                                    <constraint firstItem="gD8-mo-4mg" firstAttribute="trailing" secondItem="2Xg-xX-FMd" secondAttribute="trailing" id="hT3-SR-eef"/>
+                                    <constraint firstItem="2Xg-xX-FMd" firstAttribute="top" secondItem="Edh-il-OMc" secondAttribute="bottom" constant="8" symbolic="YES" id="m2h-eh-VE3"/>
+                                    <constraint firstItem="kRV-ud-dNe" firstAttribute="leading" secondItem="dj2-oS-0V2" secondAttribute="leading" constant="137" id="mEO-Wn-Txn"/>
+                                    <constraint firstItem="Edh-il-OMc" firstAttribute="leading" secondItem="uw5-u1-qcI" secondAttribute="leading" id="ufz-sg-r6e"/>
+                                    <constraint firstAttribute="bottom" secondItem="pnl-iD-TMS" secondAttribute="bottom" constant="46" id="vdA-st-6UF"/>
                                 </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gD8-mo-4mg">
-                                <rect key="frame" x="195" y="591" width="67" height="30"/>
-                                <color key="backgroundColor" red="0.44313725490196076" green="0.69411764705882351" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Email">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="emailButtonPressed:" destination="Yqm-n8-Yg1" eventType="touchUpInside" id="s4P-X6-44y"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="MATCH!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kRV-ud-dNe">
-                                <rect key="frame" x="137" y="17" width="100" height="30"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MG7-Pg-GAq" customClass="PFImageView">
-                                <rect key="frame" x="27" y="92" width="230" height="189"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="230" id="Kft-Ds-vC9"/>
-                                    <constraint firstAttribute="height" constant="189" id="bLK-Y3-szy"/>
-                                </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pnl-iD-TMS">
-                                <rect key="frame" x="32" y="591" width="67" height="30"/>
-                                <color key="backgroundColor" red="0.44313725490196076" green="0.69411764705882351" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Back">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="backButtonPressed:" destination="Yqm-n8-Yg1" eventType="touchUpInside" id="UtX-05-NvE"/>
-                                </connections>
-                            </button>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="kRV-ud-dNe" secondAttribute="centerX" id="6T6-78-bwJ"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="dj2-oS-0V2" secondAttribute="bottom" constant="-3" id="DaF-KU-KzL"/>
+                            <constraint firstItem="dj2-oS-0V2" firstAttribute="top" secondItem="ysx-VU-7ko" secondAttribute="top" id="Vum-LQ-eFt"/>
+                            <constraint firstItem="dj2-oS-0V2" firstAttribute="leading" secondItem="ysx-VU-7ko" secondAttribute="leading" id="mxV-H6-s3E"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="itemOwnerLabel" destination="uw5-u1-qcI" id="Opo-j0-aBc"/>
                         <outlet property="itemYouWantImageView" destination="2Xg-xX-FMd" id="V9k-7e-TX1"/>
+                        <outlet property="scrollView" destination="dj2-oS-0V2" id="X4K-dY-Rje"/>
                         <outlet property="yourItemImageView" destination="MG7-Pg-GAq" id="aey-Nj-4p0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kCF-a2-rZg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1708.5" y="1207.5"/>
+            <point key="canvasLocation" x="1710.5" y="1208.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aG0-3z-MU3">
