@@ -60,8 +60,6 @@
     
 }
 
-
-
 -(void)queryMyItem:(NSString *)itemOwnerName {
     
     NSString*thisUser = [[PFUser currentUser] username];

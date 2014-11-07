@@ -8,7 +8,10 @@
 
 #import "ItemDetailViewController.h"
 
-@interface ItemDetailViewController ()
+@interface ItemDetailViewController () {
+    
+    NSString *email;
+}
 
 @end
 
@@ -19,7 +22,12 @@
     self.itemImageView.file = [self.item objectForKey:@"image"];
     [self.itemImageView loadInBackground];
     
-    self.itemDescriptionTextFeild.text = [self.item objectForKey:@"description"];
+    NSString *userName = [self.item objectForKey:@"user"];
+    [self queryForEmail:userName];
+    
+    
+
+    self.itemDescriptionLabel.text = [self.item objectForKey:@"description"];
     
 }
 
@@ -31,15 +39,29 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)queryForEmail:(NSString *)itemOwnerName {
+    
+    PFQuery *query = [PFUser query];
+    
+    [query whereKey:@"username" equalTo:itemOwnerName];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            NSLog(@"No error");
+            if (objects) {
+                PFObject *user = [objects objectAtIndex:0];
+                email = [user objectForKey:@"email"];
+                self.contactInfoLabel.text = [NSString stringWithFormat:@"Name: %@ Email: %@", itemOwnerName, email];
+            } else {
+                NSLog(@"No objects");
+            }
+        } else {
+            NSLog(@"%@", error);
+        }
+        
+    }];
+    
+    
 }
-*/
 
 @end
