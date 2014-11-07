@@ -466,7 +466,6 @@
                                 </state>
                                 <connections>
                                     <action selector="cancelButtonPressed:" destination="ymp-rH-TF1" eventType="touchUpInside" id="YKq-0c-RvQ"/>
-                                    <action selector="registerButtonPressed:" destination="ymp-rH-TF1" eventType="touchUpInside" id="khr-dl-sNz"/>
                                 </connections>
                             </button>
                         </subviews>
