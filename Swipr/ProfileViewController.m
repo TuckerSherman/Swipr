@@ -22,6 +22,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor colorWithRed:.95 green:.95 blue:.95 alpha:.3];
+
     
     _currentUser = [PFUser currentUser];
 
