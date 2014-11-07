@@ -23,8 +23,7 @@
 //this makes it so only two cards are loaded at a time to
 //avoid performance and memory costs
 static const int MAX_BUFFER_SIZE = 2; //%%% max number of cards loaded at any given time, must be greater than 1
-static const float CARD_HEIGHT = 386; //%%% height of the draggable card
-static const float CARD_WIDTH = 290; //%%% width of the draggable card
+
 
 @synthesize allCards;//%%% all the cards
 
@@ -49,11 +48,11 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
 {
     self.backgroundColor = [UIColor colorWithRed:.95 green:.95 blue:.95 alpha:.3];
 
-    xButton = [[UIButton alloc]initWithFrame:CGRectMake(90, 545, 59, 59)];
+    xButton = [[UIButton alloc]initWithFrame:CGRectMake(containerSize.width/4-29, containerSize.height -100, 59, 59)];
     [xButton setImage:[UIImage imageNamed:@"xButton"] forState:UIControlStateNormal];
     [xButton addTarget:self action:@selector(swipeLeft) forControlEvents:UIControlEventTouchUpInside];
     
-    checkButton = [[UIButton alloc]initWithFrame:CGRectMake(230, 545, 59, 59)];
+    checkButton = [[UIButton alloc]initWithFrame:CGRectMake(((containerSize.width/4)*3)-29, containerSize.height -100, 59, 59)];
     [checkButton setImage:[UIImage imageNamed:@"checkButton"] forState:UIControlStateNormal];
     [checkButton addTarget:self action:@selector(swipeRight) forControlEvents:UIControlEventTouchUpInside];
     
