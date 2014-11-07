@@ -131,6 +131,7 @@
     if ([[segue identifier] isEqualToString:@"itemDetailSegue"]) {
         ItemDetailViewController *itemDetailVC = segue.destinationViewController;
         
+
         itemDetailVC.item = self.currentCard.pfItem;
 
     }
