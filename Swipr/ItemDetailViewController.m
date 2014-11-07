@@ -17,10 +17,15 @@
 
 @implementation ItemDetailViewController
 
+-(void)viewWillAppear:(BOOL)animated{
+    [self checkUserStatus];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.itemImageView.file = [self.item objectForKey:@"image"];
     [self.itemImageView loadInBackground];
+    
     
     NSString *userName = [self.item objectForKey:@"user"];
     [self queryForEmail:userName];
@@ -30,7 +35,18 @@
     self.itemDescriptionLabel.text = [self.item objectForKey:@"description"];
     
 }
-
+-(void)checkUserStatus{
+    PFUser* currentUser =[PFUser currentUser];
+    if (![currentUser.username isEqualToString:[self.item objectForKey:@"user"]]) {
+        NSLog(@"Das not yo shit");
+        self.contactInfoLabel.hidden = YES;
+    }
+    else if([currentUser.username isEqualToString:[self.item objectForKey:@"user"]]){
+        NSLog(@"Das yo shit");
+       self.contactInfoLabel.hidden = NO;
+    }
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
