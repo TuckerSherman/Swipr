@@ -64,7 +64,7 @@
     
     NSString*thisUser = [[PFUser currentUser] username];
     PFQuery *query = [PFQuery queryWithClassName:@"Item"];
-    [query whereKey:@"user" equalTo:itemOwnerName];
+    [query whereKey:@"user" equalTo:thisUser];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
@@ -104,9 +104,7 @@
 - (IBAction)emailButtonPressed:(UIButton *)sender {
     mailComposer = [[MFMailComposeViewController alloc]init];
     mailComposer.mailComposeDelegate = self;
-    NSMutableArray *emailMutableArray = [[NSMutableArray alloc] initWithObjects:email, nil];
-    NSArray *emailArray = [NSArray arrayWithArray:emailMutableArray];
-    [mailComposer setToRecipients:emailArray];
+    [mailComposer setToRecipients:[NSArray arrayWithObjects:email, nil]];
     [mailComposer setSubject:@"I'm interested in trading items!"];
 
     [self presentViewController:mailComposer animated:YES completion:nil];
