@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Item.h"
 #import <Parse/Parse.h>
+#import "Item.h"
 
 @interface NewItemViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate, UIActionSheetDelegate>
-
 
 @property (strong, nonatomic) Item *item;
 @property (strong, nonatomic) IBOutlet UITextView *itemDescriptionTextView;

@@ -51,7 +51,7 @@
             if (objects) {
                 PFObject *user = [objects objectAtIndex:0];
                 email = [user objectForKey:@"email"];
-                self.contactInfoLabel.text = [NSString stringWithFormat:@"Name: %@ Email: %@", itemOwnerName, email];
+                self.contactInfoLabel.text = [NSString stringWithFormat:@"Name: %@\nEmail: %@", itemOwnerName, email];
             } else {
                 NSLog(@"No objects");
             }
