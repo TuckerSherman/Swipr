@@ -21,8 +21,12 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rc1-q1-oHm">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W47-Nz-Cji">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W47-Nz-Cji">
                                         <rect key="frame" x="167" y="577" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="97T-SQ-D4u"/>
+                                            <constraint firstAttribute="height" constant="40" id="Sgp-I0-aPZ"/>
+                                        </constraints>
                                         <state key="normal" image="infoButton">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -749,7 +753,7 @@
     <resources>
         <image name="WhiteBigLogo" width="250" height="118"/>
         <image name="blueGradient.png" width="800" height="1280"/>
-        <image name="infoButton" width="80" height="80"/>
+        <image name="infoButton" width="81" height="88"/>
         <image name="itemImagePlaceholder" width="300" height="300"/>
         <image name="logOutIcon" width="30" height="30"/>
         <image name="profileIcon" width="30" height="30"/>
