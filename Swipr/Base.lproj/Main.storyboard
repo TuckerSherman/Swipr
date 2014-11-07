@@ -46,11 +46,7 @@
                     <navigationItem key="navigationItem" id="n0s-vk-lNb">
                         <barButtonItem key="leftBarButtonItem" image="logOutIcon" id="Nd4-B0-sie">
                             <connections>
-<<<<<<< HEAD
-                                <action selector="logOutButtonPressed:" destination="vXZ-lx-hvc" id="6XH-Cf-L9d"/>
-=======
                                 <action selector="logOutButtonPressed:" destination="vXZ-lx-hvc" id="6sE-v0-Xyr"/>
->>>>>>> jacobBranch
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="profileIcon" width="40" style="plain" id="aYB-lo-Ych" customClass="profileButton">
