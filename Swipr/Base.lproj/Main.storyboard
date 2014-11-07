@@ -647,17 +647,6 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" bounces="NO" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dj2-oS-0V2">
                                 <rect key="frame" x="0.0" y="0.0" width="379" height="670"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gD8-mo-4mg">
-                                        <rect key="frame" x="237" y="594" width="67" height="30"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title="Email">
-                                            <color key="titleColor" red="0.4431372549" green="0.69411764710000001" blue="0.88235294119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="emailButtonPressed:" destination="Yqm-n8-Yg1" eventType="touchUpInside" id="s4P-X6-44y"/>
-                                        </connections>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="MATCH!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kRV-ud-dNe">
                                         <rect key="frame" x="139" y="20" width="100" height="30"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
@@ -671,17 +660,6 @@
                                             <constraint firstAttribute="width" constant="230" id="xE0-vD-bvq"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pnl-iD-TMS">
-                                        <rect key="frame" x="74" y="594" width="67" height="30"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title="Back">
-                                            <color key="titleColor" red="0.4431372549" green="0.69411764710000001" blue="0.88235294119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="backButtonPressed:" destination="Yqm-n8-Yg1" eventType="touchUpInside" id="UtX-05-NvE"/>
-                                        </connections>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Item that you wanted:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Edh-il-OMc">
                                         <rect key="frame" x="106" y="324" width="167" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -701,15 +679,45 @@
                                             <constraint firstAttribute="height" constant="189" id="Ljh-0c-Kj9"/>
                                         </constraints>
                                     </imageView>
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oj1-y3-kDZ">
+                                        <rect key="frame" x="0.0" y="630" width="379" height="40"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gD8-mo-4mg">
+                                                <rect key="frame" x="311" y="5" width="48" height="30"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <state key="normal" title="Email">
+                                                    <color key="titleColor" red="0.4431372549" green="0.69411764710000001" blue="0.88235294119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="emailButtonPressed:" destination="Yqm-n8-Yg1" eventType="touchUpInside" id="s4P-X6-44y"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pnl-iD-TMS">
+                                                <rect key="frame" x="20" y="5" width="43" height="30"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <state key="normal" title="Back">
+                                                    <color key="titleColor" red="0.4431372549" green="0.69411764710000001" blue="0.88235294119999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="backButtonPressed:" destination="Yqm-n8-Yg1" eventType="touchUpInside" id="UtX-05-NvE"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="gD8-mo-4mg" secondAttribute="trailing" constant="20" id="KxI-wU-bMS"/>
+                                            <constraint firstItem="pnl-iD-TMS" firstAttribute="leading" secondItem="Oj1-y3-kDZ" secondAttribute="leading" constant="20" id="uIZ-Uq-Ebl"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="pnl-iD-TMS" firstAttribute="leading" secondItem="dj2-oS-0V2" secondAttribute="leading" constant="74" id="0Dq-eM-sHG"/>
+                                    <constraint firstAttribute="trailing" secondItem="Oj1-y3-kDZ" secondAttribute="trailing" id="2He-TV-jgy"/>
                                     <constraint firstAttribute="centerX" secondItem="uw5-u1-qcI" secondAttribute="centerX" id="Cns-cj-aQ1"/>
                                     <constraint firstAttribute="centerX" secondItem="kRV-ud-dNe" secondAttribute="centerX" id="Ivc-yO-jZl"/>
                                     <constraint firstAttribute="centerX" secondItem="2Xg-xX-FMd" secondAttribute="centerX" id="UFL-kC-DFI"/>
-                                    <constraint firstAttribute="bottom" secondItem="pnl-iD-TMS" secondAttribute="bottom" constant="46" id="XLn-Q9-gAz"/>
-                                    <constraint firstAttribute="trailing" secondItem="gD8-mo-4mg" secondAttribute="trailing" constant="75" id="Y6t-Fp-e0a"/>
-                                    <constraint firstAttribute="bottom" secondItem="gD8-mo-4mg" secondAttribute="bottom" constant="46" id="hvf-Gs-HDD"/>
+                                    <constraint firstItem="Oj1-y3-kDZ" firstAttribute="leading" secondItem="dj2-oS-0V2" secondAttribute="leading" id="bfz-V2-Q8M"/>
                                     <constraint firstAttribute="centerX" secondItem="MG7-Pg-GAq" secondAttribute="centerX" id="mda-aY-NsA"/>
                                     <constraint firstAttribute="centerX" secondItem="Edh-il-OMc" secondAttribute="centerX" id="vDi-Tf-Ivv"/>
                                 </constraints>
@@ -717,8 +725,11 @@
                         </subviews>
                         <color key="backgroundColor" red="0.4431372549" green="0.69411764710000001" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="GsJ-ZO-jg5" firstAttribute="top" secondItem="Oj1-y3-kDZ" secondAttribute="bottom" id="46F-1C-ZSc"/>
                             <constraint firstAttribute="bottomMargin" secondItem="dj2-oS-0V2" secondAttribute="bottom" constant="-3" id="DaF-KU-KzL"/>
                             <constraint firstItem="dj2-oS-0V2" firstAttribute="top" secondItem="ysx-VU-7ko" secondAttribute="top" id="Vum-LQ-eFt"/>
+                            <constraint firstAttribute="width" secondItem="Oj1-y3-kDZ" secondAttribute="width" id="eUF-A3-Hco"/>
+                            <constraint firstItem="dj2-oS-0V2" firstAttribute="width" secondItem="ysx-VU-7ko" secondAttribute="width" id="gFO-uE-MYH"/>
                             <constraint firstItem="dj2-oS-0V2" firstAttribute="leading" secondItem="ysx-VU-7ko" secondAttribute="leading" id="mxV-H6-s3E"/>
                         </constraints>
                     </view>
