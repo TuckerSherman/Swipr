@@ -20,6 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.itemYouWantImageView.contentMode = UIViewContentModeScaleAspectFit;
     self.yourItemImageView.contentMode = UIViewContentModeScaleAspectFit;
     

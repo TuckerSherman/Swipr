@@ -18,6 +18,7 @@
 @property (strong, nonatomic) PFObject *ownerWhoWantsYourItem;
 @property (strong, nonatomic) PFObject *itemYouWant;
 @property (strong, nonatomic) PFObject *yourItem;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 
 
