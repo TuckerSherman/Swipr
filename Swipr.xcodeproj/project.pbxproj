@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		520026271A084C37003DC9C9 /* RegisterUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 520026261A084C37003DC9C9 /* RegisterUserViewController.m */; };
-		520026291A085CF5003DC9C9 /* logoutButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 520026281A085CF5003DC9C9 /* logoutButton.png */; };
 		5200262C1A086D7B003DC9C9 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5200262B1A086D7B003DC9C9 /* LoginViewController.m */; };
 		5200267A1A0953B2003DC9C9 /* NewItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 520026791A0953B2003DC9C9 /* NewItemViewController.m */; };
 		5200267D1A09CBF8003DC9C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5200267B1A09CBF8003DC9C9 /* Main.storyboard */; };
@@ -58,7 +57,6 @@
 /* Begin PBXFileReference section */
 		520026251A084C37003DC9C9 /* RegisterUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterUserViewController.h; sourceTree = "<group>"; };
 		520026261A084C37003DC9C9 /* RegisterUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterUserViewController.m; sourceTree = "<group>"; };
-		520026281A085CF5003DC9C9 /* logoutButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoutButton.png; sourceTree = "<group>"; };
 		5200262A1A086D7B003DC9C9 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		5200262B1A086D7B003DC9C9 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		520026781A0953B2003DC9C9 /* NewItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewItemViewController.h; sourceTree = "<group>"; };
@@ -247,7 +245,6 @@
 			children = (
 				845166E01A07FED6004663DE /* AppDelegate.h */,
 				845166E11A07FED6004663DE /* AppDelegate.m */,
-				520026281A085CF5003DC9C9 /* logoutButton.png */,
 				845166DD1A07FED6004663DE /* Info.plist */,
 				845166DE1A07FED6004663DE /* main.m */,
 			);
@@ -364,7 +361,6 @@
 				845166ED1A07FED6004663DE /* LaunchScreen.xib in Resources */,
 				845166EA1A07FED6004663DE /* Images.xcassets in Resources */,
 				84F8159F1A0C481100179034 /* blueGradient.png in Resources */,
-				520026291A085CF5003DC9C9 /* logoutButton.png in Resources */,
 				5200267D1A09CBF8003DC9C9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
