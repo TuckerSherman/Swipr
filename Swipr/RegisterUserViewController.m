@@ -19,14 +19,6 @@
 
 }
 
--(void)viewWillAppear:(BOOL)animated {
-    // If user is currently logged in, they will be automatically moved to the next screen
-    PFUser *user = [PFUser currentUser];
-    if (user.username != nil) {
-        [self performSegueWithIdentifier:@"registerSegue" sender:self];
-    }
-}
-
 
 - (IBAction)registerButtonPressed:(UIButton *)sender {
     
@@ -81,10 +73,12 @@
         if (!error) {
             NSLog(@"Signed up!");
             
-            [self performSegueWithIdentifier:@"registerSegue" sender:self];
+            [self dismissViewControllerAnimated:YES completion:^{
+                NSLog(@"registered a new user!");
+            }];
         } else {
             
-            NSLog(@"Error in signing up");
+            NSLog(@"Error in signing up: %@", error);
         }
     }];
     
@@ -95,15 +89,12 @@
     
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+
+- (IBAction)cancelButtonPressed:(UIButton *)sender {
     
-    if ([[segue identifier] isEqualToString:@"registerSegue"]) {
-        UIViewController *mainViewController = segue.destinationViewController;
-        mainViewController.navigationController.navigationBar.backgroundColor = [UIColor blackColor];
-        
-        
-    }
-    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+
 
 @end

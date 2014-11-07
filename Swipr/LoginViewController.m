@@ -14,19 +14,28 @@
 
 @implementation LoginViewController
 
+-(void)viewWillAppear:(BOOL)animated {
+    // If user is currently logged in, they will be automatically moved to the next screen
+    PFUser *user = [PFUser currentUser];
+    [[self navigationController] setNavigationBarHidden:YES animated:YES];
+    if (user.username != nil) {
+        [self performSegueWithIdentifier:@"logIn" sender:self];
+    }
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
     self.loginPasswordTextfield.delegate = self;
     self.loginUsernameTextfield.delegate = self;
+    
 }
 
 - (IBAction)loginButtonPressed:(UIButton *)sender {
     [PFUser logInWithUsernameInBackground:self.loginUsernameTextfield.text password:self.loginPasswordTextfield.text block:^(PFUser *user, NSError *error) {
         if (!error) {
             NSLog(@"Logged in");
-            [self dismissViewControllerAnimated:YES completion:nil];
+            [self performSegueWithIdentifier:@"logIn" sender:self];
         } else if (error) {
             
             UIAlertView *loginAlert = [[UIAlertView alloc] initWithTitle:@"Could not log in"
@@ -41,10 +50,6 @@
     self.loginPasswordTextfield.text = nil;
 }
 
-- (IBAction)cancelButtonPressed:(UIButton *)sender {
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

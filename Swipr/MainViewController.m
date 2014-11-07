@@ -23,6 +23,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[self navigationController] setNavigationBarHidden:NO animated:YES];
+
     
     CGFloat navWidth = self.navigationController.navigationBar.frame.size.width;
     CGFloat navHeight = self.navigationController.navigationBar.frame.size.height;
