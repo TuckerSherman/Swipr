@@ -11,6 +11,7 @@
 
 @interface MatchViewController () {
     MFMailComposeViewController *mailComposer;
+    NSString *email;
 }
 
 @end
@@ -25,12 +26,38 @@
     NSString *itemOwnerName = [self.itemYouWant objectForKey:@"user"];
     
     [self queryMyItem:itemOwnerName];
+    [self queryForEmail:itemOwnerName];
 
     self.itemOwnerLabel.text = [NSString stringWithFormat:@"%@ wants to trade for this!", itemOwnerName];
     
     
     self.itemYouWantImageView.file = [self.itemYouWant objectForKey:@"image"];
     [self.itemYouWantImageView loadInBackground];
+}
+
+-(void)queryForEmail:(NSString *)itemOwnerName {
+    
+    PFQuery *query = [PFUser query];
+    
+    [query whereKey:@"username" equalTo:itemOwnerName];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            NSLog(@"No error");
+            if (objects) {
+                PFObject *user = [objects objectAtIndex:0];
+                email = [user objectForKey:@"email"];
+            
+            } else {
+                NSLog(@"No objects");
+            }
+        } else {
+            NSLog(@"%@", error);
+        }
+       
+    }];
+    
+    
 }
 
 
@@ -69,7 +96,6 @@
         }
     }];
 
-    
 }
 
 
@@ -80,6 +106,9 @@
 - (IBAction)emailButtonPressed:(UIButton *)sender {
     mailComposer = [[MFMailComposeViewController alloc]init];
     mailComposer.mailComposeDelegate = self;
+    NSMutableArray *emailMutableArray = [[NSMutableArray alloc] initWithObjects:email, nil];
+    NSArray *emailArray = [NSArray arrayWithArray:emailMutableArray];
+    [mailComposer setToRecipients:emailArray];
     [mailComposer setSubject:@"I'm interested in trading items!"];
 
     [self presentViewController:mailComposer animated:YES completion:nil];
