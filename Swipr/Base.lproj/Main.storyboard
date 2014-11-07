@@ -44,7 +44,11 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="n0s-vk-lNb">
-                        <barButtonItem key="leftBarButtonItem" image="logOutIcon" id="Nd4-B0-sie"/>
+                        <barButtonItem key="leftBarButtonItem" image="logOutIcon" id="Nd4-B0-sie">
+                            <connections>
+                                <action selector="logOutButtonPressed:" destination="vXZ-lx-hvc" id="6XH-Cf-L9d"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="profileIcon" width="40" style="plain" id="aYB-lo-Ych" customClass="profileButton">
                             <connections>
                                 <segue destination="JK5-Cl-0ME" kind="push" id="CX0-l4-9lu"/>
@@ -77,7 +81,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="200"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="User Email" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ZIN-ih-kMD">
-                                        <rect key="frame" x="200" y="115" width="165" height="25"/>
+                                        <rect key="frame" x="200" y="93" width="165" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="6vf-03-FGZ"/>
                                         </constraints>
@@ -97,19 +101,8 @@
                                             <outletCollection property="gestureRecognizers" destination="GCQ-ym-hEO" appends="YES" id="Oi1-8T-vAL"/>
                                         </connections>
                                     </imageView>
-                                    <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="UserName" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5aU-wb-S5G">
-                                        <rect key="frame" x="200" y="10" width="165" height="25"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="25" id="qEi-bs-cPa"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="JK5-Cl-0ME" id="c9x-xo-csC"/>
-                                        </connections>
-                                    </textField>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="Tap here to input a short bio" translatesAutoresizingMaskIntoConstraints="NO" id="9ex-m9-VtV">
-                                        <rect key="frame" x="200" y="40" width="165" height="70"/>
+                                        <rect key="frame" x="195" y="18" width="170" height="70"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="yZU-Sl-GP4"/>
@@ -124,19 +117,16 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="9ex-m9-VtV" firstAttribute="width" secondItem="ZIN-ih-kMD" secondAttribute="width" id="21S-LY-c5G"/>
                                     <constraint firstAttribute="trailing" secondItem="9ex-m9-VtV" secondAttribute="trailing" constant="10" id="5N0-eE-mVJ"/>
                                     <constraint firstItem="LHl-5L-JsH" firstAttribute="leading" secondItem="wGu-W4-sQD" secondAttribute="leading" constant="10" id="5UF-sU-pKm"/>
                                     <constraint firstAttribute="height" constant="200" id="9yh-Lm-3GN"/>
-                                    <constraint firstItem="9ex-m9-VtV" firstAttribute="top" secondItem="5aU-wb-S5G" secondAttribute="bottom" constant="5" id="AnX-Fi-RDt"/>
+                                    <constraint firstItem="ZIN-ih-kMD" firstAttribute="leading" secondItem="LHl-5L-JsH" secondAttribute="trailing" constant="10" id="BaA-hx-PBB"/>
                                     <constraint firstAttribute="trailing" secondItem="ZIN-ih-kMD" secondAttribute="trailing" constant="10" id="DGZ-yR-d1K"/>
                                     <constraint firstItem="LHl-5L-JsH" firstAttribute="top" secondItem="wGu-W4-sQD" secondAttribute="top" constant="10" id="KLF-eO-CNr"/>
-                                    <constraint firstItem="5aU-wb-S5G" firstAttribute="leading" secondItem="LHl-5L-JsH" secondAttribute="trailing" constant="10" id="Lju-c2-bLh"/>
                                     <constraint firstItem="ZIN-ih-kMD" firstAttribute="top" secondItem="9ex-m9-VtV" secondAttribute="bottom" constant="5" id="N94-Tp-Ark"/>
-                                    <constraint firstItem="5aU-wb-S5G" firstAttribute="top" secondItem="wGu-W4-sQD" secondAttribute="top" constant="10" id="PeJ-lr-d7s"/>
+                                    <constraint firstItem="9ex-m9-VtV" firstAttribute="top" secondItem="wGu-W4-sQD" secondAttribute="top" constant="18" id="YOI-4J-oVB"/>
                                     <constraint firstAttribute="bottom" secondItem="LHl-5L-JsH" secondAttribute="bottom" constant="10" id="ddy-lG-WN9"/>
-                                    <constraint firstAttribute="trailing" secondItem="5aU-wb-S5G" secondAttribute="trailing" constant="10" id="kL5-pv-Cye"/>
-                                    <constraint firstItem="9ex-m9-VtV" firstAttribute="leading" secondItem="LHl-5L-JsH" secondAttribute="trailing" constant="10" id="kez-1t-CJf"/>
+                                    <constraint firstItem="9ex-m9-VtV" firstAttribute="leading" secondItem="LHl-5L-JsH" secondAttribute="trailing" constant="5" id="kez-1t-CJf"/>
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P3s-ok-eTA">
@@ -181,7 +171,6 @@
                     <connections>
                         <outlet property="userBioTextFeild" destination="9ex-m9-VtV" id="iUZ-dg-1Eb"/>
                         <outlet property="userEmailTextFeild" destination="ZIN-ih-kMD" id="kT9-yV-3vs"/>
-                        <outlet property="userNameTextFeild" destination="5aU-wb-S5G" id="KQ2-Qs-h28"/>
                         <outlet property="userProfileImageView" destination="LHl-5L-JsH" id="1s4-tT-EtR"/>
                     </connections>
                 </viewController>
@@ -464,7 +453,7 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kGB-0D-YNV">
                                 <rect key="frame" x="36" y="359" width="303" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.36574475090000003" blue="0.27605346510000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.37254901959999998" green="0.62352941179999999" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Register">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -475,7 +464,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X9W-cr-pS8">
                                 <rect key="frame" x="36" y="324" width="303" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.36574475090000003" blue="0.27605346510000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.37254901959999998" green="0.62352941179999999" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>

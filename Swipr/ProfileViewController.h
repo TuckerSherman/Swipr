@@ -12,12 +12,10 @@
 @interface ProfileViewController : UIViewController<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate, UITextViewDelegate>
 
 
-@property (strong, nonatomic) IBOutlet UITextField *userNameTextFeild;
 @property (strong, nonatomic) IBOutlet PFImageView *userProfileImageView;
 @property (strong, nonatomic) IBOutlet UITextView *userBioTextFeild;
 @property (strong, nonatomic) IBOutlet UITextField *userEmailTextFeild;
-@property (strong, nonatomic) IBOutlet UIButton *lockButton;
-@property (strong, nonatomic) IBOutlet UIButton *unlockButton;
+
 
 
 

@@ -44,7 +44,7 @@
 }
 
 -(void) setupCurrentUser{
-    self.userNameTextFeild.text = _currentUser.username;
+    self.navigationItem.title = _currentUser.username;
     self.userEmailTextFeild.text = _currentUser.email;
     self.navigationItem.rightBarButtonItem = lockButton;
 
@@ -86,18 +86,12 @@
 
 - (IBAction)unlockUserTap:(id)sender {
     //enable all fields that accept user interaction - make everything editable slighly opaque - hide the unlock button and show the lock button
-    self.userNameTextFeild.userInteractionEnabled = YES;
     self.userBioTextFeild.userInteractionEnabled=YES;
     self.userBioTextFeild.alpha=.7;
     self.userEmailTextFeild.userInteractionEnabled = YES;
     self.userEmailTextFeild.alpha=.7;
     self.userProfileImageView.userInteractionEnabled = YES;
     self.userProfileImageView.alpha =.7;
-    self.unlockButton.hidden = YES;
-    self.unlockButton.userInteractionEnabled = NO;
-    self.lockButton.hidden = NO;
-    self.lockButton.userInteractionEnabled=YES;
-    self.userProfileImageView.alpha =.5;
     
     self.navigationItem.rightBarButtonItem = unlockButton;
 
@@ -105,7 +99,6 @@
 - (IBAction)lockUserTap:(id)sender {
     //disable all fields that accept user interaction - make everything totally opaque - hide the lock button and show the unlock button
 
-    self.userNameTextFeild.userInteractionEnabled=NO;
     self.userBioTextFeild.userInteractionEnabled=NO;
     self.userBioTextFeild.alpha=1;
     self.userBioTextFeild.textColor=[UIColor blackColor];
@@ -113,10 +106,6 @@
     self.userEmailTextFeild.alpha=1;
     self.userProfileImageView.userInteractionEnabled = NO;
     self.userProfileImageView.alpha=1;
-    self.lockButton.hidden = YES;
-    self.lockButton.userInteractionEnabled=NO;
-    self.unlockButton.hidden = NO;
-    self.unlockButton.userInteractionEnabled = YES;
     
     self.navigationItem.rightBarButtonItem = lockButton;
 
