@@ -366,7 +366,6 @@
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="5"/>
                                             </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.clipsToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ct-gF-hS3">
@@ -490,9 +489,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="cIL-Fo-Jzv"/>
                     <connections>
+                        <outlet property="contact" destination="wDk-Vj-Gr6" id="65b-Bb-IIq"/>
                         <outlet property="contactInfoLabel" destination="nWb-bg-Ieb" id="2iB-Gm-RbB"/>
                         <outlet property="itemDescriptionLabel" destination="5L6-DZ-ZDV" id="GKY-mH-tYH"/>
                         <outlet property="itemImageView" destination="4Ou-aT-TbL" id="lcJ-Em-8Tk"/>
+                        <outlet property="mailIcon" destination="olb-Ye-Zl5" id="OF9-P5-DBd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X2I-aI-pmo" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -18,7 +18,7 @@
 @implementation ItemDetailViewController
 
 -(void)viewWillAppear:(BOOL)animated{
-//    [self checkUserStatus];
+    [self checkUserStatus];
 }
 
 - (void)viewDidLoad {
@@ -38,10 +38,10 @@
 -(void)checkUserStatus{
     PFUser* currentUser =[PFUser currentUser];
     if (![currentUser.username isEqualToString:[self.item objectForKey:@"user"]]) {
-        self.contactInfoLabel.hidden = YES;
+        self.contact.hidden = YES;
     }
     else if([currentUser.username isEqualToString:[self.item objectForKey:@"user"]]){
-       self.contactInfoLabel.hidden = NO;
+       self.contact.hidden = NO;
     }
     
 }
