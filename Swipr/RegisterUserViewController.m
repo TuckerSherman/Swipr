@@ -88,10 +88,10 @@
         }
     }];
     
-    self.usernameTextfield = nil;
-    self.emailTextfield = nil;
-    self.passwordTextfield = nil;
-    self.confirmPasswordTextfield = nil;
+    self.usernameTextfield.text = nil;
+    self.emailTextfield.text = nil;
+    self.passwordTextfield.text = nil;
+    self.confirmPasswordTextfield.text = nil;
     
 }
 
