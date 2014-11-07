@@ -22,7 +22,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *infoButton;
 
 - (IBAction)logOutButtonPressed:(UIBarButtonItem *)sender;
-- (IBAction)refreshButtonPressed:(UIBarButtonItem *)sender;
 
 
 @end
