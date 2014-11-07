@@ -198,6 +198,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d8z-p5-kbV">
                                 <rect key="frame" x="20" y="617" width="48" height="30"/>
                                 <state key="normal" title="Cancel">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -218,6 +219,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RCJ-Es-DAV">
                                 <rect key="frame" x="307" y="617" width="32" height="30"/>
                                 <state key="normal" title="Post">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -360,7 +362,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="71" id="CxK-5E-CjQ"/>
                                         </constraints>
-                                        <state key="normal" title="Cancel">
+                                        <state key="normal" title="Back">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -418,29 +420,29 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WhiteBigLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Xjn-ny-xKj">
-                                <rect key="frame" x="88" y="39" width="200" height="118"/>
+                                <rect key="frame" x="88" y="80" width="200" height="118"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="H9a-fc-2d2"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nm7-Eu-Ln5">
-                                <rect key="frame" x="20" y="187" width="335" height="19"/>
+                                <rect key="frame" x="20" y="228" width="335" height="19"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fzo-in-nhB">
-                                <rect key="frame" x="20" y="226" width="335" height="17"/>
+                                <rect key="frame" x="20" y="267" width="335" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="spl-qX-Fcp">
-                                <rect key="frame" x="20" y="300" width="335" height="17"/>
+                                <rect key="frame" x="20" y="341" width="335" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kGB-0D-YNV">
-                                <rect key="frame" x="200" y="337" width="135" height="30"/>
+                                <rect key="frame" x="200" y="378" width="135" height="30"/>
                                 <color key="backgroundColor" red="0.9960784912109375" green="0.9960784912109375" blue="0.99215692281723022" alpha="1" colorSpace="deviceRGB"/>
                                 <state key="normal" title="Register">
                                     <color key="titleColor" red="0.37254901959999998" green="0.62352941179999999" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -451,12 +453,12 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UUb-32-zgr">
-                                <rect key="frame" x="20" y="263" width="335" height="17"/>
+                                <rect key="frame" x="20" y="304" width="335" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Msg-bZ-xbU">
-                                <rect key="frame" x="200" y="377" width="135" height="30"/>
+                                <rect key="frame" x="200" y="418" width="135" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" red="0.37254901959999998" green="0.62352941179999999" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -488,11 +490,11 @@
                             <constraint firstItem="kGB-0D-YNV" firstAttribute="top" secondItem="spl-qX-Fcp" secondAttribute="bottom" constant="20" id="e1x-uq-4e2"/>
                             <constraint firstItem="UUb-32-zgr" firstAttribute="top" secondItem="fzo-in-nhB" secondAttribute="bottom" constant="20" id="h0b-ho-ga1"/>
                             <constraint firstItem="Xjn-ny-xKj" firstAttribute="centerX" secondItem="565-SN-3Qm" secondAttribute="centerX" id="i1J-kn-wxd"/>
+                            <constraint firstItem="Xjn-ny-xKj" firstAttribute="top" secondItem="QqR-gk-rin" secondAttribute="bottom" constant="60" id="mIT-jq-E4U"/>
                             <constraint firstItem="nm7-Eu-Ln5" firstAttribute="leading" secondItem="waG-3o-154" secondAttribute="leading" constant="20" id="nJX-zz-Fyf"/>
                             <constraint firstItem="UUb-32-zgr" firstAttribute="width" secondItem="spl-qX-Fcp" secondAttribute="width" id="nZT-WR-vJh"/>
                             <constraint firstItem="fzo-in-nhB" firstAttribute="top" secondItem="nm7-Eu-Ln5" secondAttribute="bottom" constant="20" id="rKO-qd-o03"/>
                             <constraint firstAttribute="trailing" secondItem="nm7-Eu-Ln5" secondAttribute="trailing" constant="20" id="vyo-Uk-dhJ"/>
-                            <constraint firstItem="Xjn-ny-xKj" firstAttribute="centerY" secondItem="565-SN-3Qm" secondAttribute="centerY" constant="-235.5" id="xD7-EO-pDS"/>
                             <constraint firstItem="565-SN-3Qm" firstAttribute="leading" secondItem="waG-3o-154" secondAttribute="leading" id="xLt-V5-s2F"/>
                             <constraint firstAttribute="centerX" secondItem="nm7-Eu-Ln5" secondAttribute="centerX" id="zlf-BT-Vgy"/>
                         </constraints>
@@ -722,5 +724,5 @@
     <inferredMetricsTieBreakers>
         <segue reference="KFd-wu-nFE"/>
     </inferredMetricsTieBreakers>
-    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+    <color key="tintColor" red="0.99607849120000003" green="0.99607849120000003" blue="0.99215692280000001" alpha="1" colorSpace="deviceRGB"/>
 </document>

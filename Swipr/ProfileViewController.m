@@ -60,9 +60,12 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if (!userBio) {
-                self.userBioTextFeild.text = nil;
-                [self.userBioTextFeild becomeFirstResponder];
-                [self performSelector:@selector(unlockUserTap:)withObject:nil];
+                UIAlertView *bioAlert = [[UIAlertView alloc] initWithTitle:@"You havent writen a user bio"
+                                                                     message:@"tap the lock in the top right to edit your profile"
+                                                                    delegate:self
+                                                           cancelButtonTitle:@"Ok"
+                                                           otherButtonTitles:nil];
+                [bioAlert show];
             }
             
             self.userBioTextFeild.text = userBio;

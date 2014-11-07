@@ -33,6 +33,9 @@
         // View Setup for draggable cards
         // Image view
         self.itemImage = [[PFImageView alloc] initWithFrame:CGRectMake(10, 10, self.frame.size.width - 20, self.frame.size.height-60)];
+        self.itemImage.contentMode = UIViewContentModeScaleAspectFill;
+        self.itemImage.clipsToBounds = YES;
+        
 
 
         self.information.text = @"no info given";
