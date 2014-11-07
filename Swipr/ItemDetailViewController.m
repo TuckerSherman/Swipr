@@ -18,7 +18,7 @@
 @implementation ItemDetailViewController
 
 -(void)viewWillAppear:(BOOL)animated{
-    [self checkUserStatus];
+//    [self checkUserStatus];
 }
 
 - (void)viewDidLoad {
