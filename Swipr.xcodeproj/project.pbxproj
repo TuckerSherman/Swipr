@@ -44,6 +44,8 @@
 		84F815921A09AF8100179034 /* PFUserItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F815911A09AF8100179034 /* PFUserItemsViewController.m */; };
 		84F815951A09C90D00179034 /* PFItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F815941A09C90C00179034 /* PFItem.m */; };
 		84F815981A0B67D000179034 /* profileButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F815971A0B67D000179034 /* profileButton.m */; };
+		84F8159D1A0C45F700179034 /* gradientLightBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F8159C1A0C45F700179034 /* gradientLightBackground.png */; };
+		84F8159F1A0C481100179034 /* blueGradient.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F8159E1A0C481100179034 /* blueGradient.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +120,8 @@
 		84F815941A09C90C00179034 /* PFItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFItem.m; sourceTree = "<group>"; };
 		84F815961A0B67D000179034 /* profileButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = profileButton.h; sourceTree = "<group>"; };
 		84F815971A0B67D000179034 /* profileButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = profileButton.m; sourceTree = "<group>"; };
+		84F8159C1A0C45F700179034 /* gradientLightBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gradientLightBackground.png; sourceTree = "<group>"; };
+		84F8159E1A0C481100179034 /* blueGradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueGradient.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +240,8 @@
 				52BE14DD1A0800650090A2B0 /* Controllers */,
 				8484DF8D1A086302006C5FC7 /* Model */,
 				845166E91A07FED6004663DE /* Images.xcassets */,
+				84F8159C1A0C45F700179034 /* gradientLightBackground.png */,
+				84F8159E1A0C481100179034 /* blueGradient.png */,
 				5200267B1A09CBF8003DC9C9 /* Main.storyboard */,
 				84F815961A0B67D000179034 /* profileButton.h */,
 				84F815971A0B67D000179034 /* profileButton.m */,
@@ -369,8 +375,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84F8159D1A0C45F700179034 /* gradientLightBackground.png in Resources */,
 				845166ED1A07FED6004663DE /* LaunchScreen.xib in Resources */,
 				845166EA1A07FED6004663DE /* Images.xcassets in Resources */,
+				84F8159F1A0C481100179034 /* blueGradient.png in Resources */,
 				520026291A085CF5003DC9C9 /* logoutButton.png in Resources */,
 				5200267D1A09CBF8003DC9C9 /* Main.storyboard in Resources */,
 			);
