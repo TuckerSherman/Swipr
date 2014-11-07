@@ -353,7 +353,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wh9-tH-ptO">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="630" translatesAutoresizingMaskIntoConstraints="NO" id="Wh9-tH-ptO">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="627"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="itemImagePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="4Ou-aT-TbL" customClass="PFImageView">
@@ -451,6 +451,7 @@
                                     <constraint firstItem="wDk-Vj-Gr6" firstAttribute="width" secondItem="9ct-gF-hS3" secondAttribute="width" id="f8q-XE-fol"/>
                                     <constraint firstItem="wDk-Vj-Gr6" firstAttribute="top" secondItem="9ct-gF-hS3" secondAttribute="bottom" constant="5" id="fSa-Lx-zYS"/>
                                     <constraint firstItem="4Ou-aT-TbL" firstAttribute="top" secondItem="Wh9-tH-ptO" secondAttribute="top" constant="40" id="h5l-6a-fqF"/>
+                                    <constraint firstAttribute="bottom" secondItem="wDk-Vj-Gr6" secondAttribute="bottom" constant="20" id="wzZ-UB-rEX"/>
                                 </constraints>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r6h-UA-4yq">
