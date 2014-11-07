@@ -280,9 +280,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		845166D81A07FED6004663DE /* Swipr */ = {
+		845166D81A07FED6004663DE /* Swapr */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 845166FC1A07FED6004663DE /* Build configuration list for PBXNativeTarget "Swipr" */;
+			buildConfigurationList = 845166FC1A07FED6004663DE /* Build configuration list for PBXNativeTarget "Swapr" */;
 			buildPhases = (
 				845166D51A07FED6004663DE /* Sources */,
 				845166D61A07FED6004663DE /* Frameworks */,
@@ -292,7 +292,7 @@
 			);
 			dependencies = (
 			);
-			name = Swipr;
+			name = Swapr;
 			productName = Swipr;
 			productReference = 845166D91A07FED6004663DE /* Swipr.app */;
 			productType = "com.apple.product-type.application";
@@ -346,7 +346,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				845166D81A07FED6004663DE /* Swipr */,
+				845166D81A07FED6004663DE /* Swapr */,
 				845166F11A07FED6004663DE /* SwiprTests */,
 			);
 		};
@@ -412,7 +412,7 @@
 /* Begin PBXTargetDependency section */
 		845166F41A07FED6004663DE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 845166D81A07FED6004663DE /* Swipr */;
+			target = 845166D81A07FED6004663DE /* Swapr */;
 			targetProxy = 845166F31A07FED6004663DE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -592,7 +592,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		845166FC1A07FED6004663DE /* Build configuration list for PBXNativeTarget "Swipr" */ = {
+		845166FC1A07FED6004663DE /* Build configuration list for PBXNativeTarget "Swapr" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				845166FD1A07FED6004663DE /* Debug */,
