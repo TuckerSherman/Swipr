@@ -84,11 +84,10 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(ParseTableViewCell*)sender {
+    
     NSIndexPath *path = [self.tableView indexPathForSelectedRow];
-    
     ItemDetailViewController* detailItemViewController = [segue destinationViewController];
-    NSLog(@"%@",sender);
-    
+
     [detailItemViewController setItem:self.objects[path.row]];
     
 }

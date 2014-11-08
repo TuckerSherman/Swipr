@@ -15,7 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *itemDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *contactInfoLabel;
 @property (strong, nonatomic) IBOutlet UIView *contact;
-@property (strong, nonatomic) IBOutlet UIImageView *mailIcon;
 @property (strong, nonatomic) PFObject* item;
 
 

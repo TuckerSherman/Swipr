@@ -23,22 +23,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithRed:.95 green:.95 blue:.95 alpha:.3];
-
-    
     _currentUser = [PFUser currentUser];
+    lockButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"lock"]
+                                                 style:UIBarButtonItemStylePlain
+                                                target:self
+                                                action:@selector(unlockUserTap:)];
+    unlockButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"Unlock"]
+                                                   style:UIBarButtonItemStylePlain
+                                                  target:self
+                                                  action:@selector(lockUserTap:)];
+    self.navigationItem.rightBarButtonItem = lockButton;
 
     //default view has profile editing locked
     [self performSelector:@selector(lockUserTap:)withObject:nil];
     [self setupCurrentUser];
     
-    lockButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"lock"]
-                                                                  style:UIBarButtonItemStylePlain
-                                                                 target:self
-                                                                 action:@selector(unlockUserTap:)];
-    unlockButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"Unlock"]
-                                                                  style:UIBarButtonItemStylePlain
-                                                                 target:self
-                                                                 action:@selector(lockUserTap:)];
+
     
     
     
