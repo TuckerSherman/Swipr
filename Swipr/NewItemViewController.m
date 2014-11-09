@@ -19,14 +19,14 @@
 
 @implementation NewItemViewController
 
+#define kOFFSET_FOR_KEYBOARD 160
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.item = [[Item alloc] init];
     currentUser = [PFUser currentUser];
     
 }
-#define kOFFSET_FOR_KEYBOARD 160
-
 -(void)keyboardWillShow {
     // Animate the current view out of the way
     if (self.view.frame.origin.y >= 0)
@@ -134,21 +134,21 @@
     PFACL *groupACL = [PFACL ACL];
     [groupACL setPublicWriteAccess:YES];
     [groupACL setPublicReadAccess:YES];
-    
     newItem.ACL = groupACL;
     
     [newItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
             NSLog(@"Save successful!");
-            [self dismissViewControllerAnimated:YES completion:nil];
             
         }
         else {
             NSLog(@"Error saving to Parse");
         }
     }];
-    [self saveItemArrayToParse:newItem];
-    newItem = nil;
+//    [self saveItemArrayToParse:newItem];
+//    newItem = nil;
+    [self dismissViewControllerAnimated:YES completion:nil];
+
     
 }
 - (IBAction)imageTapped:(id)sender {
@@ -207,11 +207,12 @@
 
 #pragma mark - UIImagePickerControllerDelegate
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+
+    [self dismissViewControllerAnimated:YES completion:nil];
     
     UIImage *image = info[UIImagePickerControllerEditedImage];
     
     if (!image) {
-        
         image = info[UIImagePickerControllerOriginalImage];
     }
     
@@ -234,11 +235,9 @@
     
     self.item.imageData = UIImagePNGRepresentation(newImage);
     
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -302,18 +301,19 @@ shouldChangeTextInRange:(NSRange)range
 
 
 #pragma mark - Parse helper method
--(void)saveItemArrayToParse:(PFObject *)item {
-    items = [currentUser objectForKey:@"items"];
-    NSLog(@"%@", items);
-    NSMutableArray *itemsMutable = [[NSMutableArray alloc] initWithArray:items];
-    [itemsMutable addObject:item];
-    
-    items = [itemsMutable mutableCopy];
-    NSLog(@"%@", items);
-    
-    [currentUser setObject:items forKey:@"items"];
-    
-    [currentUser saveInBackground];
-}
+
+//-(void)saveItemArrayToParse:(PFObject *)item {
+//    items = [currentUser objectForKey:@"items"];
+//    NSLog(@"%@", items);
+//    NSMutableArray *itemsMutable = [[NSMutableArray alloc] initWithArray:items];
+//    [itemsMutable addObject:item];
+//    
+//    items = [itemsMutable mutableCopy];
+//    NSLog(@"%@", items);
+//    
+//    [currentUser setObject:items forKey:@"items"];
+//    
+//    [currentUser saveInBackground];
+//}
 
 @end

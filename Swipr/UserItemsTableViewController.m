@@ -15,13 +15,11 @@
 @implementation UserItemsTableViewController
 
 - (id)initWithCoder:(NSCoder *)aCoder {
+    //because we are using a Parse Framework Table View controller inside a storyboard we have to add a few methods to initWithCoder in order to configure our table view to query the correct parse class
     self = [super initWithCoder:aCoder];
     if (self) {
         // Customize the table
         self.parseClassName = @"Item";
-        self.textKey = @"description";
-        self.imageKey = @"image";
-        self.placeholderImage = [UIImage imageNamed:@"itemImagePlaceholder"];
         self.objectsPerPage = 25;
 
         self.pullToRefreshEnabled = YES;
@@ -35,11 +33,6 @@
     [super viewDidLoad];
     [self loadObjects];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 -(void)viewWillAppear:(BOOL)animated{
     [self loadObjects];
@@ -51,6 +44,7 @@
 }
 
 - (PFQuery *)queryForTable{
+    // Customize the parse query that populates the table's data source
     PFUser* thisUser = [PFUser currentUser];
      NSLog(@"user = '%@'",thisUser.username);
     PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
@@ -60,8 +54,9 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object{
-
-    ParseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"itemCell"];// forIndexPath:indexPath];
+    
+    ParseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"itemCell"];
+    
     if (!cell) {
         cell = [[ParseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"itemCell"];
     }
@@ -96,7 +91,7 @@
 
 
 #pragma mark - Table view data source
-//
+
 //- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 //    // Return the number of sections.
 //    return 1;
@@ -106,26 +101,12 @@
 //    // Return the number of rows in the section.
 //    return self.itemsForUser.count;
 //}
-//
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    ItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"itemCell" forIndexPath:indexPath];
-//    Item* thisItem = self.itemsForUser[indexPath.row];
-//    cell.itemTitleLabel.text = thisItem.title;
-//    cell.itemThumbNailImageView.image = [UIImage imageWithData:thisItem.thumbnailImageData];
-//    
-//    // Configure the cell...
-//    
-//    return cell;
-//}
-//
 
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-
 
 
 // Override to support editing the table view.

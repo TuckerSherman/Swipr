@@ -37,8 +37,8 @@
 		8451670A1A080FC4004663DE /* UserItemsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845167091A080FC4004663DE /* UserItemsTableViewController.m */; };
 		8461CE261A0816FA00BB3525 /* ItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8461CE251A0816FA00BB3525 /* ItemDetailViewController.m */; };
 		8461CE291A08172C00BB3525 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8461CE281A08172C00BB3525 /* ProfileViewController.m */; };
+		84977C601A0EEA2F00A70DA1 /* TabLandingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84977C5F1A0EEA2F00A70DA1 /* TabLandingViewController.m */; };
 		84F8158D1A09AD3800179034 /* ParseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F8158C1A09AD3800179034 /* ParseTableViewCell.m */; };
-		84F815921A09AF8100179034 /* PFUserItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F815911A09AF8100179034 /* PFUserItemsViewController.m */; };
 		84F815981A0B67D000179034 /* profileButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F815971A0B67D000179034 /* profileButton.m */; };
 		84F8159D1A0C45F700179034 /* gradientLightBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F8159C1A0C45F700179034 /* gradientLightBackground.png */; };
 		84F8159F1A0C481100179034 /* blueGradient.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F8159E1A0C481100179034 /* blueGradient.png */; };
@@ -102,11 +102,11 @@
 		8461CE251A0816FA00BB3525 /* ItemDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemDetailViewController.m; sourceTree = "<group>"; };
 		8461CE271A08172C00BB3525 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		8461CE281A08172C00BB3525 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		84977C5E1A0EEA2F00A70DA1 /* TabLandingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabLandingViewController.h; sourceTree = "<group>"; };
+		84977C5F1A0EEA2F00A70DA1 /* TabLandingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabLandingViewController.m; sourceTree = "<group>"; };
 		84F8158B1A09AD3700179034 /* ParseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseTableViewCell.h; sourceTree = "<group>"; };
 		84F8158C1A09AD3800179034 /* ParseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseTableViewCell.m; sourceTree = "<group>"; };
 		84F8158E1A09ADD800179034 /* APIdocs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = APIdocs; sourceTree = "<group>"; };
-		84F815901A09AF8100179034 /* PFUserItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFUserItemsViewController.h; sourceTree = "<group>"; };
-		84F815911A09AF8100179034 /* PFUserItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFUserItemsViewController.m; sourceTree = "<group>"; };
 		84F815961A0B67D000179034 /* profileButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = profileButton.h; sourceTree = "<group>"; };
 		84F815971A0B67D000179034 /* profileButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = profileButton.m; sourceTree = "<group>"; };
 		84F8159C1A0C45F700179034 /* gradientLightBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gradientLightBackground.png; sourceTree = "<group>"; };
@@ -169,14 +169,14 @@
 				520026261A084C37003DC9C9 /* RegisterUserViewController.m */,
 				5200262A1A086D7B003DC9C9 /* LoginViewController.h */,
 				5200262B1A086D7B003DC9C9 /* LoginViewController.m */,
+				84977C5E1A0EEA2F00A70DA1 /* TabLandingViewController.h */,
+				84977C5F1A0EEA2F00A70DA1 /* TabLandingViewController.m */,
 				52BE14D91A0800280090A2B0 /* MainViewController.h */,
 				52BE14DA1A0800280090A2B0 /* MainViewController.m */,
 				8461CE271A08172C00BB3525 /* ProfileViewController.h */,
 				8461CE281A08172C00BB3525 /* ProfileViewController.m */,
 				845167081A080FC4004663DE /* UserItemsTableViewController.h */,
 				845167091A080FC4004663DE /* UserItemsTableViewController.m */,
-				84F815901A09AF8100179034 /* PFUserItemsViewController.h */,
-				84F815911A09AF8100179034 /* PFUserItemsViewController.m */,
 				520026781A0953B2003DC9C9 /* NewItemViewController.h */,
 				520026791A0953B2003DC9C9 /* NewItemViewController.m */,
 				8461CE241A0816FA00BB3525 /* ItemDetailViewController.h */,
@@ -386,10 +386,10 @@
 				5200262C1A086D7B003DC9C9 /* LoginViewController.m in Sources */,
 				52BE14DB1A0800280090A2B0 /* MainViewController.m in Sources */,
 				8451670A1A080FC4004663DE /* UserItemsTableViewController.m in Sources */,
-				84F815921A09AF8100179034 /* PFUserItemsViewController.m in Sources */,
 				52BD6D6C1A0BFADD00C309FB /* MatchViewController.m in Sources */,
 				52BE14E41A0800EC0090A2B0 /* DraggableView.m in Sources */,
 				5200267A1A0953B2003DC9C9 /* NewItemViewController.m in Sources */,
+				84977C601A0EEA2F00A70DA1 /* TabLandingViewController.m in Sources */,
 				845166DF1A07FED6004663DE /* main.m in Sources */,
 				52BD6D6F1A0C616D00C309FB /* Item.m in Sources */,
 				520026271A084C37003DC9C9 /* RegisterUserViewController.m in Sources */,

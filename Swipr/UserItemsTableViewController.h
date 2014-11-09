@@ -14,7 +14,7 @@
 
 @interface UserItemsTableViewController : PFQueryTableViewController
 
-@property (strong,nonatomic) NSArray* itemsForUser;
+//@property (strong,nonatomic) NSArray* itemsForUser;
 
 
 - (id)initWithCoder:(NSCoder *)aCoder;

@@ -19,6 +19,13 @@
     NSMutableArray* wantedItems;
     NSArray *ownersWhoWantYourStuff;
     PFObject *swipedCard;
+    CGFloat searchRadius;
+    NSString* filterCategory;
+    
+}
+- (IBAction)filtersButtonPressed:(id)sender {
+    NSLog(@"you want to add filters eh?");
+    
 }
 
 - (void)viewDidLoad {
