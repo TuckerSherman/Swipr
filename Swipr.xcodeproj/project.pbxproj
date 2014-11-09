@@ -39,8 +39,8 @@
 		8461CE291A08172C00BB3525 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8461CE281A08172C00BB3525 /* ProfileViewController.m */; };
 		84977C601A0EEA2F00A70DA1 /* TabLandingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84977C5F1A0EEA2F00A70DA1 /* TabLandingViewController.m */; };
 		84977C621A0F246F00A70DA1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84977C611A0F246F00A70DA1 /* MapKit.framework */; };
-		84977C651A0F299B00A70DA1 /* FilterSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84977C641A0F299B00A70DA1 /* FilterSelectionViewController.m */; };
 		84977C681A0F29C200A70DA1 /* LocationSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84977C671A0F29C200A70DA1 /* LocationSelectionViewController.m */; };
+		84977C6B1A0F574A00A70DA1 /* FilterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84977C6A1A0F574A00A70DA1 /* FilterTableViewController.m */; };
 		84F8158D1A09AD3800179034 /* ParseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F8158C1A09AD3800179034 /* ParseTableViewCell.m */; };
 		84F815981A0B67D000179034 /* profileButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F815971A0B67D000179034 /* profileButton.m */; };
 		84F8159D1A0C45F700179034 /* gradientLightBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F8159C1A0C45F700179034 /* gradientLightBackground.png */; };
@@ -108,10 +108,10 @@
 		84977C5E1A0EEA2F00A70DA1 /* TabLandingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabLandingViewController.h; sourceTree = "<group>"; };
 		84977C5F1A0EEA2F00A70DA1 /* TabLandingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabLandingViewController.m; sourceTree = "<group>"; };
 		84977C611A0F246F00A70DA1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		84977C631A0F299B00A70DA1 /* FilterSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterSelectionViewController.h; sourceTree = "<group>"; };
-		84977C641A0F299B00A70DA1 /* FilterSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterSelectionViewController.m; sourceTree = "<group>"; };
 		84977C661A0F29C200A70DA1 /* LocationSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationSelectionViewController.h; sourceTree = "<group>"; };
 		84977C671A0F29C200A70DA1 /* LocationSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationSelectionViewController.m; sourceTree = "<group>"; };
+		84977C691A0F574900A70DA1 /* FilterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilterTableViewController.h; path = ../FilterTableViewController.h; sourceTree = "<group>"; };
+		84977C6A1A0F574A00A70DA1 /* FilterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilterTableViewController.m; path = ../FilterTableViewController.m; sourceTree = "<group>"; };
 		84F8158B1A09AD3700179034 /* ParseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseTableViewCell.h; sourceTree = "<group>"; };
 		84F8158C1A09AD3800179034 /* ParseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseTableViewCell.m; sourceTree = "<group>"; };
 		84F8158E1A09ADD800179034 /* APIdocs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = APIdocs; path = ../APIdocs; sourceTree = "<group>"; };
@@ -183,8 +183,8 @@
 				52BE14DA1A0800280090A2B0 /* MainViewController.m */,
 				84977C5E1A0EEA2F00A70DA1 /* TabLandingViewController.h */,
 				84977C5F1A0EEA2F00A70DA1 /* TabLandingViewController.m */,
-				84977C631A0F299B00A70DA1 /* FilterSelectionViewController.h */,
-				84977C641A0F299B00A70DA1 /* FilterSelectionViewController.m */,
+				84977C691A0F574900A70DA1 /* FilterTableViewController.h */,
+				84977C6A1A0F574A00A70DA1 /* FilterTableViewController.m */,
 				84977C661A0F29C200A70DA1 /* LocationSelectionViewController.h */,
 				84977C671A0F29C200A70DA1 /* LocationSelectionViewController.m */,
 				8461CE271A08172C00BB3525 /* ProfileViewController.h */,
@@ -393,6 +393,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84977C6B1A0F574A00A70DA1 /* FilterTableViewController.m in Sources */,
 				845166E21A07FED6004663DE /* AppDelegate.m in Sources */,
 				84977C681A0F29C200A70DA1 /* LocationSelectionViewController.m in Sources */,
 				8461CE291A08172C00BB3525 /* ProfileViewController.m in Sources */,
@@ -411,7 +412,6 @@
 				8461CE261A0816FA00BB3525 /* ItemDetailViewController.m in Sources */,
 				52BE14E51A0800EC0090A2B0 /* DraggableViewBackground.m in Sources */,
 				84F815981A0B67D000179034 /* profileButton.m in Sources */,
-				84977C651A0F299B00A70DA1 /* FilterSelectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,6 +16,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.cityPicker.delegate = self;
+    
+    self.cityPicker.dataSource = self.cities;
+    
     // Do any additional setup after loading the view.
 }
 

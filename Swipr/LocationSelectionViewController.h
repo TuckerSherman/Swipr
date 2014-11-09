@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h> 
 
-@interface LocationSelectionViewController : UIViewController
+
+@interface LocationSelectionViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource>
+@property (strong, nonatomic) IBOutlet MKMapView *mapView;
+@property (strong, nonatomic) IBOutlet UISlider *searchRadiusSlider;
+@property (strong, nonatomic) IBOutlet UIPickerView *cityPicker;
+@property (strong, nonatomic) NSArray* cities;
+
 
 @end
