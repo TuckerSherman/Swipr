@@ -7,6 +7,8 @@
 //
 
 #import "TabLandingViewController.h"
+#import "FilterTableViewController.h"
+#import "LocationSelectionViewController.h"
 
 @interface TabLandingViewController ()
 
@@ -17,6 +19,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    FilterTableViewController* filterSelectionVC=  self.childViewControllers[1];
+    LocationSelectionViewController* locationSelectionVC = self.childViewControllers[0];
+    locationSelectionVC.searchLocation = self.location;
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,17 +31,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)logOutButtonPressed:(UIBarButtonItem *)sender {
-    
-    UIAlertView *logoutAlert = [[UIAlertView alloc] initWithTitle:@"Log out"
-                                                          message:@"Are you sure you want to log out?"
-                                                         delegate:self
-                                                cancelButtonTitle:@"Cancel"
-                                                otherButtonTitles:@"Log out", nil];
-    logoutAlert.tag = 0;
-    [logoutAlert show];
-    
-}
+
 
 /*
 #pragma mark - Navigation

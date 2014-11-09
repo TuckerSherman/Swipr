@@ -18,6 +18,9 @@
     [super viewDidLoad];
     self.cityPicker.delegate = self;
     self.cityPicker.dataSource = self;
+    self.mapView.delegate = self;
+    self.mapView.centerCoordinate = self.searchLocation;
+    NSLog(@"displaying: %f, %f",self.searchLocation.latitude, self.searchLocation.longitude);
     
     // Do any additional setup after loading the view.
 }

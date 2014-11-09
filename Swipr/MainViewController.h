@@ -21,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet UIView *subView;
 @property (weak, nonatomic) IBOutlet UIButton *infoButton;
 @property (strong, nonatomic) IBOutlet UIButton *contentFilterButton;
+@property (strong, nonatomic) CLLocationManager *locationManager;
+
 
 - (IBAction)logOutButtonPressed:(UIBarButtonItem *)sender;
 -(void)assignSearchRadius;

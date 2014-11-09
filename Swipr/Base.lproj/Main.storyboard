@@ -36,22 +36,23 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rky-KM-EyE">
-                                        <rect key="frame" x="8" y="624" width="46" height="30"/>
-                                        <state key="normal" title="Button">
+                                        <rect key="frame" x="0.0" y="624" width="375" height="30"/>
+                                        <state key="normal" title="viewing: everything near: current location">
                                             <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="Dt5-en-xbY" kind="push" id="ayf-ch-BbS"/>
+                                            <segue destination="Dt5-en-xbY" kind="push" identifier="filterSettings" id="ayf-ch-BbS"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="W47-Nz-Cji" secondAttribute="bottom" constant="50" id="Vyg-mB-hwv"/>
+                                    <constraint firstItem="Rky-KM-EyE" firstAttribute="width" secondItem="rc1-q1-oHm" secondAttribute="width" id="hcO-TM-LF5"/>
                                     <constraint firstAttribute="bottom" secondItem="Rky-KM-EyE" secondAttribute="bottom" constant="13" id="kYS-Ts-5H3"/>
                                     <constraint firstAttribute="centerX" secondItem="W47-Nz-Cji" secondAttribute="centerX" id="nSo-0z-5aa"/>
-                                    <constraint firstItem="Rky-KM-EyE" firstAttribute="leading" secondItem="rc1-q1-oHm" secondAttribute="leading" constant="8" id="xC9-h6-GbV"/>
+                                    <constraint firstItem="Rky-KM-EyE" firstAttribute="leading" secondItem="rc1-q1-oHm" secondAttribute="leading" id="xC9-h6-GbV"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -88,10 +89,10 @@
             </objects>
             <point key="canvasLocation" x="970.5" y="439.5"/>
         </scene>
-        <!--Item-->
+        <!--Categories-->
         <scene sceneID="RYw-Au-2Pc">
             <objects>
-                <tableViewController id="UbX-Rw-Z08" customClass="FilterTableViewController" sceneMemberID="viewController">
+                <tableViewController title="Categories" id="UbX-Rw-Z08" customClass="FilterTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ivL-Zc-VmY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

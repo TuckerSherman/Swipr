@@ -14,6 +14,7 @@
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) IBOutlet UISlider *searchRadiusSlider;
 @property (strong, nonatomic) IBOutlet UIPickerView *cityPicker;
+@property (nonatomic) CLLocationCoordinate2D searchLocation;
 @property (strong, nonatomic) NSArray* cities;
 
 

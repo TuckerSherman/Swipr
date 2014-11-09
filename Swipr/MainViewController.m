@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 #import "ItemDetailViewController.h"
 #import "MatchViewController.h"
+#import "TabLandingViewController.h"
 
 @interface MainViewController ()
 
@@ -20,18 +21,14 @@
     NSArray *ownersWhoWantYourStuff;
     PFObject *swipedCard;
     
-    CLLocationManager *_locationManager;
 
-    CLLocationCoordinate2D userLocation;
+    CLLocationCoordinate2D searchLocation;
 
     CGFloat searchRadius;
     NSArray* searchFilters;
     
 }
-- (IBAction)filtersButtonPressed:(id)sender {
-    NSLog(@"you want to add filters eh?");
-    
-}
+
 -(void)viewWillAppear:(BOOL)animated{
     
 }
@@ -41,12 +38,16 @@
     [[self navigationController] setNavigationBarHidden:NO animated:YES];
     if(!_locationManager){
         _locationManager = [[CLLocationManager alloc]init];
+        _locationManager.delegate = self;
+        _locationManager.pausesLocationUpdatesAutomatically = YES;
+        _locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
         if ([_locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
             [_locationManager requestWhenInUseAuthorization];
-        }        _locationManager.delegate = self;
+        }
     }
+
     
-    userLocation = _locationManager.location.coordinate;
+   
     
     
     CGFloat navWidth = self.navigationController.navigationBar.frame.size.width;
@@ -59,12 +60,11 @@
     
     self.navigationItem.titleView = logo;
     
-
     // Setup draggable background
     self.draggableBackground = [[DraggableViewBackground alloc]initWithFrame:self.view.frame];
     self.draggableBackground.delegate = self;
     [self.subView addSubview:self.draggableBackground];
-    
+    //move storyboard UIElements to the top of the view stack
     [self.subView bringSubviewToFront:self.infoButton];
     [self.subView bringSubviewToFront:self.contentFilterButton];
     
@@ -162,9 +162,13 @@
     
     if ([[segue identifier] isEqualToString:@"itemDetailSegue"]) {
         ItemDetailViewController *itemDetailVC = segue.destinationViewController;
-        
         itemDetailVC.item = self.currentCard.pfItem;
-
+    }
+    else if ([segue.identifier isEqualToString:@"filterSettings"]){
+        TabLandingViewController* filterSelection = segue.destinationViewController;
+        filterSelection.location = searchLocation;
+        
+        
     }
     
 }
@@ -276,16 +280,34 @@
 
 #pragma Mark - location based stuff
 -(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status{
-    NSLog(@"status changed");
+//    NSLog(@"status changed to: %@",status);
     if (status == kCLAuthorizationStatusDenied) {
         NSLog(@"user didnt approve");
+        searchLocation = CLLocationCoordinate2DMake(-132.00, 49.32);
+
     }
     else if(status == kCLAuthorizationStatusAuthorizedWhenInUse){
         NSLog(@"user approved");
         [_locationManager startUpdatingLocation];
-
-        
+         searchLocation = _locationManager.location.coordinate;
     }
+    else if(status == kCLAuthorizationStatusAuthorizedAlways){
+        NSLog(@"user approved");
+        [_locationManager startUpdatingLocation];
+        searchLocation = _locationManager.location.coordinate;
+    }
+}
+-(void)locationManagerDidResumeLocationUpdates:(CLLocationManager *)manager{
+    NSLog(@"well this happened");
+    
+}
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
+    CLLocation* currentLocation = locations[0];
+    CLLocationCoordinate2D currentCoordinates = currentLocation.coordinate;
+    searchLocation = currentCoordinates;
+   
+//    NSLog(@"location:%f, %f", searchLocation.latitude, searchLocation.longitude);
+
 }
 
 
