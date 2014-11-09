@@ -19,41 +19,66 @@
     NSMutableArray* wantedItems;
     NSArray *ownersWhoWantYourStuff;
     PFObject *swipedCard;
+    
+    CLLocationManager *_locationManager;
+
+    CLLocationCoordinate2D userLocation;
+
     CGFloat searchRadius;
-    NSString* filterCategory;
+    NSArray* searchFilters;
     
 }
 - (IBAction)filtersButtonPressed:(id)sender {
     NSLog(@"you want to add filters eh?");
     
 }
+-(void)viewWillAppear:(BOOL)animated{
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[self navigationController] setNavigationBarHidden:NO animated:YES];
-
+    if(!_locationManager){
+        _locationManager = [[CLLocationManager alloc]init];
+        [_locationManager requestWhenInUseAuthorization];
+        [_locationManager startUpdatingLocation];
+        _locationManager.delegate = self;
+    }
+    
+    userLocation = _locationManager.location.coordinate;
+    
     
     CGFloat navWidth = self.navigationController.navigationBar.frame.size.width;
     CGFloat navHeight = self.navigationController.navigationBar.frame.size.height;
     
-    UIImageView* logo =[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"WhiteLogo"]];
-    logo.contentMode = UIViewContentModeScaleAspectFit;
-    
-    logo.frame = CGRectMake(navWidth/2.0, navHeight/2.0, 200, 40);
+    UIImageView* logo =[[UIImageView alloc]initWithFrame:CGRectMake(navWidth/2.0, navHeight/2.0, 200, 40)];
+        logo.contentMode = UIViewContentModeScaleAspectFit;
+    logo.image = [UIImage imageNamed:@"WhiteLogo"];
+
     
     self.navigationItem.titleView = logo;
     
-    
-    
+
     // Setup draggable background
     self.draggableBackground = [[DraggableViewBackground alloc]initWithFrame:self.view.frame];
     self.draggableBackground.delegate = self;
     [self.subView addSubview:self.draggableBackground];
+    
     [self.subView bringSubviewToFront:self.infoButton];
+    [self.subView bringSubviewToFront:self.contentFilterButton];
+    
     [self myWantedItems];
     if ([PFUser currentUser]) {
         [self retreiveFromParse];
     }
+    
+}
+
+-(void)assignSearchRadius{
+    
+}
+-(void)assignCurrentLocation{
     
 }
 
@@ -138,7 +163,6 @@
     if ([[segue identifier] isEqualToString:@"itemDetailSegue"]) {
         ItemDetailViewController *itemDetailVC = segue.destinationViewController;
         
-
         itemDetailVC.item = self.currentCard.pfItem;
 
     }
@@ -249,5 +273,18 @@
     matchVC.ownerWhoWantsYourItem = [ownersWhoWantYourStuff objectAtIndex:0];
     [self presentViewController:matchVC animated:YES completion:nil];
 }
+
+#pragma Mark - location based stuff
+-(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status{
+    NSLog(@"status changed");
+    if (status == kCLAuthorizationStatusDenied) {
+        NSLog(@"user didnt approve");
+    }
+    else if(status == kCLAuthorizationStatusAuthorizedWhenInUse){
+        NSLog(@"user approved");
+        
+    }
+}
+
 
 @end

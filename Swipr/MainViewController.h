@@ -7,21 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
+#import <MapKit/MapKit.h>
+
 #import "DraggableViewBackground.h"
 #import "DraggableView.h"
-#import <Parse/Parse.h>
-#import "Item.h"
 
-@interface MainViewController : UIViewController <UIAlertViewDelegate, DraggableViewBackgroundDelegate>
+@interface MainViewController : UIViewController <UIAlertViewDelegate, DraggableViewBackgroundDelegate,CLLocationManagerDelegate>
 
-@property (strong, nonatomic) Item *item;
 
 @property (strong, nonatomic) DraggableView *currentCard;
 @property (strong, nonatomic) DraggableViewBackground *draggableBackground;
 @property (weak, nonatomic) IBOutlet UIView *subView;
 @property (weak, nonatomic) IBOutlet UIButton *infoButton;
+@property (strong, nonatomic) IBOutlet UIButton *contentFilterButton;
 
 - (IBAction)logOutButtonPressed:(UIBarButtonItem *)sender;
+-(void)assignSearchRadius;
+-(void)assignCurrentLocation;
+
 
 
 @end

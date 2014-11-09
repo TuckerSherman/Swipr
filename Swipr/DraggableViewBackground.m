@@ -65,7 +65,7 @@ static const int MAX_BUFFER_SIZE = 2; //%%% max number of cards loaded at any gi
 
 }
 
-//%%% creates a card and returns it.  This should be customized to fit your needs.
+//%%% creates a card and returns it. 
 // use "index" to indicate where the information should be pulled.  If this doesn't apply to you, feel free
 // to get rid of it (eg: if you are building cards from data from the internet)
 -(DraggableView *)createDraggableViewWithDataAtIndex:(NSInteger)index{
@@ -99,14 +99,14 @@ static const int MAX_BUFFER_SIZE = 2; //%%% max number of cards loaded at any gi
     return draggableView;
 }
 
-//%%% loads all the cards and puts the first x in the "loaded cards" array
+// loads all the cards and puts the first x in the "loaded cards" array
 -(void)loadCards
 {
     if([self.pfItemsArray count] > 0) {
         NSInteger numLoadedCardsCap =(([self.pfItemsArray count] > MAX_BUFFER_SIZE)?MAX_BUFFER_SIZE:[self.pfItemsArray count]);
-        //%%% if the buffer size is greater than the data size, there will be an array error, so this makes sure that doesn't happen
+        // if the buffer size is greater than the data size, there will be an array error, so this makes sure that doesn't happen
         
-        //%%% loops through the exampleCardsLabels array to create a card for each label.  This should be customized by removing "exampleCardLabels" with your own array of data
+        // loops through the exampleCardsLabels array to create a card for each label.  This should be customized by removing "exampleCardLabels" with your own array of data
         for (int i = 0; i<[self.pfItemsArray count]; i++) {
             DraggableView* newCard = [self createDraggableViewWithDataAtIndex:i];
             [allCards addObject:newCard];
@@ -119,7 +119,7 @@ static const int MAX_BUFFER_SIZE = 2; //%%% max number of cards loaded at any gi
                 }
             }
         }
-        //%%% displays the small number of loaded cards dictated by MAX_BUFFER_SIZE so that not all the cards
+        // displays the small number of loaded cards dictated by MAX_BUFFER_SIZE so that not all the cards
         // are showing at once and clogging a ton of data
         for (int i = 0; i<[loadedCards count]; i++) {
             if (i>0) {
@@ -133,9 +133,7 @@ static const int MAX_BUFFER_SIZE = 2; //%%% max number of cards loaded at any gi
     
 }
 
-#warning include own action here!
-//%%% action called when the card goes to the left.
-// This should be customized with your own action
+// action called when the card goes to the left.
 -(void)cardSwipedLeft:(UIView *)card;
 {
     //do whatever you want with the card that was swiped
@@ -155,9 +153,7 @@ static const int MAX_BUFFER_SIZE = 2; //%%% max number of cards loaded at any gi
 
 }
 
-#warning include own action here!
-//%%% action called when the card goes to the right.
-// This should be customized with your own action
+// action called when the card goes to the right.
 -(void)cardSwipedRight:(UIView *)card
 {
     //do whatever you want with the card that was swiped

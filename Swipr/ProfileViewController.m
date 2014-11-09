@@ -24,14 +24,17 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithRed:.95 green:.95 blue:.95 alpha:.3];
     _currentUser = [PFUser currentUser];
+    
     lockButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"lock"]
                                                  style:UIBarButtonItemStylePlain
                                                 target:self
                                                 action:@selector(unlockUserTap:)];
+    
     unlockButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"Unlock"]
                                                    style:UIBarButtonItemStylePlain
                                                   target:self
                                                   action:@selector(lockUserTap:)];
+    
     self.navigationItem.rightBarButtonItem = lockButton;
 
     //default view has profile editing locked
@@ -46,12 +49,12 @@
 }
 
 -(void) setupCurrentUser{
+    
     self.navigationItem.title = _currentUser.username;
     self.userEmailTextFeild.text = _currentUser.email;
     self.navigationItem.rightBarButtonItem = lockButton;
 
-    
-//dowload user bio
+    //dowload user bio
     PFQuery *query= [PFUser query];
     [query whereKey:@"username" equalTo:_currentUser.username];
     [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error){
@@ -72,7 +75,8 @@
             [self performSelector:@selector(lockUserTap:)withObject:nil];
         });
     }];
-//dowload profile pic
+    
+    //dowload profile pic
     PFFile* profileImageFile = (PFFile*)_currentUser[@"profileImage"];
     [self.userProfileImageView setFile:profileImageFile];
     [self.userProfileImageView loadInBackground:^(UIImage *image, NSError *error) {
@@ -92,11 +96,11 @@
 - (IBAction)unlockUserTap:(id)sender {
     //enable all fields that accept user interaction - make everything editable slighly opaque - hide the unlock button and show the lock button
     self.userBioTextFeild.userInteractionEnabled=YES;
-    self.userBioTextFeild.alpha=.7;
+    self.userBioTextFeild.alpha=1;
     self.userEmailTextFeild.userInteractionEnabled = YES;
-    self.userEmailTextFeild.alpha=.7;
+    self.userEmailTextFeild.alpha=1;
     self.userProfileImageView.userInteractionEnabled = YES;
-    self.userProfileImageView.alpha =.7;
+    self.userProfileImageView.alpha =1;
     
     self.navigationItem.rightBarButtonItem = unlockButton;
 
@@ -105,12 +109,12 @@
     //disable all fields that accept user interaction - make everything totally opaque - hide the lock button and show the unlock button
 
     self.userBioTextFeild.userInteractionEnabled=NO;
-    self.userBioTextFeild.alpha=1;
+    self.userBioTextFeild.alpha=.8;
     self.userBioTextFeild.textColor=[UIColor blackColor];
     self.userEmailTextFeild.userInteractionEnabled = NO;
-    self.userEmailTextFeild.alpha=1;
+    self.userEmailTextFeild.alpha=.8;
     self.userProfileImageView.userInteractionEnabled = NO;
-    self.userProfileImageView.alpha=1;
+    self.userProfileImageView.alpha=.8;
     
     self.navigationItem.rightBarButtonItem = lockButton;
 
@@ -170,7 +174,7 @@
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
     [picker dismissViewControllerAnimated:YES completion:NULL];
     self.userProfileImageView.image = chosenImage;
-    NSData* imageToBeUploaded = UIImageJPEGRepresentation(chosenImage, 75);
+    NSData* imageToBeUploaded = UIImageJPEGRepresentation(chosenImage, 50);
     PFFile *imageFile = [PFFile fileWithName:@"profileImage" data:imageToBeUploaded];
     [_currentUser setObject:imageFile forKey:@"profileImage"];
     [_currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
