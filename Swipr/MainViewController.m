@@ -41,9 +41,9 @@
     [[self navigationController] setNavigationBarHidden:NO animated:YES];
     if(!_locationManager){
         _locationManager = [[CLLocationManager alloc]init];
-        [_locationManager requestWhenInUseAuthorization];
-        [_locationManager startUpdatingLocation];
-        _locationManager.delegate = self;
+        if ([_locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+            [_locationManager requestWhenInUseAuthorization];
+        }        _locationManager.delegate = self;
     }
     
     userLocation = _locationManager.location.coordinate;
@@ -282,6 +282,8 @@
     }
     else if(status == kCLAuthorizationStatusAuthorizedWhenInUse){
         NSLog(@"user approved");
+        [_locationManager startUpdatingLocation];
+
         
     }
 }

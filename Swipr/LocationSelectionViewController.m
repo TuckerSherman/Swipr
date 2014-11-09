@@ -17,8 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.cityPicker.delegate = self;
-    
-    self.cityPicker.dataSource = self.cities;
+    self.cityPicker.dataSource = self;
     
     // Do any additional setup after loading the view.
 }
@@ -26,6 +25,22 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)selectRow:(NSInteger)row
+      inComponent:(NSInteger)component
+         animated:(BOOL)animated{
+    
+}
+
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+    
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView
+numberOfRowsInComponent:(NSInteger)component{
+    return self.cities.count;
 }
 
 /*
