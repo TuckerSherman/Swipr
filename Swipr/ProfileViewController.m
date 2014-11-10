@@ -100,7 +100,7 @@
     self.userEmailTextFeild.userInteractionEnabled = YES;
     self.userEmailTextFeild.alpha=1;
     self.userProfileImageView.userInteractionEnabled = YES;
-    self.userProfileImageView.alpha =1;
+    self.userProfileImageView.alpha =.7;
     
     self.navigationItem.rightBarButtonItem = unlockButton;
 
@@ -109,12 +109,12 @@
     //disable all fields that accept user interaction - make everything totally opaque - hide the lock button and show the unlock button
 
     self.userBioTextFeild.userInteractionEnabled=NO;
-    self.userBioTextFeild.alpha=.8;
+    self.userBioTextFeild.alpha=.7;
     self.userBioTextFeild.textColor=[UIColor blackColor];
     self.userEmailTextFeild.userInteractionEnabled = NO;
-    self.userEmailTextFeild.alpha=.8;
+    self.userEmailTextFeild.alpha=.7;
     self.userProfileImageView.userInteractionEnabled = NO;
-    self.userProfileImageView.alpha=.8;
+    self.userProfileImageView.alpha=1;
     
     self.navigationItem.rightBarButtonItem = lockButton;
 

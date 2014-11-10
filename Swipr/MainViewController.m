@@ -45,25 +45,13 @@
             [_locationManager requestWhenInUseAuthorization];
         }
     }
-
+    [self setupLogo];
     
-   
-    
-    
-    CGFloat navWidth = self.navigationController.navigationBar.frame.size.width;
-    CGFloat navHeight = self.navigationController.navigationBar.frame.size.height;
-    
-    UIImageView* logo =[[UIImageView alloc]initWithFrame:CGRectMake(navWidth/2.0, navHeight/2.0, 200, 40)];
-        logo.contentMode = UIViewContentModeScaleAspectFit;
-    logo.image = [UIImage imageNamed:@"WhiteLogo"];
-
-    
-    self.navigationItem.titleView = logo;
-    
-    // Setup draggable background
+    // Setup cardView
     self.draggableBackground = [[DraggableViewBackground alloc]initWithFrame:self.view.frame];
     self.draggableBackground.delegate = self;
     [self.subView addSubview:self.draggableBackground];
+    
     //move storyboard UIElements to the top of the view stack
     [self.subView bringSubviewToFront:self.infoButton];
     [self.subView bringSubviewToFront:self.contentFilterButton];
@@ -74,6 +62,16 @@
     }
     
 }
+-(void)setupLogo{
+    CGFloat navWidth = self.navigationController.navigationBar.frame.size.width;
+    CGFloat navHeight = self.navigationController.navigationBar.frame.size.height;
+    
+    UIImageView* logo =[[UIImageView alloc]initWithFrame:CGRectMake(navWidth/2.0, navHeight/2.0, 200, 40)];
+    logo.contentMode = UIViewContentModeScaleAspectFit;
+    logo.image = [UIImage imageNamed:@"WhiteLogo"];
+    
+    self.navigationItem.titleView = logo;
+}
 
 -(void)assignSearchRadius{
     
@@ -82,19 +80,11 @@
     
 }
 
-
-
-//@"username", @"itemsUserDoesWant", @"itemsUserDoesNotWant",
 #pragma mark - Working with Parse methods
 
 -(void)retreiveFromParse {
-    NSString*thisUserString = [[PFUser currentUser] username];
     
-    PFQuery *query = [PFQuery queryWithClassName:@"Item"];
-    [query whereKey:@"user" notEqualTo:thisUserString];
-    
-    [query whereKey:@"usersWhoDontWant" notEqualTo:[PFUser currentUser]];
-    [query whereKey:@"usersWhoWant" notEqualTo:[PFUser currentUser]];
+    PFQuery* query = [self createParseQueryWithFilters:searchFilters location:searchLocation];
     
     [query orderByAscending:@"createdAt"];
     
@@ -112,6 +102,39 @@
     
 }
 
+-(PFQuery*) createParseQueryWithFilters:(NSArray*)filters location:(CLLocationCoordinate2D)location{
+    
+    PFUser* currentUser = [PFUser currentUser];
+    PFQuery* basicQuery = [PFQuery queryWithClassName:@"Item"];
+    //we dont want to see items this user posted or has already swiped on
+    [basicQuery whereKey:@"user" notEqualTo:currentUser.username];
+    [basicQuery whereKey:@"usersWhoDontWant" notEqualTo:currentUser];
+    [basicQuery whereKey:@"usersWhoWant" notEqualTo:currentUser];
+    if (filters) {
+        NSMutableArray* filterSubQueries = [NSMutableArray new];
+        for (int i = 0; i < filters.count; i++) {
+            PFQuery* filterQuery = [PFQuery queryWithClassName:@"Item"];
+            [filterQuery whereKey:@"category" equalTo:filters[i]];
+            [filterSubQueries addObject:filterQuery];
+        }
+        PFQuery* allFiltersQuery = [PFQuery orQueryWithSubqueries:filterSubQueries];
+        [allFiltersQuery whereKey:@"user" notEqualTo:currentUser.username];
+        [allFiltersQuery whereKey:@"usersWhoDontWant" notEqualTo:currentUser];
+        [allFiltersQuery whereKey:@"usersWhoWant" notEqualTo:currentUser];
+        return allFiltersQuery;
+
+    }
+
+    
+    
+    return basicQuery;
+    
+}
+
+-(void) applySearchFilters:(NSArray*)filters{
+    searchFilters = [NSArray arrayWithArray:filters];
+    
+}
 
 
 #pragma mark - Log Out Button Methods

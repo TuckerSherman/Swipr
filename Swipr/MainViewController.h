@@ -27,6 +27,7 @@
 - (IBAction)logOutButtonPressed:(UIBarButtonItem *)sender;
 -(void)assignSearchRadius;
 -(void)assignCurrentLocation;
+-(void)applySearchFilters:(NSArray*)filters;
 
 
 

@@ -12,7 +12,9 @@
 
 @end
 
-@implementation LocationSelectionViewController
+@implementation LocationSelectionViewController{
+    NSArray*cityNames;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -21,8 +23,22 @@
     self.mapView.delegate = self;
     self.mapView.centerCoordinate = self.searchLocation;
     NSLog(@"displaying: %f, %f",self.searchLocation.latitude, self.searchLocation.longitude);
+    self.cities = @{@"Portland":@{@"latitude":@45.5200, @"longitude":@122.6819},
+                    @"Use My Current Location": @"here",
+                    @"Vancouver":@{@"latitude":@49.2500, @"longitude":@123.1000},
+                    @"Calgary": @{@"latitude":@51.0500, @"longitude":@114.0667}
+                    };
+    cityNames = [self.cities allKeys];
+    
+    
     
     // Do any additional setup after loading the view.
+}
+- (IBAction)setCatButton:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"back we go");
+    }];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,6 +60,45 @@
 - (NSInteger)pickerView:(UIPickerView *)pickerView
 numberOfRowsInComponent:(NSInteger)component{
     return self.cities.count;
+}
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row   forComponent:(NSInteger)component{
+    
+    return cityNames[row];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row   inComponent:(NSInteger)component{
+    switch (row) {
+        case 0:{
+            NSLog(@"%@",cityNames[0]);
+            //if the user has allowed location services use their current location
+
+     
+            break;
+        }
+
+        case 1:{
+            NSLog(@"%@",cityNames[1]);
+            //parse the selected city's coordinates and set them as the search location
+//            NSDictionary* cityCoordinates = [self.cities objectForKey:cityNames[1]];
+//            NSNumber* latitude =[cityCoordinates objectForKey:@"latitude"];
+//            NSNumber* longitude = [cityCoordinates objectForKey:@"longitude"];
+//            CLLocationCoordinate2DMake(latitude.floatValue, longitude.floatValue);
+
+        }
+            break;
+        case 2:{
+            {
+                NSLog(@"%@",cityNames[2]);
+//            NSDictionary* cityCoordinates = [self.cities objectForKey:cityNames[0]];
+//            NSNumber* latitude =[cityCoordinates objectForKey:@"latitude"];
+//            NSNumber* longitude = [cityCoordinates objectForKey:@"longitude"];
+//            CLLocationCoordinate2DMake(latitude.floatValue, longitude.floatValue);
+            //parse the selected city's coordinates and set them as the search location
+            }
+        }
+
+            break;
+    }
 }
 
 /*
