@@ -7,6 +7,7 @@
 //
 
 #import "RegisterUserViewController.h"
+#import <SCLAlertView.h>
 
 @interface RegisterUserViewController ()
 
@@ -30,13 +31,10 @@
     
     if ([self.usernameTextfield.text isEqualToString:@""]|| [self.emailTextfield.text isEqualToString:@""] || [self.passwordTextfield.text isEqualToString:@""] || [self.confirmPasswordTextfield.text isEqualToString:@""]) {
         
-        UIAlertView *registerAlert = [[UIAlertView alloc] initWithTitle:@"Register not complete"
-                                                        message:@"Please fill out all textfields"
-                                                        delegate:self
-                                                        cancelButtonTitle:@"Ok"
-                                                        otherButtonTitles:nil];
+        SCLAlertView *registerAlert = [[SCLAlertView alloc] init];
         
-        [registerAlert show];
+        [registerAlert showError:self title:@"Register Not Complete" subTitle:@"Please Fill Out All Textfields" closeButtonTitle:@"Ok" duration:0.0f];
+        
     } else {
         [self checkPasswordMatch];
     }
@@ -47,13 +45,9 @@
     
     if (![self.passwordTextfield.text isEqualToString:self.confirmPasswordTextfield.text]) {
         
-        UIAlertView *passwordAlert = [[UIAlertView alloc] initWithTitle:@"Passwords Do Not Match"
-                                                                message:@"Please ensure your passwords match"
-                                                               delegate:self
-                                                      cancelButtonTitle:@"Ok"
-                                                      otherButtonTitles:nil];
+        SCLAlertView *passwordAlert = [[SCLAlertView alloc] init];
         
-        [passwordAlert show];
+        [passwordAlert showError:self title:@"Passwords Don't Match" subTitle:@"Please ensure your passwords match" closeButtonTitle:@"Ok" duration:0.0f];
 
     } else {
         

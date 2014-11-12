@@ -7,6 +7,8 @@
 //
 
 #import "LoginViewController.h"
+#import <SCLAlertView.h>
+
 
 @interface LoginViewController ()
 
@@ -41,23 +43,21 @@
                     [self performSegueWithIdentifier:@"logIn" sender:self];
                 } else if (error) {
                     
-                    UIAlertView *loginAlert = [[UIAlertView alloc] initWithTitle:@"Could not log in"
-                                                                         message:@"Sorry, there was a problem logging in"
-                                                                        delegate:self
-                                                               cancelButtonTitle:@"Ok"
-                                                               otherButtonTitles:nil];
-                    [loginAlert show];
+                    SCLAlertView *loginAlert = [[SCLAlertView alloc] init];
+                    [loginAlert showError:self title:@"Could Not Log In"
+                                                subTitle:@"Sorry, there was a problem logging in"closeButtonTitle:@"Ok"
+                                                duration:0.0f];
                 }
             }];
     }
         else{
-            UIAlertView *registerAlert = [[UIAlertView alloc] initWithTitle:@"Couldnt log you in"
-                                                                    message:@"Please fill out all textfields"
-                                                                   delegate:self
-                                                          cancelButtonTitle:@"Ok"
-                                                          otherButtonTitles:nil];
+
+            SCLAlertView *registerAlert = [[SCLAlertView alloc] init];
+            [registerAlert showError:self title:@"Could Not Log You In"
+                                subTitle:@"Please Fill Out All Textfield"
+                                closeButtonTitle:@"Ok"
+                                duration:0.0f];
             
-            [registerAlert show];
         }
     self.loginUsernameTextfield.text = nil;
     self.loginPasswordTextfield.text = nil;
