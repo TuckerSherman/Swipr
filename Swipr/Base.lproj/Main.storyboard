@@ -42,7 +42,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="jwE-y2-O0g" kind="modal" id="0hi-Dn-M0M"/>
+                                            <segue destination="jwE-y2-O0g" kind="modal" identifier="filterSettings" id="0hi-Dn-M0M"/>
                                         </connections>
                                     </button>
                                 </subviews>

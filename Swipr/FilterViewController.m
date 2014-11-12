@@ -19,11 +19,14 @@
         NSLog(@"back to main");
     }];
 }
+-(void)viewWillAppear:(BOOL)animated{
+    FilterTableViewController* childTableView = self.childViewControllers.lastObject;
+    childTableView.selectedCategories = [self.selections mutableCopy];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    FilterTableViewController* childTableView = self.childViewControllers.lastObject;
-    childTableView.selectedCategories = [self.selections mutableCopy];
+
     // Do any additional setup after loading the view.
 }
 
