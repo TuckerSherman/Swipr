@@ -34,6 +34,7 @@
 
 -(void)applySearchFilters:(NSArray*)filters;
 
+-(void)swipedACard;
 
 
 @end

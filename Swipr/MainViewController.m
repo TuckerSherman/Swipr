@@ -53,6 +53,10 @@
 
     
 }
+-(void)swipedACard{
+    
+}
+
 
 -(void)setupDeck{
     
@@ -99,6 +103,8 @@
     PFQuery* query = [self createParseQueryWithFilters:self.searchFilters location:searchLocation];
     
     [query orderByAscending:@"createdAt"];
+    query.limit = 2;
+    
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
@@ -124,13 +130,15 @@
     NSLog(@"making parseQuery");
     
     if (filters) {
-        NSMutableArray* filterSubQueries = [NSMutableArray new];
-        for (int i = 0; i < filters.count; i++) {
-            PFQuery* filterQuery = [PFQuery queryWithClassName:@"Item"];
-            [filterQuery whereKey:@"category" equalTo:filters[i]];
-            [filterSubQueries addObject:filterQuery];
-        }
-        baseQuery = [PFQuery orQueryWithSubqueries:filterSubQueries];
+//        NSMutableArray* filterSubQueries = [NSMutableArray new];
+//        for (int i = 0; i < filters.count; i++) {
+//            PFQuery* filterQuery = [PFQuery queryWithClassName:@"Item"];
+//            [filterQuery whereKey:@"category" equalTo:filters[i]];
+//            [filterSubQueries addObject:filterQuery];
+//        }
+//        baseQuery = [PFQuery orQueryWithSubqueries:filterSubQueries];
+        baseQuery = [PFQuery queryWithClassName:@"Item"];
+
     } else {
         baseQuery = [PFQuery queryWithClassName:@"Item"];
     }
@@ -246,6 +254,8 @@
             }
         }];
     }
+    [self retreiveFromParse];
+    
 }
 
 #pragma mark - Match Methods
