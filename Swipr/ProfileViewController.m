@@ -8,6 +8,7 @@
 
 
 #import "ProfileViewController.h"
+#import <SCLAlertView.h>
 
 @interface ProfileViewController ()
 
@@ -63,12 +64,10 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if (!userBio) {
-                UIAlertView *bioAlert = [[UIAlertView alloc] initWithTitle:@"You havent writen a user bio"
-                                                                     message:@"tap the lock in the top right to edit your profile"
-                                                                    delegate:self
-                                                           cancelButtonTitle:@"Ok"
-                                                           otherButtonTitles:nil];
-                [bioAlert show];
+                
+                SCLAlertView *bioAlert = [[SCLAlertView alloc] init];
+                [bioAlert showCustom:self image:[UIImage imageNamed:@"Notice"] color:[UIColor colorWithRed:113.0/255.0 green:177.0/255.0 blue:225.0/255.0 alpha:1] title:@"No User Bio" subTitle:@"You haven't written a user bio.  Tap the lock in the top right to edit your profile" closeButtonTitle:@"Ok" duration:0.0f];
+                
             }
             
             self.userBioTextFeild.text = userBio;

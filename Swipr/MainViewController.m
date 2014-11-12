@@ -10,6 +10,7 @@
 #import "ItemDetailViewController.h"
 #import "MatchViewController.h"
 #import "TabLandingViewController.h"
+#import <SCLAlertView.h>
 
 @interface MainViewController ()
 
@@ -141,32 +142,17 @@
 
 - (IBAction)logOutButtonPressed:(UIBarButtonItem *)sender {
     
-    UIAlertView *logoutAlert = [[UIAlertView alloc] initWithTitle:@"Log out"
-                                                    message:@"Are you sure you want to log out?"
-                                                    delegate:self
-                                                    cancelButtonTitle:@"Cancel"
-                                                    otherButtonTitles:@"Log out", nil];
-    logoutAlert.tag = 0;
-    [logoutAlert show];
+    SCLAlertView *logOutAlert = [[SCLAlertView alloc] init];
+    [logOutAlert addButton:@"Log Out" actionBlock:^{
+        [PFUser logOut];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }];
+    [logOutAlert showCustom:self image:[UIImage imageNamed:@"logOutIcon"]
+                      color:[UIColor colorWithRed:113.0/255.0 green:177.0/255.0 blue:225.0/255.0 alpha:1]
+                      title:@"Log Out"
+                        subTitle:@"Are you sure you want to log out?"
+                        closeButtonTitle:@"Cancel" duration:0.0f];
 
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (alertView.tag == 0) {
-        if (buttonIndex == [alertView cancelButtonIndex]){
-
-        }else{
-            [PFUser logOut];
-            [self.navigationController popToRootViewControllerAnimated:YES];
-        }
-    }
-    else if (alertView.tag == 1) {
-        
-        if ([alertView buttonTitleAtIndex:1]) {
-            [self goToMatch];
-        }
-    }
-    
 }
 
 #pragma mark - Refresh button
@@ -254,15 +240,19 @@
     for (PFObject *owners in array) {
         NSString *owner = [owners objectForKey:@"username"];
         if ([itemsOwner isEqualToString:owner]) {
-            UIAlertView *matchAlert = [[UIAlertView alloc] initWithTitle:@"You Got A Match!"
-                                                                    message:@"Someone wanted your item too!"
-                                                                   delegate:self
-                                                          cancelButtonTitle:@"Ok"
-                                                          otherButtonTitles:@"Show Me", nil];
-            matchAlert.tag = 1;
             
-            [matchAlert show];
-    
+            SCLAlertView *matchAlert = [[SCLAlertView alloc] init];
+            [matchAlert addButton:@"Show Me"
+                           target:self
+                         selector:@selector(goToMatch)];
+            [matchAlert showCustom:self
+                             image:[UIImage imageNamed:@"Handshake"]
+                             color:[UIColor colorWithRed:113.0/255.0 green:177.0/255.0 blue:225.0/255.0 alpha:1]
+                             title:@"You Got A Match!"
+                            subTitle:@"Someone wanted your item too!"
+                            closeButtonTitle:@"Ok"
+                            duration:0.0f];
+            
         }
         
     }
