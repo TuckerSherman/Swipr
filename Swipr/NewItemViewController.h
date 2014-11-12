@@ -11,11 +11,13 @@
 #import "Item.h"
 #import "AppDelegate.h"
 
-@interface NewItemViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate, UIActionSheetDelegate>
+@interface NewItemViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate, UIActionSheetDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (strong, nonatomic) Item *item;
 @property (strong, nonatomic) IBOutlet UITextView *itemDescriptionTextView;
 @property (weak, nonatomic) IBOutlet UIImageView *placeholderImageView;
+@property (strong, nonatomic) IBOutlet UIPickerView *categoryPicker;
+
 
 - (IBAction)cancelButtonPressed:(UIButton *)sender;
 - (IBAction)saveItemButtonPressed:(UIButton *)sender;

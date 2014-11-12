@@ -7,17 +7,18 @@
 //
 
 #import "NewItemViewController.h"
+#import "SwaprConstants.h"
 
-@interface NewItemViewController () {
-    
+
+
+@implementation NewItemViewController{
     PFUser *currentUser;
     CIImage *originalImage;
     NSArray *items;
+    NSArray* categories;
+    NSString* selectedCategory;
+    
 }
-
-@end
-
-@implementation NewItemViewController
 
 #define kOFFSET_FOR_KEYBOARD 160
 
@@ -25,6 +26,10 @@
     [super viewDidLoad];
     self.item = [[Item alloc] init];
     currentUser = [PFUser currentUser];
+    self.categoryPicker.delegate = self;
+    self.categoryPicker.dataSource = self;
+    categories =  @[@"small things", @"big things", @"clothes", @"books", @"tools", @"services"];;
+
     
 }
 -(void)keyboardWillShow {
@@ -125,12 +130,16 @@
 
 - (IBAction)saveItemButtonPressed:(UIButton *)sender {
     
+    
+    
     PFObject *newItem = [PFObject objectWithClassName:@"Item"];
     newItem[@"description"] = self.itemDescriptionTextView.text;
     newItem[@"image"] = [PFFile fileWithName:@"Image.jpg" data:self.item.imageData];
     PFRelation *owner = [newItem relationForKey:@"owner"];
     [owner addObject:currentUser];
     newItem[@"user"] = [currentUser objectForKey:@"username"];
+    newItem[@"category"]= selectedCategory;
+    
     
     AppDelegate *appDelegate=(AppDelegate *)[[UIApplication sharedApplication] delegate];
     PFGeoPoint* userLocation = [PFGeoPoint geoPointWithLatitude: appDelegate.userCoordinates.latitude
@@ -305,6 +314,56 @@ shouldChangeTextInRange:(NSRange)range
 
 - (void)textViewDidEndEditing:(UITextView *)textView{
     self.itemDescriptionTextView.textColor = [UIColor blackColor];
+}
+
+
+
+
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+    
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView
+numberOfRowsInComponent:(NSInteger)component{
+    return categories.count;
+}
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row   forComponent:(NSInteger)component{
+    
+    return categories[row];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row   inComponent:(NSInteger)component{
+    switch (row) {
+        case 0:{
+             //if the user has allowed location services use their current location
+            selectedCategory = @"small things";
+            break;
+        }
+            
+        case 1:{
+            selectedCategory = @"big things";
+            break;
+        }
+
+        case 2:{
+            selectedCategory = @"clothes";
+            break;
+        }
+        case 3:{
+            selectedCategory = @"books";
+            break;
+        }
+        case 4:{
+            selectedCategory = @"tools";
+            break;
+        }
+        case 5:{
+            selectedCategory = @"services";
+            break;
+        }
+        
+    }
 }
 
 

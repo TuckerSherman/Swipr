@@ -425,8 +425,8 @@
                                     <outletCollection property="gestureRecognizers" destination="9yH-BM-zGZ" appends="YES" id="W83-ab-Vr5"/>
                                 </connections>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="Tap here to input a description" translatesAutoresizingMaskIntoConstraints="NO" id="jqg-gb-etr">
-                                <rect key="frame" x="36" y="343" width="303" height="264"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="Tap here to input a description" translatesAutoresizingMaskIntoConstraints="NO" id="jqg-gb-etr">
+                                <rect key="frame" x="36" y="343" width="303" height="114"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -463,26 +463,33 @@
                                 <color key="backgroundColor" red="0.37254901960784315" green="0.62352941176470589" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="RCJ-Es-DAV" secondAttribute="trailing" constant="14" id="Hhn-6y-mUd"/>
+                                    <constraint firstAttribute="height" constant="40" id="QTA-MX-5Ng"/>
                                     <constraint firstItem="RCJ-Es-DAV" firstAttribute="centerY" secondItem="p99-8R-ZOC" secondAttribute="centerY" id="cgX-0N-ZEY"/>
                                 </constraints>
                             </view>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mqf-8w-IVK">
+                                <rect key="frame" x="0.0" y="465" width="375" height="162"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="jqg-gb-etr" secondAttribute="trailing" constant="20" id="25m-TN-Ioh"/>
                             <constraint firstItem="p99-8R-ZOC" firstAttribute="centerX" secondItem="jqg-gb-etr" secondAttribute="centerX" id="4aP-Hy-8uR"/>
+                            <constraint firstItem="rFb-m6-FM6" firstAttribute="top" secondItem="p99-8R-ZOC" secondAttribute="bottom" id="5R3-D5-3jQ"/>
+                            <constraint firstAttribute="trailing" secondItem="mqf-8w-IVK" secondAttribute="trailing" id="6Uj-Ea-0ij"/>
                             <constraint firstItem="jqg-gb-etr" firstAttribute="leading" secondItem="Auy-y9-7Hv" secondAttribute="leadingMargin" constant="20" id="978-z0-mYv"/>
-                            <constraint firstItem="p99-8R-ZOC" firstAttribute="top" secondItem="jqg-gb-etr" secondAttribute="bottom" constant="20" id="E0c-pj-tRE"/>
-                            <constraint firstItem="rFb-m6-FM6" firstAttribute="top" secondItem="jqg-gb-etr" secondAttribute="bottom" constant="60" id="EFS-ZT-oKb"/>
-                            <constraint firstItem="rFb-m6-FM6" firstAttribute="top" secondItem="p99-8R-ZOC" secondAttribute="bottom" id="Mv4-bL-gMT"/>
+                            <constraint firstItem="mqf-8w-IVK" firstAttribute="top" secondItem="jqg-gb-etr" secondAttribute="bottom" constant="8" id="WCw-eS-sB1"/>
                             <constraint firstAttribute="centerX" secondItem="4vr-bB-POq" secondAttribute="centerX" id="hJn-ht-V7g"/>
+                            <constraint firstItem="mqf-8w-IVK" firstAttribute="leading" secondItem="Auy-y9-7Hv" secondAttribute="leading" id="jZi-0o-NI9"/>
                             <constraint firstItem="p99-8R-ZOC" firstAttribute="leading" secondItem="Auy-y9-7Hv" secondAttribute="leading" id="mUO-qm-dr3"/>
                             <constraint firstItem="jqg-gb-etr" firstAttribute="top" secondItem="4vr-bB-POq" secondAttribute="bottom" constant="20" id="pRo-vI-Xaw"/>
                             <constraint firstItem="4vr-bB-POq" firstAttribute="top" secondItem="2I6-ts-8on" secondAttribute="bottom" constant="3" id="wEy-Bw-m7d"/>
+                            <constraint firstItem="p99-8R-ZOC" firstAttribute="top" secondItem="mqf-8w-IVK" secondAttribute="bottom" id="zuX-v2-gXF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ies-ZY-DZM"/>
                     <connections>
+                        <outlet property="categoryPicker" destination="mqf-8w-IVK" id="3zX-e9-OtT"/>
                         <outlet property="itemDescriptionTextView" destination="jqg-gb-etr" id="PAB-dJ-t2K"/>
                         <outlet property="placeholderImageView" destination="4vr-bB-POq" id="biY-3d-h5O"/>
                     </connections>
@@ -655,7 +662,7 @@
                                     <constraint firstItem="wDk-Vj-Gr6" firstAttribute="width" secondItem="9ct-gF-hS3" secondAttribute="width" id="f8q-XE-fol"/>
                                     <constraint firstItem="wDk-Vj-Gr6" firstAttribute="top" secondItem="9ct-gF-hS3" secondAttribute="bottom" constant="5" id="fSa-Lx-zYS"/>
                                     <constraint firstItem="4Ou-aT-TbL" firstAttribute="top" secondItem="Wh9-tH-ptO" secondAttribute="top" constant="40" id="h5l-6a-fqF"/>
-                                    <constraint firstAttribute="bottom" secondItem="wDk-Vj-Gr6" secondAttribute="bottom" constant="20" id="wzZ-UB-rEX"/>
+                                    <constraint firstAttribute="bottom" secondItem="wDk-Vj-Gr6" secondAttribute="bottom" constant="20" id="ugF-DW-l6x"/>
                                 </constraints>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r6h-UA-4yq">

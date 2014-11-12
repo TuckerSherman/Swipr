@@ -29,6 +29,7 @@
 		52BE14E41A0800EC0090A2B0 /* DraggableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BE14E11A0800EC0090A2B0 /* DraggableView.m */; };
 		52BE14E51A0800EC0090A2B0 /* DraggableViewBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BE14E31A0800EC0090A2B0 /* DraggableViewBackground.m */; };
 		52BE14E81A08015D0090A2B0 /* OverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BE14E71A08015D0090A2B0 /* OverlayView.m */; };
+		84490A181A1411D70039C171 /* SwaprConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 84490A171A1411D70039C171 /* SwaprConstants.m */; };
 		845166DF1A07FED6004663DE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 845166DE1A07FED6004663DE /* main.m */; };
 		845166E21A07FED6004663DE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 845166E11A07FED6004663DE /* AppDelegate.m */; };
 		845166EA1A07FED6004663DE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 845166E91A07FED6004663DE /* Images.xcassets */; };
@@ -88,6 +89,8 @@
 		52BE14E31A0800EC0090A2B0 /* DraggableViewBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraggableViewBackground.m; sourceTree = "<group>"; };
 		52BE14E61A08015D0090A2B0 /* OverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverlayView.h; sourceTree = "<group>"; };
 		52BE14E71A08015D0090A2B0 /* OverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverlayView.m; sourceTree = "<group>"; };
+		84490A161A1411D70039C171 /* SwaprConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwaprConstants.h; path = ../SwaprConstants.h; sourceTree = "<group>"; };
+		84490A171A1411D70039C171 /* SwaprConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SwaprConstants.m; path = ../SwaprConstants.m; sourceTree = "<group>"; };
 		845166D91A07FED6004663DE /* Swipr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Swipr.app; path = Swapr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		845166DD1A07FED6004663DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		845166DE1A07FED6004663DE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -194,6 +197,8 @@
 				8461CE251A0816FA00BB3525 /* ItemDetailViewController.m */,
 				52BD6D6A1A0BFADD00C309FB /* MatchViewController.h */,
 				52BD6D6B1A0BFADD00C309FB /* MatchViewController.m */,
+				84490A161A1411D70039C171 /* SwaprConstants.h */,
+				84490A171A1411D70039C171 /* SwaprConstants.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -389,6 +394,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84977C6B1A0F574A00A70DA1 /* FilterTableViewController.m in Sources */,
+				84490A181A1411D70039C171 /* SwaprConstants.m in Sources */,
 				845166E21A07FED6004663DE /* AppDelegate.m in Sources */,
 				84977C681A0F29C200A70DA1 /* LocationSelectionViewController.m in Sources */,
 				8461CE291A08172C00BB3525 /* ProfileViewController.m in Sources */,

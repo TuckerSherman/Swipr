@@ -9,6 +9,7 @@
 #import "FilterTableViewController.h"
 #import "FilterViewController.h"
 #import "MainViewController.h"
+#import "SwaprConstants.h"
 
 @interface FilterTableViewController ()
 
@@ -23,11 +24,7 @@
     self.availableCategories = @[@"small things", @"big things", @"clothes", @"books", @"tools", @"services"];
     self.tableView.delegate = self;
     self.tableView.allowsMultipleSelection = YES;
-    
 
-
-    
-    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
 
