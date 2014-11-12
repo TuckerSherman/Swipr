@@ -24,6 +24,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *infoButton;
 @property (strong, nonatomic) IBOutlet UIButton *contentFilterButton;
 @property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) FilterTableViewController* filterSelectionTable;
+
+@property (strong, nonatomic) NSArray* searchFilters;
+
 
 
 - (IBAction)logOutButtonPressed:(UIBarButtonItem *)sender;

@@ -21,6 +21,7 @@
     self.cityPicker.delegate = self;
     self.cityPicker.dataSource = self;
     self.mapView.delegate = self;
+    
     self.mapView.centerCoordinate = self.searchLocation;
     NSLog(@"displaying: %f, %f",self.searchLocation.latitude, self.searchLocation.longitude);
     self.cities = @{@"Portland":@{@"latitude":@45.5200, @"longitude":@122.6819},

@@ -12,6 +12,8 @@
 @protocol filterSelectionDelegate <NSObject>
 
 -(void) applySearchFilters:(NSArray*)filters;
+-(void) checkRecipt;
+
 
 @end
 
@@ -20,8 +22,12 @@
 
 @property (strong, nonatomic) NSArray* availableCategories;
 @property (strong, nonatomic) NSMutableArray* selectedCategories;
+@property (nonatomic) BOOL selectionsMade;
+
 
 @property (nonatomic) id <filterSelectionDelegate> delegate;
+
+-(void)parentDidLoad;
 
 
 @end

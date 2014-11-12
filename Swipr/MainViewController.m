@@ -9,6 +9,7 @@
 #import "ItemDetailViewController.h"
 #import "MatchViewController.h"
 #import "FilterViewController.h"
+//#import "FilterTableViewController.h"
 
 @interface MainViewController ()
 
@@ -20,21 +21,23 @@
     PFObject *swipedCard;
     PFGeoPoint* searchLocation;
     CGFloat searchRadius;
-    NSArray* searchFilters;
     AppDelegate *appDelegate;
     BOOL alreadyLoadedCards;
-    
+
 }
 
 
 
 - (void)viewDidLoad {
-    
     [super viewDidLoad];
     alreadyLoadedCards = NO;
 
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:)
                                                  name:@"refreshView" object:nil];
+    
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applySearchFilters) name:@"selectedFilters" object:nil];
+    
     appDelegate=(AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     if (appDelegate.userCoordinates.latitude!=0) {
@@ -93,7 +96,7 @@
 
 -(void)retreiveFromParse {
     
-    PFQuery* query = [self createParseQueryWithFilters:searchFilters location:searchLocation];
+    PFQuery* query = [self createParseQueryWithFilters:self.searchFilters location:searchLocation];
     
     [query orderByAscending:@"createdAt"];
     
@@ -145,7 +148,8 @@
 }
 
 -(void) applySearchFilters:(NSArray*)filters{
-    searchFilters = [NSArray arrayWithArray:filters];
+    
+    self.searchFilters = [NSArray arrayWithArray:filters];
     
 }
 
@@ -188,10 +192,19 @@
         itemDetailVC.item = self.currentCard.pfItem;
     }
     else if ([segue.identifier isEqualToString:@"filterSettings"]){
+        
         FilterViewController* filterSelection = segue.destinationViewController;
-        filterSelection.selections = [searchFilters copy];
+        filterSelection.modalParent = self;
+        filterSelection.selections = self.searchFilters;
+        
+//        self.filterSelectionTable=  filterSelection.childViewControllers[0];
+//        self.filterSelectionTable = [searchFilters mutableCopy];
     }
     
+}
+
+-(void)checkRecipt{
+    NSLog(@"I see you have selected:%@",self.searchFilters);
 }
 
 #pragma mark - DraggableViewBackground Method
@@ -199,6 +212,7 @@
 -(void)currentCard:(DraggableView *)card {
     self.currentCard = card;
 }
+
 
 -(void)setUserPreference:(DraggableView *)card preference:(BOOL)userPreference{
     PFObject* thisItem = card.pfItem;

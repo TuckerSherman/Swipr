@@ -9,9 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "FilterTableViewController.h"
 
+@class MainViewController;
+
 @interface FilterViewController : UIViewController
 
 @property (strong,nonatomic) NSArray* selections;
+@property (weak, nonatomic) MainViewController* modalParent;
+
 
 
 @end

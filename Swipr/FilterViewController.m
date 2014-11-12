@@ -17,15 +17,24 @@
 - (IBAction)dismissFilterView:(id)sender {
     [self dismissViewControllerAnimated:YES completion:^{
         NSLog(@"back to main");
+        FilterTableViewController* childTableView = self.childViewControllers.lastObject;
+        childTableView.selectionsMade = YES;
+
     }];
 }
 -(void)viewWillAppear:(BOOL)animated{
-    FilterTableViewController* childTableView = self.childViewControllers.lastObject;
-    childTableView.selectedCategories = [self.selections mutableCopy];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    FilterTableViewController* childTableView = self.childViewControllers.lastObject;
+//    if (self.selections) {
+//        childTableView.selectedCategories = [NSMutableArray arrayWithArray:self.selections];
+//    }
+    [childTableView parentDidLoad];
+    
+//    [childTableView.tableView reloadData];
+
 
     // Do any additional setup after loading the view.
 }

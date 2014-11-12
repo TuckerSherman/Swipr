@@ -7,12 +7,16 @@
 //
 
 #import "FilterTableViewController.h"
+#import "FilterViewController.h"
+#import "MainViewController.h"
 
 @interface FilterTableViewController ()
 
 @end
 
-@implementation FilterTableViewController
+@implementation FilterTableViewController{
+    ////
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -20,16 +24,29 @@
     self.tableView.delegate = self;
     self.tableView.allowsMultipleSelection = YES;
     
-    if (!self.selectedCategories) {
-        self.selectedCategories = [NSMutableArray new];
-    }
-    
-    
+
+
     
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
 
+}
+
+-(void)parentDidLoad{
+    FilterViewController* parent = self.parentViewController;
+    MainViewController* cardView = parent.modalParent;
+    self.delegate = cardView;
+    
+    if (!cardView.searchFilters) {
+        self.selectedCategories = [NSMutableArray new];
+        NSLog(@"i set up a new categories array");
+    } else {
+        self.selectedCategories = [NSMutableArray arrayWithArray:cardView.searchFilters];
+        
+        [self.tableView reloadData];
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,7 +72,9 @@
     NSString* thisCategory = self.availableCategories[indexPath.row];
     cell.textLabel.text = thisCategory;
     if ([self.selectedCategories containsObject:thisCategory]) {
-        cell.selected = YES;
+
+        [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionTop];
+        
     }
     
     // Configure the cell...
@@ -66,16 +85,26 @@
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSString* selection = self.availableCategories[indexPath.row];
     [self.selectedCategories addObject:selection];
-    
-    
+    self.selectionsMade = YES;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"selectedFilters" object:nil];
     [self.delegate applySearchFilters:self.selectedCategories];
 
     
 }
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+
     
     NSString* selection = self.availableCategories[indexPath.row];
-    [self.selectedCategories delete:selection];
+    if ([self.selectedCategories containsObject:selection]) {
+        [self.selectedCategories removeObject:selection];
+    }
+    [self.delegate applySearchFilters:self.selectedCategories];
+
+}
+-(void)viewDidDisappear:(BOOL)animated{
+    [self.delegate applySearchFilters:self.selectedCategories];
+    [self.delegate checkRecipt];
+
 
 }
 
