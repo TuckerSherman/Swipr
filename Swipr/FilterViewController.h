@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FilterTableViewController.h"
 
 @interface FilterViewController : UIViewController
+
+@property (strong,nonatomic) NSArray* selections;
+
 
 @end

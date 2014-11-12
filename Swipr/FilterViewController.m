@@ -13,6 +13,7 @@
 @end
 
 @implementation FilterViewController
+
 - (IBAction)dismissFilterView:(id)sender {
     [self dismissViewControllerAnimated:YES completion:^{
         NSLog(@"back to main");
@@ -21,6 +22,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    FilterTableViewController* childTableView = self.childViewControllers.lastObject;
+    childTableView.selectedCategories = [self.selections mutableCopy];
     // Do any additional setup after loading the view.
 }
 

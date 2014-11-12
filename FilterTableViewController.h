@@ -8,9 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FilterTableViewController : UITableViewController
+
+@protocol filterSelectionDelegate <NSObject>
+
+-(void) applySearchFilters:(NSArray*)filters;
+
+@end
+
+
+@interface FilterTableViewController : UITableViewController <UITableViewDelegate>
 
 @property (strong, nonatomic) NSArray* availableCategories;
+@property (strong, nonatomic) NSMutableArray* selectedCategories;
+
+@property (nonatomic) id <filterSelectionDelegate> delegate;
 
 
 @end

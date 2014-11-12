@@ -8,7 +8,7 @@
 #import "MainViewController.h"
 #import "ItemDetailViewController.h"
 #import "MatchViewController.h"
-#import "TabLandingViewController.h"
+#import "FilterViewController.h"
 
 @interface MainViewController ()
 
@@ -87,9 +87,7 @@
 -(void)assignSearchRadius:(NSInteger)radius{
     
 }
--(void)assignCurrentLocation{
-    
-}
+
 
 #pragma mark - Working with Parse methods
 
@@ -190,8 +188,8 @@
         itemDetailVC.item = self.currentCard.pfItem;
     }
     else if ([segue.identifier isEqualToString:@"filterSettings"]){
-        TabLandingViewController* filterSelection = segue.destinationViewController;
-        
+        FilterViewController* filterSelection = segue.destinationViewController;
+        filterSelection.selections = [searchFilters copy];
     }
     
 }

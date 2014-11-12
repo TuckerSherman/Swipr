@@ -17,13 +17,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.availableCategories = @[@"small things", @"big things", @"clothes", @"books", @"tools", @"services"];
+    self.tableView.delegate = self;
+    self.tableView.allowsMultipleSelection = YES;
+    
+    if (!self.selectedCategories) {
+        self.selectedCategories = [NSMutableArray new];
+    }
+    
+    
     
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,13 +52,33 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    cell.textLabel.text = self.availableCategories[indexPath.row];
-    
+    NSString* thisCategory = self.availableCategories[indexPath.row];
+    cell.textLabel.text = thisCategory;
+    if ([self.selectedCategories containsObject:thisCategory]) {
+        cell.selected = YES;
+    }
     
     // Configure the cell...
     
     return cell;
 }
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSString* selection = self.availableCategories[indexPath.row];
+    [self.selectedCategories addObject:selection];
+    
+    
+    [self.delegate applySearchFilters:self.selectedCategories];
+
+    
+}
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    NSString* selection = self.availableCategories[indexPath.row];
+    [self.selectedCategories delete:selection];
+
+}
+
 
 
 /*

@@ -37,7 +37,6 @@
 		8451670A1A080FC4004663DE /* UserItemsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845167091A080FC4004663DE /* UserItemsTableViewController.m */; };
 		8461CE261A0816FA00BB3525 /* ItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8461CE251A0816FA00BB3525 /* ItemDetailViewController.m */; };
 		8461CE291A08172C00BB3525 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8461CE281A08172C00BB3525 /* ProfileViewController.m */; };
-		84977C601A0EEA2F00A70DA1 /* TabLandingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84977C5F1A0EEA2F00A70DA1 /* TabLandingViewController.m */; };
 		84977C621A0F246F00A70DA1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84977C611A0F246F00A70DA1 /* MapKit.framework */; };
 		84977C681A0F29C200A70DA1 /* LocationSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84977C671A0F29C200A70DA1 /* LocationSelectionViewController.m */; };
 		84977C6B1A0F574A00A70DA1 /* FilterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84977C6A1A0F574A00A70DA1 /* FilterTableViewController.m */; };
@@ -105,8 +104,6 @@
 		8461CE251A0816FA00BB3525 /* ItemDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemDetailViewController.m; sourceTree = "<group>"; };
 		8461CE271A08172C00BB3525 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		8461CE281A08172C00BB3525 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
-		84977C5E1A0EEA2F00A70DA1 /* TabLandingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabLandingViewController.h; sourceTree = "<group>"; };
-		84977C5F1A0EEA2F00A70DA1 /* TabLandingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabLandingViewController.m; sourceTree = "<group>"; };
 		84977C611A0F246F00A70DA1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		84977C661A0F29C200A70DA1 /* LocationSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationSelectionViewController.h; sourceTree = "<group>"; };
 		84977C671A0F29C200A70DA1 /* LocationSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationSelectionViewController.m; sourceTree = "<group>"; };
@@ -181,8 +178,8 @@
 				5200262B1A086D7B003DC9C9 /* LoginViewController.m */,
 				52BE14D91A0800280090A2B0 /* MainViewController.h */,
 				52BE14DA1A0800280090A2B0 /* MainViewController.m */,
-				84977C5E1A0EEA2F00A70DA1 /* TabLandingViewController.h */,
-				84977C5F1A0EEA2F00A70DA1 /* TabLandingViewController.m */,
+				84977C881A10BC1200A70DA1 /* FilterViewController.h */,
+				84977C891A10BC1200A70DA1 /* FilterViewController.m */,
 				84977C691A0F574900A70DA1 /* FilterTableViewController.h */,
 				84977C6A1A0F574A00A70DA1 /* FilterTableViewController.m */,
 				84977C661A0F29C200A70DA1 /* LocationSelectionViewController.h */,
@@ -245,8 +242,6 @@
 				84F8159C1A0C45F700179034 /* gradientLightBackground.png */,
 				84F8159E1A0C481100179034 /* blueGradient.png */,
 				5200267B1A09CBF8003DC9C9 /* Main.storyboard */,
-				84977C881A10BC1200A70DA1 /* FilterViewController.h */,
-				84977C891A10BC1200A70DA1 /* FilterViewController.m */,
 				845166EB1A07FED6004663DE /* LaunchScreen.xib */,
 				845166DC1A07FED6004663DE /* Supporting Files */,
 			);
@@ -406,7 +401,6 @@
 				52BE14E41A0800EC0090A2B0 /* DraggableView.m in Sources */,
 				84977C8A1A10BC1200A70DA1 /* FilterViewController.m in Sources */,
 				5200267A1A0953B2003DC9C9 /* NewItemViewController.m in Sources */,
-				84977C601A0EEA2F00A70DA1 /* TabLandingViewController.m in Sources */,
 				845166DF1A07FED6004663DE /* main.m in Sources */,
 				52BD6D6F1A0C616D00C309FB /* Item.m in Sources */,
 				520026271A084C37003DC9C9 /* RegisterUserViewController.m in Sources */,

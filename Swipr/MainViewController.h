@@ -13,8 +13,9 @@
 #import "DraggableViewBackground.h"
 #import "DraggableView.h"
 #import "AppDelegate.h"
+#import "FilterTableViewController.h"
 
-@interface MainViewController : UIViewController <UIAlertViewDelegate, DraggableViewBackgroundDelegate,CLLocationManagerDelegate, locationManagerSearchUpdate>
+@interface MainViewController : UIViewController <UIAlertViewDelegate, DraggableViewBackgroundDelegate,locationManagerSearchUpdate, filterSelectionDelegate>
 
 
 @property (strong, nonatomic) DraggableView *currentCard;
@@ -26,8 +27,7 @@
 
 
 - (IBAction)logOutButtonPressed:(UIBarButtonItem *)sender;
--(void)assignSearchRadius;
--(void)assignCurrentLocation;
+
 -(void)applySearchFilters:(NSArray*)filters;
 
 
