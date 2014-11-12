@@ -40,6 +40,9 @@
     }];
     
 }
+- (IBAction)doneButton:(id)sender {
+     [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

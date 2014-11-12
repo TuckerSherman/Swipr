@@ -235,6 +235,25 @@
                                     <action selector="setCatButton:" destination="j2u-cr-IJd" eventType="touchUpInside" id="teL-9w-tIb"/>
                                 </connections>
                             </button>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8AS-ja-0vP">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="NCz-DH-lsk"/>
+                                </constraints>
+                                <color key="barTintColor" red="0.37254901959999998" green="0.62352941179999999" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Title" id="FDG-vO-OFU">
+                                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="xP9-bj-2jq">
+                                            <connections>
+                                                <action selector="doneButton:" destination="j2u-cr-IJd" id="CVT-PC-V0o"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -245,11 +264,14 @@
                             <constraint firstAttribute="trailingMargin" secondItem="vuM-DS-uEO" secondAttribute="trailing" constant="9" id="QO6-JI-yDH"/>
                             <constraint firstAttribute="centerX" secondItem="0Ha-7j-9jh" secondAttribute="centerX" id="TMk-80-p8w"/>
                             <constraint firstItem="htd-L8-XLR" firstAttribute="top" secondItem="FiS-oy-CRh" secondAttribute="bottom" constant="40" id="X4Q-Fn-z0M"/>
+                            <constraint firstAttribute="trailing" secondItem="8AS-ja-0vP" secondAttribute="trailing" id="beG-83-Jf4"/>
                             <constraint firstItem="htd-L8-XLR" firstAttribute="top" secondItem="vuM-DS-uEO" secondAttribute="bottom" constant="3" id="cMU-UG-vLg"/>
                             <constraint firstAttribute="width" secondItem="FiS-oy-CRh" secondAttribute="width" id="dx0-at-zKM"/>
                             <constraint firstAttribute="width" secondItem="0Ha-7j-9jh" secondAttribute="width" id="eRI-b2-1j8"/>
                             <constraint firstItem="htd-L8-XLR" firstAttribute="top" secondItem="0Ha-7j-9jh" secondAttribute="bottom" constant="40" id="iAo-vO-OqD"/>
                             <constraint firstAttribute="width" secondItem="eVn-zg-CDP" secondAttribute="width" id="iJA-qc-awu"/>
+                            <constraint firstItem="8AS-ja-0vP" firstAttribute="leading" secondItem="uce-Qy-pQc" secondAttribute="leading" id="tT4-uF-euu"/>
+                            <constraint firstItem="8AS-ja-0vP" firstAttribute="top" secondItem="uce-Qy-pQc" secondAttribute="top" id="zZY-14-Z5G"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Set Location" id="c4I-Uf-dkV"/>

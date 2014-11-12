@@ -5,7 +5,6 @@
 //  Created by Jacob Cho on 2014-11-03.
 //  Copyright (c) 2014 J and T. All rights reserved.
 //
-
 #import "MainViewController.h"
 #import "ItemDetailViewController.h"
 #import "MatchViewController.h"
@@ -16,52 +15,64 @@
 @end
 
 @implementation MainViewController{
-    NSMutableArray* unwantedItems;
-    NSMutableArray* wantedItems;
+    
     NSArray *ownersWhoWantYourStuff;
     PFObject *swipedCard;
-    
-
-    CLLocationCoordinate2D searchLocation;
-
+    PFGeoPoint* searchLocation;
     CGFloat searchRadius;
     NSArray* searchFilters;
+    AppDelegate *appDelegate;
+    BOOL alreadyLoadedCards;
     
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    
-}
+
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
-    [[self navigationController] setNavigationBarHidden:NO animated:YES];
-    if(!_locationManager){
-        _locationManager = [[CLLocationManager alloc]init];
-        _locationManager.delegate = self;
-        _locationManager.pausesLocationUpdatesAutomatically = YES;
-        _locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
-        if ([_locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
-            [_locationManager requestWhenInUseAuthorization];
-        }
+    alreadyLoadedCards = NO;
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:)
+                                                 name:@"refreshView" object:nil];
+    appDelegate=(AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    if (appDelegate.userCoordinates.latitude!=0) {
+        [self refreshView:nil];
     }
+    
+    [[self navigationController] setNavigationBarHidden:NO animated:YES];
+
     [self setupLogo];
+    [self setupDeck];
+    
+    [self myWantedItems];
+
+    
+}
+
+-(void)setupDeck{
     
     // Setup cardView
     self.draggableBackground = [[DraggableViewBackground alloc]initWithFrame:self.view.frame];
     self.draggableBackground.delegate = self;
     [self.subView addSubview:self.draggableBackground];
-    
-    //move storyboard UIElements to the top of the view stack
+
+    //move storyboard UI elements to the top of the view stack
     [self.subView bringSubviewToFront:self.infoButton];
     [self.subView bringSubviewToFront:self.contentFilterButton];
-    
-    [self myWantedItems];
-    if ([PFUser currentUser]) {
-        [self retreiveFromParse];
-    }
+
     
 }
+-(void)refreshView:(NSNotification *) notification{
+    searchLocation = [PFGeoPoint geoPointWithLatitude:appDelegate.userCoordinates.latitude longitude:appDelegate.userCoordinates.longitude];
+    searchRadius = 100.0;
+    if (!alreadyLoadedCards) {
+        [self retreiveFromParse];
+    }
+}
+
+
 -(void)setupLogo{
     CGFloat navWidth = self.navigationController.navigationBar.frame.size.width;
     CGFloat navHeight = self.navigationController.navigationBar.frame.size.height;
@@ -73,7 +84,7 @@
     self.navigationItem.titleView = logo;
 }
 
--(void)assignSearchRadius{
+-(void)assignSearchRadius:(NSInteger)radius{
     
 }
 -(void)assignCurrentLocation{
@@ -90,11 +101,14 @@
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            // Copy objects array fetched from Parse to "items"
-            NSMutableArray *items = [[NSMutableArray alloc] initWithArray:objects];
-            self.draggableBackground.pfItemsArray = [items mutableCopy];
-            [self.draggableBackground loadCards];
-            
+                if (!alreadyLoadedCards) {
+                    // Copy objects array fetched from Parse to "items"
+                    NSMutableArray *items = [[NSMutableArray alloc] initWithArray:objects];
+                    self.draggableBackground.pfItemsArray = [items mutableCopy];
+                    [self.draggableBackground loadCards];
+                    alreadyLoadedCards = YES;
+                }
+
         } else {
             NSLog(@"Error grabbing from Parse! %@",error);
         }
@@ -102,14 +116,12 @@
     
 }
 
--(PFQuery*) createParseQueryWithFilters:(NSArray*)filters location:(CLLocationCoordinate2D)location{
-    
+-(PFQuery*) createParseQueryWithFilters:(NSArray*)filters location:(PFGeoPoint*)location{
     PFUser* currentUser = [PFUser currentUser];
-    PFQuery* basicQuery = [PFQuery queryWithClassName:@"Item"];
-    //we dont want to see items this user posted or has already swiped on
-    [basicQuery whereKey:@"user" notEqualTo:currentUser.username];
-    [basicQuery whereKey:@"usersWhoDontWant" notEqualTo:currentUser];
-    [basicQuery whereKey:@"usersWhoWant" notEqualTo:currentUser];
+    PFQuery* baseQuery;
+    
+    NSLog(@"making parseQuery");
+    
     if (filters) {
         NSMutableArray* filterSubQueries = [NSMutableArray new];
         for (int i = 0; i < filters.count; i++) {
@@ -117,17 +129,20 @@
             [filterQuery whereKey:@"category" equalTo:filters[i]];
             [filterSubQueries addObject:filterQuery];
         }
-        PFQuery* allFiltersQuery = [PFQuery orQueryWithSubqueries:filterSubQueries];
-        [allFiltersQuery whereKey:@"user" notEqualTo:currentUser.username];
-        [allFiltersQuery whereKey:@"usersWhoDontWant" notEqualTo:currentUser];
-        [allFiltersQuery whereKey:@"usersWhoWant" notEqualTo:currentUser];
-        return allFiltersQuery;
-
+        baseQuery = [PFQuery orQueryWithSubqueries:filterSubQueries];
+    } else {
+        baseQuery = [PFQuery queryWithClassName:@"Item"];
     }
-
     
+    [baseQuery whereKey:@"user" notEqualTo:currentUser.username];
+    [baseQuery whereKey:@"usersWhoDontWant" notEqualTo:currentUser];
+    [baseQuery whereKey:@"usersWhoWant" notEqualTo:currentUser];
     
-    return basicQuery;
+    if(location){
+        [baseQuery whereKey:@"location" nearGeoPoint:location withinKilometers:searchRadius];
+    }
+    
+    return baseQuery;
     
 }
 
@@ -154,30 +169,17 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (alertView.tag == 0) {
         if (buttonIndex == [alertView cancelButtonIndex]){
-
         }else{
             [PFUser logOut];
             [self.navigationController popToRootViewControllerAnimated:YES];
         }
     }
     else if (alertView.tag == 1) {
-        
         if ([alertView buttonTitleAtIndex:1]) {
             [self goToMatch];
         }
     }
-    
 }
-
-#pragma mark - Refresh button
-
-- (IBAction)refreshButtonPressed:(UIBarButtonItem *)sender {
-    
-    [self retreiveFromParse];
-
-}
-
-
 
 #pragma mark - Prepare for Segue method
 
@@ -189,8 +191,6 @@
     }
     else if ([segue.identifier isEqualToString:@"filterSettings"]){
         TabLandingViewController* filterSelection = segue.destinationViewController;
-        filterSelection.location = searchLocation;
-        
         
     }
     
@@ -199,7 +199,6 @@
 #pragma mark - DraggableViewBackground Method
 
 -(void)currentCard:(DraggableView *)card {
-    
     self.currentCard = card;
 }
 
@@ -209,14 +208,11 @@
     swipedCard = thisItem;
 
     if (userPreference == NO) {
-        NSLog(@"USER DOES NOT WANTS : %@",[thisItem objectForKey:@"description"]);
+//        NSLog(@"USER DOES NOT WANTS : %@",[thisItem objectForKey:@"description"]);
         
         PFRelation *relation = [thisItem relationForKey:@"usersWhoDontWant"];
         [relation addObject:thisUser];
         [thisItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (!error) {
-                NSLog(@"added user to item");
-            }
             if (error) {
                 NSLog(@"error saving item's preferences(positive): %@",error);
             }
@@ -225,7 +221,7 @@
     }
     else if(userPreference == YES)
     {
-        NSLog(@"USER WANTS : %@",[thisItem objectForKey:@"description"]);
+//        NSLog(@"USER WANTS : %@",[thisItem objectForKey:@"description"]);
         
         [self matchItems:thisItem withOwnerArray:ownersWhoWantYourStuff];
 
@@ -233,9 +229,6 @@
         [relation addObject:thisUser];
 
         [thisItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (!error) {
-                NSLog(@"added user to item");
-            }
             if (error) {
                 NSLog(@"error saving item's preferences(positive): %@",error);
             }
@@ -260,20 +253,17 @@
                                                           cancelButtonTitle:@"Ok"
                                                           otherButtonTitles:@"Show Me", nil];
             matchAlert.tag = 1;
-            
             [matchAlert show];
-    
         }
-        
     }
 }
 
 // Do query for all items that belong to me, and see if there is a user that wants them
 -(void)myWantedItems {
     // Query my Items
-    NSString*thisUser = [[PFUser currentUser] username];
+    PFUser* thisUser = [PFUser currentUser];
     PFQuery *query = [PFQuery queryWithClassName:@"Item"];
-    [query whereKey:@"user" equalTo:thisUser];
+    [query whereKey:@"user" equalTo:thisUser.username];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
@@ -281,13 +271,11 @@
             for (PFObject *myItem in objects) {
                 PFRelation *wanted = [myItem relationForKey:@"usersWhoWant"];
                 PFQuery *wantedQuery = [wanted query];
-                
                 [wantedQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
                     ownersWhoWantYourStuff = objects;
                     
                 }];
             }
-            
         } else {
             NSLog(@"Error grabbing from Parse! %@",error);
         }
@@ -301,37 +289,7 @@
     [self presentViewController:matchVC animated:YES completion:nil];
 }
 
-#pragma Mark - location based stuff
--(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status{
-//    NSLog(@"status changed to: %@",status);
-    if (status == kCLAuthorizationStatusDenied) {
-        NSLog(@"user didnt approve");
-        searchLocation = CLLocationCoordinate2DMake(-132.00, 49.32);
 
-    }
-    else if(status == kCLAuthorizationStatusAuthorizedWhenInUse){
-        NSLog(@"user approved");
-        [_locationManager startUpdatingLocation];
-         searchLocation = _locationManager.location.coordinate;
-    }
-    else if(status == kCLAuthorizationStatusAuthorizedAlways){
-        NSLog(@"user approved");
-        [_locationManager startUpdatingLocation];
-        searchLocation = _locationManager.location.coordinate;
-    }
-}
--(void)locationManagerDidResumeLocationUpdates:(CLLocationManager *)manager{
-    NSLog(@"well this happened");
-    
-}
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
-    CLLocation* currentLocation = locations[0];
-    CLLocationCoordinate2D currentCoordinates = currentLocation.coordinate;
-    searchLocation = currentCoordinates;
-   
-//    NSLog(@"location:%f, %f", searchLocation.latitude, searchLocation.longitude);
-
-}
 
 
 @end

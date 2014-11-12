@@ -124,6 +124,7 @@
 }
 
 - (IBAction)saveItemButtonPressed:(UIButton *)sender {
+    
     PFObject *newItem = [PFObject objectWithClassName:@"Item"];
     newItem[@"description"] = self.itemDescriptionTextView.text;
     newItem[@"image"] = [PFFile fileWithName:@"Image.jpg" data:self.item.imageData];
@@ -131,6 +132,13 @@
     [owner addObject:currentUser];
     newItem[@"user"] = [currentUser objectForKey:@"username"];
     
+    AppDelegate *appDelegate=(AppDelegate *)[[UIApplication sharedApplication] delegate];
+    PFGeoPoint* userLocation = [PFGeoPoint geoPointWithLatitude: appDelegate.userCoordinates.latitude
+                                                      longitude: appDelegate.userCoordinates.longitude];
+    
+    newItem[@"location"] = userLocation;
+    
+
     PFACL *groupACL = [PFACL ACL];
     [groupACL setPublicWriteAccess:YES];
     [groupACL setPublicReadAccess:YES];

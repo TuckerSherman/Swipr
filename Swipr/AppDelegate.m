@@ -1,3 +1,4 @@
+
 //
 //  AppDelegate.m
 //  Swipr
@@ -13,12 +14,14 @@
 
 @end
 
-@implementation AppDelegate
+@implementation AppDelegate{
+}
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [self themeNavController];
+    [self startTrackingLocation];
 
     // Override point for customization after application launch.
     // ****************************************************************************
@@ -87,6 +90,55 @@
         [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:113.0/255.0 green:177.0/255.0 blue:225.0/255.0 alpha:1]];
         [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
 
+}
+-(void)configureParse{
+    
+}
+
+-(void)startTrackingLocation{
+    self.locationManager = [[CLLocationManager alloc] init];
+    
+    self.locationManager = [[CLLocationManager alloc]init];
+    self.locationManager.delegate = self;
+    self.locationManager.pausesLocationUpdatesAutomatically = YES;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [self.locationManager requestWhenInUseAuthorization];
+    }
+}
+
+#pragma Mark - location based stuff
+-(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status{
+    //    NSLog(@"status changed to: %@",status);
+    if (status == kCLAuthorizationStatusDenied) {
+        NSLog(@"user didnt approve");
+        self.userCoordinates = CLLocationCoordinate2DMake(-132.00, 49.32);
+        
+    }
+    else if(status == kCLAuthorizationStatusAuthorizedWhenInUse){
+        NSLog(@"user approved");
+        [_locationManager startUpdatingLocation];
+        self.userCoordinates = self.locationManager.location.coordinate;
+    }
+    else if(status == kCLAuthorizationStatusAuthorizedAlways){
+        NSLog(@"user approved");
+        [self.locationManager startUpdatingLocation];
+        self.userCoordinates = self.locationManager.location.coordinate;
+    }
+}
+-(void)locationManagerDidResumeLocationUpdates:(CLLocationManager *)manager{
+    NSLog(@"well this happened");
+    
+}
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
+    CLLocation* currentLocation = locations[0];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshView" object:nil];
+
+//    [self.searchDelegate makeNewQueryWithLocation:currentLocation.coordinate];
+    self.userCoordinates = currentLocation.coordinate;
+    NSLog(@"UPDATED YOUR COORDINATES YO");
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

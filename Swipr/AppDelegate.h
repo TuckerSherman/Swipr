@@ -7,10 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@protocol locationManagerSearchUpdate <NSObject>
+
+-(void) makeNewQueryWithLocation:(CLLocationCoordinate2D)location;
+
+
+@end
+
+
+@interface AppDelegate : UIResponder <UIApplicationDelegate, CLLocationManagerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) CLLocationManager* locationManager;
+@property (nonatomic) CLLocationCoordinate2D userCoordinates;
+@property (nonatomic,strong) id <locationManagerSearchUpdate> searchDelegate;
+
+
 
 
 @end

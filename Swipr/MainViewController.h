@@ -12,8 +12,9 @@
 
 #import "DraggableViewBackground.h"
 #import "DraggableView.h"
+#import "AppDelegate.h"
 
-@interface MainViewController : UIViewController <UIAlertViewDelegate, DraggableViewBackgroundDelegate,CLLocationManagerDelegate>
+@interface MainViewController : UIViewController <UIAlertViewDelegate, DraggableViewBackgroundDelegate,CLLocationManagerDelegate, locationManagerSearchUpdate>
 
 
 @property (strong, nonatomic) DraggableView *currentCard;
