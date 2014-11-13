@@ -31,7 +31,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     alreadyLoadedCards = NO;
-
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:)
                                                  name:@"refreshView" object:nil];
@@ -51,9 +50,6 @@
     
     [self myWantedItems];
 
-    
-}
--(void)swipedACard{
     
 }
 
@@ -103,7 +99,7 @@
     PFQuery* query = [self createParseQueryWithFilters:self.searchFilters location:searchLocation];
     
     [query orderByAscending:@"createdAt"];
-    query.limit = 2;
+//    query.limit = 2;
     
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -129,15 +125,15 @@
     
     NSLog(@"making parseQuery");
     
-    if (filters) {
-//        NSMutableArray* filterSubQueries = [NSMutableArray new];
-//        for (int i = 0; i < filters.count; i++) {
-//            PFQuery* filterQuery = [PFQuery queryWithClassName:@"Item"];
-//            [filterQuery whereKey:@"category" equalTo:filters[i]];
-//            [filterSubQueries addObject:filterQuery];
-//        }
-//        baseQuery = [PFQuery orQueryWithSubqueries:filterSubQueries];
-        baseQuery = [PFQuery queryWithClassName:@"Item"];
+    if (filters && ![filters isEqual:@[]]) {
+        NSMutableArray* filterSubQueries = [NSMutableArray new];
+        for (int i = 0; i < filters.count; i++) {
+            PFQuery* filterQuery = [PFQuery queryWithClassName:@"Item"];
+            [filterQuery whereKey:@"category" equalTo:filters[i]];
+            [filterSubQueries addObject:filterQuery];
+        }
+        baseQuery = [PFQuery orQueryWithSubqueries:filterSubQueries];
+//        baseQuery = [PFQuery queryWithClassName:@"Item"];
 
     } else {
         baseQuery = [PFQuery queryWithClassName:@"Item"];
@@ -254,6 +250,8 @@
             }
         }];
     }
+    alreadyLoadedCards = NO;
+
     [self retreiveFromParse];
     
 }
