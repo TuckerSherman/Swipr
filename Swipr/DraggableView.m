@@ -37,10 +37,7 @@
         self.itemImage.clipsToBounds = YES;
         
 
-
-        self.information.text = @"no info given";
         self.information.text = [thisObject objectForKey:@"description"];
-        
         
         self.itemImage.image = [UIImage imageNamed:@"itemImagePlaceholder"];
         
@@ -49,8 +46,6 @@
  
         [self.information setTextAlignment:NSTextAlignmentCenter];
         self.information.textColor = [UIColor blackColor];
-        
-        
         
         self.backgroundColor = [UIColor whiteColor];
         
@@ -75,14 +70,7 @@
     self.layer.shadowOffset = CGSizeMake(1, 1);
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
+
 
 //%%% called when you move your finger across the screen.
 // called many times a second
@@ -200,7 +188,7 @@
 -(void)rightClickAction
 {
     CGPoint finishPoint = CGPointMake(600, self.center.y);
-    [UIView animateWithDuration:0.3
+    [UIView animateWithDuration:0.5
                      animations:^{
                          self.center = finishPoint;
                          self.transform = CGAffineTransformMakeRotation(1);
@@ -216,7 +204,7 @@
 -(void)leftClickAction
 {
     CGPoint finishPoint = CGPointMake(-600, self.center.y);
-    [UIView animateWithDuration:0.3
+    [UIView animateWithDuration:0.5
                      animations:^{
                          self.center = finishPoint;
                          self.transform = CGAffineTransformMakeRotation(-1);

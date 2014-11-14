@@ -20,12 +20,7 @@
     CGSize containerSize;
 
 }
-//this makes it so only two cards are loaded at a time to
-//avoid performance and memory costs
-static const int MAX_BUFFER_SIZE = 2; //%%% max number of cards loaded at any given time, must be greater than 1
 
-
-@synthesize allCards;//%%% all the cards
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -36,9 +31,9 @@ static const int MAX_BUFFER_SIZE = 2; //%%% max number of cards loaded at any gi
         [super layoutSubviews];
         [self setupView];
         loadedCards = [[NSMutableArray alloc] init];
-        allCards = [[NSMutableArray alloc] init];
+        self.pfItemsArray = [[NSMutableArray alloc] init];
         self.cardsLoadedIndex = 0;
-        [self loadCards];
+//        [self loadCards];
     }
     return self;
 }
@@ -59,77 +54,44 @@ static const int MAX_BUFFER_SIZE = 2; //%%% max number of cards loaded at any gi
     [self addSubview:xButton];
 
     [self addSubview:checkButton];
-    
-    
-
 
 }
 
-//%%% creates a card and returns it. 
-// use "index" to indicate where the information should be pulled.  If this doesn't apply to you, feel free
-// to get rid of it (eg: if you are building cards from data from the internet)
--(DraggableView *)createDraggableViewWithDataAtIndex:(NSInteger)index{
+
+-(DraggableView *)createCardWithPFItem:(PFObject*)item{
     
-    DraggableView *draggableView = [[DraggableView alloc]initWithFrame:CGRectMake(15, 80, containerSize.width-30, containerSize.height-200)];
-    
-    PFObject* currentObject = [self.pfItemsArray objectAtIndex:index];
-    
-    draggableView.pfItem = currentObject;
-    
-    
-    draggableView.information.text = [currentObject objectForKey:@"description"];
-    draggableView.itemImage.file = [currentObject objectForKey:@"image"];
-    draggableView.owner = [currentObject objectForKey:@"user"];
-//    draggableView.objectId = [currentObject objectForKey:@"objectId"];
-    
-    [draggableView.itemImage loadInBackground:^(UIImage *image, NSError *error) {
+    DraggableView *card = [[DraggableView alloc]initWithFrame:CGRectMake(15, 80, containerSize.width-30, containerSize.height-200)];
+    card.information.text = [item objectForKey:@"description"];
+    card.itemImage.file = [item objectForKey:@"image"];
+    card.owner = [item objectForKey:@"user"];
+    card.pfItem = item;
+    card.delegate = self;
+
+    [card.itemImage loadInBackground:^(UIImage *image, NSError *error) {
         if (!error) {
             NSLog(@"loaded image for card");
-//            DraggableView* thisCard = [loadedCards objectAtIndex:index];
-//            thisCard.itemImage.image = image;
-        }
-        else{
-            NSLog(@"error attempting to load item image in background");
-            
+        } else {
+            NSLog(@"error attempting to load item image in background: %@",error);
         }
     }];
-    
-    
-    draggableView.delegate = self;
-    return draggableView;
+    return card;
 }
 
 // loads all the cards and puts the first x in the "loaded cards" array
--(void)loadCards
-{
-    if([self.pfItemsArray count] > 0) {
-        NSInteger numLoadedCardsCap =(([self.pfItemsArray count] > MAX_BUFFER_SIZE)?MAX_BUFFER_SIZE:[self.pfItemsArray count]);
-        // if the buffer size is greater than the data size, there will be an array error, so this makes sure that doesn't happen
-        
-        // loops through the exampleCardsLabels array to create a card for each label.  This should be customized by removing "exampleCardLabels" with your own array of data
-        for (int i = 0; i<[self.pfItemsArray count]; i++) {
-            DraggableView* newCard = [self createDraggableViewWithDataAtIndex:i];
-            [allCards addObject:newCard];
-            
-            if (i<numLoadedCardsCap) {
-                //%%% adds a small number of cards to be loaded
-                [loadedCards addObject:newCard];
-                if ([loadedCards count] > 0) {
-                    [self.delegate currentCard:[loadedCards objectAtIndex:0]];
-                }
-            }
-        }
-        // displays the small number of loaded cards dictated by MAX_BUFFER_SIZE so that not all the cards
-        // are showing at once and clogging a ton of data
-        for (int i = 0; i<[loadedCards count]; i++) {
-            if (i>0) {
-                [self insertSubview:[loadedCards objectAtIndex:i] belowSubview:[loadedCards objectAtIndex:i-1]];
-            } else {
-                [self addSubview:[loadedCards objectAtIndex:i]];
-            }
-            self.cardsLoadedIndex++; //%%% we loaded a card into loaded cards, so we have to increment
-        }
+-(void)loadCardsFromArray:(NSArray*)data{
+    
+    for (PFObject* item in data) {
+        DraggableView* newCard = [self createCardWithPFItem:item];
+        [_pfItemsArray addObject:item];
+        [loadedCards insertObject:newCard atIndex:0];
+        [self insertSubview:newCard atIndex:0];
     }
+}
+-(void)clearDeck{
+    for (DraggableView* card in loadedCards) {
+        [card removeFromSuperview];
+    }
+    
     
 }
 
@@ -138,16 +100,24 @@ static const int MAX_BUFFER_SIZE = 2; //%%% max number of cards loaded at any gi
 {
     //do whatever you want with the card that was swiped
     DraggableView *thisCard = (DraggableView *)card;
-    [self.delegate setUserPreference:[loadedCards objectAtIndex:0] preference:NO];
-    [loadedCards removeObjectAtIndex:0]; //%%% card was swiped, so it's no longer a "loaded card"
+    PFUser* thisUser = [PFUser currentUser];
+    [loadedCards removeObject:thisCard];
     
-    if (self.cardsLoadedIndex < [allCards count]) { //%%% if we haven't reached the end of all cards, put another into the loaded cards
-        [loadedCards addObject:[allCards objectAtIndex:self.cardsLoadedIndex]];
-        self.cardsLoadedIndex++;//%%% loaded a card, so have to increment count
-        [self insertSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE-1)] belowSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE-2)]];
-    }
+    PFRelation *relation = [thisCard.pfItem relationForKey:@"usersWhoDontWant"];
+    [relation addObject:thisUser];
+    [thisCard.pfItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.delegate unloadCards];
+                [self.delegate retreiveFromParse:1];
+            });
+        } else {
+            NSLog(@"error saving item's preferences(positive): %@",error);
+        }
+    }];
+
     if ([loadedCards count] > 0) {
-    [self.delegate currentCard:[loadedCards objectAtIndex:0]];
+        [self.delegate currentCard:loadedCards[loadedCards.count]];
     }
     
 
@@ -158,24 +128,30 @@ static const int MAX_BUFFER_SIZE = 2; //%%% max number of cards loaded at any gi
 {
     //do whatever you want with the card that was swiped
     DraggableView *thisCard = (DraggableView *)card;
-    [self.delegate setUserPreference:[loadedCards objectAtIndex:0] preference:YES];
-    [loadedCards removeObjectAtIndex:0]; //%%% card was swiped, so it's no longer a "loaded card"
-    
-    if (self.cardsLoadedIndex < [allCards count]) { //%%% if we haven't reached the end of all cards, put another into the loaded cards
-        [loadedCards addObject:[allCards objectAtIndex:self.cardsLoadedIndex]];
-        self.cardsLoadedIndex++;//%%% loaded a card, so have to increment count
-        [self insertSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE-1)] belowSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE-2)]];
-    }
-    if ([loadedCards count] > 0) {
-        [self.delegate currentCard:[loadedCards objectAtIndex:0]];
-    }
+    PFUser* thisUser = [PFUser currentUser];
+    [loadedCards removeObject:thisCard];
 
+    PFRelation *relation = [thisCard.pfItem relationForKey:@"usersWhoDontWant"];
+    [relation addObject:thisUser];
+    [thisCard.pfItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.delegate unloadCards];
+                [self.delegate retreiveFromParse:1];
+            });
+        } else {
+            NSLog(@"error saving item's preferences(positive): %@",error);
+        }
+    }];
+    if ([loadedCards count] > 0) {
+        [self.delegate currentCard:loadedCards[loadedCards.count]];
+    }
+//
     
 }
 
 //%%% when you hit the right button, this is called and substitutes the swipe
--(void)swipeRight
-{
+-(void)swipeRight{
     DraggableView *dragView = [loadedCards firstObject];
     dragView.overlayView.mode = GGOverlayViewModeRight;
     [UIView animateWithDuration:0.2 animations:^{
@@ -183,14 +159,13 @@ static const int MAX_BUFFER_SIZE = 2; //%%% max number of cards loaded at any gi
     }];
     [dragView rightClickAction];
     if ([loadedCards count] > 0) {
-        [self.delegate currentCard:[loadedCards objectAtIndex:0]];
+        [self.delegate currentCard:loadedCards[loadedCards.count]];
     }
 
 }
 
 //%%% when you hit the left button, this is called and substitutes the swipe
--(void)swipeLeft
-{
+-(void)swipeLeft{
     DraggableView *dragView = [loadedCards firstObject];
     dragView.overlayView.mode = GGOverlayViewModeLeft;
     [UIView animateWithDuration:0.2 animations:^{
@@ -198,7 +173,7 @@ static const int MAX_BUFFER_SIZE = 2; //%%% max number of cards loaded at any gi
     }];
     [dragView leftClickAction];
     if ([loadedCards count] > 0) {
-        [self.delegate currentCard:[loadedCards objectAtIndex:0]];
+        [self.delegate currentCard:loadedCards [loadedCards.count]];
     }
 
 }

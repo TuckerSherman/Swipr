@@ -39,7 +39,7 @@
 
 @protocol DraggableViewDelegate <NSObject>
 
--(void)cardSwipedLeft:(UIView *)card;
+-(void)cardSwipedLeft:(UIView *)card ;
 -(void)cardSwipedRight:(UIView *)card;
 
 @end
@@ -49,7 +49,7 @@
 @property (weak) id <DraggableViewDelegate> delegate;
 
 @property (nonatomic, strong) UIPanGestureRecognizer *panGestureRecognizer;
-@property (nonatomic)         CGPoint originalPoint;
+@property (nonatomic) CGPoint originalPoint;
 
 @property (nonatomic,strong)  OverlayView* overlayView;
 @property (nonatomic,strong)  UILabel* information; //%%% a placeholder for any card-specific information

@@ -91,6 +91,8 @@
         [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
 
 }
+
+
 -(void)configureParse{
     
 }
@@ -137,7 +139,7 @@
 
 //    [self.searchDelegate makeNewQueryWithLocation:currentLocation.coordinate];
     self.userCoordinates = currentLocation.coordinate;
-    NSLog(@"UPDATED YOUR COORDINATES YO");
+//    NSLog(@"UPDATED YOUR COORDINATES YO");
     
 }
 

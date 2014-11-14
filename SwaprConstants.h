@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+
+static NSUInteger cardHeight = 200;
+
+
 @interface SwaprConstants : NSObject
 
 @end

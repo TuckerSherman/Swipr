@@ -37,19 +37,24 @@
 
 -(void)currentCard:(DraggableView *)card;
 -(void)setUserPreference:(DraggableView *)card preference:(BOOL)leftOrRight;
+-(void)retreiveFromParse:(NSUInteger)numberOfItems;
+-(void)unloadCards;
+
+
 
 @end
 
 @interface DraggableViewBackground : UIView <DraggableViewDelegate>
 
 @property (weak, nonatomic) id<DraggableViewBackgroundDelegate> delegate;
-@property (retain,nonatomic) NSArray* cardLabels; //%%% the labels the cards
-@property (strong, nonatomic) NSArray* pfItemsArray; //the actual PFObjects we want to display
-@property (retain,nonatomic) NSMutableArray* allCards; //%%% the labels the cards
+@property (strong, nonatomic) NSMutableArray* pfItemsArray; //the actual PFObjects we want to display
 @property (assign, nonatomic) NSInteger cardsLoadedIndex;
 @property (assign, nonatomic) NSInteger cardCounter;
 
--(void)loadCards;
+-(void)loadCardsFromArray:(NSArray*)data;
+-(void)clearDeck;
+
+
 -(void)cardSwipedLeft:(UIView *)card;
 -(void)cardSwipedRight:(UIView *)card;
 

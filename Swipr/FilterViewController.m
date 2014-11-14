@@ -19,6 +19,8 @@
         NSLog(@"back to main");
         FilterTableViewController* childTableView = self.childViewControllers.lastObject;
         childTableView.selectionsMade = YES;
+        
+        
 
     }];
 }

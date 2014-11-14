@@ -23,20 +23,30 @@
     PFGeoPoint* searchLocation;
     CGFloat searchRadius;
     AppDelegate *appDelegate;
+    NSArray* currentlyLoadedItemIDs;
+    
     BOOL alreadyLoadedCards;
 
 }
 
-
+-(void)viewDidAppear:(BOOL)animated{
+    NSLog(@"OH HAI");
+  if (self.searchFilters || [self.searchFilters isEqual:@[]]) {
+      [self.draggableBackground clearDeck];
+      alreadyLoadedCards = NO;
+      //clear out the loaded cards and get some new ones using our filter
+      [self retreiveFromParse:2];
+  } 
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     alreadyLoadedCards = NO;
+    [self retreiveFromParse:2];
+
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshView:)
                                                  name:@"refreshView" object:nil];
-    
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applySearchFilters) name:@"selectedFilters" object:nil];
     
     appDelegate=(AppDelegate *)[[UIApplication sharedApplication] delegate];
     
@@ -51,8 +61,8 @@
     
     [self myWantedItems];
 
-    
 }
+
 
 
 -(void)setupDeck{
@@ -72,7 +82,8 @@
     searchLocation = [PFGeoPoint geoPointWithLatitude:appDelegate.userCoordinates.latitude longitude:appDelegate.userCoordinates.longitude];
     searchRadius = 100.0;
     if (!alreadyLoadedCards) {
-        [self retreiveFromParse];
+        //TODO - clear original cards then get more
+        [self retreiveFromParse:2];
     }
 }
 
@@ -88,29 +99,33 @@
     self.navigationItem.titleView = logo;
 }
 
--(void)assignSearchRadius:(NSInteger)radius{
-    
-}
+
 
 
 #pragma mark - Working with Parse methods
 
--(void)retreiveFromParse {
+-(void)retreiveFromParse:(NSUInteger)numberOfItems {
     
     PFQuery* query = [self createParseQueryWithFilters:self.searchFilters location:searchLocation];
+    query.limit = numberOfItems;
     
-    [query orderByAscending:@"createdAt"];
-//    query.limit = 2;
-    
-    
+    NSLog(@"retrieving from parse");
+
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
                 if (!alreadyLoadedCards) {
                     // Copy objects array fetched from Parse to "items"
-                    NSMutableArray *items = [[NSMutableArray alloc] initWithArray:objects];
-                    self.draggableBackground.pfItemsArray = [items mutableCopy];
-                    [self.draggableBackground loadCards];
+//                    NSMutableArray *items = [[NSMutableArray alloc] initWithArray:objects];
+//                    self.draggableBackground.pfItemsArray = [items mutableCopy];
+                    NSLog(@"got some cards - calling the load method");
+                    [self.draggableBackground loadCardsFromArray:objects];
                     alreadyLoadedCards = YES;
+                    NSMutableArray* loadedItems = [NSMutableArray new];
+                    for (PFObject *item in objects) {
+                        NSString* objID = item.objectId;
+                        [loadedItems addObject:objID];
+                    }
+                    currentlyLoadedItemIDs = [NSArray arrayWithArray:loadedItems];
                 }
 
         } else {
@@ -124,7 +139,7 @@
     PFUser* currentUser = [PFUser currentUser];
     PFQuery* baseQuery;
     
-    NSLog(@"making parseQuery");
+    NSLog(@"putting together a parseQuery");
     
     if (filters && ![filters isEqual:@[]]) {
         NSMutableArray* filterSubQueries = [NSMutableArray new];
@@ -134,7 +149,6 @@
             [filterSubQueries addObject:filterQuery];
         }
         baseQuery = [PFQuery orQueryWithSubqueries:filterSubQueries];
-//        baseQuery = [PFQuery queryWithClassName:@"Item"];
 
     } else {
         baseQuery = [PFQuery queryWithClassName:@"Item"];
@@ -152,11 +166,6 @@
     
 }
 
--(void) applySearchFilters:(NSArray*)filters{
-    
-    self.searchFilters = [NSArray arrayWithArray:filters];
-    
-}
 
 
 #pragma mark - Log Out Button Methods
@@ -196,54 +205,66 @@
     
 }
 
+#pragma mark - callbacks from filter selection view
+
+-(void) applySearchFilters:(NSArray*)filters{
+    self.searchFilters = [NSArray arrayWithArray:filters];
+}
+
 -(void)checkRecipt{
     NSLog(@"I see you have selected:%@",self.searchFilters);
 }
 
-#pragma mark - DraggableViewBackground Method
+-(void)assignSearchRadius:(NSInteger)radius{
+    
+}
+
+#pragma mark - DraggableViewBackground callbacks
+-(void)unloadCards{
+    alreadyLoadedCards = NO;
+}
 
 -(void)currentCard:(DraggableView *)card {
     self.currentCard = card;
 }
 
-
--(void)setUserPreference:(DraggableView *)card preference:(BOOL)userPreference{
-    PFObject* thisItem = card.pfItem;
-    PFUser* thisUser = [PFUser currentUser];
-    swipedCard = thisItem;
-
-    if (userPreference == NO) {
-//        NSLog(@"USER DOES NOT WANTS : %@",[thisItem objectForKey:@"description"]);
-        
-        PFRelation *relation = [thisItem relationForKey:@"usersWhoDontWant"];
-        [relation addObject:thisUser];
-        [thisItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (error) {
-                NSLog(@"error saving item's preferences(positive): %@",error);
-            }
-        }];
-
-    }
-    else if(userPreference == YES)
-    {
-//        NSLog(@"USER WANTS : %@",[thisItem objectForKey:@"description"]);
-        
-        [self matchItems:thisItem withOwnerArray:ownersWhoWantYourStuff];
-
-        PFRelation *relation = [thisItem relationForKey:@"usersWhoWant"];
-        [relation addObject:thisUser];
-
-        [thisItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (error) {
-                NSLog(@"error saving item's preferences(positive): %@",error);
-            }
-        }];
-    }
-    alreadyLoadedCards = NO;
-
-    [self retreiveFromParse];
-    
-}
+//Callback from DraggableView whenever a user swipes a card
+//-(void)setUserPreference:(DraggableView *)card preference:(BOOL)userPreference{
+//    PFObject* thisItem = card;
+//    PFUser* thisUser = [PFUser currentUser];
+//    swipedCard = thisItem;
+//    
+//    //save the user's preference
+//    if (userPreference == NO) {
+//        PFRelation *relation = [thisItem relationForKey:@"usersWhoDontWant"];
+//
+//        [relation addObject:thisUser];
+//        [thisItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//            if (!error) {
+//                [self retreiveFromParse];
+//            } else {
+//                NSLog(@"error saving item's preferences(positive): %@",error);
+//            }
+//        }];
+//
+//    } else if(userPreference == YES) {
+//        [self matchItems:thisItem withOwnerArray:ownersWhoWantYourStuff];
+//
+//        PFRelation *relation = [thisItem relationForKey:@"usersWhoWant"];
+//        [relation addObject:thisUser];
+//
+//        [thisItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//            if (!error) {
+//                [self retreiveFromParse];
+//            } else {
+//                NSLog(@"error saving item's preferences(positive): %@",error);
+//
+//            }
+//        }];
+//    }
+//    alreadyLoadedCards = NO;
+//    
+//}
 
 #pragma mark - Match Methods
 
@@ -294,13 +315,16 @@
         }
     }];
 }
-
+//if user is interested in the match push the match view
 -(void)goToMatch {
     MatchViewController *matchVC = [self.storyboard instantiateViewControllerWithIdentifier:@"MatchViewController"];
     matchVC.itemYouWant = swipedCard;
     matchVC.ownerWhoWantsYourItem = [ownersWhoWantYourStuff objectAtIndex:0];
     [self presentViewController:matchVC animated:YES completion:nil];
 }
+
+
+
 
 
 

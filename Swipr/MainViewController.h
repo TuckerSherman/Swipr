@@ -36,5 +36,8 @@
 
 -(void)swipedACard;
 
+-(void)filterPickerDidClose;
+
+
 
 @end
