@@ -45,7 +45,7 @@
 		84F8158D1A09AD3800179034 /* ParseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F8158C1A09AD3800179034 /* ParseTableViewCell.m */; };
 		84F8159D1A0C45F700179034 /* gradientLightBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F8159C1A0C45F700179034 /* gradientLightBackground.png */; };
 		84F8159F1A0C481100179034 /* blueGradient.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F8159E1A0C481100179034 /* blueGradient.png */; };
-		D1E922DE61D4FC541D09F3AB /* libPods-Swapr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 60F742B98EDEF84B870EE408 /* libPods-Swapr.a */; };
+		8E889E192C81593083882074 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E95D7CC2B11F100B04551C4 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +93,7 @@
 		52BE14E71A08015D0090A2B0 /* OverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverlayView.m; sourceTree = "<group>"; };
 		60F742B98EDEF84B870EE408 /* libPods-Swapr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Swapr.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71AC775109C2A162E7329795 /* Pods-Swapr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swapr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Swapr/Pods-Swapr.debug.xcconfig"; sourceTree = "<group>"; };
+		80ADF26365F439C0E15AD968 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		84490A161A1411D70039C171 /* SwaprConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwaprConstants.h; path = ../SwaprConstants.h; sourceTree = "<group>"; };
 		84490A171A1411D70039C171 /* SwaprConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SwaprConstants.m; path = ../SwaprConstants.m; sourceTree = "<group>"; };
 		845166D91A07FED6004663DE /* Swipr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swipr.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,6 +124,8 @@
 		84F8158E1A09ADD800179034 /* APIdocs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = APIdocs; path = ../APIdocs; sourceTree = "<group>"; };
 		84F8159C1A0C45F700179034 /* gradientLightBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gradientLightBackground.png; sourceTree = "<group>"; };
 		84F8159E1A0C481100179034 /* blueGradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueGradient.png; sourceTree = "<group>"; };
+		8E95D7CC2B11F100B04551C4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA03884DF2844DC8A9352D4E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,7 +146,7 @@
 				5245BDB81A082774003353F7 /* CFNetwork.framework in Frameworks */,
 				5245BDB61A08276E003353F7 /* AudioToolbox.framework in Frameworks */,
 				5245BDB41A082593003353F7 /* Parse.framework in Frameworks */,
-				D1E922DE61D4FC541D09F3AB /* libPods-Swapr.a in Frameworks */,
+				8E889E192C81593083882074 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +177,7 @@
 				5245BDB51A08276E003353F7 /* AudioToolbox.framework */,
 				5245BDB31A082593003353F7 /* Parse.framework */,
 				60F742B98EDEF84B870EE408 /* libPods-Swapr.a */,
+				8E95D7CC2B11F100B04551C4 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -229,6 +233,8 @@
 			children = (
 				71AC775109C2A162E7329795 /* Pods-Swapr.debug.xcconfig */,
 				432FD7A1FFD9A9CA2262C59A /* Pods-Swapr.release.xcconfig */,
+				FA03884DF2844DC8A9352D4E /* Pods.debug.xcconfig */,
+				80ADF26365F439C0E15AD968 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -419,7 +425,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Swapr/Pods-Swapr-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7DB0BB9E6CAA35EA658493B8 /* Check Pods Manifest.lock */ = {
@@ -583,6 +589,7 @@
 		};
 		845166FD1A07FED6004663DE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA03884DF2844DC8A9352D4E /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -599,6 +606,7 @@
 		};
 		845166FE1A07FED6004663DE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 80ADF26365F439C0E15AD968 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
