@@ -261,7 +261,7 @@
                            target:self
                          selector:@selector(goToMatch)];
             [matchAlert showCustom:self
-                             image:[UIImage imageNamed:@"Handshake"]
+                             image:[UIImage imageNamed:@"lightCirc3x"]
                              color:[UIColor colorWithRed:113.0/255.0 green:177.0/255.0 blue:225.0/255.0 alpha:1]
                              title:@"You Got A Match!"
                           subTitle:@"Someone wanted your item too!"
