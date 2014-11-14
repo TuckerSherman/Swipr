@@ -63,7 +63,7 @@
         NSLog(@"pulled down bio");
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (!userBio) {
+            if (!userBio || [userBio isEqualToString:@""]) {
                 SCLAlertView *bioAlert = [[SCLAlertView alloc] init];
                 [bioAlert showCustom:self image:[UIImage imageNamed:@"Notice"] color:[UIColor colorWithRed:113.0/255.0 green:177.0/255.0 blue:225.0/255.0 alpha:1] title:@"No User Bio" subTitle:@"You haven't written a user bio.  Tap the lock in the top right to edit your profile" closeButtonTitle:@"Ok" duration:0.0f];
             }
