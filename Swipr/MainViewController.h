@@ -15,7 +15,7 @@
 #import "AppDelegate.h"
 #import "FilterTableViewController.h"
 
-@interface MainViewController : UIViewController <UIAlertViewDelegate, DraggableViewBackgroundDelegate,locationManagerSearchUpdate, filterSelectionDelegate>
+@interface MainViewController : UIViewController <DraggableViewBackgroundDelegate,locationManagerSearchUpdate, filterSelectionDelegate>
 
 
 @property (strong, nonatomic) DraggableView *currentCard;
