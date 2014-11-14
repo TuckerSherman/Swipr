@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>B1956104-FD4C-4B53-9AC7-84E6664264EF</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Swipr</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>0AC65825B4E9A70BDBD8E82FCD5AA1947586F476</key>
+		<string>github.com:TuckerSherman/Swipr.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Swipr.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>0AC65825B4E9A70BDBD8E82FCD5AA1947586F476</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:TuckerSherman/Swipr.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>0AC65825B4E9A70BDBD8E82FCD5AA1947586F476</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>0AC65825B4E9A70BDBD8E82FCD5AA1947586F476</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Swipr</string>
+		</dict>
+	</array>
+</dict>
+</plist>

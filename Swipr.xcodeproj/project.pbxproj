@@ -45,6 +45,7 @@
 		84F8158D1A09AD3800179034 /* ParseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F8158C1A09AD3800179034 /* ParseTableViewCell.m */; };
 		84F8159D1A0C45F700179034 /* gradientLightBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F8159C1A0C45F700179034 /* gradientLightBackground.png */; };
 		84F8159F1A0C481100179034 /* blueGradient.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F8159E1A0C481100179034 /* blueGradient.png */; };
+		D1E922DE61D4FC541D09F3AB /* libPods-Swapr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 60F742B98EDEF84B870EE408 /* libPods-Swapr.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		432FD7A1FFD9A9CA2262C59A /* Pods-Swapr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swapr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swapr/Pods-Swapr.release.xcconfig"; sourceTree = "<group>"; };
 		520026251A084C37003DC9C9 /* RegisterUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterUserViewController.h; sourceTree = "<group>"; };
 		520026261A084C37003DC9C9 /* RegisterUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterUserViewController.m; sourceTree = "<group>"; };
 		5200262A1A086D7B003DC9C9 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -89,6 +91,8 @@
 		52BE14E31A0800EC0090A2B0 /* DraggableViewBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraggableViewBackground.m; sourceTree = "<group>"; };
 		52BE14E61A08015D0090A2B0 /* OverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverlayView.h; sourceTree = "<group>"; };
 		52BE14E71A08015D0090A2B0 /* OverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverlayView.m; sourceTree = "<group>"; };
+		60F742B98EDEF84B870EE408 /* libPods-Swapr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Swapr.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		71AC775109C2A162E7329795 /* Pods-Swapr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swapr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Swapr/Pods-Swapr.debug.xcconfig"; sourceTree = "<group>"; };
 		84490A161A1411D70039C171 /* SwaprConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwaprConstants.h; path = ../SwaprConstants.h; sourceTree = "<group>"; };
 		84490A171A1411D70039C171 /* SwaprConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SwaprConstants.m; path = ../SwaprConstants.m; sourceTree = "<group>"; };
 		845166D91A07FED6004663DE /* Swipr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Swipr.app; path = Swapr.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,6 +143,7 @@
 				5245BDB81A082774003353F7 /* CFNetwork.framework in Frameworks */,
 				5245BDB61A08276E003353F7 /* AudioToolbox.framework in Frameworks */,
 				5245BDB41A082593003353F7 /* Parse.framework in Frameworks */,
+				D1E922DE61D4FC541D09F3AB /* libPods-Swapr.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +173,7 @@
 				5245BDB71A082774003353F7 /* CFNetwork.framework */,
 				5245BDB51A08276E003353F7 /* AudioToolbox.framework */,
 				5245BDB31A082593003353F7 /* Parse.framework */,
+				60F742B98EDEF84B870EE408 /* libPods-Swapr.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -218,6 +224,15 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		5E5DCADBB4973BB526E60F0E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				71AC775109C2A162E7329795 /* Pods-Swapr.debug.xcconfig */,
+				432FD7A1FFD9A9CA2262C59A /* Pods-Swapr.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		845166D01A07FED6004663DE = {
 			isa = PBXGroup;
 			children = (
@@ -225,6 +240,7 @@
 				845166F51A07FED6004663DE /* SwiprTests */,
 				845166DA1A07FED6004663DE /* Products */,
 				5245BDC91A0827C9003353F7 /* Frameworks */,
+				5E5DCADBB4973BB526E60F0E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -294,19 +310,21 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		845166D81A07FED6004663DE /* Swapr */ = {
+		845166D81A07FED6004663DE /* Swipr */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 845166FC1A07FED6004663DE /* Build configuration list for PBXNativeTarget "Swapr" */;
+			buildConfigurationList = 845166FC1A07FED6004663DE /* Build configuration list for PBXNativeTarget "Swipr" */;
 			buildPhases = (
+				7DB0BB9E6CAA35EA658493B8 /* Check Pods Manifest.lock */,
 				845166D51A07FED6004663DE /* Sources */,
 				845166D61A07FED6004663DE /* Frameworks */,
 				845166D71A07FED6004663DE /* Resources */,
+				136472E5B95FF068CE9BDF71 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Swapr;
+			name = Swipr;
 			productName = Swipr;
 			productReference = 845166D91A07FED6004663DE /* Swipr.app */;
 			productType = "com.apple.product-type.application";
@@ -360,7 +378,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				845166D81A07FED6004663DE /* Swapr */,
+				845166D81A07FED6004663DE /* Swipr */,
 				845166F11A07FED6004663DE /* SwiprTests */,
 			);
 		};
@@ -387,6 +405,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		136472E5B95FF068CE9BDF71 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Swapr/Pods-Swapr-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7DB0BB9E6CAA35EA658493B8 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		845166D51A07FED6004663DE /* Sources */ = {
@@ -428,7 +479,7 @@
 /* Begin PBXTargetDependency section */
 		845166F41A07FED6004663DE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 845166D81A07FED6004663DE /* Swapr */;
+			target = 845166D81A07FED6004663DE /* Swipr */;
 			targetProxy = 845166F31A07FED6004663DE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -532,6 +583,7 @@
 		};
 		845166FD1A07FED6004663DE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 71AC775109C2A162E7329795 /* Pods-Swapr.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -548,6 +600,7 @@
 		};
 		845166FE1A07FED6004663DE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 432FD7A1FFD9A9CA2262C59A /* Pods-Swapr.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -608,7 +661,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		845166FC1A07FED6004663DE /* Build configuration list for PBXNativeTarget "Swapr" */ = {
+		845166FC1A07FED6004663DE /* Build configuration list for PBXNativeTarget "Swipr" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				845166FD1A07FED6004663DE /* Debug */,
