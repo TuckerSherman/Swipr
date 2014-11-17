@@ -63,8 +63,6 @@
 
 }
 
-
-
 -(void)setupDeck{
     
     // Setup cardView
@@ -75,9 +73,8 @@
     //move storyboard UI elements to the top of the view stack
     [self.subView bringSubviewToFront:self.infoButton];
     [self.subView bringSubviewToFront:self.contentFilterButton];
-
-    
 }
+
 -(void)refreshView:(NSNotification *) notification{
     searchLocation = [PFGeoPoint geoPointWithLatitude:appDelegate.userCoordinates.latitude longitude:appDelegate.userCoordinates.longitude];
     searchRadius = 100.0;
@@ -87,20 +84,15 @@
     }
 }
 
-
 -(void)setupLogo{
-    CGFloat navWidth = self.navigationController.navigationBar.frame.size.width;
-    CGFloat navHeight = self.navigationController.navigationBar.frame.size.height;
+    UINavigationBar* navBar =self.navigationController.navigationBar;
     
-    UIImageView* logo =[[UIImageView alloc]initWithFrame:CGRectMake(navWidth/2.0, navHeight/2.0, 200, 40)];
+    UIImageView* logo =[[UIImageView alloc]initWithFrame:CGRectMake(navBar.center.x-100, navBar.frame.size.height/2.0, 200, 40)];
     logo.contentMode = UIViewContentModeScaleAspectFit;
     logo.image = [UIImage imageNamed:@"WhiteLogo"];
     
     self.navigationItem.titleView = logo;
 }
-
-
-
 
 #pragma mark - Working with Parse methods
 
@@ -141,6 +133,7 @@
     
     NSLog(@"putting together a parseQuery");
     
+    //if the user has selected filters initialize the query with a bunch of OR statements
     if (filters && ![filters isEqual:@[]]) {
         NSMutableArray* filterSubQueries = [NSMutableArray new];
         for (int i = 0; i < filters.count; i++) {
@@ -158,15 +151,16 @@
     [baseQuery whereKey:@"usersWhoDontWant" notEqualTo:currentUser];
     [baseQuery whereKey:@"usersWhoWant" notEqualTo:currentUser];
     
+    for (NSString* itemID in currentlyLoadedItemIDs) {
+        [baseQuery whereKey:@"objectId" notEqualTo:itemID];
+    }
+    
     if(location){
         [baseQuery whereKey:@"location" nearGeoPoint:location withinKilometers:searchRadius];
     }
-    
     return baseQuery;
     
 }
-
-
 
 #pragma mark - Log Out Button Methods
 
@@ -307,7 +301,6 @@
                 PFQuery *wantedQuery = [wanted query];
                 [wantedQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
                     ownersWhoWantYourStuff = objects;
-                    
                 }];
             }
         } else {
@@ -315,6 +308,7 @@
         }
     }];
 }
+
 //if user is interested in the match push the match view
 -(void)goToMatch {
     MatchViewController *matchVC = [self.storyboard instantiateViewControllerWithIdentifier:@"MatchViewController"];
@@ -322,11 +316,5 @@
     matchVC.ownerWhoWantsYourItem = [ownersWhoWantYourStuff objectAtIndex:0];
     [self presentViewController:matchVC animated:YES completion:nil];
 }
-
-
-
-
-
-
 
 @end

@@ -12,7 +12,7 @@
 
 @implementation DraggableViewBackground{
 
-    NSMutableArray *loadedCards; //%%% the array of card loaded (change max_buffer_size to increase or decrease the number of cards this holds)
+    NSMutableArray *loadedCards;
     
     UIButton* checkButton;
     UIButton* xButton;
@@ -29,6 +29,7 @@
     
     if (self) {
         [super layoutSubviews];
+        
         [self setupView];
         loadedCards = [[NSMutableArray alloc] init];
         self.pfItemsArray = [[NSMutableArray alloc] init];
@@ -39,8 +40,8 @@
 }
 
 //%%% sets up the extra buttons on the screen
--(void)setupView
-{
+-(void)setupView{
+    
     self.backgroundColor = [UIColor colorWithRed:.95 green:.95 blue:.95 alpha:.3];
 
     xButton = [[UIButton alloc]initWithFrame:CGRectMake(containerSize.width/4-29, containerSize.height -100, 59, 59)];
@@ -87,17 +88,16 @@
         [self insertSubview:newCard atIndex:0];
     }
 }
+
 -(void)clearDeck{
     for (DraggableView* card in loadedCards) {
         [card removeFromSuperview];
+        [loadedCards removeObject:card];
     }
-    
-    
 }
 
 // action called when the card goes to the left.
--(void)cardSwipedLeft:(UIView *)card;
-{
+-(void)cardSwipedLeft:(UIView *)card{
     //do whatever you want with the card that was swiped
     DraggableView *thisCard = (DraggableView *)card;
     PFUser* thisUser = [PFUser currentUser];
@@ -124,8 +124,7 @@
 }
 
 // action called when the card goes to the right.
--(void)cardSwipedRight:(UIView *)card
-{
+-(void)cardSwipedRight:(UIView *)card{
     //do whatever you want with the card that was swiped
     DraggableView *thisCard = (DraggableView *)card;
     PFUser* thisUser = [PFUser currentUser];
@@ -143,8 +142,8 @@
             NSLog(@"error saving item's preferences(positive): %@",error);
         }
     }];
-    if ([loadedCards count] > 0) {
-        [self.delegate currentCard:loadedCards[loadedCards.count]];
+    if ([loadedCards count] > 1) {
+        [self.delegate currentCard:loadedCards[loadedCards.count-1]];
     }
 //
     
@@ -158,8 +157,8 @@
         dragView.overlayView.alpha = 1;
     }];
     [dragView rightClickAction];
-    if ([loadedCards count] > 0) {
-        [self.delegate currentCard:loadedCards[loadedCards.count]];
+    if ([loadedCards count] > 1) {
+        [self.delegate currentCard:loadedCards[loadedCards.count-1]];
     }
 
 }
@@ -172,8 +171,8 @@
         dragView.overlayView.alpha = 1;
     }];
     [dragView leftClickAction];
-    if ([loadedCards count] > 0) {
-        [self.delegate currentCard:loadedCards [loadedCards.count]];
+    if ([loadedCards count] > 1) {
+        [self.delegate currentCard:loadedCards [loadedCards.count-1]];
     }
 
 }

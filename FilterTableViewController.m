@@ -68,16 +68,15 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     NSString* thisCategory = self.availableCategories[indexPath.row];
     cell.textLabel.text = thisCategory;
+    
     if ([self.selectedCategories containsObject:thisCategory]) {
 
         [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionTop];
         
     }
-    
-    // Configure the cell...
-    
     return cell;
 }
+
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSString* selection = self.availableCategories[indexPath.row];

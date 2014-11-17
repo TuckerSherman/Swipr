@@ -329,7 +329,6 @@ numberOfRowsInComponent:(NSInteger)component{
     return categories.count;
 }
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row   forComponent:(NSInteger)component{
-    
     return categories[row];
 }
 

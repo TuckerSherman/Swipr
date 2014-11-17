@@ -745,7 +745,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="swn-Ab-q8M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-28.5" y="1268.5"/>
+            <point key="canvasLocation" x="-16.5" y="1320.5"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="CvA-7R-SYs">
@@ -975,13 +975,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kCF-a2-rZg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="490.5" y="1310.5"/>
+            <point key="canvasLocation" x="475.5" y="1320.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aG0-3z-MU3">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vlG-Dk-EgR" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="q63-HN-v84">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

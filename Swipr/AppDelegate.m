@@ -22,6 +22,7 @@
     
     [self themeNavController];
     [self startTrackingLocation];
+    [application setStatusBarStyle:UIStatusBarStyleBlackOpaque];
 
     // Override point for customization after application launch.
     // ****************************************************************************
@@ -139,7 +140,7 @@
 
 //    [self.searchDelegate makeNewQueryWithLocation:currentLocation.coordinate];
     self.userCoordinates = currentLocation.coordinate;
-//    NSLog(@"UPDATED YOUR COORDINATES YO");
+    NSLog(@"UPDATED YOUR COORDINATES YO");
     
 }
 

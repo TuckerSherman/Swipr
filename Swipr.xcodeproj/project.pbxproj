@@ -185,6 +185,8 @@
 		52BE14DD1A0800650090A2B0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				52BE14E21A0800EC0090A2B0 /* DraggableViewBackground.h */,
+				52BE14E31A0800EC0090A2B0 /* DraggableViewBackground.m */,
 				520026251A084C37003DC9C9 /* RegisterUserViewController.h */,
 				520026261A084C37003DC9C9 /* RegisterUserViewController.m */,
 				5200262A1A086D7B003DC9C9 /* LoginViewController.h */,
@@ -220,8 +222,6 @@
 				52BE14E11A0800EC0090A2B0 /* DraggableView.m */,
 				52BE14E61A08015D0090A2B0 /* OverlayView.h */,
 				52BE14E71A08015D0090A2B0 /* OverlayView.m */,
-				52BE14E21A0800EC0090A2B0 /* DraggableViewBackground.h */,
-				52BE14E31A0800EC0090A2B0 /* DraggableViewBackground.m */,
 				84F8158B1A09AD3700179034 /* ParseTableViewCell.h */,
 				84F8158C1A09AD3800179034 /* ParseTableViewCell.m */,
 			);

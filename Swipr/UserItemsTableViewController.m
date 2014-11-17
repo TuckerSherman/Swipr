@@ -32,8 +32,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self loadObjects];
-
 }
+
 -(void)viewWillAppear:(BOOL)animated{
     [self loadObjects];
 }
